@@ -7,8 +7,8 @@
 */
 function rsVisButton(qno, subqIndex, paramObj) {
     var msg = "This is the rsVisButton function\n qno: " + qno + ", subqIndex: " + subqIndex + "\nObject properties:\n";
-    for (const property in paramObj) {
-        msg += ` ${property}: ${paramObj[property]}\n`;
+    for (const p in paramObj) {
+        msg += ` ${p}: ${paramObj[p]}\n`;
     }
 
     console.log(msg);
