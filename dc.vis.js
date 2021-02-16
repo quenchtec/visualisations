@@ -13,3 +13,5 @@ function rsVisButton(qno, subqIndex, paramObj) {
 
     console.log(msg);
 }
+
+$.getScript("https://static.quenchtec.net/46033bcf-0124-4b26-b4ea-30726bd5357c/9rdiDsHsCw7/newBtniQuest.js");
