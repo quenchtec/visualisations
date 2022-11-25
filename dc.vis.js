@@ -14,6 +14,7 @@ function rsVisButton(qno, subqIndex, paramObj) {
     //console.log(msg);
 }
 
+// comment
 /*
 * Test function for scrolling grids.
 * Writes a message containing parameter information to console.
