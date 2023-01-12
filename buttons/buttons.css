@@ -1,0 +1,22 @@
+.rsBtn:hover {
+  outline: 2px solid grey;
+}
+
+.rsBtnChecked:hover {
+  background-color: var(--interactive_checked_background_color);
+  outline: 2px solid grey;
+}
+
+.rsBtnOpen {
+  display: flex;
+  align-items: center;
+}
+
+.rsBtn {
+  display: flex;
+  align-items: center;
+}
+
+.rsAnimationText {
+  font-size: 16px;
+}
