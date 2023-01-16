@@ -1,4 +1,4 @@
-unction rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
+function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   // to handle button iQuest  
   const QuestionID = "#" + rsQno;
   const btnDivID = QuestionID + "_btn";
