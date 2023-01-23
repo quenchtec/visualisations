@@ -157,7 +157,6 @@ function rsVisHoriSlider(rsQno, rsSubqIndex, rsParams) { // Creates a basic slid
   }
   //Handle floats
   let floatTexts = [];
-  alert("floats " + rsParams.showFloats);
   switch (rsParams.showFloats) {
     case "none":
       break;
@@ -180,7 +179,6 @@ function rsVisHoriSlider(rsQno, rsSubqIndex, rsParams) { // Creates a basic slid
       });
       break;
   }
-  console.log(floatTexts);
   //Build HTML for sliders, loop all rows
   $(QuestionID).find('.rsRow').each(function(i) {
     strHTML = '<td colspan="' + intSliderStops + '" class="cSliderCell"><div class="cSlider" alt="' + i + '" style="height: ' + rsParams.sldHeight + '" ></div></td>';
