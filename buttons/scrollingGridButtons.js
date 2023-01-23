@@ -15,6 +15,8 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   rsParams.hidebuttontext = (typeof rsParams.hidebuttontext === "undefined") ? false : rsParams.hidebuttontext;
   rsParams.imageautosizing = (typeof rsParams.imageautosizing === "undefined") ? false : rsParams.imageautosizing;
   rsParams.specialbuttons = (typeof rsParams.specialbuttons === "undefined") ? 0 : rsParams.specialbuttons;
+  rsParam.minwidth = (typeof rsParam.minwidth === "undefined") ? "" : rsParam.minwidth;
+  rsParam.maxwidth = (typeof rsParam.maxwidth === "undefined") ? "" : rsParam.maxwidth;
   rsParams.useimagesasbackground = (typeof rsParams.useimagesasbackground === "undefined") ? false : rsParams.useimagesasbackground;
   rsParams.randomizecolumns = (typeof rsParams.randomizecolumns === "undefined") ? "no" : rsParams.randomizecolumns;
   rsParams.randomseed = (typeof rsParams.randomseed === "undefined") ? 0 : rsParams.randomseed;
@@ -323,7 +325,11 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
 
   strHTML += '</div>';
   $(QuestionID).after(strHTML);
-
+  
+  //Check for minwidth and maxwidth
+  if (rsParam.minwidth != null) $(btnDivID).find('.rsBtn').css('min-width', rsParam.minwidth);
+  if (rsParam.maxwidth != null) $(btnDivID).find('.rsBtn').css('max-width', rsParam.maxwidth);
+  
   //Check for image btn
   if (rsParams.useimagesasbackground) {
     $(btnDivID).find(baseBtnClassSelect).each(function() {
