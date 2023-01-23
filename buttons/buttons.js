@@ -1,9 +1,5 @@
-//Call function to display buttons. The functions should ideally be a JavaScript common file
-//When called parameters rsQno, rsSubqIndex and an object containing the parameters set by the user, has been populated
-rsVisButton(rsQno, rsSubqIndex, rsParams)
-
 //Function for buttons
-function rsVisButton(rsQno, rsSubqIndex, rsParam) {
+function rsVisButton(rsQno, rsSubqIndex, rsParams) {
   //Check for WCAG, if the flag is set, we do not do anything as these buttons are not WCAG compliant at crrent
   if ($('#btnToggleWcag').val() == 1) {
     return false;
@@ -16,19 +12,19 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
 
   //Check parameters, should allways be done this way, as new parameters might be added, and possibly some removed as well
   //These parameters come from the settings the user have selected
-  rsParam.autonext = (typeof rsParam.autonext === "undefined") ? false : rsParam.autonext;
-  rsParam.buttonsperrow = (typeof rsParam.buttonsperrow === "undefined") ? 0 : rsParam.buttonsperrow;
-  rsParam.hidebuttontext = (typeof rsParam.hidebuttontext === "undefined") ? false : rsParam.hidebuttontext;
-  rsParam.imageautosizing = (typeof rsParam.imageautosizing === "undefined") ? false : rsParam.imageautosizing;
-  rsParam.specialbuttons = (typeof rsParam.specialbuttons === "undefined") ? 0 : rsParam.specialbuttons;
-  rsParam.useimagesasbackground = (typeof rsParam.useimagesasbackground === "undefined") ? false : rsParam.useimagesasbackground;
-  rsParam.minwidth = (typeof rsParam.minwidth === "undefined") ? "" : rsParam.minwidth;
-  rsParam.maxwidth = (typeof rsParam.maxwidth === "undefined") ? "" : rsParam.maxwidth;
-  rsParam.prescript = (typeof rsParam.prescript === "undefined") ? "" : rsParam.prescript;
-  rsParam.postscript = (typeof rsParam.postscript === "undefined") ? "" : rsParam.postscript;
+  rsParams.autonext = (typeof rsParams.autonext === "undefined") ? false : rsParams.autonext;
+  rsParams.buttonsperrow = (typeof rsParams.buttonsperrow === "undefined") ? 0 : rsParams.buttonsperrow;
+  rsParams.hidebuttontext = (typeof rsParams.hidebuttontext === "undefined") ? false : rsParams.hidebuttontext;
+  rsParams.imageautosizing = (typeof rsParams.imageautosizing === "undefined") ? false : rsParams.imageautosizing;
+  rsParams.specialbuttons = (typeof rsParams.specialbuttons === "undefined") ? 0 : rsParams.specialbuttons;
+  rsParams.useimagesasbackground = (typeof rsParams.useimagesasbackground === "undefined") ? false : rsParams.useimagesasbackground;
+  rsParams.minwidth = (typeof rsParams.minwidth === "undefined") ? "" : rsParams.minwidth;
+  rsParams.maxwidth = (typeof rsParams.maxwidth === "undefined") ? "" : rsParams.maxwidth;
+  rsParams.prescript = (typeof rsParams.prescript === "undefined") ? "" : rsParams.prescript;
+  rsParams.postscript = (typeof rsParams.postscript === "undefined") ? "" : rsParams.postscript;
 
   //Check for prescript
-  if (rsParam.prescript.length > 0) sParam.prescript;
+  if (rsParams.prescript.length > 0) sParam.prescript;
   //Remove extra checkboxes possibly inserted on open-ends, in order to simplyfy the iQuest logic
   $('.rsExtraOpen').remove();
 
@@ -40,21 +36,21 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
   const intNumOpens = $(QuestionID).find('.rsRowOpen').length; //Number of opene rows
 
   //Check specialbuttons
-  let intSpecialButtons = rsParam.specialbuttons;
+  let intSpecialButtons = rsParams.specialbuttons;
   if (intSpecialButtons > 0) {
     intSpecialButtons = Math.min(intSpecialButtons, intNumButtons); //Can't be more than number of buttons
   }
 
   //Check normal buttons, find number of buttons to display pr. row
   const intNormalButtons = intNumButtons - intSpecialButtons;
-  let intNumButtonsPrRow = rsParam.buttonsperrow;
+  let intNumButtonsPrRow = rsParams.buttonsperrow;
   if (intNumButtonsPrRow > 0) {
     intNumButtonsPrRow = Math.min(intNumButtonsPrRow, intNormalButtons); //Pick minimum of requested and actual
   }
 
   //Turn of autonext if more than one question/subquestion on the page
   if ($('.cCellSubQuestion').length > 1) {
-    rsParam.autonext = false;
+    rsParams.autonext = false;
   }
 
   //Find row number for start of special buttons
@@ -91,7 +87,7 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
   let baseBtnClassSelectExclusive = ".rsBtn.exclusive";
   let specialBtnClass = "rsBtnSpecial";
   let checkedBtnClass = "rsBtnChecked";
-  if (rsParam.useimagesasbackground) {
+  if (rsParams.useimagesasbackground) {
     baseBtnClass = "rsImgBtn";
     baseBtnClassSelect = ".rsImgBtn";
     baseBtnClassSelectExclusive = ".rsImgBtn.exclusive";
@@ -174,17 +170,17 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
   $(QuestionID).after(strHTML);
 
   //Check for minwidth and maxwidth
-  if (rsParam.minwidth != null) $(btnDivID).find('.rsBtn').css('min-width', rsParam.minwidth);
-  if (rsParam.maxwidth != null) $(btnDivID).find('.rsBtn').css('max-width', rsParam.maxwidth);
+  if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn').css('min-width', rsParams.minwidth);
+  if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn').css('max-width', rsParams.maxwidth);
 
   //Check for image btn
-  if (rsParam.useimagesasbackground) {
+  if (rsParams.useimagesasbackground) {
     $(btnDivID).find(baseBtnClassSelect).each(function() {
       if ($(this).find('img').length > 0) {
         const strURL = $(this).find('img').eq(0).attr('src');
         $(this).find('img').eq(0).remove();
         $(this).css('background-image', 'url("' + strURL + '")');
-        if (rsParam.hidebuttontext) {
+        if (rsParams.hidebuttontext) {
           $(this).addClass('rsImgBtnHideText');
           $(this).find('span, div').addClass('rsImgBtnHideText');
         }
@@ -250,7 +246,7 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
       } else { //Not already answered
         $(this).addClass(checkedBtnClass);
         $(QuestionID).find('.cRadio, .cCheck').eq(intInpID).prop('checked', true);
-        if (rsParam.autonext) {
+        if (rsParams.autonext) {
           $('#btnNext').click();
         }
       }
@@ -289,5 +285,5 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
     $(baseBtnClassSelect).not('.rsBtnSpecial').css('width', 'calc(' + pctWidth + '% - ' + valuel + ' - ' + valuer + ' - ' + valuepl + ' - ' + valuepr + ' - 10px)');
   }
   //Check for postscript
-  if (rsParam.postscript.length > 0) sParam.postscript;
+  if (rsParams.postscript.length > 0) sParam.postscript;
 }
