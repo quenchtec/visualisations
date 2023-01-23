@@ -1,0 +1,26 @@
+ .rsGridSlider.rsSingleGrid tr:not(:first-child) {
+   display: table-row;
+ }
+
+ .rsGridSlider .rsRow {
+   display: table-row;
+ }
+
+ .rsGridSlider.rsSingleGrid .rsRow .cCellRowText {
+   display: table-cell;
+ }
+
+ .rsGridSlider.rsSingleGrid .rsRow .cCell {
+   display: table-cell;
+ }
+
+ .rsGridSlider .cSliderCell {
+   padding-left: 8px;
+   padding-right: 15px;
+   width: 50%;
+ }
+
+ .ui-slider-tip {
+   width: max-content !important;
+   min-width: 34px;
+ }
