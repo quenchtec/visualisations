@@ -9,3 +9,14 @@
   border-bottom-left-radius: 20px;
   min-width: 50%;
 }
+.rsBtn:hover {
+  outline: 2px solid grey;
+}
+.rsBtnChecked:hover {
+  background-color: var(--interactive_checked_background_color);
+  outline: 2px solid grey;
+}
+.rsBtn {
+  display: flex;
+  align-items: center;
+}
