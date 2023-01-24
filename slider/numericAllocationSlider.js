@@ -1,6 +1,6 @@
 function allocSlider(rsQno, rsSubqIndex, rsParams) {
     rsParams.blnShowStatus = (typeof rsParams.blnShowStatus === "undefined") ? true : rsParams.blnShowStatus; //Display Status Box
-    statusPosition = (typeof statusPosition === "undefined") ? "right" : statusPosition; //Position of the Status Box
+    rsParams.statusPosition = (typeof rsParams.statusPosition === "undefined") ? "right" : rsParams.statusPosition; //Position of the Status Box
     blnShowTarget = (typeof blnShowTarget === "undefined") ? true : blnShowTarget; //Display Target Value
     strTargetLabel = (typeof strTargetLabel === "undefined") ? "Target" : strTargetLabel; //Target Label
     intTargetValue = (typeof intTargetValue === "undefined") ? 100 : intTargetValue; //Target Value
@@ -48,7 +48,7 @@ function allocSlider(rsQno, rsSubqIndex, rsParams) {
         }
         strStatusHTML += '</table>';
         var strHTML = '';
-        switch (statusPosition) {
+        switch (rsParams.statusPosition) {
             case 'top':
                 strHTML += '<div class="cWrapper">';
                 strHTML += '<table class="ciQuestTable" style="width: auto;"><tr><td>' + strStatusHTML + '</td></tr><tr><td>' + strSliderHTML + '</td></tr></table>';
