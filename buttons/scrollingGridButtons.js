@@ -1,288 +1,444 @@
-//Slider functions
-function rsVisHoriSlider(rsQno, rsSubqIndex, rsParams) { // Creates a basic slider for a Grid Single
-  //Check for WCAG, if the flag is set, we do not do anything as these sliders are not WCAG compliant at current
+function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
+  // to handle button iQuest  
+  const QuestionID = "#" + rsQno;
+  const btnDivID = QuestionID + "_btn";
+  const btnDivIDattr = rsQno + "_btn";
+  const scrollDivID = QuestionID + "_scroll";
+  const scrollDivIDattr = rsQno + "_scroll";
+  let strHTML = "";
+
+  ////Should check strtucture
+  structOK = true;
+  //Check parameters
+  rsParams.autonext = (typeof rsParams.autonext === "undefined") ? false : rsParams.autonext;
+  rsParams.buttonsperrow = (typeof rsParams.buttonsperrow === "undefined") ? 0 : rsParams.buttonsperrow;
+  rsParams.hidebuttontext = (typeof rsParams.hidebuttontext === "undefined") ? false : rsParams.hidebuttontext;
+  rsParams.imageautosizing = (typeof rsParams.imageautosizing === "undefined") ? false : rsParams.imageautosizing;
+  rsParams.specialbuttons = (typeof rsParams.specialbuttons === "undefined") ? 0 : rsParams.specialbuttons;
+  rsParams.minwidth = (typeof rsParam.minwidth === "undefined") ? "" : rsParam.minwidth;
+  rsParams.maxwidth = (typeof rsParam.maxwidth === "undefined") ? "" : rsParam.maxwidth;
+  rsParams.useimagesasbackground = (typeof rsParams.useimagesasbackground === "undefined") ? false : rsParams.useimagesasbackground;
+  rsParams.randomizecolumns = (typeof rsParams.randomizecolumns === "undefined") ? "no" : rsParams.randomizecolumns;
+  rsParams.randomseed = (typeof rsParams.randomseed === "undefined") ? 0 : rsParams.randomseed;
+  rsParams.excludecolumnend = (typeof rsParams.excludecolumnend === "undefined") ? 0 : rsParams.excludecolumnend;
+  rsParams.excludecolumnstart = (typeof rsParams.excludecolumnstart === "undefined") ? 0 : rsParams.excludecolumnstart;
+  rsParams.prescript = (typeof rsParams.prescript === "undefined") ? "" : rsParams.prescript;
+  rsParams.postscript = (typeof rsParams.postscript === "undefined") ? "" : rsParams.postscript;
+
+  //Check for prescript
+  if (rsParams.prescript.length > 0) sParam.prescript;
+
+  //Various info from question
+  const intNumRows = $(QuestionID).find('.rsRow').length;
+  const intNumRadios = $(QuestionID).find('.rsRow').eq(0).find('.cRadio').length;
+  const intNumChecks = $(QuestionID).find('.rsRow').eq(0).find('.cCheck').length;
+  const intNumButtons = intNumRadios + intNumChecks;
+  const intNumColumns = $(QuestionID).find('.cTable tr').eq(1).find('td , th').length; //Including text column
+
+  let intSpecialButtons = rsParams.specialbuttons;
+  //Check specialbuttons
+  if (intSpecialButtons > 0) {
+    IntSpecialButtons = Math.min(intSpecialButtons, intNumButtons);
+    //Ilogical to have exclude columns less than special if rotation
+    rsParams.excludecolumnend = Math.max(rsParams.excludecolumnend, IntSpecialButtons);
+  }
+  const intNormalButtons = intNumButtons - intSpecialButtons;
+  let intNumButtonsPrRow = rsParams.buttonsperrow;
+  if (intNumButtonsPrRow > 0) {
+    intNumButtonsPrRow = Math.min(intNumButtonsPrRow, intNormalButtons);
+  }
+
+  //Turn of "final" autonext if more than one subquestion
+  rsParams.finalAutonext = rsParams.autonext;
+  if ($(QuestionID).find('.cCellSubQuestion').length > 1) {
+    rsParams.finalAutonext = false;
+  }
+
+  //Radmomize columns if set
+  if (rsParams.randomizecolumns != "no") {
+    shuffleColumns(QuestionID, rsParams.randomizecolumns, rsParams.randomseed, rsParams.excludecolumnstart, rsParams.excludecolumnend, intNumColumns);
+  }
+  //Check for WCAG
   if ($('#btnToggleWcag').val() == 1) {
     return false;
   }
+  //Build buttons
+  buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow, intSpecialButtons, btnDivID, btnDivIDattr, rsParams)
 
-  //These parameters come from the settings the user have selected
-  rsParams.prescript = (typeof rsParams.prescript === "undefined") ? "" : rsParams.prescript;
-  rsParams.postscript = (typeof rsParams.postscript === "undefined") ? "" : rsParams.postscript;
-  rsParams.intExclColumnLeft = (typeof rsParams.intExclColumnLeft === "undefined") ? 1 : rsParams.intExclColumnLeft; //Exclude Columns Left
-  rsParams.intExclColumnRight = (typeof rsParams.intExclColumnRight === "undefined") ? 1 : rsParams.intExclColumnRight; //Exclude Columns Right
-  rsParams.sldHeight = (typeof rsParams.sldHeight === "undefined") ? "30px" : rsParams.sldHeight; //Slider Height
-  rsParams.sliderHeading = (typeof rsParams.sliderHeading === "undefined") ? "lr" : rsParams.sliderHeading; //Debug mode
-  rsParams.showFloats = (typeof rsParams.showFloats === "undefined") ? "none" : rsParams.showFloats; //Debug mode
-  rsParams.debug = (typeof rsParams.debug === "undefined") ? false : rsParams.debug; //Debug mode
+  //Hide question
+  $(QuestionID).find('.cCellHeader,.rsRow,.cFooter').hide();
+
+  //Create dummy next/previous buttons
+  if ($('#btnPrevious').length > 0) {
+    $('#btnPrevious').before('<input id="btnPrevious2" onclick="rsScrollingGridPreviousClick(\'' + QuestionID + '\',\'' + btnDivID + '\',\'' + scrollDivID + '\',' + intNumRows + ',' + rsParams.useimagesasbackground + ',' + rsParams.autonext + ')" class="buttonPrevious" name="btnPrevious2" value="Previous" type="button"></input>');
+    $('#btnPrevious2').val($('#btnPrevious').val());
+    $('#btnPrevious').hide();
+  }
+  $('#btnNext').after('<input id="btnNext2" onclick="rsScrollingGridNextClick(\'' + QuestionID + '\',\'' + btnDivID + '\',\'' + scrollDivID + '\',' + intNumRows + ',' + rsParams.useimagesasbackground + ',' + rsParams.autonext + ')" class="buttonNext" name="btnNext2" value="Next" type="button"></input>');
+  $('#btnNext2').val($('#btnNext').val());
+  $('#btnNext').hide();
+  //Hide the next button until something selected if autonext
+  if (rsParams.autonext) {
+    $('#btnNext2').hide();
+  }
+
+  //Create scroll wrapper
+  strHTML = '<div id="' + scrollDivIDattr + '" class="rsScrollGridWrappper" style="overflow: hidden; display:flex; justify-content: center;" width="100%">';
+  strHTML += '<div class="rsScrollAnimate" width="100%"><div class="rsScrollGridContent"></div></div></div>';
+  $(QuestionID).after(strHTML);
+
+  let baseBtnClass = "rsBtn";
+  let baseBtnClassSelect = ".rsBtn";
+  let baseBtnClassSelectExclusive = ".rsBtn.exclusive";
+  let specialBtnClass = "rsBtnSpecial";
+  let checkedBtnClass = "rsBtnChecked";
+  if (rsParams.useimagesasbackground) {
+    baseBtnClass = "rsImgBtn";
+    baseBtnClassSelect = ".rsImgBtn";
+    baseBtnClassSelectExclusive = ".rsImgBtn.exclusive";
+    specialBtnClass = "rsImgBtnSpecial";
+    checkedBtnClass = "rsImgBtnChecked";
+  }
+
+  //Button Click Event
+  $(btnDivID).find(baseBtnClassSelect).on('click', function() {
+    //Are we allowed to click?
+    if (!$(QuestionID).data('blnClickOn')) {
+      return;
+    } else {
+      //Do not allow any more clicks before this is handled
+      $(QuestionID).data('blnClickOn', false);
+    }
+
+    let intBtnNum = 0;
+    let wrapNo = $(scrollDivID).find('.rsScrollGridContent').html(strHtml).data('wrapNo');
+    const intInpID = $(this).attr('alt');
+    const isExclusive = $(this).hasClass('exclusive');
+    const wrapNoRow = $(QuestionID).find('.rsRow').eq(wrapNo);
+    let doneNext = false;
+    if (!isExclusive) { //Answer type checkbox
+      if ((wrapNoRow).find('.cRadio, .cCheck').eq(intInpID).prop('checked')) { //already answered so remove answer
+        wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked', false);
+        if (!wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked')) { //If remove answer worked format button
+          $(this).removeClass(checkedBtnClass);
+        }
+      } else { //Not answered
+        wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked', true);
+        if (wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked')) {
+          $(this).addClass(checkedBtnClass);
+        }
+      }
+      intBtnNum = 0;
+      //clear radio
+      wrapNoRow.find('.cRadio').prop('checked', false);
+      $(btnDivID).find(baseBtnClassSelectExclusive).removeClass(checkedBtnClass);
+      $(QuestionID).data('blnClickOn', true);
+    } else { //Answer is a radio
+      //Change all buttons to unclicked
+      const curElm = wrapNoRow.find('.cRadio, .cCheck').eq(intInpID);
+      wrapNoRow.find('.cRadio, .cCheck').not(curElm).prop('checked', false);
+      $(btnDivID).find(baseBtnClassSelect).removeClass(checkedBtnClass);
+      //Answered already
+      if (wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked')) { //Already answered
+        wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked', false);
+        $(this).removeClass(checkedBtnClass);
+      } else { //Not already answered
+        $(this).addClass(checkedBtnClass);
+        wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked', true);
+        if (rsParams.autonext) {
+          doneNext = true;
+          $('#btnNext2').click();
+        }
+      }
+      $(QuestionID).data('blnClickOn', true);
+    }
+    //Check for any answer and no-autonext, if so display next button		
+    if (rsParams.autonext && !doneNext) {
+      if (wrapNoRow.find('.cRadio:checked, .cCheck:checked').length > 0) {
+        $('#btnNext2').show();
+      }
+    }
+  });
+  //Display first or last row
+  let startRow = 0;
+  let direction = parseInt($('#rs_dir').val());
+  if (direction == -1) {
+    startRow = intNumRows - 1;
+  }
+  //Do not allow click before animation completed
+  $(QuestionID).data('blnClickOn', false);
+  //Animate row
+  $(scrollDivID).find('.rsScrollAnimate').hide();
+  animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, startRow, direction, rsParams.useimagesasbackground, rsParams.autonext);
 
   //Check for prescript
-  if (rsParams.prescript.length > 0) rsParam.prescript;
+  if (rsParams.postscript.length > 0) sParam.postscript;
+}
 
-  //Since there can be mutiple questions on a page, we must make sure all selectors are addressing the proper question (and subquestion) only
-  const QuestionID = "#" + rsQno; //This we use in selectors to stay within the question
+//Helper functions
+$.fn.reverse = [].reverse;
 
-  //Exit function if question type not valid
-  let structOK = true;
-  //Number of sub-questions should be 1 and type singlegrid
-  if ($(QuestionID).find('.cCellSubQuestion').length != 1) structOK = false;
-  if ($(QuestionID).find('.rsSingleGrid').length != 1) structOK = false;
+function shuffle(array, seed) {
+  let m = array.length;
+  let temp = 0;
+  let index = 0;
+  // While there remain elements to shuffle…
+  while (m) {
+    // Pick a remaining element…
+    index = Math.floor(random(seed) * m--);
+    // And swap it with the current element.
+    temp = array[m];
+    array[m] = array[index];
+    array[index] = temp;
+    ++seed;
+  }
+  return array;
+}
 
+function random(seed) {
+  var x = Math.sin(seed++) * 10000;
+  return x - Math.floor(x);
+}
 
-  if (structOK == false) {
-    if (rsParams.debug) alert('Structure not OK for iQuest e.q. Wrong question type, this iQuest requires a single choice grid question');
-    return false;
+function shuffleColumns(QuestionID, shuffleType, seed, skipStart, skipEnd, numColumns) {
+  //Various checks
+  if (skipStart > (numColumns - 1)) {
+    skipsStart = numColumns - 1;
+  }
+  if (skipEnd > (numColumns - 1)) {
+    skipsEnd = numColumns - 1;
+  }
+  if ((skipStart + skipEnd) > (numColumns - 1)) {
+    skipStart = 0;
+    skipEnd = 0;
+    blnDoShuffle = false;
   }
 
-  //Undo  possible flex layout fromn standard Theme by adding our own class
-  $(QuestionID).find('.rsSingleGrid').addClass('rsGridSlider');
-  //Some styling setup
-  const sldHandleBackground = "var(--question_row_background_color)";
-  const sldHandleCheckedBackground = "var(--button_background_color)";
-  const sldBackground = "var(--question_row_background_color)"; //Slider background colour
-  const sldFillColour = "var(--page_background_color)"; //Slider fill colour
-
-  //    try {
-  let intNumCol = $(QuestionID).find('.cCellHeader:not(.cCellFirstHeader)').length; //Number of Columns
-  if ((rsParams.intExclColumnLeft + rsParams.intExclColumnRight) >= (intNumCol - 1)) {
-    if (rsParams.debug) alert('Too many columns excluded to create slider.');
-    return false;
+  let colOrder = [];
+  let colStart = skipStart + 1;
+  for (i = colStart; i < (numColumns - skipEnd); i++) {
+    colOrder.push(i);
   }
-  let strHTML = '';
-  let intInitVal = 0;
-
-  //Hide all Answer Cells (radio buttons)
-  if (!rsParams.debug) $(QuestionID).find('.cCell').hide();
-
-  //Number of stops on slider
-  let intSliderStops = intNumCol - (rsParams.intExclColumnLeft + rsParams.intExclColumnRight);
-  //Compute column widths
-  let cellWidth = Math.min((50 / intSliderStops), 10) + "%";
-  //Handle headings
-  //Switch to left right layout if less than 3 slider stops
-  if ((rsParams.sliderHeading == "lcr") && (intSliderStops < 3)) rsParams.sliderHeading = "lr"
-  //Common variabkes for header processing
-  let oddEven = false;
-  let cellsLeft = 0;
-  let widthLeft = "";
-  let cellsRight = 0;
-  let widthRight = "";
-  let cellsCenter = 0;
-  let widthCenter = "";
-  let objHeadRow;
-
-  switch (rsParams.sliderHeading) {
-    case "none":
-      //If no exclusions, hide the whole row
-      if (intNumCol === intSliderStops) {
-        $(QuestionID).find('.cCellHeader.cCellFirstHeader').parent().hide();
-      } else {
-        //Blind out all heaers above slider, setting the visibility
-        objHeadRow = $(QuestionID).find('.cCellHeader.cCellFirstHeader').parent();
-        for (let i = 1; i <= intNumCol; i++) {
-          if ((i <= rsParams.intExclColumnLeft) || (i > (rsParams.intExclColumnLeft + intSliderStops))) {
-            $(objHeadRow).find('th,td').eq(i).css('width', cellWidth);
-          } else $(objHeadRow).find('th,td').eq(i).css('visibility', 'hidden');
-        }
-      }
-      break;
-    case "lr":
-      //Odd or even columns, compute colspan and widths
-      oddEven = false;
-      cellsLeft = parseInt(intSliderStops / 2);
-      cellsRight = intSliderStops - cellsLeft;
-      widthLeft = "25%";
-      widthRight = "25%";
-      if (intSliderStops % 2 == 1) oddEven = true;
-      if (oddEven) {
-        widthLeft = (50 * cellsLeft / intSliderStops) + "%";
-        widthRight = (50 * cellsRight / intSliderStops) + "%";
-      }
-      objHeadRow = $(QuestionID).find('.cCellHeader.cCellFirstHeader').parent();
-      for (let i = 1; i <= intNumCol; i++) {
-        if ((i <= rsParams.intExclColumnLeft) || (i > (rsParams.intExclColumnLeft + intSliderStops))) {
-          $(objHeadRow).find('th,td').eq(i).css('width', cellWidth);
-        } else if (i == (rsParams.intExclColumnLeft + 1)) {
-          $(objHeadRow).find('th,td').eq(i).css({
-            'width': widthLeft,
-            'text-align': 'left'
-          }).attr('colspan', cellsLeft);
-        } else if (i == (rsParams.intExclColumnLeft + intSliderStops)) {
-          $(objHeadRow).find('th,td').eq(i).css({
-            'width': widthRight,
-            'text-align': 'right'
-          }).attr('colspan', cellsRight);
-        } else {
-          $(objHeadRow).find('th,td').eq(i).hide();
-        }
-      }
-      break;
-    case "lcr":
-      oddEven = false; //Here used to check for divisable by 3
-      cellsLeft = parseInt(intSliderStops / 3);
-      cellsRight = cellsLeft;
-      cellsCenter = intSliderStops - cellsLeft - cellsRight;
-      widthLeft = "16.666667%";
-      widthRight = "16.666667%";
-      widthCenter = "16.666667%";
-      if (intSliderStops % 3 != 0) oddEven = true;
-      if (oddEven) {
-        widthLeft = (50 * cellsLeft / intSliderStops) + "%";
-        widthRight = (50 * cellsRight / intSliderStops) + "%";
-        widthCenter = (50 * cellsCenter / intSliderStops) + "%";
-      }
-      objHeadRow = $(QuestionID).find('.cCellHeader.cCellFirstHeader').parent();
-      for (let i = 1; i <= intNumCol; i++) {
-        if ((i <= rsParams.intExclColumnLeft) || (i > (rsParams.intExclColumnLeft + intSliderStops))) {
-          $(objHeadRow).find('th,td').eq(i).css('width', cellWidth);
-        } else if (i == (rsParams.intExclColumnLeft + 1)) {
-          $(objHeadRow).find('th,td').eq(i).css({
-            'width': widthLeft,
-            'text-align': 'left'
-          }).attr('colspan', cellsLeft);
-        } else if (i == (rsParams.intExclColumnLeft + 1 + cellsLeft + parseInt(cellsCenter / 2))) {
-          $(objHeadRow).find('th,td').eq(i).css({
-            'width': widthCenter,
-            'text-align': 'center'
-          }).attr('colspan', cellsCenter);
-        } else if (i == (rsParams.intExclColumnLeft + intSliderStops)) {
-          $(objHeadRow).find('th,td').eq(i).css({
-            'width': widthRight,
-            'text-align': 'right'
-          }).attr('colspan', cellsRight);
-        } else {
-          $(objHeadRow).find('th,td').eq(i).hide();
-        }
-      }
-      break;
+  const sys_random = parseInt($('#rs_rnd').val());
+  const quesPos = parseInt($(QuestionID).find('.cTable').prop('id').substr(2));
+  if (seed == 0) {
+    seed = quesPos + 1;
   }
-  //Handle floats
-  let floatTexts = [];
-  switch (rsParams.showFloats) {
-    case "none":
-      break;
-    case "text":
-      $(QuestionID).find('.cCellHeader:not(:first)').each(function(j) {
-        if ((j >= rsParams.intExclColumnLeft) && (j < (intSliderStops + rsParams.intExclColumnLeft))) {
-          let floatText = $(this).text();
-          floatText = floatText.trim();
-          floatTexts.push(floatText);
-        }
-      });
-      break;
-    case "codes":
-      $(QuestionID).find('.cCellHeaderCode:not(:first)').each(function(j) {
-        if ((j >= rsParams.intExclColumnLeft) && (j < (intSliderStops + rsParams.intExclColumnLeft))) {
-          let floatText = $(this).find('.cValue').text();
-          floatText = floatText.replace('[', '').replace(']', '');
-          floatTexts.push(floatText);
-        }
-      });
-      break;
-  }
-  //Build HTML for sliders, loop all rows
-  $(QuestionID).find('.rsRow').each(function(i) {
-    strHTML = '<td colspan="' + intSliderStops + '" class="cSliderCell"><div class="cSlider" alt="' + i + '" style="height: ' + rsParams.sldHeight + '" ></div></td>';
-    //Reshow radiobutons on excluded columns left
-    if (rsParams.intExclColumnLeft > 0) {
-      $(this).find('.cCell:lt(' + rsParams.intExclColumnLeft + ')').show().css({
-        'width': cellWidth
-      });
-      $(this).find('.cCell:lt(' + rsParams.intExclColumnLeft + ')').find('.cRadio').addClass('cRadioExcl');
-      $(this).find('.cCell:lt(' + rsParams.intExclColumnLeft + ')').find('.cRadio').attr('trow', i);
+  const useSeed = sys_random * seed;
+  if (shuffleType == "random") {
+    shuffle(colOrder, useSeed);
+  } else if (shuffleType == "alternate") {
+    if (Math.floor(random(useSeed) * 2)) {
+      //Reveres by random (about every second time)
+      colOrder = colOrder.reverse();
     }
-    //Reshow radiobutons on excluded columns right
-    if (rsParams.intExclColumnRight > 0) {
-      intShowRight = intNumCol - (rsParams.intExclColumnRight + 1);
-      $(this).find('.cCell:gt(' + intShowRight + ')').show().css({
-        'width': cellWidth
-      });
-      $(this).find('.cCell:gt(' + intShowRight + ')').find('.cRadio').addClass('cRadioExcl');
-      $(this).find('.cCell:gt(' + intShowRight + ')').find('.cRadio').attr('trow', i);
-    }
-    //Add the HTML
-    $(this).find('.cCell:eq(' + rsParams.intExclColumnLeft + ')').before(strHTML);
-  });
-
-
-  //Setup the slider
-  $(QuestionID).find('.cSlider').slider({
-    animate: true,
-    range: "min",
-    min: 0,
-    max: (intSliderStops - 1),
-    value: intInitVal,
-    stop: function() {
-      //Move slider to centre of the column
-      let intCode = parseInt($(this).slider('option', 'value')); //The relevant column calculated on where the slider is stopped
-
-      if (intCode >= intSliderStops) {
-        intCode = intSliderStops - 1;
-      }
-      // Set Answers
-      const intRow = $(this).attr('alt');
-      const objCurrRow = $(QuestionID).find('.rsRow').eq(intRow);
-      $(objCurrRow).find('.checked').removeClass('checked');
-      $(objCurrRow).find('.cRadio').eq(intCode + rsParams.intExclColumnLeft).prop('checked', true);
-      //Set the handle to indicate that we have done a selection
-      $(this).find('.ui-slider-handle').css('background', sldHandleCheckedBackground);
-    }
-  });
-  if (rsParams.showFloats != "none") {
-	 $(QuestionID).find('.cSlider').slider().slider("float", {
-			labels: floatTexts
-		});
   }
-  //Set handler for excluded radio buttons
-  $(QuestionID).find('.cRadioExcl').change(function() {
-    //Reset the slider, position and backgroud color
-    $(QuestionID).find('.cSlider').eq($(this).attr('trow')).slider('option', 'value', intInitVal);
-    $(QuestionID).find('.cSlider').eq($(this).attr('trow')).find('.ui-slider-handle').css('background', sldHandleBackground);
+  for (i = skipStart; i >= 0; i = i - 1) {
+    colOrder.unshift(i);
+  }
+  for (i = (numColumns - skipEnd); i < numColumns; i++) {
+    colOrder.push(i);
+  }
+  let strArr = "";
+  for (i = 0; i < colOrder.length; i++) {
+    strArr += " - arr[" + i + "] :" + colOrder[i];
+  }
+  $(QuestionID).find('.cTable tr:not(:first)').html(function(i) {
+    return $(this).children().sort(function(a, b) {
+      const aOrder = colOrder[$(a).index()];
+      const bOrder = colOrder[$(b).index()];
+      return aOrder - bOrder;
+    });
   });
-  $(QuestionID).find('.cRadioExcl').keydown(function() {
-    $(QuestionID).find('.cSlider').eq($(this).attr('trow')).slider('option', 'value', intInitVal);
-    $(QuestionID).find('.cSlider').eq($(this).attr('trow')).find('.ui-slider-handle').css('background', sldHandleBackground);
-  });
-  //Adjust the handle to be 8px more than slider 
-  const sldHandleHeight = parseInt($(QuestionID).find('.cSlider').eq(0).height()) + 8;
-  $(QuestionID).find('.ui-slider .ui-slider-handle').css('height', sldHandleHeight + 'px');
-  $(QuestionID).find('.ui-slider-range').css('background', sldFillColour);
-  $(QuestionID).find('.cSlider').css('background', sldBackground);
-  $(QuestionID).find('.cSlider').css('margin-bottom', '5px');
-  $(QuestionID).find('.ui-slider-handle').css({
-    'background': sldHandleBackground,
-    'border': '2px solid var(--button_border_color)'
+}
+
+function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow, intSpecialButtons, btnDivID, btnDivIDattr, rsParams) {
+  let strHTML = "";
+  //Find column number for start of special buttons
+  let intSpecialButtonsStart = intNumButtons;
+  if (intSpecialButtons > 0) {
+    intSpecialButtonsStart = intNumButtons - intSpecialButtons;
+  }
+  //Find width to use if set number of buttons
+  var pctWidth = '';
+  if (intNumButtonsPrRow > 0) {
+    pctWidth = parseInt(100 / intNumButtonsPrRow);
+  }
+
+  //Build HTML for buttons etc
+  strHTML = '<div id="' + btnDivIDattr + '" class="rsFlexBtnContainer" width="100%">';
+  let blnInBtnDiv = false;
+  let intNumBtnInDiv = 0;
+  let blnMakeNormalBtn = true;
+  let intBtnCnt = 0;
+
+  let baseBtnClass = "rsBtn";
+  let baseBtnClassSelect = ".rsBtn";
+  let baseBtnClassSelectExclusive = ".rsBtn.exclusive";
+  let specialBtnClass = "rsBtnSpecial";
+  let checkedBtnClass = "rsBtnChecked";
+  if (rsParams.useimagesasbackground) {
+    baseBtnClass = "rsImgBtn";
+    baseBtnClassSelect = ".rsImgBtn";
+    baseBtnClassSelectExclusive = ".rsImgBtn.exclusive";
+    specialBtnClass = "rsImgBtnSpecial";
+    checkedBtnClass = "rsImgBtnChecked";
+  }
+  const headRow = $(QuestionID).find('.cTable tr').eq(1);
+  const firstAnswerRow = $(QuestionID).find('.rsRow').eq(0);
+  //Loop buttons
+  firstAnswerRow.find('td').each(function(i) {
+    //Check for break to special buttons
+    if (i == intSpecialButtonsStart) {
+      if (blnInBtnDiv) {
+        strHTML += '</div>';
+        intNumBtnInDiv = 0;
+        blnInBtnDiv = false;
+      }
+      blnMakeNormalBtn = false;
+    }
+
+    let strExcl = "";
+    if ($(this).find('.cRadio').length > 0) {
+      strExcl = " exclusive";
+    }
+    let btnClass = baseBtnClass + strExcl;
+    let btnDivClass = "rsFlexBtnDiv";
+    if (!blnMakeNormalBtn) {
+      btnClass += " " + specialBtnClass;
+      btnDivClass += " rsFlexBtnDivSpecial";
+    }
+    //Are we in a btn div check for fixed number
+    if (blnInBtnDiv && (intNumButtonsPrRow > 0) && (intNumBtnInDiv >= intNumButtonsPrRow)) {
+      strHTML += '</div>';
+      intNumBtnInDiv = 0;
+      blnInBtnDiv = false;
+    }
+    if (!blnInBtnDiv) {
+      strHTML += '<div class="' + btnDivClass + '" style="display:flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: stretch;">';
+      blnInBtnDiv = true;
+    }
+    strHTML += '<div class="' + btnClass + '" alt="' + intBtnCnt + '">' + headRow.find('th').eq(i).html().replace(/&nbsp;/g, '') + '</div>';
+    intBtnCnt++;
+    intNumBtnInDiv++;
   });
 
-  //Set Previous answers
-  let intChecked = 0;
-  $(QuestionID).find('.rsRow').each(function(i) {
-    intChecked = $(this).find('.cRadio:checked').length;
-    if (intChecked != 0) {
-      const radioButtons = $(this).find('.cRadio');
-      const selectedIndex = radioButtons.index(radioButtons.filter(':checked'));
-      if ($(this).find('.cRadio').eq(selectedIndex).hasClass('cRadioExcl') == false) {
-        $(this).find('.cSlider').slider('option', 'value', (selectedIndex - 1));
-        $(this).find('.ui-slider-handle').css('background', sldHandleCheckedBackground);
+  strHTML += '</div>';
+  $(QuestionID).after(strHTML);
+  
+  //Check for minwidth and maxwidth
+  if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn').css('min-width', rsParams.minwidth);
+  if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn').css('max-width', rsParams.maxwidth);
+  
+  //Check for image btn
+  if (rsParams.useimagesasbackground) {
+    $(btnDivID).find(baseBtnClassSelect).each(function() {
+      if ($(this).find('img').length > 0) {
+        const strURL = $(this).find('img').eq(0).attr('src');
+        $(this).find('img').eq(0).remove();
+        $(this).css('background-image', 'url("' + strURL + '")');
+        if (rsParams.hidebuttontext) {
+          $(this).addClass('rsImgBtnHideText');
+          $(this).find('span, div').addClass('rsImgBtnHideText');
+        }
       }
+    });
+  }
+  //Check for setting width
+  if (pctWidth != '') {
+    const valuel = $('.rsBtn').css('margin-left');
+    const valuer = $('.rsBtn').css('margin-right');
+    const valuepl = $('.rsBtn').css('padding-left');
+    const valuepr = $('.rsBtn').css('padding-right');
+    $(baseBtnClassSelect).not('.rsBtnSpecial').css('width', 'calc(' + pctWidth + '% - ' + valuel + ' - ' + valuer + ' - ' + valuepl + ' - ' + valuepr + ' - 10px)');
+  }
+}
+
+function animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, direction, useimagesasbackground, doAutonext) {
+  const wrpScrollTime = 200;
+  let strHTML = "";
+  let baseBtnClass = "rsBtn";
+  let baseBtnClassSelect = ".rsBtn";
+  let checkedBtnClass = "rsBtnChecked";
+  if (useimagesasbackground) {
+    baseBtnClass = "rsImgBtn";
+    baseBtnClassSelect = ".rsImgBtn";
+    checkedBtnClass = "rsImgBtnChecked";
+  }
+  let animateDirectionIn = "right";
+  let animateDirectionOut = "left";
+  if (direction == -1) {
+    animateDirectionIn = "left";
+    animateDirectionOut = "right";
+  }
+  let wrpScrollTimeOut = wrpScrollTime;
+  if ($(scrollDivID).find('.rsScrollGridContent').is(':empty')) {
+    wrpScrollTimeOut = 0;
+  }
+  $(scrollDivID).find('.rsScrollAnimate').hide("slide", {
+      direction: animateDirectionOut
+    }, wrpScrollTimeOut,
+    //Animation Complete Function
+    function() {
+      //Create new main image
+      strHtml = $(QuestionID).find('.cCellRowText:nth(' + (wrapNo) + ')').html();
+      $(scrollDivID).find('.rsScrollGridContent').html(strHtml);
+      $(scrollDivID).find('.rsScrollGridContent').data('wrapNo', wrapNo)
+      //Show new main image
+      $(scrollDivID).find('.rsScrollAnimate').show("slide", {
+          direction: animateDirectionIn
+        }, wrpScrollTime,
+        function() { //when animation complete allow buttons to be clicked again.
+          scrollingGridSetAnswers(QuestionID, btnDivID, wrapNo, baseBtnClassSelect, checkedBtnClass, doAutonext);
+          $(QuestionID).data('blnClickOn', true);
+        });
+    });
+}
+
+function scrollingGridSetAnswers(QuestionID, btnDivID, wrapNo, baseBtnClassSelect, checkedBtnClass, doAutonext) {
+  let gotAnswer = false;
+  $(QuestionID).find('.rsRow').eq(wrapNo).find('.cRadio, .cCheck').each(function(i) {
+    if ($(this).prop('checked')) {
+      gotAnswer = true;
+      $(btnDivID).find(baseBtnClassSelect).eq(i).addClass(checkedBtnClass);
+    } else {
+      $(btnDivID).find(baseBtnClassSelect).eq(i).removeClass(checkedBtnClass);
     }
   });
+  if (doAutonext) {
+    if (gotAnswer) {
+      $('#btnNext2').show();
+    } else {
+      $('#btnNext2').hide();
+    }
+  }
+}
+window.rsScrollingGridNextClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext) {
+  let wrapNo = parseInt($(scrollDivID).find('.rsScrollGridContent').data('wrapNo'));
+  if (wrapNo < intNumRows - 1) {
+    wrapNo++;
+    animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, 1, useimagesasbackground, doAutonext);
+    return;
+  }
+  //Display buttons again
+  $('#btnNext2').remove();
+  $('#btnPrevious2').remove();
+  $('#btnNext').show();
+  $('#btnPrevious').show();
+  $('#btnNext').click();
+}
 
-  $(QuestionID).find('.cCellHeaderCode:first').parent().hide();
-
-  //Check for postscript
-  if (rsParams.postscript.length > 0) rsParam.postscript;
-  //Remove any custom error classe
-  //////
-  //    }
-  //    catch (err) {
-  //        if (debug == true) {
-  //            txt = "There was an error on this page.\n\n";
-  //            txt += "Error description: " + err.message + "\n\n";
-  //            txt += "Click OK to continue.\n\n";
-  //            alert(txt);
-  //        }
-  //        //Clean up
-  //        $('.cCell').show();
-  //        $('.cSliderCell').remove();
-  //    }
+window.rsScrollingGridPreviousClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext) {
+  let wrapNo = parseInt($(scrollDivID).find('.rsScrollGridContent').data('wrapNo'));
+  if (wrapNo > 0) {
+    wrapNo--;
+    animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, -1, useimagesasbackground, doAutonext);
+    return;
+  }
+  //Display buttons again
+  $('#btnNext2').remove();
+  $('#btnPrevious2').remove();
+  $('#btnNext').show();
+  $('#btnPrevious').show();
+  $('#btnPrevious').click();
 }
