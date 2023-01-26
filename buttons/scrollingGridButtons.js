@@ -15,8 +15,8 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   rsParams.hidebuttontext = (typeof rsParams.hidebuttontext === "undefined") ? false : rsParams.hidebuttontext;
   rsParams.imageautosizing = (typeof rsParams.imageautosizing === "undefined") ? false : rsParams.imageautosizing;
   rsParams.specialbuttons = (typeof rsParams.specialbuttons === "undefined") ? 0 : rsParams.specialbuttons;
-  rsParams.minwidth = (typeof rsParam.minwidth === "undefined") ? "" : rsParam.minwidth;
-  rsParams.maxwidth = (typeof rsParam.maxwidth === "undefined") ? "" : rsParam.maxwidth;
+  rsParams.minwidth = (typeof rsParams.minwidth === "undefined") ? "" : rsParams.minwidth;
+  rsParams.maxwidth = (typeof rsParams.maxwidth === "undefined") ? "" : rsParams.maxwidth;
   rsParams.useimagesasbackground = (typeof rsParams.useimagesasbackground === "undefined") ? false : rsParams.useimagesasbackground;
   rsParams.randomizecolumns = (typeof rsParams.randomizecolumns === "undefined") ? "no" : rsParams.randomizecolumns;
   rsParams.randomseed = (typeof rsParams.randomseed === "undefined") ? 0 : rsParams.randomseed;
