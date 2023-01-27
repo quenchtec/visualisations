@@ -21,6 +21,6 @@
  }
 
  .ui-slider-tip {
-   width: max-content !important;
    min-width: 34px;
- }
+   width: auto !important;
+}
