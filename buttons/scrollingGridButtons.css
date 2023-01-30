@@ -24,4 +24,7 @@
 }
 .rsScrollGridWrappper {
 	display: block;
+	overflow: hidden;
+	justify-content: center;
+	width: 100%;
 }
