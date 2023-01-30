@@ -329,7 +329,7 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
   $(QuestionID).after(strHTML);
   
   //Check for minwidth and maxwidth (only if not specifying the number of buttons)
-  if (intNumButtonsPrRow > 0) {
+  if (intNumButtonsPrRow== 0) {
 	if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn').css('min-width', rsParams.minwidth);
 	if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn').css('max-width', rsParams.maxwidth);
   }
