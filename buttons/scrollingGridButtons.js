@@ -89,10 +89,10 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   strHTML += '<div class="rsScrollAnimate" width="100%"><div class="rsScrollGridContent"></div></div></div>';
   $(QuestionID).after(strHTML);
   //Check width of scroll area
-  if (rsParams.scrollMinwidth != null) {$(QuestionID).find('.rsScrollGridContent').css('min-width', rsParams.scrollMinwidth);
-	console.log("set min " + rsParams.scrollMinwidth + " l " + $(QuestionID).find('.rsScrollGridContent').length); }
-  if (rsParams.scrollMaxwidth != null) {$(QuestionID).find('.rsScrollGridContent').css('max-width', rsParams.scrollMaxwidth);
-  	console.log("set max " + rsParams.scrollMaxwidth + " l " + $(QuestionID).find('.rsScrollGridContent').length); }
+  if (rsParams.scrollMinwidth != null) {$(scrollDivID).find('.rsScrollGridContent').css('min-width', rsParams.scrollMinwidth);
+	console.log("set min " + rsParams.scrollMinwidth + " l " + $(scrollDivID).find('.rsScrollGridContent').length); }
+  if (rsParams.scrollMaxwidth != null) {$(scrollDivID).find('.rsScrollGridContent').css('max-width', rsParams.scrollMaxwidth);
+  	console.log("set max " + rsParams.scrollMaxwidth + " l " + $(scrollDivID).find('.rsScrollGridContent').length); }
   let baseBtnClass = "rsBtn";
   let baseBtnClassSelect = ".rsBtn";
   let baseBtnClassSelectExclusive = ".rsBtn.exclusive";
