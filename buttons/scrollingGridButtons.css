@@ -9,7 +9,6 @@
   border-bottom-left-radius: 20px;
   min-width: 50%;
   display: inline-block;
-  margin: 0 auto;
 }
 .rsBtn:hover {
   outline: 2px solid grey;
@@ -28,4 +27,7 @@
 	overflow: hidden;
 	justify-content: center;
 	width: 100%;
+}
+.rsScrollAnimate {
+	text-align: center;
 }
