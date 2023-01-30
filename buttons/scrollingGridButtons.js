@@ -85,7 +85,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   }
 
   //Create scroll wrapper
-  strHTML = '<div id="' + scrollDivIDattr + '" class="rsScrollGridWrappper" style="overflow: hidden; display:flex; justify-content: center;" width="100%">';
+  strHTML = '<div id="' + scrollDivIDattr + '" class="rsScrollGridWrappper">';
   strHTML += '<div class="rsScrollAnimate" width="100%"><div class="rsScrollGridContent"></div></div></div>';
   $(QuestionID).after(strHTML);
 
