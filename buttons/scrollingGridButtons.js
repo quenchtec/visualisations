@@ -90,9 +90,9 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   $(QuestionID).after(strHTML);
   //Check width of scroll area
   if (rsParams.scrollMinwidth != null) {$(QuestionID).find('.rsScrollGridContent').css('min-width', rsParams.scrollMinwidth);
-	console.log("set " + rsParams.scrollMinwidth); }
-  if (rsParams.scrollMaxwidth != null) $(QuestionID).find('.rsScrollGridContent').css('max-width', rsParams.scrollMaxwidth);
-  
+	console.log("set min " + rsParams.scrollMinwidth + " l " + $(QuestionID).find('.rsScrollGridContent').length); }
+  if (rsParams.scrollMaxwidth != null) {$(QuestionID).find('.rsScrollGridContent').css('max-width', rsParams.scrollMaxwidth);
+  	console.log("set max " + rsParams.scrollMaxwidth + " l " + $(QuestionID).find('.rsScrollGridContent').length); }
   let baseBtnClass = "rsBtn";
   let baseBtnClassSelect = ".rsBtn";
   let baseBtnClassSelectExclusive = ".rsBtn.exclusive";
