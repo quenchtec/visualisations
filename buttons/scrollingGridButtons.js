@@ -88,7 +88,10 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   strHTML = '<div id="' + scrollDivIDattr + '" class="rsScrollGridWrappper">';
   strHTML += '<div class="rsScrollAnimate" width="100%"><div class="rsScrollGridContent"></div></div></div>';
   $(QuestionID).after(strHTML);
-
+  //Check width of scroll area
+  if (rsParams.scrollMinwidth != null) $(QuestionID).find('.rsScrollAnimate').css('min-width', rsParams.scrollMinwidth);
+  if (rsParams.scrollMaxwidth != null) $(QuestionID).find('.rsScrollAnimate').css('max-width', rsParams.scrollMaxwidth);
+  
   let baseBtnClass = "rsBtn";
   let baseBtnClassSelect = ".rsBtn";
   let baseBtnClassSelectExclusive = ".rsBtn.exclusive";
@@ -333,9 +336,7 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
 	if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn').css('min-width', rsParams.minwidth);
 	if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn').css('max-width', rsParams.maxwidth);
   }
-  //Check width of scroll area
-  if (rsParams.scrollMinwidth != null) $(QuestionID).find('.rsScrollAnimate').css('min-width', rsParams.scrollMinwidth);
-  if (rsParams.scrollMaxwidth != null) $(QuestionID).find('.rsScrollAnimate').css('max-width', rsParams.scrollMaxwidth);
+
   
   //Check for image btn
   if (rsParams.useimagesasbackground) {
