@@ -89,7 +89,8 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   strHTML += '<div class="rsScrollAnimate" width="100%"><div class="rsScrollGridContent"></div></div></div>';
   $(QuestionID).after(strHTML);
   //Check width of scroll area
-  if (rsParams.scrollMinwidth != null) $(QuestionID).find('.rsScrollGridContent').css('min-width', rsParams.scrollMinwidth);
+  if (rsParams.scrollMinwidth != null) {$(QuestionID).find('.rsScrollGridContent').css('min-width', rsParams.scrollMinwidth);
+	console.log("set " + rsParams.scrollMinwidth); }
   if (rsParams.scrollMaxwidth != null) $(QuestionID).find('.rsScrollGridContent').css('max-width', rsParams.scrollMaxwidth);
   
   let baseBtnClass = "rsBtn";
