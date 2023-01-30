@@ -8,6 +8,7 @@
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
   min-width: 50%;
+  margin: 0 auto;
 }
 .rsBtn:hover {
   outline: 2px solid grey;
@@ -20,4 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.rsScrollGridWrappper {
+	display: block;
 }
