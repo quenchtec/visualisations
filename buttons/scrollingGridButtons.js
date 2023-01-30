@@ -17,6 +17,8 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   rsParams.specialbuttons = (typeof rsParams.specialbuttons === "undefined") ? 0 : rsParams.specialbuttons;
   rsParams.minwidth = (typeof rsParams.minwidth === "undefined") ? "" : rsParams.minwidth;
   rsParams.maxwidth = (typeof rsParams.maxwidth === "undefined") ? "" : rsParams.maxwidth;
+  rsParams.scrollMinwidth = (typeof rsParams.scrollMinwidth === "undefined") ? "" : rsParams.scrollMinwidth;
+  rsParams.scrollMaxwidth = (typeof rsParams.scrollMaxwidth === "undefined") ? "" : rsParams.scrollMaxwidth;
   rsParams.useimagesasbackground = (typeof rsParams.useimagesasbackground === "undefined") ? false : rsParams.useimagesasbackground;
   rsParams.randomizecolumns = (typeof rsParams.randomizecolumns === "undefined") ? "no" : rsParams.randomizecolumns;
   rsParams.randomseed = (typeof rsParams.randomseed === "undefined") ? 0 : rsParams.randomseed;
@@ -326,9 +328,14 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
   strHTML += '</div>';
   $(QuestionID).after(strHTML);
   
-  //Check for minwidth and maxwidth
-  if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn').css('min-width', rsParams.minwidth);
-  if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn').css('max-width', rsParams.maxwidth);
+  //Check for minwidth and maxwidth (only if not specifying the number of buttons)
+  if (intNumButtonsPrRow > 0) {
+	if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn').css('min-width', rsParams.minwidth);
+	if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn').css('max-width', rsParams.maxwidth);
+  }
+  //Check width of scroll area
+  if (rsParams.scrollMinwidth != null) $(btnDivID).find('.rsScrollAnimate').css('min-width', rsParams.scrollMinwidth);
+  if (rsParams.scrollMaxwidth != null) $(btnDivID).find('.rsScrollAnimate').css('max-width', rsParams.scrollMaxwidth);
   
   //Check for image btn
   if (rsParams.useimagesasbackground) {
