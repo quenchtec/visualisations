@@ -334,8 +334,8 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
 	if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn').css('max-width', rsParams.maxwidth);
   }
   //Check width of scroll area
-  if (rsParams.scrollMinwidth != null) $(btnDivID).find('.rsScrollAnimate').css('min-width', rsParams.scrollMinwidth);
-  if (rsParams.scrollMaxwidth != null) $(btnDivID).find('.rsScrollAnimate').css('max-width', rsParams.scrollMaxwidth);
+  if (rsParams.scrollMinwidth != null) $(QuestionID).find('.rsScrollAnimate').css('min-width', rsParams.scrollMinwidth);
+  if (rsParams.scrollMaxwidth != null) $(QuestionID).find('.rsScrollAnimate').css('max-width', rsParams.scrollMaxwidth);
   
   //Check for image btn
   if (rsParams.useimagesasbackground) {
