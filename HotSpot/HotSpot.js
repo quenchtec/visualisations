@@ -4,7 +4,7 @@ function rsHotSpot(rsQno, rsSubqIndex, rsParam) {
   if ($('#btnToggleWcag').val() == 1) {
     return false;
   }
-
+  
   rsParam.minClicks = (typeof rsParam.minClicks === "undefined") ? false : rsParam.minClicks;
   rsParam.maxClicks = (typeof rsParam.maxClicks === "undefined") ? false : rsParam.maxClicks;
   rsParam.pointSize = (typeof rsParam.pointSize === "undefined") ? false : rsParam.pointSize;
@@ -15,7 +15,6 @@ function rsHotSpot(rsQno, rsSubqIndex, rsParam) {
   rsParam.exclusiveText = (typeof rsParam.exclusiveText === "undefined") ? false : rsParam.exclusiveText;
   rsParam.imagePath = (typeof rsParam.imagePath === "undefined") ? false : rsParam.imagePath;
   rsParam.showTest = (typeof rsParam.showTest === "undefined") ? false : rsParam.showTest;
-
 
   /*DO NOT TOUCH THIS! - leave the below untouched unless you know what you are doing*/
   $('.cQuestionText').after('<img src="' + rsParam.imagePath + '" id="imageHolder">');
@@ -29,6 +28,7 @@ function rsHotSpot(rsQno, rsSubqIndex, rsParam) {
     $("textarea").hide();
     $('.rsRow ').hide()
   }
+
   var noneData = "0,0,0,0,0,0";
   if (screenSize > 0) $('#main#PAGENAME#').attr("style", "width :" + screenSize + "px !important");
   if (removeHeader) $('.headercustom').css("display", "none");
@@ -55,8 +55,8 @@ function rsHotSpot(rsQno, rsSubqIndex, rsParam) {
     $('#hotspotCanvas').css('background-size', "cover");
     addClickOption();
   }
-  img1.src = imageUrl; // Remember to do this AFTER defining the load handler
 
+  img1.src = imageUrl; // Remember to do this AFTER defining the load handler
 
   function addClickOption() {
     $(dataSelector).val("");
