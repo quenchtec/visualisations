@@ -340,8 +340,8 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
 	if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParams.maxwidth);
   }
   //Check for minheight and maxheight
-  if (rsParam.minheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-height', rsParam.minheight);
-  if (rsParam.maxheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-height', rsParam.maxheight);
+  if (rsParams.minheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-height', rsParams.minheight);
+  if (rsParams.maxheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-height', rsParams.maxheight);
   
   //Check for image btn
   if (rsParams.useimagesasbackground) {
