@@ -336,8 +336,8 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
   
   //Check for minwidth and maxwidth (only if not specifying the number of buttons)
   if (intNumButtonsPrRow == 0) {
-	if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn').css('min-width', rsParams.minwidth);
-	if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn').css('max-width', rsParams.maxwidth);
+	if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParams.minwidth);
+	if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParams.maxwidth);
   }
   //Check for minheight and maxheight
   if (rsParam.minheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-height', rsParam.minheight);
@@ -356,6 +356,9 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
         }
       }
     });
+    if (rsParam.imageautosizing) {
+      $(btnDivID).find('.rsBtn, .rsImgBtn').css('background-size', "contain");
+    }
   }
   //Check for setting width
   if (pctWidth != '') {
