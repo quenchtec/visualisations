@@ -17,6 +17,8 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   rsParams.specialbuttons = (typeof rsParams.specialbuttons === "undefined") ? 0 : rsParams.specialbuttons;
   rsParams.minwidth = (typeof rsParams.minwidth === "undefined") ? "" : rsParams.minwidth;
   rsParams.maxwidth = (typeof rsParams.maxwidth === "undefined") ? "" : rsParams.maxwidth;
+  rsParam.minheight = (typeof rsParam.minheight === "undefined") ? "" : rsParam.minheight;
+  rsParam.maxheight = (typeof rsParam.maxheight === "undefined") ? "" : rsParam.maxheight;
   rsParams.scrollMinwidth = (typeof rsParams.scrollMinwidth === "undefined") ? "" : rsParams.scrollMinwidth;
   rsParams.scrollMaxwidth = (typeof rsParams.scrollMaxwidth === "undefined") ? "" : rsParams.scrollMaxwidth;
   rsParams.useimagesasbackground = (typeof rsParams.useimagesasbackground === "undefined") ? false : rsParams.useimagesasbackground;
@@ -91,6 +93,8 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   //Check width of scroll area
   if (rsParams.scrollMinwidth != null) $(scrollDivID).find('.rsScrollGridContent').css('min-width', rsParams.scrollMinwidth);
   if (rsParams.scrollMaxwidth != null) $(scrollDivID).find('.rsScrollGridContent').css('max-width', rsParams.scrollMaxwidth);
+  
+ 
   let baseBtnClass = "rsBtn";
   let baseBtnClassSelect = ".rsBtn";
   let baseBtnClassSelectExclusive = ".rsBtn.exclusive";
@@ -335,7 +339,9 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
 	if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn').css('min-width', rsParams.minwidth);
 	if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn').css('max-width', rsParams.maxwidth);
   }
-
+  //Check for minheight and maxheight
+  if (rsParam.minheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-height', rsParam.minheight);
+  if (rsParam.maxheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-height', rsParam.maxheight);
   
   //Check for image btn
   if (rsParams.useimagesasbackground) {
