@@ -457,4 +457,4 @@ window.rsScrollingGridPreviousClick = function(QuestionID, btnDivID, scrollDivID
   $('#btnNext').show();
   $('#btnPrevious').show();
   $('#btnPrevious').click();
-}
+} 
