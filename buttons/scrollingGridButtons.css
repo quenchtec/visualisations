@@ -21,6 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .rsScrollGridWrappper {
 	display: block;
@@ -30,4 +31,67 @@
 }
 .rsScrollAnimate {
 	text-align: center;
+}
+
+.rsImgBtn:hover {
+  outline: 2px solid grey;
+}
+
+.rsImgBtnChecked:hover {
+  background-color: var(--interactive_checked_background_color);
+  outline: 2px solid grey;
+}
+
+
+/* Interactive buttons variables */
+ .rsImgBtn {
+     font-size: var(--interactive_font_size);
+     font-weight: var(--interactive_font_weight);
+     border: var(--interactive_border);
+     border-radius: var(--interactive_border_radius);
+     margin: var(--interactive_margin);
+     padding: var(--interactive_padding);
+     text-align: var(--interactive_text_align);
+     vertical-align: var(--interactive_vertical_align);
+     color: var(--interactive_text_color);
+     background-color: var(--interactive_background_color);
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  justify-content: center;
+	   align-items: center;
+	    cursor: pointer;
+		display: flex;
+}
+ .rsImgBtn:hover {
+     border: var(--interactive_border_hover);
+     background-color: var(--interactive_background_color_hover);
+}
+/* Interactive buttons special variables */
+ .rsImgBtnSpecial{
+     border: var(--special_border);
+     color: var(--special_text_color);
+     background-color: var(--special_background_color);
+}
+.rsImgBtnChecked {
+     background-color: var(--interactive_checked_background_color);
+	 outline: 4px solid var(--interactive_checked_background_color);
+}
+
+
+.rsImgBtn {
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  min-width: 20%;
+  min-height: 100px;
+  margin: 20px;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.rsImgBtnChecked {
+  background-color: var(--interactive_checked_background_color);
+  outline: 2px solid grey;
 }
