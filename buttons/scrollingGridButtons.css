@@ -77,21 +77,7 @@
 	 outline: 4px solid var(--interactive_checked_background_color);
 }
 
-
-.rsImgBtn {
-  background-repeat: no-repeat;
-  background-position: center;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  min-width: 20%;
-  min-height: 100px;
-  margin: 20px;
-  background-size: contain;
-  cursor: pointer;
-}
-
-.rsImgBtnChecked {
-  background-color: var(--interactive_checked_background_color);
-  outline: 2px solid grey;
+.rsImgBtnHideText {
+  font-size: 0;
+  color: transparent;
 }
