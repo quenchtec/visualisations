@@ -10,18 +10,18 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   ////Should check strtucture
   structOK = true;
   //Check parameters
-  rsParams.autonext = (typeof rsParams.autonext === "undefined") ? false : rsParams.autonext;
+  rsParams.autonext = (typeof rsParams.autonext === "undefined") ? true : rsParams.autonext;
   rsParams.buttonsperrow = (typeof rsParams.buttonsperrow === "undefined") ? 0 : rsParams.buttonsperrow;
   rsParams.hidebuttontext = (typeof rsParams.hidebuttontext === "undefined") ? false : rsParams.hidebuttontext;
-  rsParams.imageautosizing = (typeof rsParams.imageautosizing === "undefined") ? false : rsParams.imageautosizing;
+  rsParams.imageautosizing = (typeof rsParams.imageautosizing === "undefined") ? true : rsParams.imageautosizing;
   rsParams.specialbuttons = (typeof rsParams.specialbuttons === "undefined") ? 0 : rsParams.specialbuttons;
   rsParams.minwidth = (typeof rsParams.minwidth === "undefined") ? "" : rsParams.minwidth;
   rsParams.maxwidth = (typeof rsParams.maxwidth === "undefined") ? "" : rsParams.maxwidth;
-  rsParam.minheight = (typeof rsParam.minheight === "undefined") ? "" : rsParam.minheight;
-  rsParam.maxheight = (typeof rsParam.maxheight === "undefined") ? "" : rsParam.maxheight;
+  rsParams.minheight = (typeof rsParams.minheight === "undefined") ? "" : rsParams.minheight;
+  rsParams.maxheight = (typeof rsParams.maxheight === "undefined") ? "" : rsParams.maxheight;
   rsParams.scrollMinwidth = (typeof rsParams.scrollMinwidth === "undefined") ? "" : rsParams.scrollMinwidth;
   rsParams.scrollMaxwidth = (typeof rsParams.scrollMaxwidth === "undefined") ? "" : rsParams.scrollMaxwidth;
-  rsParams.useimagesasbackground = (typeof rsParams.useimagesasbackground === "undefined") ? false : rsParams.useimagesasbackground;
+  rsParams.useimagesasbackground = (typeof rsParams.useimagesasbackground === "undefined") ? true : rsParams.useimagesasbackground;
   rsParams.randomizecolumns = (typeof rsParams.randomizecolumns === "undefined") ? "no" : rsParams.randomizecolumns;
   rsParams.randomseed = (typeof rsParams.randomseed === "undefined") ? 0 : rsParams.randomseed;
   rsParams.excludecolumnend = (typeof rsParams.excludecolumnend === "undefined") ? 0 : rsParams.excludecolumnend;
@@ -93,8 +93,8 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   //Check width of scroll area
   if (rsParams.scrollMinwidth != null) $(scrollDivID).find('.rsScrollGridContent').css('min-width', rsParams.scrollMinwidth);
   if (rsParams.scrollMaxwidth != null) $(scrollDivID).find('.rsScrollGridContent').css('max-width', rsParams.scrollMaxwidth);
-  
- 
+
+
   let baseBtnClass = "rsBtn";
   let baseBtnClassSelect = ".rsBtn";
   let baseBtnClassSelectExclusive = ".rsBtn.exclusive";
@@ -333,16 +333,18 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
 
   strHTML += '</div>';
   $(QuestionID).after(strHTML);
-  
+
   //Check for minwidth and maxwidth (only if not specifying the number of buttons)
   if (intNumButtonsPrRow == 0) {
-	if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParams.minwidth);
-	if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParams.maxwidth);
+    if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParams.minwidth);
+    if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParams.maxwidth);
   }
   //Check for minheight and maxheight
-  if (rsParams.minheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-height', rsParams.minheight);
+  if (rsParams.minheight != null) {
+    $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-height', rsParams.minheight);
+  }
   if (rsParams.maxheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-height', rsParams.maxheight);
-  
+
   //Check for image btn
   if (rsParams.useimagesasbackground) {
     $(btnDivID).find(baseBtnClassSelect).each(function() {
@@ -356,7 +358,7 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
         }
       }
     });
-    if (rsParam.imageautosizing) {
+    if (rsParams.imageautosizing) {
       $(btnDivID).find('.rsBtn, .rsImgBtn').css('background-size', "contain");
     }
   }
@@ -457,4 +459,4 @@ window.rsScrollingGridPreviousClick = function(QuestionID, btnDivID, scrollDivID
   $('#btnNext').show();
   $('#btnPrevious').show();
   $('#btnPrevious').click();
-} 
+}
