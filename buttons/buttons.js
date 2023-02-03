@@ -171,9 +171,11 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
   strHTML += '</div>';
   $(QuestionID).after(strHTML);
 
-  //Check for minwidth and maxwidth
-  if (rsParam.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParam.minwidth);
-  if (rsParam.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParam.maxwidth);
+  //Check for minwidth and maxwidth (only if not specifying the number of buttons)
+  if (intNumButtonsPrRow == 0) {
+	if (rsParam.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParam.minwidth);
+	if (rsParam.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParam.maxwidth);
+  }
   //Check for minheight and maxheight
   if (rsParam.minheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-height', rsParam.minheight);
   if (rsParam.maxheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-height', rsParam.maxheight);
@@ -291,6 +293,7 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
     const valuepl = $(btnDivID).find('.rsBtn, .rsImgBtn').css('padding-left');
     const valuepr = $(btnDivID).find('.rsBtn, .rsImgBtn').css('padding-right');
     $(btnDivID).find(baseBtnClassSelect).not('.rsBtnSpecial').css('width', 'calc(' + pctWidth + '% - ' + valuel + ' - ' + valuer + ' - ' + valuepl + ' - ' + valuepr + ' - 10px)');
+	alert("setwidth");
   }
   //Check for postscript
   if (rsParam.postscript.length > 0) sParam.postscript;
