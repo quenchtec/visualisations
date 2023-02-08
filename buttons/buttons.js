@@ -293,7 +293,6 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
     const valuepl = $(btnDivID).find('.rsBtn, .rsImgBtn').css('padding-left');
     const valuepr = $(btnDivID).find('.rsBtn, .rsImgBtn').css('padding-right');
     $(btnDivID).find(baseBtnClassSelect).not('.rsBtnSpecial').css('width', 'calc(' + pctWidth + '% - ' + valuel + ' - ' + valuer + ' - ' + valuepl + ' - ' + valuepr + ' - 10px)');
-	alert("setwidth");
   }
   //Check for postscript
   if (rsParam.postscript.length > 0) sParam.postscript;
