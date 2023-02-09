@@ -196,7 +196,7 @@ var rsVisIRT = (function () {
 	  intCounting++;
 	}
 
-	function submitForm() {console.log("It's a FLATCLICKER!");/*$("#btnNext").click();*/}
+	function submitForm() {$("#btnNext").click();}
 	function stopTimer() {clearInterval(theInterval);}
 	function cooldownCountdown() {
 	  $("#countdown").html(rsParams.intCooldownBetweenStatements);
