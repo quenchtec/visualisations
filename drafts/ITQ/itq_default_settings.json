@@ -1,0 +1,124 @@
+{
+  "name": "ITQ",
+  "descr": "Timed question with Positve vs Negative answers",
+  "id": "rsInteractiveTimedQuestion",
+  "props": [
+    {
+      "id": "blnDecresingTimer",
+      "name": "Decreasing Timer",
+      "descr": "True if timer should decrease from a default value of 5 (Timeout can be changed)",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": true
+    },
+    {
+      "id": "blnShowCooldown",
+      "name": "Display cooldown countdown",
+      "descr": "Displaing the seconds before the next statement is available for rating (Show by default)",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": true
+    },
+    {
+      "id": "blnShowQuestionText",
+      "name": "Display Question Text",
+      "descr": "Show or hide the question text (hidden by default)",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": false
+    },
+    {
+      "id": "blnShowCardInAdvance",
+      "name": "Display Statement in Advance",
+      "descr": "Display each statement, before the answers for specific time for longer statements (default is 5 seconds)",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": false
+    },
+    {
+      "id": "blnCustomDefaultValue",
+      "name": "Custom Timeout Value",
+      "descr": "Allows to customise the value on timeout",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": false
+    },
+    {
+      "id": "intMaxMinTriggerTime",
+      "name": "Timeout",
+      "descr": "Time in seconds before timeout alert for a statement (default is 5 seconds)",
+      "type": "int",
+      "group": "Advanced",
+      "value": 5
+    },
+    {
+      "id": "intShowCardInAdvanceSeconds",
+      "name": "Show statement in advance - seconds",
+      "descr": "Define for how long the statement should be visible, before the respondent can rate it (Display Statement in Advance needs to be set to true)",
+      "type": "int",
+      "group": "Appearance",
+      "value": 5
+    },
+    {
+      "id": "intCustomDefaultValue",
+      "name": "Default timeout value",
+      "descr": "What value should be used on timing out (default is -1)",
+      "type": "int",
+      "group": "Advanced",
+      "value": -1
+    },
+    {
+      "id": "intCooldownBetweenStatements",
+      "name": "Statement cooldown",
+      "descr": "Defines the seconds between statements ",
+      "type": "int",
+      "group": "Advanced",
+      "value": 3
+    },
+    {
+      "id": "strStartButton",
+      "name": "Start button",
+      "descr": "Start button text",
+      "type": "str",
+      "group": "Advanced",
+      "value": "Press here to start"
+    },
+    {
+      "id": "strDialogTitle",
+      "name": "Dialog title message",
+      "descr": "Sets the text fot the alert title that pops up",
+      "type": "str",
+      "group": "Advanced",
+      "value": "Great job, but..."
+    },
+    {
+      "id": "strDialogMessage",
+      "name": "Dialog body message",
+      "descr": "Sets the text fot the alert that pops up",
+      "type": "str",
+      "group": "Advanced",
+      "value": "You need to be faster for the next one!"
+    }, 
+    {
+      "id": "prescript",
+      "name": "Pre script",
+      "descr": "Javascript to execute pre render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+    },
+    {
+      "id": "postscript",
+      "name": "Post script",
+      "descr": "Javascript to execute post render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+    }
+  ],
+  "questionSupport": [
+    {
+      "type": "f"
+    }
+  ]
+}
