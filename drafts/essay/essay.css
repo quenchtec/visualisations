@@ -1,3 +1,10 @@
+.cTable>tbody {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
 .cCell {
   display: none !important;
 }
@@ -22,7 +29,10 @@
   height: 30px;
   width: 0%;
   background-color: rgba(193, 245, 233, 1);
-  transition: width .5s ease-in-out;
+  -webkit-transition: width .2s ease-in-out;
+  -moz-transition: width .2s ease-in-out;
+  -o-transition: width .2s ease-in-out;
+  transition: width .2s ease-in-out;
   text-align: center;
   color: var(--progressbar_foreground_color);
 }
