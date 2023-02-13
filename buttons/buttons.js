@@ -4,8 +4,6 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
   if ($('#btnToggleWcag').val() == 1) {
     return false;
   }
-wait(5000);
-alert("WAITED");
   //Since there can be mutiple questions on a page, we must make sure all selectors are addressing the proper question (and subquestion) only
   const QuestionID = "#" + rsQno; //This we use in selectors to stay within the question
   const btnDivID = "#" + rsQno + "_btn"; //We create our own ID's that will be unique within the page and question
