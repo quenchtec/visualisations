@@ -1,4 +1,4 @@
-var rsEssay = (function() {
+function rsEssay(rsQno,rsSubqIndex,rsParams) {
   rsParams.blnShowProgress = (typeof rsParams.blnShowProgress === "undefined") ? true : rsParams.blnShowProgress;
   if (rsParams.blnShowProgress) {
     rsParams.blnProgressBarText = (typeof rsParams.blnProgressBarText === "undefined") ? true : rsParams.blnProgressBarText;
@@ -28,4 +28,4 @@ var rsEssay = (function() {
     else {$(".essay-progress-fill").eq(intIndex).width("100%");}
     if (rsParams.blnProgressBarText) {$(".progress-bar-messages").eq(intIndex).text(arrMessages[Math.floor(x / intStep)]);}
   }
-})();
+};
