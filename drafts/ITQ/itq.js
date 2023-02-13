@@ -1,5 +1,4 @@
-
-var rsVisIRT = (function () {
+function rsVisIRT(rsQno,rsSubqIndex,rsParams) {
 	rsParams.blnDecresingTimer = (typeof rsParams.blnDecresingTimer === "undefined") ? true : rsParams.blnDecresingTimer;
 	rsParams.blnShowCooldown = (typeof rsParams.blnShowCooldown === "undefined") ? true : rsParams.blnShowCooldown;
 	rsParams.blnShowQuestionText = (typeof rsParams.blnShowQuestionText === "undefined") ? false : rsParams.blnShowQuestionText;
@@ -211,4 +210,4 @@ var rsVisIRT = (function () {
 		}
 	  }, 1000);
 	}
-})();
+};
