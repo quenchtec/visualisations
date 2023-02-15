@@ -68,6 +68,9 @@ var rsVisIRT = (function () {
 	}
 
 	$(".start").click(function() {
+	  //In this functoin we handle all events on clicking on the custon start button
+
+		
 	  $(this).hide();
 	  if (!rsParams.blnShowQuestionText) {$(".cQuestionText").hide();}
 	  if (rsParams.blnShowCardInAdvance) {
@@ -101,6 +104,7 @@ var rsVisIRT = (function () {
 	});
 
 	$(document).keydown(function(event) {
+	//It was decided to stick with Z and M keys for positive and negative. Givving less choice for clients/customers to touch
 	  if ((event.keyCode == arrLRButtons[0] || event.keyCode == arrLRButtons[1] || event.keyCode == arrLRButtons[2]) && blnExcerStarted && blnCanHitButtons) {
 		if (event.keyCode == arrLRButtons[0]) {
 		  $('.iqtPositive').click();
@@ -116,6 +120,8 @@ var rsVisIRT = (function () {
 
 	$(".iqtPositive, .iqtNegative, .iqtNeither").click(function(event) {
 	  $("#countdown").html(rsParams.intCooldownBetweenStatements);
+	  //If an answer is already given and we are in the countdowns, block all clicks on the buttons in case they were visible for some reason
+	  // else direct to where it is needed
 	  if (!blnCanHitButtons) {
 		event.preventDefault();
 	  } else if ($(this).hasClass('iqtPositive')) {
@@ -144,6 +150,7 @@ var rsVisIRT = (function () {
 	  let allHeathers = $(".cTable").find("th.cCellHeader p");
 	  let optOutText = (allHeathers.length == 3) ? "None" : allHeathers[2].innerHTML;
 	  let showOptOut = (allHeathers.length == 3) ? "hidden" : "collapse";
+	  //create an object with all needed information to punc data or record time
 	  $(_vals).each(function() {
 		let questionInputs = {
 		  strAllClasses: this.className,
@@ -196,7 +203,7 @@ var rsVisIRT = (function () {
 	  intCounting++;
 	}
 
-	function submitForm() {console.log("It's a FLATCLICKER!");/*$("#btnNext").click();*/}
+	function submitForm() {/*console.log("It's a FLATCLICKER!");*/$("#btnNext").click();}
 	function stopTimer() {clearInterval(theInterval);}
 	function cooldownCountdown() {
 	  $("#countdown").html(rsParams.intCooldownBetweenStatements);
