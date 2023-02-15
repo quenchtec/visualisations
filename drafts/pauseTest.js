@@ -1,5 +1,5 @@
 function syncDelay(milliseconds){
-    alert("in promise");
+    alert("in promise: "+ $('#html').length));
      $('#html').hide();
     var start = new Date().getTime();
     var end = 0;
