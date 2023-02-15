@@ -6,5 +6,5 @@ function syncDelay(milliseconds){
         end = new Date().getTime();
     }
   alert("wait done");
-  $('.mainContainer').show();
+  $('.contentContainer').show();
 }
