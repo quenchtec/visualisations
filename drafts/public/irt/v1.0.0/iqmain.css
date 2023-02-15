@@ -75,7 +75,6 @@
   /* IE10+/Edge */
   user-select: none;
   /* Standard */
-
 }
 
 .IQTcontainer {
@@ -84,7 +83,7 @@
 }
 
 .cTimerTotal {
-  /*display: none;*/
+  display: none;
 }
 
 .hideStart {
@@ -92,7 +91,7 @@
 }
 
 .cTable>tbody>tr:not(.cRowSubQuestion) {
-  /*display: none;*/
+  display: none;
 }
 
 .IQTtable {
