@@ -1,4 +1,6 @@
 function syncDelay(milliseconds){
+    alert("in promise");
+     $('#html').hide();
     var start = new Date().getTime();
     var end = 0;
 
@@ -6,5 +8,5 @@ function syncDelay(milliseconds){
         end = new Date().getTime();
     }
   alert("wait done");
-  $('body').show();
+  $('#html').show();
 }
