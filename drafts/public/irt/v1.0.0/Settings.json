@@ -1,6 +1,6 @@
 {
   "name": "IRT",
-  "descr": "Timed question with Positve vs Negative answers",
+  "descr": "IRT (Implicit Testing) Timed question with Positve vs Negative answers",
   "id": "rsInteractiveTimedQuestion",
   "props": [
     {
