@@ -1,0 +1,60 @@
+{
+  "name": "ESSAY",
+  "descr": "Open question with a progress bar and stimulating text!",
+  "id": "rsEssay",
+  "props": [
+    {
+      "id": "blnShowProgress",
+      "name": "Show progress bar",
+      "descr": "Set to true if you want the respondent to see a progress bar",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": true
+    },
+    {
+      "id": "blnProgressBarText",
+      "name": "Progress Bar Text",
+      "descr": "Show text insite the progress bar to stimulate for further details",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": true
+    },
+    {
+      "id": "intIdealLength",
+      "name": "Minimum Ideal Length",
+      "descr": "The minimum amount of characters to fill hte progress bar (default is 200).",
+      "type": "int",
+      "group": "Advanced",
+      "value": 200
+    },
+    {
+      "id": "strProgressText",
+      "name": "Progress bar text",
+      "descr": "The text which needs to appear insite the progress bar. If multiple texts are wanted, paste them, separated by '|' (Progress Bar Text needs to be set to true). ",
+      "type": "str",
+      "group": "Advanced",
+      "value": "Please write down as much as you'd like!"
+    },
+    {
+      "id": "prescript",
+      "name": "Pre script",
+      "descr": "Javascript to execute pre render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+    },
+    {
+      "id": "postscript",
+      "name": "Post script",
+      "descr": "Javascript to execute post render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+    }
+  ],
+  "questionSupport": [
+    {
+      "type": "f"
+    }
+  ]
+}
