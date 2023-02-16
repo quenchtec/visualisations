@@ -1,6 +1,6 @@
-Each folder contains the same IRT question, but is set for a better and separate version control. Logic is as follows: 
+Each folder contains a different IRT question. Important things are :  
 
-	v1 - Major change - Increases on how the question works or when a new feature is added
-	.0 - question settings - Increases when there was a change related to the question settings i.e. client getting a new colour selector for an element
-	.0 - respondent version - Increase upon changes that affect the respondent's perception on the question
+	1 - Short names for the folders
+	2 - Clear names for the folders
+	3 - Each different typr of timed question needs it's own folder
      
