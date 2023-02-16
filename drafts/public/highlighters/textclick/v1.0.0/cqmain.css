@@ -1,0 +1,62 @@
+.ui-controlgroup-controls {
+  display: none;
+}
+
+span {
+  text-shadow: none !important;
+}
+
+.Xconcept {
+  text-align: left;
+  border: 1px solid black;
+  padding: 10px;
+  width: 90%;
+  font-size: 20px;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.clickable {
+  background-color: none;
+  cursor: pointer;
+}
+
+.none {
+  background-color: none;
+}
+
+.no_click {
+  cursor: text;
+}
+
+#btnHolder {
+  width: auto;
+  padding-top: 15px;
+}
+
+#Exclusive {
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 20px;
+  color: black;
+  border: solid 1px #000000;
+  border-radius: 9px;
+  cursor: pointer;
+  width: 50%;
+}
+
+.exclusive-selected {
+  background-color: #d3d3d3;
+  pointer-events: none;
+}

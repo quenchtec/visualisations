@@ -1,0 +1,85 @@
+{
+  "type": "ques",
+  "attributes": {
+    "id": ""
+  },
+  "elements": [
+    {
+      "type": "subq",
+      "attributes": {
+        "type": "rm",
+        "range": ""
+      },
+      "customQuestionId": "202adb24-5d56-477a-936d-16c087056044",
+      "elements": [
+        {
+          "type": "stext",
+          "elements": [
+            {
+              "type": "text",
+              "attributes": {},
+              "textValues": {}
+            },
+            {
+              "type": "text",
+              "attributes": {
+                "textType": "do"
+              },
+              "textValues": {}
+            }
+          ]
+        },
+        {
+          "type": "hgroup",
+          "elements": [
+            {
+              "type": "h",
+              "elements": [
+                {
+                  "type": "text",
+                  "attributes": {},
+                  "textValues": {}
+                }
+              ]
+            },
+            {
+              "type": "h",
+              "elements": [
+                {
+                  "type": "text",
+                  "attributes": {},
+                  "textValues": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "rgroup",
+      "elements": [
+        {
+          "type": "r",
+          "elements": [
+            {
+              "type": "text",
+              "attributes": {},
+              "textValues": {}
+            }
+          ]
+        },
+        {
+          "type": "r",
+          "elements": [
+            {
+              "type": "text",
+              "attributes": {},
+              "textValues": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

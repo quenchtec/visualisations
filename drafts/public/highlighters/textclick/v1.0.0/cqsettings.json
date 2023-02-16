@@ -1,0 +1,63 @@
+{
+  "name": "ClickWords",
+  "descr": "Positive and Negative on the same concept. Click one for positive, twice for negative",
+  "id": "rsVisButton",
+  "props": [
+    {
+      "id": "color1",
+      "name": "Colour 1",
+      "descr": "The first click colour, the positive colour",
+      "type": "color",
+      "group": "Appearance",
+      "value": "#42ff6b"
+    },
+    {
+      "id": "color2",
+      "name": "Colour 2",
+      "descr": "The second click colour, the negative colour",
+      "type": "color",
+      "group": "Appearance",
+      "value": "#ef4f40"
+    },
+    {
+      "id": "hasExclusive",
+      "name": "Exclusive",
+      "descr": "Does it have an exlusive option",
+      "type": "boolean",
+      "group": "Appearance",
+      "value": true
+    },
+    {
+      "id": "showTest",
+      "name": "Show Test Data",
+      "descr": "Showing the data storage element.",
+      "type": "boolean",
+      "group": "Appearance",
+      "value": false
+    },
+    {
+      "id": "prescript",
+      "name": "Pre script",
+      "descr": "Javascript to execute pre render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+    },
+    {
+      "id": "postscript",
+      "name": "Post script",
+      "descr": "Javascript to execute post render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+    }
+  ],
+  "questionSupport": [
+    {
+      "type": "rm"
+    },
+    {
+      "type": "m"
+    }
+  ]
+}
