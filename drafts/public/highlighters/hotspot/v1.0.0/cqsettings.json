@@ -1,0 +1,108 @@
+{
+  "name": "HotSpots",
+  "descr": "Click on images - stores coordinates",
+  "id": "rsVisButton",
+  "props": [
+    {
+      "id": "imagePath",
+      "name": "Image",
+      "descr": "Choose an image",
+      "type": "url",
+      "group": "Settings",
+      "value": ""
+    },
+    {
+      "id": "minClicks",
+      "name": "Minimum Spots",
+      "descr": "Minimum Spots that allows the respondent to go through",
+      "type": "int",
+      "group": "Settings",
+      "value": "1"
+    },
+    {
+      "id": "maxClicks",
+      "name": "Maximum Spots",
+      "descr": "Maximum Spots allowed",
+      "type": "int",
+      "group": "Settings",
+      "value": "999"
+    },
+    {
+      "id": "pointSize",
+      "name": "Spot radius (px)",
+      "descr": "Spot radius in pixels",
+      "type": "int",
+      "group": "Settings",
+      "value": "12"
+    },
+    {
+      "id": "spotColor",
+      "name": "Spot Color",
+      "descr": "Spot Color",
+      "type": "color",
+      "group": "Settings",
+      "value": "#c1f5e9"
+    },
+    {
+      "id": "hasExclusive",
+      "name": "Exclusive",
+      "descr": "Include an exclusive option",
+      "type": "boolean",
+      "group": "Settings",
+      "value": true
+    },
+    {
+      "id": "exclusiveText",
+      "name": "Exclusive text",
+      "descr": "Text for the exclusive option",
+      "type": "string",
+      "group": "Settings",
+      "value": "None of these"
+    },
+    {
+      "id": "hasReset",
+      "name": "Reset",
+      "descr": "Include a reset option",
+      "type": "boolean",
+      "group": "Settings",
+      "value": true
+    },
+    {
+      "id": "resetText",
+      "name": "Reset text",
+      "descr": "Text for the reset option",
+      "type": "string",
+      "group": "Settings",
+      "value": "Reset"
+    },
+    {
+      "id": "showTest",
+      "name": "showTestData",
+      "descr": "Show test data",
+      "type": "boolean",
+      "group": "Settings",
+      "value": false
+    },
+    {
+      "id": "prescript",
+      "name": "Pre script",
+      "descr": "Javascript to execute pre render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+    },
+    {
+      "id": "postscript",
+      "name": "Post script",
+      "descr": "Javascript to execute post render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+    }
+  ],
+  "questionSupport": [
+    {
+      "type": "open"
+    }
+  ]
+}

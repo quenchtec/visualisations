@@ -1,0 +1,53 @@
+{
+  "type": "ques",
+  "attributes": {
+    "id": ""
+  },
+  "elements": [
+    {
+      "type": "subq",
+      "attributes": {
+        "type": "m",
+        "range": "*"
+      },
+      "customQuestionId": "",
+      "elements": [
+        {
+          "type": "stext",
+          "elements": [
+            {
+              "type": "text",
+              "attributes": {},
+              "textValues": {}
+            },
+            {
+              "type": "text",
+              "attributes": {
+                "textType": "do"
+              },
+              "textValues": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "rgroup",
+      "elements": [
+        {
+          "type": "other",
+          "attributes": {
+            "lines": "3"
+          },
+          "elements": [
+            {
+              "type": "text",
+              "attributes": {},
+              "textValues": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
