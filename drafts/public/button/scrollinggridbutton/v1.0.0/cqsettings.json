@@ -1,0 +1,159 @@
+{
+    "name": "Carousel - Scrolling grid buttons",
+    "descr": "Turn radio and check-boxes in single/multi-choice grid-questions  into clickable buttons, displaying one by one row, in a scrolling area",
+    "id": "rsVisButtonGrid",
+    "props": [
+      {
+        "id": "buttonsperrow",
+        "name": "Number of buttons per row",
+        "descr": "The number of buttons per row",
+        "type": "int",
+        "group": "Appearance",
+        "value": 0
+      },
+      {
+        "id": "specialbuttons",
+        "name": "Number of special buttons",
+        "descr": "The number of special buttons (like none of these)",
+        "type": "int",
+        "group": "Appearance",
+        "value": null
+      },
+      {
+        "id": "hidebuttontext",
+        "name": "Hide button text",
+        "descr": "Defines if the button text should be hidden",
+        "type": "boolean",
+        "group": "Appearance",
+        "value": false
+      },
+      {
+        "id": "minwidth",
+        "name": "Minimum width of buttons",
+        "descr": "Defines if the minimum width of a button",
+        "type": "size",
+        "group": "Appearance",
+        "value": "20%"
+      },
+      {
+        "id": "maxwidth",
+        "name": "Maximum width of buttons",
+        "descr": "Defines if the maximum width of a button",
+        "type": "size",
+        "group": "Appearance",
+        "value": null
+      },
+      {
+        "id": "minheight",
+        "name": "Minimum height",
+        "descr": "Defines if the minimum height of a button",
+        "type": "size",
+        "group": "Appearance",
+        "value": null
+      },
+      {
+        "id": "maxheight",
+        "name": "Maximum height",
+        "descr": "Defines if the maximum height of a button",
+        "type": "size",
+        "group": "Appearance",
+        "value": null
+      },
+      {
+        "id": "scrollMinwidth",
+        "name": "Minimum width of scroll area",
+        "descr": "Defines if the minimum width of the scroll area (containing the grid row text)",
+        "type": "size",
+        "group": "Appearance",
+        "value": "50%"
+      },
+      {
+        "id": "scrollMaxwidth",
+        "name": "Maximum width of scroll area",
+        "descr": "Defines if the maximum width of the scroll area (containing the grid row text)",
+        "type": "size",
+        "group": "Appearance",
+        "value": null
+      },
+      {
+        "id": "useimagesasbackground",
+        "name": "Use images as background",
+        "descr": "Defines if the button should use images as background",
+        "type": "boolean",
+        "group": "Images",
+        "value": false
+      },
+      {
+        "id": "imageautosizing",
+        "name": "Autosize images",
+        "descr": "Defines if the button should autosize images",
+        "type": "boolean",
+        "group": "Images",
+        "value": true
+      },
+      {
+        "id": "autonext",
+        "name": "Auto next",
+        "descr": "Automatically go next on single selection",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": true
+      },
+      {
+        "id": "randomizecolumns ",
+        "name": "Randomize columns",
+        "descr": "Randomize columns from the grid (buttons in random order)",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": false
+      },
+      {
+        "id": "randomseed  ",
+        "name": "Randomseed",
+        "descr": "Random seed to be used in order to create the same radmom order in different questions",
+        "type": "int",
+        "group": "Behaviour",
+        "value": 0
+      },
+      {
+        "id": "excludecolumnstart  ",
+        "name": "Exclude columns from the start",
+        "descr": "Exclude columns from the start (like 'None of these')",
+        "type": "int",
+        "group": "Behaviour",
+        "value": 0
+      },
+      {
+        "id": "excludecolumnend  ",
+        "name": "Exclude columns from the end",
+        "descr": "Exclude columns from the end (like 'None of these')",
+        "type": "int",
+        "group": "Behaviour",
+        "value": 0
+      },
+      {
+        "id": "prescript",
+        "name": "Pre script",
+        "descr": "Javascript to execute pre render",
+        "type": "Code",
+        "group": "Advanced",
+        "value": ""
+      },
+      {
+        "id": "postscript",
+        "name": "Post script",
+        "descr": "Javascript to execute post render",
+        "type": "Code",
+        "group": "Advanced",
+        "value": ""
+      }
+    ],
+    "questionSupport": [
+      {
+        "type": "rn"
+      },
+      {
+        "type": "rm"
+      }
+    ]
+  }
