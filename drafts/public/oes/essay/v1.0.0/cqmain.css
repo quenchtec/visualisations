@@ -19,16 +19,16 @@
 
 .essay-progress-bar {
   height: 30px;
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 1px solid var(--main_text_color);
+  border-radius: var(--button_border_radius);
   text-align: left;
 }
 
 .essay-progress-fill {
-  border-radius: 4px;
+  border-radius: var(--button_border_radius);
   height: 30px;
   width: 0%;
-  background-color: rgba(193, 245, 233, 1);
+  background-color: var(--page_background_color);
   -webkit-transition: width .2s ease-in-out;
   -moz-transition: width .2s ease-in-out;
   -o-transition: width .2s ease-in-out;
