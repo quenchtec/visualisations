@@ -1,16 +1,14 @@
 #############################
 PLEASE UPDATE ACCORDINGLY
------------ NAME OF THE iQuestion ---------
+----------- NoUi Grid Slider ---------
 #############################
 
-NAME (Desc)
-OBJECT BASED ON question with additional features v1.0.0 
-Created by XXXXXXXXXX
+NAME Grid Slider
+OBJECT BASED ON GRID question with additional features v1.0.0 
+Created by Mihail Borisov
 
 ##############
 For the free use of all WALR clients/customers free of charge.
 
 Features:
-  #######
-  #Please write down all features
-  #######
+  Highlightable labels, vertical labels, clickable labels, Optout small/large

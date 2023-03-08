@@ -1,0 +1,84 @@
+{
+    "name": "SLIDER_GRID",
+    "descr": "Numeric Slider Grid Question",
+    "id": "rsParams",
+    "props": [
+      {
+        "id": "intSliderSteps",
+        "name": "Slider increments (steps)",
+        "descr": "How many points should the handle take on move (from 0.00001 as a smallest value to N)",
+        "type": "int",
+        "group": "Slider Behaviour",
+        "value": 1
+      },
+      {
+        "id": "blnOffScaleHandle",
+        "name": "Handle start position off the slider",
+        "descr": "When true, the handle will be just outside the slider",
+        "type": "boolean",
+        "group": "Slider Behaviour",
+        "value": true
+      },
+      {
+        "id": "blnOptOut",
+        "name": "Show OptOut",
+        "descr": "Show or hide OptOut button",
+        "type": "boolean",
+        "group": "Opt-out",
+        "value": false
+      },
+      {
+        "id": "blnHighlightPips",
+        "name": "Highlighting pips",
+        "descr": "Marked main pips will be highlighted red",
+        "type": "boolean",
+        "group": "Slider Points and Labels",
+        "value": true
+      },
+      {
+        "id": "blnSliderLabelsVertical",
+        "name": "Vertical labels",
+        "descr": "Change orientation of pips to vertical",
+        "type": "boolean",
+        "group": "Slider Points and Labels",
+        "value": false
+      },
+      {
+        "id": "blnOptOutBigButton",
+        "name": "OptOut big button",
+        "descr": "Match the OptOut to fit the slider",
+        "type": "boolean",
+        "group": "Opt-out",
+        "value": false
+      },
+      {
+        "id": "strOptOutText",
+        "name": "OptOut custom text",
+        "descr": "OptOut button custom text",
+        "type": "string",
+        "group": "Opt-out",
+        "value": "Prefer not to answer"
+      },
+      {
+        "id": "prescript",
+        "name": "Pre script",
+        "descr": "Javascript to execute pre render",
+        "type": "Code",
+        "group": "Advanced",
+        "value": ""
+      },
+      {
+        "id": "postscript",
+        "name": "Post script",
+        "descr": "Javascript to execute post render",
+        "type": "Code",
+        "group": "Advanced",
+        "value": ""
+      }
+    ],
+    "questionSupport": [
+      {
+        "type": "f"
+      }
+    ]
+  }
