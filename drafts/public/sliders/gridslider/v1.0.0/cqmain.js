@@ -57,7 +57,7 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
   
     let arrPips = rsParams.strSliderPips.split(",").map(Number);
   
-    console.log(rsParams.blnClickablePips)
+    //console.log(rsParams.blnClickablePips)
   
     $(".cRowText").each(function(e) {
       $(this).append("<div id='slider" + e + "'></div>");
@@ -110,7 +110,7 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
           tooltip.style.display = 'block';
         }
         SliderIsTouched(QuestionID, e, event[0]);
-  
+
         if (rsParams.blnHighlightPips) {
           if (activePips[handle]) {
             activePips[handle].classList.remove('active-pip');
@@ -146,7 +146,7 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
           slider.noUiSlider.set(value);
         }
         for (let i = 0; i < pips.length; i++) {
-          console.log("clicked me")
+          //console.log("clicked me")
           pips[i].style.cursor = 'pointer';
           pips[i].addEventListener('click', clickOnPip);
         }
@@ -219,7 +219,7 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
     function SliderIsTouched(objQuestion, intSliderIndex, numSliderValue) {
       let _objQuestion = objQuestion;
       let _intSliderIndex = Number(intSliderIndex);
-      let _numSliderValue = numSliderValue;
+      let _numSliderValue = parseInt(numSliderValue);
       if (_numSliderValue >= rsParams.intSliderMinValue) {
         $(_objQuestion).find(".rsRow").eq(_intSliderIndex).find(":input:radio").eq(_numSliderValue - 1).prop("checked", "checked");
       } else if (_numSliderValue == rsParams.intSliderOptOutValue) {
