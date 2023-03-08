@@ -1,0 +1,60 @@
+{
+    "type": "ques",
+    "attributes": {
+      "id": "Numeric_Slider"
+    },
+    "elements": [
+      {
+        "type": "subq",
+        "attributes": {
+          "type": "f",
+          "range": "*",
+          "length": "9",
+          "decimals": "0"
+        },
+        "elements": [
+          {
+            "type": "stext",
+            "attributes": {},
+            "elements": [
+              {
+                "type": "text",
+                "attributes": {
+                  "miext:grId": "HxkV8IQG"
+                },
+                "elements": [],
+                "textValues": {
+                  "en": "<p>Question Text...</p>"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "rgroup",
+        "attributes": {},
+        "elements": [
+          {
+            "type": "r",
+            "attributes": {},
+            "elements": [
+              {
+                "type": "text",
+                "attributes": {
+                  "miext:grId": "E1xfjxaQ"
+                },
+                "elements": [],
+                "textValues": {
+                  "en": "<p></p>"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "referenceQuesTypes": [
+      "f"
+    ]
+  }

@@ -1,0 +1,214 @@
+{
+    "name": "SLIDER",
+    "descr": "Numeric Slider Question",
+    "id": "rsParams",
+    "props": [
+      {
+        "id": "intSliderMinValue",
+        "name": "Slider minimum value",
+        "descr": "The minimum value of the slider (default is 1)",
+        "type": "int",
+        "group": "Behaviour",
+        "value": 1
+      },
+      {
+        "id": "intSliderMaxValue",
+        "name": "Slider maximum value",
+        "descr": "The maximum value of the slider (default is 1)",
+        "type": "int",
+        "group": "Behaviour",
+        "value": 10
+      },
+      {
+        "id": "intSliderSteps",
+        "name": "Slider increments (steps)",
+        "descr": "How many points should the handle take on move (from 0.00001 as a smallest value to N)",
+        "type": "int",
+        "group": "Behaviour",
+        "value": 1
+      },
+      {
+        "id": "blnOffScaleHandle",
+        "name": "Handle start position off the slider",
+        "descr": "When true, the handle will be just outside the slider",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": true
+      },
+      {
+        "id": "choicePips",
+        "name": "Pips type",
+        "descr": "Show the steps as pips or custom values",
+        "type": "choice",
+        "group": "Behaviour",
+        "value": "values",
+        "choices": [
+          {
+            "text": "Custom values",
+            "value": "values"
+          },
+          {
+            "text": "Slider steps",
+            "value": "steps"
+          }
+        ]
+      },
+      {
+        "id": "blnClickablePips",
+        "name": "Clickable pips",
+        "descr": "Allow respondents to click on main pips",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": true
+      },
+      {
+        "id": "blnOptOut",
+        "name": "Show OptOut",
+        "descr": "Show or hide OptOut button",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": true
+      },
+      {
+        "id": "blnSliderLabelsPrefeix",
+        "name": "Show Prefix",
+        "descr": "Show hide prefix",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": false
+      },
+      {
+        "id": "blnSliderLabelsSuffix",
+        "name": "Show Suffix",
+        "descr": "Show hide suffix",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": false
+      },
+      {
+        "id": "blnHighlightPips",
+        "name": "Highlighting pips",
+        "descr": "Marked main pips will be highlighted red",
+        "type": "boolean",
+        "group": "Appearance",
+        "value": false
+      },
+      {
+        "id": "blnSliderLabelsVertical",
+        "name": "Vertical labels",
+        "descr": "Change orientation of pips to vertical",
+        "type": "boolean",
+        "group": "Appearance",
+        "value": false
+      },
+      {
+        "id": "blnOptOutBigButton",
+        "name": "OptOut big button",
+        "descr": "Match the OptOut to fit the slider",
+        "type": "boolean",
+        "group": "Appearance",
+        "value": true
+      },
+      {
+        "id": "blnSliderColumnLabels",
+        "name": "Custom pips labels",
+        "descr": "Allow for custom pips labels",
+        "type": "boolean",
+        "group": "Advanced",
+        "value": true
+      },
+      {
+        "id": "strSliderColumnLabels",
+        "name": "Slider labels",
+        "descr": "Create custom text for the labels at the chosen positions (separated by a pipe '|')",
+        "type": "string",
+        "group": "Advanced",
+        "value": "1|10"
+      },
+      {
+        "id": "strSliderPips",
+        "name": "Slider label positions",
+        "descr": "Define the individual slider label positions with the values as text (i.e.  '1,2,3,4,5,6,7' )",
+        "type": "string",
+        "group": "Advanced",
+        "value": "1,10"
+      },
+      {
+        "id": "strSliderLabelsPrefeix",
+        "name": "Pips prefix",
+        "descr": "Main pips prefix",
+        "type": "string",
+        "group": "Advanced",
+        "value": ""
+      },
+      {
+        "id": "strSliderLabelsSuffix",
+        "name": "Pips suffix",
+        "descr": "Main pips suffix",
+        "type": "string",
+        "group": "Advanced",
+        "value": ""
+      },
+      {
+        "id": "strOptOutText",
+        "name": "OptOut custom text",
+        "descr": "OptOut button custom text",
+        "type": "string",
+        "group": "Advanced",
+        "value": "Prefer not to answer"
+      },
+      {
+        "id": "intSliderOptOutValue",
+        "name": "OptOut custom value",
+        "descr": "Custom value of OptOut button (default is -99999)",
+        "type": "int",
+        "group": "Advanced",
+        "value": -99999
+      },
+      {
+        "id": "intSliderPipsDens",
+        "name": "Density of pips",
+        "descr": "Defines the density of the pips (if equal to size, pips will appear on each step)",
+        "type": "int",
+        "group": "Advanced",
+        "value": 10
+      },
+      {
+        "id": "intSliderDecimals",
+        "name": "Decimal values length",
+        "descr": "Specifies Adding decimal point and digit",
+        "type": "int",
+        "group": "Advanced",
+        "value": 0
+      },
+      {
+        "id": "intSliderPipsDecimals",
+        "name": "Pips Decimals",
+        "descr": "Specify how many decimals post the pips value",
+        "type": "int",
+        "group": "Advanced",
+        "value": 0
+      },
+      {
+        "id": "prescript",
+        "name": "Pre script",
+        "descr": "Javascript to execute pre render",
+        "type": "Code",
+        "group": "Advanced",
+        "value": ""
+      },
+      {
+        "id": "postscript",
+        "name": "Post script",
+        "descr": "Javascript to execute post render",
+        "type": "Code",
+        "group": "Advanced",
+        "value": ""
+      }
+    ],
+    "questionSupport": [
+      {
+        "type": "f"
+      }
+    ]
+  }
