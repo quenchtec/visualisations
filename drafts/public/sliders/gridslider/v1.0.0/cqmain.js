@@ -4,8 +4,8 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
     let intlengthFix = (typeof rsParams.blnOptOut === "undefined" || !rsParams.blnOptOut) ? 0 : 1;
     let strAllHeaders = "";
     let strAllHeadersPositions = "";
-    let intMin = Number($(".cCellHeader").eq(1).find(".rs-ht").text());
-    let intMax = Number($(".cCellHeader").eq($(".cCellHeader").length - 1).find(".rs-ht").text()) - intlengthFix;
+    let intMin = 1;
+    let intMax = ($(".cCellHeader").length-1) - intlengthFix;
   
     $(".cCellHeader").each(function(e) {
       if (e && (e <= intMax)) {
