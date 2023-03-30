@@ -53,13 +53,13 @@
     display: inline-block;
     padding: 11px 11px;
     border: none;
-    background-color: var(--page_background_color);
-    color: var(--input_main_color);
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
+    background-color: var(--interactive_background_color);
+    color: var(--interactive_text_color);
+    font-size: var(--answers_text_size);
+    font-weight: var(--interactive_font_weight);;
+    text-align: var(--interactive_text_align);
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: var(--interactive_border_radius);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -71,15 +71,16 @@
   }
   
   .aero-opt-out-button:hover {
-    background-color: #62EFD3;
-    color: var(--input_main_color);
+    background-color: rgba(220, 245, 233, 1);
+    border: var(--interactive_border_hover);
+    color: var(--main_text_color);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
   }
   
   .opt-out-selected {
-    background-color: #62EFD3;
-    color: var(--input_main_color);
+    background-color: var(--interactive_checked_background_color);
+    color: var(--main_text_color);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   }
   
