@@ -34,6 +34,7 @@
   
   .rsImgBtnChecked:hover {
     background-color: var(--custom_button_checked_background_color);
+    color: var(--interactive_text_color);
     outline: 4px solid var(--custom_button_checked_background_color);
   }
   
@@ -68,6 +69,7 @@
   }
   .rsImgBtnChecked {
        background-color: var(--custom_button_checked_background_color);
+    color: var(--interactive_text_color);
        outline: 4px solid var(--custom_button_checked_background_color);
   }
   
