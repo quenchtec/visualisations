@@ -1,5 +1,6 @@
 .rsBtn:hover {
     outline: 2px solid grey;
+    color: var(--interactive_text_color);
   }
   
   .rsBtnChecked:hover {
@@ -8,6 +9,13 @@
     outline: 2px solid grey;
   }
   
+  
+  .rsBtnChecked {
+    background-color: var(--custom_button_checked_background_color);
+    color: var(--interactive_text_color);
+    outline: 2px solid grey;
+  }
+
   .rsBtnOpen {
     display: flex;
     align-items: center;
