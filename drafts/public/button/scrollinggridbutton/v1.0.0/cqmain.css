@@ -19,7 +19,11 @@
     color: var(--interactive_text_color);
     outline: 2px solid grey;
   }
-
+  .rsBtnChecked {
+    background-color: var(--custom_button_checked_background_color) !important;
+    color: var(--interactive_text_color) !important;
+    outline: 2px solid grey;
+  }
 
   .rsBtn {
     display: flex;
@@ -70,9 +74,9 @@
     background-color: var(--custom_special_background_color);
   }
   .rsImgBtnChecked, .rsImgBtnChecked:hover {
-       background-color: var(--custom_button_checked_background_color);
+       background-color: var(--custom_button_checked_background_color) !important;
        outline: 4px solid var(--interactive_checked_background_color);
-       color: var(--interactive_text_color);
+       color: var(--interactive_text_color) !important;
   }
   
   .rsImgBtnHideText {
