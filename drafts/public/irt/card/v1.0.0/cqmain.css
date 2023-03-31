@@ -133,3 +133,6 @@
 .no-close {
   display: none !important;
 }
+.cRowSubQuestion > .cCellSubQuestion:nth-of-type(odd){
+  display: none;
+}
