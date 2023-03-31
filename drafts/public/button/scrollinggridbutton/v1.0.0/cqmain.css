@@ -12,16 +12,22 @@
   }
   .rsBtn:hover {
     outline: 2px solid grey;
+    color: var(--interactive_text_color);
   }
   .rsBtnChecked:hover {
-    background-color: var(--interactive_checked_background_color);
+    background-color: var(--custom_button_checked_background_color);
+    color: var(--interactive_text_color);
     outline: 2px solid grey;
   }
+
+
   .rsBtn {
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    color: var(--main_text_color);
+    background-color: var(--custom_button_background_color);
   }
   .rsScrollGridWrappper {
       display: block;
@@ -44,8 +50,8 @@
        padding: var(--interactive_padding);
        text-align: var(--interactive_text_align);
        vertical-align: var(--interactive_vertical_align);
-       color: var(--interactive_text_color);
-       background-color: var(--interactive_background_color);
+       color: var(--main_text_color);
+      background-color: var(--custom_button_background_color);
         background-repeat: no-repeat;
         background-position: center;
         justify-content: center;
@@ -54,20 +60,20 @@
           display: flex;
   }
    .rsImgBtn:hover {
-       border: var(--interactive_border_hover);
-       background-color: var(--interactive_background_color_hover);
+    border: var(--interactive_border_hover);
+    background-color: var(--interactive_background_color_hover);
   }
   /* Interactive buttons special variables */
    .rsImgBtnSpecial{
-       border: var(--special_border);
-       color: var(--special_text_color);
-       background-color: var(--special_background_color);
+    border: var(--special_border);
+    color: var(--main_text_color);
+    background-color: var(--custom_special_background_color);
   }
   .rsImgBtnChecked, .rsImgBtnChecked:hover {
-       background-color: var(--interactive_checked_background_color);
+       background-color: var(--custom_button_checked_background_color);
        outline: 4px solid var(--interactive_checked_background_color);
+       color: var(--interactive_text_color);
   }
-  
   
   .rsImgBtnHideText {
     font-size: 0;
