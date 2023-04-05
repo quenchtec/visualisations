@@ -140,3 +140,6 @@
       width: 100%;
     }
   }
+.noUi-pips-horizontal{
+    height: 40px !important;
+}
