@@ -1,85 +1,71 @@
 .rsScrollGridContent {
-  text-align: center;
-  padding: 11px;
-  margin: 11px;
-  border: 2px solid black;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  min-width: 50%;
-  display: inline-block;
+	text-align: center;
+	padding: 11px;
+	margin: 11px;
+	border: 2px solid black;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	min-width: 50%;
+	display: inline-block;
 }
 .rsBtn:hover {
-  outline: 2px solid grey;
-  color: var(--interactive_text_color);
+	outline: 2px solid grey;
 }
 .rsBtnChecked:hover {
-  background-color: var(--custom_button_checked_background_color);
-  color: var(--interactive_text_color);
-  outline: 2px solid grey;
+	background-color: var(--interactive_checked_background_color);
+	outline: 2px solid grey;
 }
-.rsBtnChecked {
-  background-color: var(--custom_button_checked_background_color) !important;
-  color: var(--interactive_text_color) !important;
-  outline: 2px solid grey;
-}
-
 .rsBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--main_text_color);
-  background-color: var(--custom_button_background_color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
 }
 .rsScrollGridWrappper {
-    display: block;
-    overflow: hidden;
-    justify-content: center;
-    width: 100%;
+	display: block;
+	overflow: hidden;
+	justify-content: center;
+	width: 100%;
 }
 .rsScrollAnimate {
-    text-align: center;
+	text-align: center;
 }
-
-
 /* Interactive buttons variables */
- .rsImgBtn {
-     font-size: var(--interactive_font_size);
-     font-weight: var(--interactive_font_weight);
-     border: var(--interactive_border);
-     border-radius: var(--interactive_border_radius);
-     margin: var(--interactive_margin);
-     padding: var(--interactive_padding);
-     text-align: var(--interactive_text_align);
-     vertical-align: var(--interactive_vertical_align);
-     color: var(--main_text_color);
-    background-color: var(--custom_button_background_color);
-      background-repeat: no-repeat;
-      background-position: center;
-      justify-content: center;
-       align-items: center;
-        cursor: pointer;
-        display: flex;
+.rsImgBtn {
+	font-size: var(--interactive_font_size);
+	font-weight: var(--interactive_font_weight);
+	border: var(--interactive_border);
+	border-radius: var(--interactive_border_radius);
+	margin: var(--interactive_margin);
+	padding: var(--interactive_padding);
+	text-align: var(--interactive_text_align);
+	vertical-align: var(--interactive_vertical_align);
+	color: var(--interactive_text_color);
+	background-color: var(--interactive_background_color);
+	background-repeat: no-repeat;
+	background-position: center;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	display: flex;
 }
- .rsImgBtn:hover {
-  border: var(--interactive_border_hover);
-  background-color: var(--interactive_background_color_hover);
+.rsImgBtn:hover {
+	border: var(--interactive_border_hover);
+	background-color: var(--interactive_background_color_hover);
 }
 /* Interactive buttons special variables */
- .rsImgBtnSpecial{
-  border: var(--special_border);
-  color: var(--main_text_color);
-  background-color: var(--custom_special_background_color);
+.rsImgBtnSpecial{
+	border: var(--special_border);
+	color: var(--special_text_color);
+	background-color: var(--special_background_color);
 }
 .rsImgBtnChecked, .rsImgBtnChecked:hover {
-     background-color: var(--custom_button_checked_background_color) !important;
-     outline: 4px solid var(--interactive_checked_background_color);
-     color: var(--interactive_text_color) !important;
+	background-color: var(--interactive_checked_background_color);
+	outline: 4px solid var(--interactive_checked_background_color);
 }
-
 .rsImgBtnHideText {
-  font-size: 0;
-  color: transparent;
+	font-size: 0;
+	color: transparent;
 }
