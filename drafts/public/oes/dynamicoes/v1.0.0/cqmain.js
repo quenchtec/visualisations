@@ -8,16 +8,20 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
   const allTXTInputs = $(QuestionID).find(".rsRowOpen").find("input[type='text']");
   const arrAllRows = document.getElementsByClassName("rsRowOpen");
   HideFollowTextBoxes();
-  rsParams.blnHideNextOnDuplicates = (typeof rsParams.blnHideNextOnDuplicates === "undefined") ? false : rsParams.blnHideNextOnDuplicates; // Hide the next button if duplicates were located
-  rsParams.blnHighlightOnDuplicates = (typeof rsParams.blnHighlightOnDuplicates === "undefined") ? false : rsParams.blnHighlightOnDuplicates; // Highlight if duplicates were located
 
+  rsParams.blnHideNextOnDuplicates = (typeof rsParams.blnHideNextOnDuplicates === "undefined") ? true : rsParams.blnHideNextOnDuplicates; // Hide the next button if duplicates were located
+  rsParams.blnHighlightOnDuplicates = (typeof rsParams.blnHighlightOnDuplicates === "undefined") ? true : rsParams.blnHighlightOnDuplicates; // Highlight if duplicates were located
+rsParams.blnHideNextOnDuplicates = true;
   if (rsParams.blnHideNextOnDuplicates) {
     rsParams.blnHighlightOnDuplicates = true;
   }
+
   $(allTXTInputs).on("keydown keyup click change", function(e) {
-    HideNextTextBox();
+    HideNextTextBox("called from row 23");
     let intIndexTxt = e.currentTarget.getAttribute("aria-labelledby").split("_")[2];
-    if ((checkUniqueInputs(allTXTInputs)) && (e.currentTarget.getAttribute("data-text").length > 1)) {
+    //Now making sure that the data-text is being always populated
+    e.currentTarget.setAttribute("data-text", e.currentTarget.value);
+    if ((checkUniqueInputs(allTXTInputs)) && ((e.currentTarget.getAttribute("data-text").length > 1))) {
       ShowNextTextBox(allTXTInputs, intIndexTxt);
     }
   });
@@ -25,9 +29,10 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
   $('.cRadio').parent().click(function() {
     HideFollowTextBoxes();
   });
+
   $(arrAllRows).click(function(event) {
     event.preventDefault(); //let's block the click on the answer to stop messing up with the data-text attribute
-    HideNextTextBox();
+    HideNextTextBox("called from row 43");
   });
 
   function checkUniqueInputs(textInputs) {
@@ -35,6 +40,7 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
     let duplicates = false;
     let txtInp = textInputs;
     $(txtInp).each(function() {
+
       if ((values[$(this).val()] !== undefined) && ($(this).val() != "")) {
         duplicates = true;
         if (rsParams.blnHighlightOnDuplicates) {
@@ -52,7 +58,6 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
       } else {
         return true;
       }
-
     } else {
       $("#btnNext").show();
       return true;
@@ -60,6 +65,7 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
   }
 
   function ShowNextTextBox(textInputs, intIndex) {
+    //console.log("ShowNextTextBox function ");
     let txtInp = textInputs;
     let intInd = intIndex;
     if (typeof arrAllRows[intInd] !== 'undefined') {
@@ -68,7 +74,8 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
     }
   }
 
-  function HideNextTextBox() {
+  function HideNextTextBox(strtxt) {
+    //console.log(strtxt);
     let maxVal = arrAllRows.length - 1;
     for (let x = maxVal; x > 1; x--) {
       if ((allTXTInputs[x - 1].getAttribute('data-text') != '') || (allTXTInputs[x].getAttribute('data-text') != '')) {
@@ -82,6 +89,7 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
   }
 
   function HideFollowTextBoxes() {
+    //full reset of all OpenEnd rows, except for the first one
     allTXTInputs[0].setAttribute('data-text', '');
     for (let x = 1; x < arrAllRows.length; x++) {
       arrAllRows[x].style.display = 'none';
