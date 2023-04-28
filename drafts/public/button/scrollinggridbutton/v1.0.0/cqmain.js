@@ -335,11 +335,18 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
     $(QuestionID).after(strHTML);
   
     //Check for minwidth and maxwidth (only if not specifying the number of buttons)
-    if (intNumButtonsPrRow == 0) {
+    /*if (intNumButtonsPrRow == 0) {
       if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParams.minwidth);
       if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParams.maxwidth);
-    }
-    //Check for minheight and maxheight
+    }*/
+      //Made it so that if not null, we change the sizes
+      if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParams.minwidth);
+      if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParams.maxwidth);
+
+      
+      
+      
+      //Check for minheight and maxheight
     if (rsParams.minheight != null) {
       $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-height', rsParams.minheight);
     }
