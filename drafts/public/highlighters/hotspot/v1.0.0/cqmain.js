@@ -67,7 +67,7 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
     $('#btnNext').hide();
     $('#hotspotCanvas').click(function(e) {
     console.log(clickNumber, rsParam.minClicks);
-      if (clickNumber >= rsParam.minClicks) {
+      if (clickNumber >= Number(rsParam.minClicks)) {
         $('#btnNext').show();
       } else {
         $('#btnNext').hide();
