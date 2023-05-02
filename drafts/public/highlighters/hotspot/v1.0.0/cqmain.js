@@ -64,12 +64,13 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
 
   function addClickOption() {
     $(dataSelector).val("");
-    $('#btnNext').fadeOut(50);
+    $('#btnNext').hide();
     $('#hotspotCanvas').click(function(e) {
+    console.log(clickNumber, rsParam.minClicks);
       if (clickNumber >= rsParam.minClicks) {
-        $('#btnNext').fadeIn(50);
+        $('#btnNext').show();
       } else {
-        $('#btnNext').fadeOut(50);
+        $('#btnNext').hide();
       }
       if (clickNumber <= rsParam.maxClicks) getPosition(e);
       else return false;
@@ -111,7 +112,7 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
   window.resetTheClicks = function() {
     $("#hotspotReset").css("background-color", rsParam.spotColor);
     $("#Exclusive").css("background-color", "#FFFFFF");
-    $('#btnNext').fadeOut(50);
+    $('#btnNext').hide();
     $(dataSelector).val("");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     clickNumber = 1;
@@ -121,7 +122,7 @@ function rsVisButton(rsQno, rsSubqIndex, rsParam) {
   }
 
   window.exclusiveAns = function() {
-    $('#btnNext').fadeIn(50);
+    $('#btnNext').show();
     $(dataSelector).val(noneData);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     clickNumber = 1;
