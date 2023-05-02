@@ -215,8 +215,10 @@ function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
       let _intSliderIndex = Number(intSliderIndex);
       let _numSliderValue = numSliderValue;
   
-  
-      if (_numSliderValue >= rsParams.intSliderMinValue) {
+       //We need to add this line as otherwise empty is interpreted as 0, when creating the slider and sets 0 az initial value
+      if (numSliderValue===""){
+        $(_objQuestion).find(".cFInput:input").eq(_intSliderIndex).val("");
+      } else if (_numSliderValue >= rsParams.intSliderMinValue) {
         $(_objQuestion).find(".cFInput:input").eq(_intSliderIndex).val(Math.round(_numSliderValue).toFixed(rsParams.intSliderDecimals));
       } else if (numSliderValue == rsParams.intSliderOptOutValue) {
         //Set value if OptOut is selected
