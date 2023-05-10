@@ -339,9 +339,15 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
       if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParams.minwidth);
       if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParams.maxwidth);
     }*/
-      //Made it so that if not null, we change the sizes
-      if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParams.minwidth);
-      if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParams.maxwidth);
+
+          if(!rsParams.minwidth || !rsParams.maxwidth){
+            $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', '80%');
+            $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', '80%');
+          } else {
+            //Made it so that if not null, we change the sizes
+            if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParams.minwidth);
+            if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParams.maxwidth);
+          }
 
       
       
