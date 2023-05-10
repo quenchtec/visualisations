@@ -366,7 +366,8 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
         }
       });
       if (rsParams.imageautosizing) {
-        $(btnDivID).find('.rsBtn, .rsImgBtn').css('background-size', "contain");
+        //$(btnDivID).find('.rsBtn, .rsImgBtn').css('background-size', "contain");
+        $(btnDivID).find('.rsBtn, .rsImgBtn').css('background-size', "cover");
       }
     }
     //Check for setting width
