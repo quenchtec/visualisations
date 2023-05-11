@@ -6,12 +6,13 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
 
   const QuestionID = "#" + rsQno; //This we use in selectors to stay within the question
   const allTXTInputs = $(QuestionID).find(".rsRowOpen").find("input[type='text']");
-  const arrAllRows = document.getElementsByClassName("rsRowOpen");
+  //const arrAllRows = document.getElementsByClassName("rsRowOpen");
+  const arrAllRows = allTXTInputs.find(".rsRowOpen");
   HideFollowTextBoxes();
 
   rsParams.blnHideNextOnDuplicates = (typeof rsParams.blnHideNextOnDuplicates === "undefined") ? true : rsParams.blnHideNextOnDuplicates; // Hide the next button if duplicates were located
   rsParams.blnHighlightOnDuplicates = (typeof rsParams.blnHighlightOnDuplicates === "undefined") ? true : rsParams.blnHighlightOnDuplicates; // Highlight if duplicates were located
-rsParams.blnHideNextOnDuplicates = true;
+  rsParams.blnHideNextOnDuplicates = true;
   if (rsParams.blnHideNextOnDuplicates) {
     rsParams.blnHighlightOnDuplicates = true;
   }
