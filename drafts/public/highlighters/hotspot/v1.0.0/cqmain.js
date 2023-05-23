@@ -1,9 +1,9 @@
 //Call function to display buttons. The functions should ideally be a JavaScript common file
 //When called parameters rsQno, rsSubqIndex and an object containing the parameters set by the user, has been populated
-//rsHotSpots(rsQno, rsSubqIndex, rsParams)
+rsVisButton(rsQno, rsSubqIndex, rsParams)
 
 //Function for buttons
-function rsHotSpots(rsQno, rsSubqIndex, rsParam) {
+function rsVisButton(rsQno, rsSubqIndex, rsParam) {
   //Check for WCAG, if the flag is set, we do not do anything as these buttons are not WCAG compliant at crrent
   if ($('#btnToggleWcag').val() == 1) {
     return false;
