@@ -36,7 +36,7 @@ function rsVisHoriSlider(rsQno, rsSubqIndex, rsParams) { // Creates a basic slid
   //Undo  possible flex layout fromn standard Theme by adding our own class
   $(QuestionID).find('.rsSingleGrid').addClass('rsGridSlider');
   //Some styling setup
-  const sldHandleBackground = "var(--question_row_background_color)";
+  const sldHandleBackground = "var(--interactive_background_color)";
   const sldHandleCheckedBackground = "var(--button_background_color)";
   const sldBackground = "var(--question_row_background_color)"; //Slider background colour
   const sldFillColour = "var(--page_background_color)"; //Slider fill colour
