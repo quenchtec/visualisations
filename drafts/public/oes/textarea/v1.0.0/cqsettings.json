@@ -1,0 +1,11 @@
+{
+  "name": "TextArea",
+  "descr": "Open question",
+  "id": "rsTxtArea",
+  "props": "null",
+  "questionSupport": [
+    {
+      "type": "f"
+    }
+  ]
+}
