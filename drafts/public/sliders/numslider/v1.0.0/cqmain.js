@@ -3,7 +3,7 @@ function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
     //////////////////////////////////////////////////////
     //ALL SLIDER FUNCTIONALITY RELATED SETTINGS
     //rsParams.strHandlePosition = (typeof rsParams.strHandlePosition === "undefined") ? 0 : rsParams.strHandlePosition; //Where the handles starts on load (if offscale handle is needed, value must be less than the min value of the slider)
-    console.log(rsParams)
+    //console.log(rsQno)
     rsParams.intSliderMinValue = (typeof rsParams.intSliderMinValue === "undefined") ? 1 : rsParams.intSliderMinValue; // The min value of the slider
     rsParams.intSliderMaxValue = (typeof rsParams.intSliderMaxValue === "undefined") ? 7 : rsParams.intSliderMaxValue; //The max value of the slider
     rsParams.intSliderMinRestriction = (typeof rsParams.intSliderMinRestriction === "undefined") ? rsParams.intSliderMinValue : rsParams.intSliderMinRestriction; //Points to the first available value for selection
