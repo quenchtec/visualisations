@@ -108,7 +108,7 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
     slider.noUiSlider.on('update', function(values, handle, event) {
       let tooltip = $('.noUi-tooltip')[e];
       //Here?
-            console.log(tooltip);
+      //console.log(tooltip);
       if (rsParams.blnColumnToTooltip) {
         $(".noUi-tooltip").eq(tooltip).html(strAllHeaders.split("|")[Number(values) - 1]);
       }
