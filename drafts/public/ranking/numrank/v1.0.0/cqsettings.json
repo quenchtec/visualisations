@@ -1,0 +1,50 @@
+[
+  {
+      "id": "min",
+      "name": "Minimum number to rank",
+      "descr": "The minimum number to rank",
+      "type": "int",
+      "group": "Behaviour",
+      "value": 1
+  },
+  {
+      "id": "hideNextMin",
+      "name": "Hide next button until 'minimum' ranked",
+      "descr": "Hide the next button until 'minimum' is ranked",
+      "type": "boolean",
+      "group": "Behaviour",
+      "value": true
+  },
+  {
+      "id": "max",
+      "name": "maximum number to rank",
+      "descr": "The maximum number to rank",
+      "type": "int",
+      "group": "Behaviour",
+      "value": null
+  },
+  {
+      "id": "autonext",
+      "name": "Auto next",
+      "descr": "Automatically go next on when 'maximum' is ranked",
+      "type": "boolean",
+      "group": "Behaviour",
+      "value": false
+  },
+  {
+      "id": "prescript",
+      "name": "Pre script",
+      "descr": "Javascript to execute pre render",
+      "type": "string",
+      "group": "Advanced",
+      "value": ""
+  },
+  {
+      "id": "postscript",
+      "name": "Post script",
+      "descr": "Javascript to execute post render",
+      "type": "string",
+      "group": "Advanced",
+      "value": ""
+  }
+]

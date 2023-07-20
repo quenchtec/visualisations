@@ -1,0 +1,14 @@
+.rsBtnRank {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 20px;
+  width: 2em;
+  background-color: var(--button_text_color);
+  color: var(--button_text_color);
+  margin-right: 0;
+  margin-left: 5px;
+}
+
+.rsBtnRankSelected {
+  background-color: var(--button_background_color);
+}

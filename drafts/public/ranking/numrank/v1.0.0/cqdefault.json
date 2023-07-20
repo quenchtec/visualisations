@@ -1,0 +1,37 @@
+{
+  "type": "ques",
+  "attributes": {
+      "id": "Ranking"
+  },
+  "elements": [
+      {
+          "type": "subq",
+          "attributes": {
+              "type": "f",
+              "length": "9",
+              "decimals": "0"
+          },
+          "customQuestionId": "20f47c9e-25e1-4279-90b7-28e9eb3b3abb",
+          "elements": [
+              {
+                  "type": "stext",
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {
+                              "textType": "regular"
+                          },
+                          "textValues": {
+                              "en": ""
+                          }
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "type": "rgroup",
+          "elements": []
+      }
+  ]
+}
