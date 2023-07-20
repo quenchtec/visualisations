@@ -3,11 +3,13 @@ rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams)
 
 function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
   const QuestionID = "#" + rsQno;
+  let SubQIndex = rsSubqIndex; //This we use in selectors to stay within the question
   let intlengthFix = (typeof rsParams.blnOptOut === "undefined" || !rsParams.blnOptOut) ? 0 : 1;
   let strAllHeaders = "";
   let strAllHeadersPositions = "";
   let intMin = 1;
   let intMax = ($(".cCellHeader").length - 1) - intlengthFix;
+    $(QuestionID).find(".cTable").eq([SubQIndex]).addClass("rsRatingSlider").addClass("rsCQ");
 
   $(".cCellHeader").each(function(e) {
     if (e && (e <= intMax)) {
