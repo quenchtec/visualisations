@@ -5,8 +5,10 @@ function ClickRank(rsQno, rsSubqIndex, rsParams) {
     }
     //These parameters come from the settings the user have selected
     rsParams.autonext = (typeof rsParams.autonext === "undefined") ? true : rsParams.autonext;
-    rsParams.min = (typeof rsParams.min === "undefined") ? 0 : rsParams.min;
-    rsParams.max = (typeof rsParams.max === "undefined") ? 0 : rsParams.max;
+    //rsParams.min = (typeof rsParams.min === "undefined") ? 6 : rsParams.min;
+    //rsParams.max = (typeof rsParams.max === "undefined") ? 6 : rsParams.max;
+    rsParams.min = (typeof rsParams.min === "undefined") ? 6 : 6;
+    rsParams.max = (typeof rsParams.max === "undefined") ? 0 : 0;
     rsParams.hideNextMin = (typeof rsParams.hideNextMin === "undefined") ? true : rsParams.hideNextMin;
     rsParams.prescript = (typeof rsParams.prescript === "undefined") ? "" : rsParams.prescript;
     rsParams.postscript = (typeof rsParams.postscript === "undefined") ? "" : rsParams.postscript;
@@ -58,50 +60,54 @@ function ClickRank(rsQno, rsSubqIndex, rsParams) {
 }
 
 function checkClick(rsQno, rsParams, item) {
-  const QuestionID = "#" + rsQno;
-  let index = $(QuestionID).find('.cCellSubQuestion').attr('data-index');
-  const value = $(item).find('.cFInput').val();
-  
-  if (value === '') {
-    // We clicked an empty row
-    if (rsParams.max > 0 && index >= rsParams.max) {
-      return;
-    }
-    if (index >= rsParams.max) $('#btnNext').show();
-    index++;
-    $(item).find('.cFInput').val(index);
-    $(item).find('.cFInput').addClass('rsBtnRankSelected');
-    $(QuestionID).find('.cCellSubQuestion').attr('data-index', index);
-    if (rsParams.min > 0 && $('.cCellSubQuestion').length == 1) {
-      if (index >= rsParams.min) $('#btnNext').show();
-    }
-    if (rsParams.max > 0 && rsParams.autonext) {
-      if (index == rsParams.max) $('#btnNext').click();
-    }
-  } else {
-    // We clicked on an already ranked row
-    index = index - 1;
-    if (index < 0) index = 0;
-    $(item).find('.cFInput').removeClass('rsBtnRankSelected');
-    $(item).find('.cFInput').val('');
-    $(QuestionID).find('.cCellSubQuestion').attr('data-index', index);
+    const QuestionID = "#" + rsQno;
+    let index = parseInt($(QuestionID).find('.cCellSubQuestion').attr('data-index'));
+    const value = $(item).find('.cFInput').val();
 
-    // Recalculate the rankings for remaining clicked boxes
-    $(QuestionID).find('.rsRow').each(function() {
-      const thisValue = parseInt($(this).find('.cFInput').val());
-      if (thisValue !== '' && thisValue > value) {
-        // If thisValue is double-digit or greater than 10, decrement it by 1
-        if (thisValue >= 10 || thisValue >= rsParams.min) {
-          $(this).find('.cFInput').val(thisValue - 1);
-        } else {
-          // If thisValue is single-digit and less than 10, clear it
-          $(this).find('.cFInput').val('');
+    if (value === '') {
+        if (rsParams.max > 0 && index >= rsParams.max) {
+            return;
         }
-      }
-    });
+        if (index >= rsParams.max) $('#btnNext').show();
+        index++;
+        $(item).find('.cFInput').val(index);
+        $(item).find('.cFInput').addClass('rsBtnRankSelected');
+        $(QuestionID).find('.cCellSubQuestion').attr('data-index', index);
 
-    if (rsParams.min > 0 && $('.cCellSubQuestion').length == 1) {
-      if (index < rsParams.min) $('#btnNext').hide();
+        if (rsParams.max > 0 && rsParams.autonext) {
+            if (index == rsParams.max) $('#btnNext').click();
+        }
+    } else {
+        index = index - 1;
+        if (index < 0) index = 0;
+        $(item).find('.cFInput').removeClass('rsBtnRankSelected');
+        $(item).find('.cFInput').val('');
+        $(QuestionID).find('.cCellSubQuestion').attr('data-index', index);
+
+        // Recalculate the rankings for remaining clicked boxes
+        const rankedItems = [];
+        $(QuestionID).find('.rsRow').each(function() {
+            const thisValue = parseInt($(this).find('.cFInput').val());
+            if (!isNaN(thisValue)) {
+                rankedItems.push(thisValue);
+            }
+        });
+
+        rankedItems.sort((a, b) => a - b); // Sort ranked items in ascending order
+
+        // Reassign new sequential values to the remaining ranked items
+        for (let i = 0; i < rankedItems.length; i++) {
+            $(QuestionID).find('.rsRow').each(function() {
+                const oldValue = parseInt($(this).find('.cFInput').val());
+                if (oldValue === rankedItems[i]) {
+                    $(this).find('.cFInput').val(i + 1);
+                    $(this).find('.cFInput').addClass('rsBtnRankSelected');
+                }
+            });
+        }
+
+        if (rsParams.min > 0 && $('.cCellSubQuestion').length == 1) {
+            if (index < rsParams.min) $('#btnNext').hide();
+        }
     }
-  }
 }
