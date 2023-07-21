@@ -1,4 +1,4 @@
-rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams)
+//rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams)
 
 
 function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
