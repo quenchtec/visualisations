@@ -5,10 +5,8 @@ function ClickRank(rsQno, rsSubqIndex, rsParams) {
     }
     //These parameters come from the settings the user have selected
     rsParams.autonext = (typeof rsParams.autonext === "undefined") ? true : rsParams.autonext;
-    //rsParams.min = (typeof rsParams.min === "undefined") ? 6 : rsParams.min;
-    //rsParams.max = (typeof rsParams.max === "undefined") ? 6 : rsParams.max;
-    rsParams.min = (typeof rsParams.min === "undefined") ? 6 : 6;
-    rsParams.max = (typeof rsParams.max === "undefined") ? 0 : 0;
+    rsParams.min = (typeof rsParams.min === "undefined") ? 0 : rsParams.min;
+    rsParams.max = (typeof rsParams.max === "undefined") ? 0 : rsParams.max;
     rsParams.hideNextMin = (typeof rsParams.hideNextMin === "undefined") ? true : rsParams.hideNextMin;
     rsParams.prescript = (typeof rsParams.prescript === "undefined") ? "" : rsParams.prescript;
     rsParams.postscript = (typeof rsParams.postscript === "undefined") ? "" : rsParams.postscript;
