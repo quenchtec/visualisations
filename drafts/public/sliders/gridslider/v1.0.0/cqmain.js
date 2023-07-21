@@ -304,4 +304,6 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
       intCountPips++;
     });
   }
+  let date = new Date(Date.now());
+  console.log('GH LL - Formatted Time:', date.toLocaleTimeString());
 }
