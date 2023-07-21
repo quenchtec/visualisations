@@ -305,5 +305,5 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
     });
   }
   let date = new Date(Date.now());
-  console.log('GH LL - Formatted Time:', date.toLocaleTimeString());
+  console.log('global page ready - Formatted Time:', date.toLocaleTimeString());
 }
