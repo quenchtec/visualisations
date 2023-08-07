@@ -446,6 +446,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
     }
   }
   window.rsScrollingGridNextClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext) {
+    $(window).scrollTop(0);
     let wrapNo = parseInt($(scrollDivID).find('.rsScrollGridContent').data('wrapNo'));
     if (wrapNo < intNumRows - 1) {
       wrapNo++;
