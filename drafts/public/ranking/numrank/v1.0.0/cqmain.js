@@ -109,6 +109,10 @@ function checkClick(rsQno, rsParams, item) {
         }
     }
         if (rsParams.min > 0 && $('.cCellSubQuestion').length == 1) {
-            if (index < rsParams.min) $('#btnNext').hide();
+        if (index < rsParams.min) {
+            $('#btnNext').hide();
+        }else{
+            $('#btnNext').show();
+        }
         }
 }
