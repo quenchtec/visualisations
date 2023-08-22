@@ -157,7 +157,12 @@ form{
 input[type="text"]:focus {
   outline: none;
 }
-
+/* Turn off spinners */
+ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     margin: 0;
+}
 .cTextInput{
     outline: none;
     padding: var(--answer_opens_padding);
@@ -724,9 +729,10 @@ background-color: var(--question_selected_background_color);
 
 /* #### THIS IS FOR THE CUSTOM RANKING ####*/
 .rsNumeric > tbody > .rsRow > .cCellLastValue:has(.rsBtnRank) > .cFInput{
-    padding-left: 15px !important;
+    /*padding-left: 15px !important;*/
     width: 27px !important;
     font-size: var(--question_font_size) !important;
+    text-align: center;
 }
 
 
@@ -1093,4 +1099,14 @@ background-color: var(--question_selected_background_color);
          min-height: -webkit-fill-available*/
     }
 
+}
+
+
+
+
+/* Turn off spinners */
+ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     margin: 0;
 }
