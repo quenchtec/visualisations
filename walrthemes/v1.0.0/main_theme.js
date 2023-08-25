@@ -1,4 +1,4 @@
-themePageReady();
+//themePageReady();
 function themePageReady() {
     alert("test");
     console.log("TPR call");
