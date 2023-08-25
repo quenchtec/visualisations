@@ -19,10 +19,10 @@ $(document).ready(function() {
 function cthemePageReady() {
     //alert("test");
     //console.log("TPR call");
-    $(document).ready(function () {
+    //$(document).ready(function () {
         ghostText("Please, type in...");
         gridUpdate();
-    });
+    //});
 
     function isMobileDevice() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
