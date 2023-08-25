@@ -69,7 +69,7 @@ function cthemePageReady() {
 $(document).ready(function() {
     // Create a MutationObserver when the document is fully loaded
          console.log("doc ready");
-
+ cthemePageReady();
     var targetNode = document.getElementById('rsPanelMain');
     var config = { attributes: true, childList: true, subtree: true };
     var observer = new MutationObserver(function(mutationsList, observer) {
