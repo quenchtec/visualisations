@@ -1,5 +1,27 @@
+// Define the target node
+var targetNode = document.querySelector('.cTable');
+
+// Create a MutationObserver instance
+var observer = new MutationObserver(function(mutationsList) {
+    for (var mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            // Call your function when changes are detected
+            cthemePageReady();
+        }
+    }
+});
+
+// Configuration of the observer:
+var config = { childList: true, subtree: true };
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
+
+
+
+
 //themePageReady();
-function themePageReady() {
+function cthemePageReady() {
     alert("test");
     console.log("TPR call");
     $(document).ready(function () {
