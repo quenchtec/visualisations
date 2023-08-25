@@ -101,6 +101,7 @@ function cthemePageReady() {
                 //console.log("TPR MOB GU call");
                 $(".rsRow").each(function () { $(this).children(".cCell").each(function (e) { $(this).append($("#h_" + gridIND + "_" + e).clone()); }); });
                 $("td.cCellHeader").parent().remove();
+                break;
             } else {
                 //console.log("TPR DESK GU call");
                 let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
