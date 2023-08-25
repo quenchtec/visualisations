@@ -1,10 +1,12 @@
 
 $(document).ready(function() {
+                console.log("doc ready");
     var targetNode = document.getElementById('rsPanelMain');
     var config = { attributes: true, childList: true, subtree: true };
     var callback = function(mutationsList, observer) {
         for(var mutation of mutationsList) {
             if (mutation.type === 'childList') {
+                console.log("call c theme");
                 cthemePageReady(); // Call your function here
             }
         }
