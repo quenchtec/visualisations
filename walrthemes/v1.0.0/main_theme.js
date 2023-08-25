@@ -103,8 +103,11 @@ function cthemePageReady() {
             //rearrange the grid for mobiles
             if (isMobileDevice()) {
                 //console.log("TPR MOB GU call");
+                              setTimeout(function () {
+
                 $(".rsRow").each(function () { $(this).children(".cCell").each(function (e) { $(this).append($("#h_" + gridIND + "_" + e).clone()); }); });
                 $("td.cCellHeader").parent().remove();
+                }, 100);
             } else {
                 //console.log("TPR DESK GU call");
                 let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
