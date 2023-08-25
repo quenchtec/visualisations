@@ -27,7 +27,7 @@ $(document).ready(function() {
 
 //themePageReady();
 function cthemePageReady() {
-    alert("test");
+    //alert("test");
     console.log("TPR call");
     $(document).ready(function () {
         ghostText("Please, type in...");
