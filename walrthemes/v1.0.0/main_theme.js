@@ -60,7 +60,7 @@ function cthemePageReady() {
 }
 */
 $(document).ready(function() {
-    var targetNode = $('.rsPanelMain')[0];
+    var targetNode = document.querySelector('.rsPanelMain');    
     var config = { attributes: true, childList: true, subtree: true };
     var callback = function(mutationsList, observer) {
         for(var mutation of mutationsList) {
