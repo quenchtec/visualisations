@@ -1,11 +1,15 @@
 $(document).ready(function() {
+    console.log("Doc ready");
     var targetNode = $('.cTable')[0];
 
     var config = { attributes: true, childList: true, subtree: true };
 
     var callback = function(mutationsList, observer) {
+    console.log("callback");
         for(var mutation of mutationsList) {
+            console.log("for loop");
             if (mutation.type === 'childList') {
+                console.log("call ctheme");
                 cthemePageReady(); // Call your function here
             }
         }
@@ -13,6 +17,9 @@ $(document).ready(function() {
 
     var observer = new MutationObserver(callback);
     observer.observe(targetNode, config);
+                console.log("cold call ctheme");
+
+    cthemePageReady();
 });
 
 
