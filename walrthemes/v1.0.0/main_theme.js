@@ -22,6 +22,8 @@ function cthemePageReady() {
     //$(document).ready(function () {
         ghostText("Please, type in...");
         gridUpdate();
+            console.log("afterc all");
+
     //});
 
     function isMobileDevice() {
