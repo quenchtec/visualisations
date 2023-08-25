@@ -1,7 +1,6 @@
-/*
 
 $(document).ready(function() {
-    var targetNode = $('.rsPanelMain')[0];
+    var targetNode = document.getElementById('rsPanelMain');
     var config = { attributes: true, childList: true, subtree: true };
     var callback = function(mutationsList, observer) {
         for(var mutation of mutationsList) {
@@ -19,7 +18,7 @@ $(document).ready(function() {
 //themePageReady();
 function cthemePageReady() {
     //alert("test");
-    console.log("TPR call");
+    //console.log("TPR call");
     $(document).ready(function () {
         ghostText("Please, type in...");
         gridUpdate();
@@ -29,7 +28,7 @@ function cthemePageReady() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
     function ghostText(custText) {
-        console.log("TPR GT call");
+        //console.log("TPR GT call");
         $('.cTextInput').each(function () {
             $(this).attr("placeholder", custText);
         });
@@ -56,9 +55,10 @@ function cthemePageReady() {
             }
         }
     }
-
 }
-*/
+
+/*
+
 $(document).ready(function() {
     // Create a MutationObserver when the document is fully loaded
     var targetNode = document.getElementById('rsPanelMain');
@@ -117,5 +117,10 @@ function cthemePageReady() {
         
     }
 }
+
+
+*/
+
+
 
 
