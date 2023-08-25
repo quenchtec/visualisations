@@ -120,8 +120,6 @@ function cthemePageReady() {
                 }, 100);
             }
         }
-        break;
-
     }
 }
 
