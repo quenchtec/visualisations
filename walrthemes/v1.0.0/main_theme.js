@@ -60,16 +60,17 @@ function cthemePageReady() {
 }
 */
 $(document).ready(function() {
-    var targetNode = document.querySelector('.rsPanelMain');    
+    // Create a MutationObserver when the document is fully loaded
+    var targetNode = document.querySelector('.rsPanelMain');
     var config = { attributes: true, childList: true, subtree: true };
-    var callback = function(mutationsList, observer) {
+    var observer = new MutationObserver(function(mutationsList, observer) {
         for(var mutation of mutationsList) {
             if (mutation.type === 'childList') {
                 cthemePageReady(); // Call your function here
+                break; // We've handled the mutation, no need to continue
             }
         }
-    };
-    var observer = new MutationObserver(callback);
+    });
     observer.observe(targetNode, config);
 });
 
