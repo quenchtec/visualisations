@@ -1,5 +1,6 @@
 themePageReady();
 function themePageReady() {
+    alert("test");
     console.log("TPR call");
     $(document).ready(function () {
         ghostText("Please, type in...");
@@ -42,6 +43,8 @@ function themePageReady() {
 
 sthemePageReady();
 function sthemePageReady() {
+        alert("S test");
+
     console.log("sTPR call");
     $(document).ready(function () {
         ghostText("Please, type in...");
