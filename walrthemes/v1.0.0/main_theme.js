@@ -91,6 +91,8 @@ function cthemePageReady() {
     }
     
     function gridUpdate() {
+        console.log("TPR GU call");
+
         if (($(".cTable").hasClass("rsSingleGrid") || $(".cTable").hasClass("rsMultiGrid")) && (!$(".cTable").hasClass("rsCQ"))) {
             let gridID = $(".rsSingleGrid, .rsMultiGrid").prop("id");
             let gridIND = gridID.split("_")[1];
