@@ -1,6 +1,6 @@
 $(document).ready(function() {
     console.log("Doc ready");
-    var targetNode = $('.cTable')[0];
+    var targetNode = $('.rsPanelMain')[0];
 
     var config = { attributes: true, childList: true, subtree: true };
 
