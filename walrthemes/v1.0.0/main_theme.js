@@ -83,7 +83,11 @@ $(document).ready(function() {
 
 function cthemePageReady() {
     ghostText("Please, type in...");
-    gridUpdate();
+   $(".rsSingleGrid, .rsMultiGrid").each(function(){
+     if($(this).hasClass("rsProcessedGrid")){
+         gridUpdate($(this));
+     }
+   });
     function isMobileDevice() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
@@ -95,18 +99,20 @@ function cthemePageReady() {
         });
     }
     
-    function gridUpdate() {
+    function gridUpdate(grid_this) {
+      let _grid_this = grid_this;
+      let gridID = $(_grid_this).prop("id");
 
-        if (($(".cTable").hasClass("rsSingleGrid") || $(".cTable").hasClass("rsMultiGrid")) && (!$(".cTable").hasClass("rsCQ"))) {
-            let gridID = $(".rsSingleGrid, .rsMultiGrid").prop("id");
+      if (($(_grid_this).hasClass("rsSingleGrid") || $(_grid_this).hasClass("rsMultiGrid")) && (!$(_grid_this).hasClass("rsCQ")) && (!$(_grid_this).hasClass("rsProcessedGrid"))) {
+            //let gridID = $(".rsSingleGrid, .rsMultiGrid").prop("id");
             let gridIND = gridID.split("_")[1];
+              $(gridID).addClass("rsProcessedGrid");
             //rearrange the grid for mobiles
             if (isMobileDevice()) {
                 //console.log("TPR MOB GU call");
-                              setTimeout(function () {
-
-                $(".rsRow").each(function () { $(this).children(".cCell").each(function (e) { $(this).append($("#h_" + gridIND + "_" + e).clone()); }); });
-                $("td.cCellHeader").parent().remove();
+                setTimeout(function () {
+                  $(".rsRow").each(function () { $(this).children(".cCell").each(function (e) { $(this).append($("#h_" + gridIND + "_" + e).clone()); }); });
+                  $("td.cCellHeader").parent().remove();
                 }, 100);
             } else {
                 //console.log("TPR DESK GU call");
