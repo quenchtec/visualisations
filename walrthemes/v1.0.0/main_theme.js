@@ -1,4 +1,4 @@
-
+themePageReady();
 function themePageReady() {
     console.log("TPR call");
     $(document).ready(function () {
