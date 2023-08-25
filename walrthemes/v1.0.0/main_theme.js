@@ -1,4 +1,5 @@
 function themePageReady() {
+    alert("TEST");
     $(document).ready(function () {
         ghostText("Please, type in...");
         gridUpdate();
