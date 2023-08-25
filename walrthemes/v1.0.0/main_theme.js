@@ -109,13 +109,14 @@ function cthemePageReady() {
     function gridUpdate(grid_this) {
       let _grid_this = grid_this;
       let gridID = $(_grid_this).prop("id");
-       console.log("add rsProcessedGrid to ", gridID);
 
       
       if (($(_grid_this).hasClass("rsSingleGrid") || $(_grid_this).hasClass("rsMultiGrid")) && (!$(_grid_this).hasClass("rsCQ")) && (!$(_grid_this).hasClass("rsProcessedGrid"))) {
             //let gridID = $(".rsSingleGrid, .rsMultiGrid").prop("id");
             let gridIND = gridID.split("_")[1];
-              $(gridID).addClass("rsProcessedGrid");
+             console.log("add rsProcessedGrid to ", gridID);
+              $("#"+gridID).addClass("rsProcessedGrid");
+        
             //rearrange the grid for mobiles
             if (isMobileDevice()) {
                 //console.log("TPR MOB GU call");
