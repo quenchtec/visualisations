@@ -68,11 +68,15 @@ function cthemePageReady() {
 
 $(document).ready(function() {
     // Create a MutationObserver when the document is fully loaded
+         console.log("doc ready");
+
     var targetNode = document.getElementById('rsPanelMain');
     var config = { attributes: true, childList: true, subtree: true };
     var observer = new MutationObserver(function(mutationsList, observer) {
         for(var mutation of mutationsList) {
             if (mutation.type === 'childList') {
+                       console.log("call the theme in mutation");
+
                 cthemePageReady(); // Call your function here
                 break; // We've handled the mutation, no need to continue
             }
@@ -82,9 +86,12 @@ $(document).ready(function() {
 });
 
 function cthemePageReady() {
+           console.log("inside cthemePageReady");
+
     ghostText("Please, type in...");
    $(".rsSingleGrid, .rsMultiGrid").each(function(){
      if(!$(this).hasClass("rsProcessedGrid")){
+       console.log("rsProcessedGrid is not in calsses");
          gridUpdate($(this));
      }
    });
@@ -102,7 +109,9 @@ function cthemePageReady() {
     function gridUpdate(grid_this) {
       let _grid_this = grid_this;
       let gridID = $(_grid_this).prop("id");
+       console.log("add rsProcessedGrid to ", gridID);
 
+      
       if (($(_grid_this).hasClass("rsSingleGrid") || $(_grid_this).hasClass("rsMultiGrid")) && (!$(_grid_this).hasClass("rsCQ")) && (!$(_grid_this).hasClass("rsProcessedGrid"))) {
             //let gridID = $(".rsSingleGrid, .rsMultiGrid").prop("id");
             let gridIND = gridID.split("_")[1];
