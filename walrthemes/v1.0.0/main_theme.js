@@ -61,7 +61,7 @@ function cthemePageReady() {
 */
 $(document).ready(function() {
     // Create a MutationObserver when the document is fully loaded
-    var targetNode = document.querySelector('.rsPanelMain');
+    var targetNode = document.getElementById('rsPanelMain');
     var config = { attributes: true, childList: true, subtree: true };
     var observer = new MutationObserver(function(mutationsList, observer) {
         for(var mutation of mutationsList) {
