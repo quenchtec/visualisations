@@ -8,6 +8,7 @@ $(document).ready(function() {
             if (mutation.type === 'childList') {
                 console.log("call c theme");
                 cthemePageReady(); // Call your function here
+              break;
             }
         }
     };
