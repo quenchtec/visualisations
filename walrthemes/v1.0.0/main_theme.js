@@ -98,12 +98,12 @@ function cthemePageReady() {
             let gridIND = gridID.split("_")[1];
             //rearrange the grid for mobiles
             if (isMobileDevice()) {
-                console.log("TPR MOB GU call");
+                //console.log("TPR MOB GU call");
                 $(".rsRow").each(function () { $(this).children(".cCell").each(function (e) { $(this).append($("#h_" + gridIND + "_" + e).clone()); }); });
                 $("td.cCellHeader").parent().remove();
                 break;
             } else {
-                console.log("TPR DESK GU call");
+                //console.log("TPR DESK GU call");
                 let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
                 var cHeight = 19;
                 $(".cCellFirstHeader").css("min-width", 100 / colLength + 'rem');
