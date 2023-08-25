@@ -1,21 +1,19 @@
-// Define the target node
-var targetNode = document.querySelector('.cTable');
+$(document).ready(function() {
+    var targetNode = $('.cTable')[0];
 
-// Create a MutationObserver instance
-var observer = new MutationObserver(function(mutationsList) {
-    for (var mutation of mutationsList) {
-        if (mutation.type === 'childList') {
-            // Call your function when changes are detected
-            cthemePageReady();
+    var config = { attributes: true, childList: true, subtree: true };
+
+    var callback = function(mutationsList, observer) {
+        for(var mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+                cthemePageReady(); // Call your function here
+            }
         }
-    }
+    };
+
+    var observer = new MutationObserver(callback);
+    observer.observe(targetNode, config);
 });
-
-// Configuration of the observer:
-var config = { childList: true, subtree: true };
-
-// Start observing the target node for configured mutations
-observer.observe(targetNode, config);
 
 
 
