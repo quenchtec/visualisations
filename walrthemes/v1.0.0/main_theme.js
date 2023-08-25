@@ -1,4 +1,5 @@
 
+/*
 $(document).ready(function() {
                 console.log("doc ready");
     var targetNode = document.getElementById('rsPanelMain');
@@ -62,7 +63,8 @@ function cthemePageReady() {
     }
 }
 
-/*
+
+*/
 
 $(document).ready(function() {
     // Create a MutationObserver when the document is fully loaded
@@ -81,10 +83,7 @@ $(document).ready(function() {
 
 function cthemePageReady() {
     ghostText("Please, type in...");
-
     gridUpdate();
-    
-    
     function isMobileDevice() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
@@ -106,7 +105,6 @@ function cthemePageReady() {
                 //console.log("TPR MOB GU call");
                 $(".rsRow").each(function () { $(this).children(".cCell").each(function (e) { $(this).append($("#h_" + gridIND + "_" + e).clone()); }); });
                 $("td.cCellHeader").parent().remove();
-                break;
             } else {
                 //console.log("TPR DESK GU call");
                 let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
@@ -119,12 +117,11 @@ function cthemePageReady() {
                 }, 100);
             }
         }
-        
+        break;
+
     }
 }
 
-
-*/
 
 
 
