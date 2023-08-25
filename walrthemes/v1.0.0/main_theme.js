@@ -84,23 +84,24 @@ function cthemePageReady() {
     }
     
     function ghostText(custText) {
-        console.log("TPR GT call");
+        //console.log("TPR GT call");
         $('.cTextInput').each(function () {
             $(this).attr("placeholder", custText);
         });
     }
     
     function gridUpdate() {
-        console.log("TPR GU call");
 
         if (($(".cTable").hasClass("rsSingleGrid") || $(".cTable").hasClass("rsMultiGrid")) && (!$(".cTable").hasClass("rsCQ"))) {
             let gridID = $(".rsSingleGrid, .rsMultiGrid").prop("id");
             let gridIND = gridID.split("_")[1];
             //rearrange the grid for mobiles
             if (isMobileDevice()) {
+        console.log("TPR MOB GU call");
                 $(".rsRow").each(function () { $(this).children(".cCell").each(function (e) { $(this).append($("#h_" + gridIND + "_" + e).clone()); }); });
                 $("td.cCellHeader").parent().remove();
             } else {
+        console.log("TPR DESK GU call");
                 let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
                 var cHeight = 19;
                 $(".cCellFirstHeader").css("min-width", 100 / colLength + 'rem');
