@@ -1,6 +1,6 @@
 
 function themePageReady() {
-    alert("TEST");
+    console.log("TPR call");
     $(document).ready(function () {
         ghostText("Please, type in...");
         gridUpdate();
@@ -10,11 +10,14 @@ function themePageReady() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
     function ghostText(custText) {
+        console.log("TPR GT call");
         $('.cTextInput').each(function () {
             $(this).attr("placeholder", custText);
         });
     }
     function gridUpdate() {
+        console.log("TPR GU call");
+
         if (($(".cTable").hasClass("rsSingleGrid") || $(".cTable").hasClass("rsMultiGrid")) && (!$(".cTable").hasClass("rsCQ"))) {
             let gridID = $(".rsSingleGrid, .rsMultiGrid").prop("id");
             let gridIND = gridID.split("_")[1];
