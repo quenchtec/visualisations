@@ -545,6 +545,10 @@ input[type="text"]:focus {
     margin-bottom: -25px;
     display: none;
 }
+
+.rsEmptyFinalRow{
+	height: 20px;
+}
 /*######################################################*/
 /*######################################################*/
 /*######################################################*/
@@ -926,9 +930,18 @@ background-color: var(--question_selected_background_color);
     justify-content: center;
     align-content: flex-start;
 }
-
+*/
 /* END UI-SLIDER CSS*/
 
+
+
+
+/* noUI-SLIDER GRID CSS*/
+.rsRatingSlider > tbody > .rsRow {
+	height: 140px !important;
+}
+
+/* END noUI-SLIDER GRID CSS*/
 
 /*########### END CUSTOM QUESTIONS CSS#############*/
 /*######################################################*/
