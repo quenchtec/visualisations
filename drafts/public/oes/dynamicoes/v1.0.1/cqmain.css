@@ -1,0 +1,15 @@
+.rsRowOpen>.cCell~.cCell {
+  display: flex;
+}
+
+.rsRowOpen {
+  display: flex;
+}
+
+.oeShowError {
+  background-color: rgba(255, 0, 0, 0.138);
+}
+
+.cTextInput {
+  max-width: 100%;
+}

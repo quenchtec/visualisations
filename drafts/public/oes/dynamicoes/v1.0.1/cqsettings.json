@@ -1,0 +1,50 @@
+[
+  {
+      "id": "blnHideNextOnDuplicates",
+      "name": "Hide Next Button on Duplicates",
+      "descr": "Set to true if you want the next button to be removed on duplicated answers. Not recomended as it prevents data quality control. (If true, then highlighting the duplicates is automatically activated.",
+      "type": "boolean",
+      "group": "Behaviour",
+      "value": false
+  },
+  {
+      "id": "blnHighlightOnDuplicates",
+      "name": "Duplicates highlighter",
+      "descr": "Set to true if you want the duplicated answers to be visible.",
+      "type": "boolean",
+      "group": "Behaviour",
+      "value": false
+  },
+  {
+      "id": "blnHideNextOpenEnd",
+      "name": "Hide initial open ends",
+      "descr": "Set to false if you want all open ends to be visible from the very begining.",
+      "type": "boolean",
+      "group": "Behaviour",
+      "value": true
+  },
+  {
+      "id": "blnHideAnswerText",
+      "name": "Hide answers text",
+      "descr": "Set to false if you want to show the answers text.",
+      "type": "boolean",
+      "group": "Behaviour",
+      "value": true
+  },
+  {
+      "id": "prescript",
+      "name": "Pre script",
+      "descr": "Javascript to execute pre render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+  },
+  {
+      "id": "postscript",
+      "name": "Post script",
+      "descr": "Javascript to execute post render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+  }
+]

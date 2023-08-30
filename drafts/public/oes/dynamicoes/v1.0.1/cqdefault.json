@@ -1,0 +1,129 @@
+{
+  "type": "ques",
+  "elements": [
+      {
+          "type": "subq",
+          "attributes": {
+              "type": "m",
+              "range": "*"
+          },
+          "elements": [
+              {
+                  "type": "stext",
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "textValues": {
+                              "en": "<p>What are the brands that come to your mind?</p>"
+                          }
+                      },
+                      {
+                          "type": "text",
+                          "attributes": {
+                              "textType": "do"
+                          },
+                          "textValues": {
+                              "en": "<p>Please use the box(es) below.</p>"
+                          }
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "type": "rgroup",
+          "elements": [
+              {
+                  "type": "other",
+                  "attributes": {},
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "elements": [],
+                          "textValues": {
+                              "en": "<p>1</p>"
+                          }
+                      }
+                  ]
+              },
+              {
+                  "type": "other",
+                  "attributes": {},
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "elements": [],
+                          "textValues": {
+                              "en": "<p>2</p>"
+                          }
+                      }
+                  ]
+              },
+              {
+                  "type": "other",
+                  "attributes": {},
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "elements": [],
+                          "textValues": {
+                              "en": "<p>3</p>"
+                          }
+                      }
+                  ]
+              },
+              {
+                  "type": "other",
+                  "attributes": {},
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "elements": [],
+                          "textValues": {
+                              "en": "<p>4</p>"
+                          }
+                      }
+                  ]
+              },
+              {
+                  "type": "other",
+                  "attributes": {},
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "elements": [],
+                          "textValues": {
+                              "en": "<p>5</p>"
+                          }
+                      }
+                  ]
+              },
+              {
+                  "type": "r",
+                  "attributes": {
+                      "exclusive": "yes"
+                  },
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "elements": [],
+                          "textValues": {
+                              "en": "<p>Nothing comes to mind</p>"
+                          }
+                      }
+                  ]
+              }
+          ]
+      }
+  ],
+  "referenceQuesTypes": [
+      "m"
+  ]
+}
