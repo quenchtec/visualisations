@@ -1,0 +1,72 @@
+{
+  "type": "ques",
+  "attributes": {
+    "id": "ESSAY"
+  },
+  "elements": [
+    {
+      "type": "subq",
+      "attributes": {
+        "type": "m",
+        "range": "*"
+      },
+      "script": "",
+      "elements": [
+        {
+          "type": "stext",
+          "attributes": {},
+          "elements": [
+            {
+              "type": "text",
+              "attributes": {
+                "miext:grId": ""
+              },
+              "elements": [],
+              "textValues": {
+                "en": "<p>Let us know what you think!</p>"
+              }
+            },
+            {
+              "type": "text",
+              "attributes": {
+                "miext:grId": "",
+                "textType": "do"
+              },
+              "elements": [],
+              "textValues": {
+                "en": "<p></p>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "rgroup",
+      "attributes": {},
+      "elements": [
+        {
+          "type": "other",
+          "attributes": {
+            "lines": "7"
+          },
+          "elements": [
+            {
+              "type": "text",
+              "attributes": {
+                "miext:grId": ""
+              },
+              "elements": [],
+              "textValues": {
+                "en": "<p>Please specify</p>"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "referenceQuesTypes": [
+    "m"
+  ]
+}

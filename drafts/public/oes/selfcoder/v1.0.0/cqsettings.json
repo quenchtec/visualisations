@@ -1,0 +1,42 @@
+[
+  {
+      "id": "strLink",
+      "name": "Link",
+      "descr": "Full link pointing ot the excel file holding the values for autocoding.",
+      "type": "string",
+      "group": "Behaviour",
+      "value": ""
+  },
+  {
+      "id": "minLength",
+      "name": "Minimum length for showing next answer.",
+      "descr": "The amount of characters needed to show the next open end box.",
+      "type": "int",
+      "group": "Behaviour",
+      "value": 3
+  },
+  {
+      "id": "blnTest",
+      "name": "Turn on test mode",
+      "descr": "Show all hidden elements on the page.",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": false
+  },
+  {
+      "id": "prescript",
+      "name": "Pre script",
+      "descr": "Javascript to execute pre render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+  },
+  {
+      "id": "postscript",
+      "name": "Post script",
+      "descr": "Javascript to execute post render",
+      "type": "Code",
+      "group": "Advanced",
+      "value": ""
+  }
+]
