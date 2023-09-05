@@ -1,0 +1,85 @@
+{
+  "type": "ques",
+  "attributes": {
+      "id": ""
+  },
+  "elements": [
+      {
+          "type": "subq",
+          "attributes": {
+              "type": "rn",
+              "range": "*"
+          },
+          "customQuestionId": "",
+          "elements": [
+              {
+                  "type": "stext",
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "textValues": {}
+                      },
+                      {
+                          "type": "text",
+                          "attributes": {
+                              "textType": "do"
+                          },
+                          "textValues": {}
+                      }
+                  ]
+              },
+              {
+                  "type": "hgroup",
+                  "elements": [
+                      {
+                          "type": "h",
+                          "elements": [
+                              {
+                                  "type": "text",
+                                  "attributes": {},
+                                  "textValues": {}
+                              }
+                          ]
+                      },
+                      {
+                          "type": "h",
+                          "elements": [
+                              {
+                                  "type": "text",
+                                  "attributes": {},
+                                  "textValues": {}
+                              }
+                          ]
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "type": "rgroup",
+          "elements": [
+              {
+                  "type": "r",
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "textValues": {}
+                      }
+                  ]
+              },
+              {
+                  "type": "r",
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "textValues": {}
+                      }
+                  ]
+              }
+          ]
+      }
+  ]
+}
