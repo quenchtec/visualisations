@@ -1,0 +1,82 @@
+{
+    "type": "ques",
+    "attributes": {
+        "id": "WISTIA",
+        "vcdir": "free"
+    },
+    "elements": [
+        {
+            "type": "subq",
+            "attributes": {
+                "type": "n",
+                "range": "*"
+            },
+            "customQuestionId": "81c3725d-0382-422c-9b35-77b2948dde1c",
+            "_internal_qno": "WISTIA",
+            "elements": [
+                {
+                    "type": "stext",
+                    "customQuestionId": "81c3725d-0382-422c-9b35-77b2948dde1c",
+                    "_internal_qno": "WISTIA",
+                    "elements": [
+                        {
+                            "type": "text",
+                            "attributes": {
+                                "textType": "regular"
+                            },
+                            "textValues": {
+                                "en": "Please watch the video, thank you! "
+                            }
+                        },
+                        {
+                            "type": "text",
+                            "attributes": {
+                                "textType": "say"
+                            },
+                            "textValues": {
+                                "en": "Did the video play fine, without any issues?"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "rgroup",
+            "elements": [
+                {
+                    "type": "r",
+                    "attributes": {
+                        "code": "1"
+                    },
+                    "elements": [
+                        {
+                            "type": "text",
+                            "attributes": {},
+                            "elements": [],
+                            "textValues": {
+                                "en": "Yes"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "other",
+                    "attributes": {
+                        "code": "2"
+                    },
+                    "elements": [
+                        {
+                            "type": "text",
+                            "attributes": {},
+                            "elements": [],
+                            "textValues": {
+                                "en": "No"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

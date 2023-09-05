@@ -1,0 +1,82 @@
+[
+    {
+        "id": "strVideoID",
+        "name": "Video ID",
+        "descr": "The video ID (most commonly located in the video link itself)",
+        "type": "string",
+        "group": "Setup",
+        "value": "g2s6z25505"
+    },
+    {
+        "id": "blnPopup",
+        "name": "Popup",
+        "descr": "Show the video in a thumbnail and increase in a popup-like form when started",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": false
+    },
+    {
+        "id": "blnResponsiveThumbnail",
+        "name": "Responsive thumbnail",
+        "descr": "Resize the thumbnail based on the width of the element (fills the question text width (needs popup to be turned on)",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": false
+    },
+    {
+        "id": "blnDisablePause",
+        "name": "Disable Pause",
+        "descr": "Disable pausing the video.",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": true
+    },
+    {
+        "id": "blnFollowUp",
+        "name": "Follow up question",
+        "descr": "Asking the respondent if the video played fine with open end box to fill the details of what might have gone wrong.",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": true
+    },
+    {
+        "id": "blnReplay",
+        "name": "Replay",
+        "descr": "Allow video to be replayed.",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": false
+    },
+    {
+        "id": "intShowNextDelay",
+        "name": "Allow to proceed in...",
+        "descr": "Specify the seconds after which you would like the Next button to appear.",
+        "type": "int",
+        "group": "Behaviour",
+        "value": 0
+    },
+    {
+        "id": "blnHideQuestionTextOnPlay",
+        "name": "Hide Question Text",
+        "descr": "Hide the question text, once the video has started.",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": true
+    },
+    {
+        "id": "prescript",
+        "name": "Pre script",
+        "descr": "Javascript to execute pre render",
+        "type": "Code",
+        "group": "Advanced",
+        "value": ""
+    },
+    {
+        "id": "postscript",
+        "name": "Post script",
+        "descr": "Javascript to execute post render",
+        "type": "Code",
+        "group": "Advanced",
+        "value": ""
+    }
+]

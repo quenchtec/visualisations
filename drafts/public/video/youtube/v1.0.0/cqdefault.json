@@ -1,0 +1,79 @@
+{
+    "type": "ques",
+    "attributes": {
+        "id": "YouTube",
+        "vcdir": "free"
+    },
+    "elements": [
+        {
+            "type": "subq",
+            "attributes": {
+                "type": "n",
+                "range": "*"
+            },
+            "customQuestionId": "c5ef91bf-1b17-44b1-a9a6-691dbf3af0f8",
+            "elements": [
+                {
+                    "type": "stext",
+                    "elements": [
+                        {
+                            "type": "text",
+                            "attributes": {
+                                "textType": "regular"
+                            },
+                            "textValues": {
+                                "en": "Please watch the video, thank you! "
+                            }
+                        },
+                        {
+                            "type": "text",
+                            "attributes": {
+                                "textType": "say"
+                            },
+                            "textValues": {
+                                "en": "Did the video play fine, without any issues?"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "rgroup",
+            "elements": [
+                {
+                    "type": "r",
+                    "attributes": {
+                        "code": "1"
+                    },
+                    "elements": [
+                        {
+                            "type": "text",
+                            "attributes": {},
+                            "elements": [],
+                            "textValues": {
+                                "en": "Yes"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "other",
+                    "attributes": {
+                        "code": "2"
+                    },
+                    "elements": [
+                        {
+                            "type": "text",
+                            "attributes": {},
+                            "elements": [],
+                            "textValues": {
+                                "en": "No"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

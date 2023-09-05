@@ -1,0 +1,28 @@
+.wistia_responsive_padding {
+    box-shadow: 0px 0px 10px var(--main_text_color);
+}
+
+.vid-player-holder {
+    padding: 10px 0px 0px 0px;
+}
+
+.wistia_placebo_close_button {
+    display: none;
+}
+
+.wistia-container {
+    max-width: 800px;
+    /* Set your desired maximum width */
+    max-height: 450px;
+    /* Set your desired maximum height */
+}
+
+@media only screen and (orientation : portrait) and (max-width: 901px) {
+    .mainContainer {
+        width: 97vw;
+    }
+
+    .vid-player-holder {
+        width: 90vw;
+    }
+}

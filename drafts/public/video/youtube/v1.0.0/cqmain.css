@@ -1,0 +1,15 @@
+#YTplayerContainers {
+    position: relative;
+    width: 100%;
+    /* set to the desired width */
+    height: 460px;
+    /* set to the desired height */
+
+}
+
+#YTplayerC {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}

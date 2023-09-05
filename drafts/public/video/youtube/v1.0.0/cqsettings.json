@@ -1,0 +1,50 @@
+[
+    {
+        "id": "strVideoID",
+        "name": "Video ID",
+        "descr": "The video ID (most commonly located in the video link itself)",
+        "type": "string",
+        "group": "Setup",
+        "value": "ZBQN8LAofnw"
+    },
+    {
+        "id": "blnFollowUp",
+        "name": "Follow up question",
+        "descr": "Asking the respondent if the video played fine with open end box to fill the details of what might have gone wrong.",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": true
+    },
+    {
+        "id": "blnHideQuestionTextOnPlay",
+        "name": "Hide Question Text",
+        "descr": "Hide the question text, once the video has started.",
+        "type": "boolean",
+        "group": "Behaviour",
+        "value": true
+    },
+    {
+        "id": "intShowNextDelay",
+        "name": "Allow to proceed in...",
+        "descr": "Specify the seconds after which you would like the Next button to appear.",
+        "type": "int",
+        "group": "Behaviour",
+        "value": 0
+    },
+    {
+        "id": "prescript",
+        "name": "Pre script",
+        "descr": "Javascript to execute pre render",
+        "type": "Code",
+        "group": "Advanced",
+        "value": ""
+    },
+    {
+        "id": "postscript",
+        "name": "Post script",
+        "descr": "Javascript to execute post render",
+        "type": "Code",
+        "group": "Advanced",
+        "value": ""
+    }
+]

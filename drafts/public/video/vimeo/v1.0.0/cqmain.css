@@ -1,0 +1,15 @@
+#playerContainer {
+    position: relative;
+    width: 100%;
+    /* set to the desired width */
+    height: 500px;
+    /* set to the desired height */
+
+}
+
+#player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
