@@ -23,8 +23,8 @@
     outline: 2px solid grey;
 }
 .rsImgBtnChecked:hover {
-    background-color: var(--interactive_checked_background_color);
-    outline: 4px solid var(--interactive_checked_background_color);
+    background-color: var(--interactive_background_color_hover);
+    outline: 4px solid var(--interactive_background_color_hover);
 }
 .rsImgBtn {
 	font-size: var(--interactive_font_size);
