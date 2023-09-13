@@ -88,7 +88,7 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
         let intInd = intIndex;
         if (typeof arrAllRows[intInd] !== 'undefined') {
             $(txtInp[intInd]).show();
-            arrAllRows[intInd].style.display = 'flex';
+            arrAllRows[intInd].style.display = 'block';
         }
     }
 
