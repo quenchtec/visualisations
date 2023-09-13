@@ -13,3 +13,7 @@
 .cTextInput {
   max-width: 100%;
 }
+
+.cCheck {
+  display: none;
+}
