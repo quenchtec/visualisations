@@ -10,13 +10,12 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
     const arrAllRows = $(QuestionID).find(".rsRowOpen");
     if (rsParams.blnHideNextOpenEnd) HideFollowTextBoxes(arrAllRows);
 
-    rsParams.blnHideNextOnDuplicates = (typeof rsParams.blnHideNextOnDuplicates === "undefined") ? true : rsParams.blnHideNextOnDuplicates; // Hide the next button if duplicates were located
+    rsParams.blnHideNextOnDuplicates = (typeof rsParams.blnHideNextOnDuplicates === "undefined") ? false : rsParams.blnHideNextOnDuplicates; // Hide the next button if duplicates were located
     rsParams.blnHighlightOnDuplicates = (typeof rsParams.blnHighlightOnDuplicates === "undefined") ? true : rsParams.blnHighlightOnDuplicates; // Highlight if duplicates were located
-    rsParams.blnHideNextOpenEnd = (typeof rsParams.blnHideNextOpenEnd === "undefined") ? true : rsParams.blnHideNextOpenEnd; // Hide unseen boxes
+    rsParams.blnHideNextOpenEnd = (typeof rsParams.blnHideNextOpenEnd === "undefined") ? false : rsParams.blnHideNextOpenEnd; // Hide unseen boxes
     rsParams.blnHideAnswerText = (typeof rsParams.blnHideAnswerText === "undefined") ? true : rsParams.blnHideAnswerText; // Hide answers text
     rsParams.prescript = (typeof rsParams.prescript === "undefined") ? "" : rsParams.prescript;
     rsParams.postscript = (typeof rsParams.postscript === "undefined") ? "" : rsParams.postscript;
-    rsParams.blnHideNextOnDuplicates = true;
 
     //Highlight the dupliocates if we are hiding the NEXT button to help the respondent see the issue
     if (rsParams.blnHideNextOnDuplicates) rsParams.blnHighlightOnDuplicates = true;
