@@ -99,7 +99,7 @@ form{
 .cError{
     /*content: "";
     display: none;*/
-    color: rgba(255, 0, 0, 1);
+    color: rgba(255, 0, 0, 1) !important;
 }
 input[type="text"]:focus {
   outline: none;
