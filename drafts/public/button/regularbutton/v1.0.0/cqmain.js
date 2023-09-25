@@ -8,7 +8,8 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
     const QuestionID = "#" + rsQno; //This we use in selectors to stay within the question
     const btnDivID = "#" + rsQno + "_btn"; //We create our own ID's that will be unique within the page and question
     const btnDivIDattr = rsQno + "_btn"; //Same id without # to use when we set the ID
-  
+    $(QuestionID).find(".cTable").addClass("rsCQ").addClass("rsCQButton");
+
     //Check parameters, should allways be done this way, as new parameters might be added, and possibly some removed as well
     //These parameters come from the settings the user have selected
     rsParams.autonext = (typeof rsParams.autonext === "undefined") ? false : rsParams.autonext;
