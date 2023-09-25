@@ -90,7 +90,8 @@ function cthemePageReady() {
 
     ghostText("Please, type in...");
    $(".rsSingleGrid, .rsMultiGrid").each(function(){
-     if(!$(this).hasClass("rsProcessedGrid")){
+     //if(!$(this).hasClass("rsProcessedGrid")){
+     if((!$(this).hasClass("rsProcessedGrid")) && (!$(_grid_this).hasClass("rsCQ"))){
        console.log("rsProcessedGrid is not in calsses");
          gridUpdate($(this));
      }
