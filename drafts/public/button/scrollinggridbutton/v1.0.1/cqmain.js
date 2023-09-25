@@ -7,7 +7,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   const scrollDivIDattr = rsQno + "_scroll";
   let strHTML = "";
   $(QuestionID).find(".cTable").addClass("rsCQ").addClass("rsCQButtonGrid");
-
+  console.log("This is the rsVisScrollingGrid call");
   ////Should check strtucture
   structOK = true;
   //Check parameters
