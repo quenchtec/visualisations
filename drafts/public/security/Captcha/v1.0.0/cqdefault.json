@@ -1,0 +1,116 @@
+{
+    "type": "ques",
+    "attributes": {
+        "id": "Label1",
+        "showsubqs": "all",
+        "vcdir": "free"
+    },
+    "elements": [
+        {
+            "type": "subq",
+            "attributes": {
+                "type": "f",
+                "length": "9",
+                "decimals": "1"
+            },
+            "customQuestionId": "310725a3-0d2a-4ddf-a52b-f9855569db19",
+            "customQuestionProperties": [],
+            "_internal_qno": "Label1",
+            "elements": [
+                {
+                    "type": "stext",
+                    "customQuestionId": "310725a3-0d2a-4ddf-a52b-f9855569db19",
+                    "customQuestionProperties": [],
+                    "_internal_qno": "Label1",
+                    "elements": [
+                        {
+                            "type": "text",
+                            "attributes": {
+                                "textType": "regular"
+                            },
+                            "textValues": {
+                                "en": "reCaptcha values"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "subq",
+            "attributes": {
+                "type": "n"
+            },
+            "elements": [
+                {
+                    "type": "stext",
+                    "attributes": {},
+                    "elements": [
+                        {
+                            "type": "text",
+                            "attributes": {
+                                "textType": "regular"
+                            },
+                            "textValues": {
+                                "en": "reCaptcha Status"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "rgroup",
+            "elements": [
+                {
+                    "type": "r",
+                    "attributes": {
+                        "code": "1"
+                    },
+                    "elements": [
+                        {
+                            "type": "text",
+                            "attributes": {},
+                            "elements": [],
+                            "textValues": {
+                                "en": "Score"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "r",
+                    "attributes": {
+                        "code": "2"
+                    },
+                    "elements": [
+                        {
+                            "type": "text",
+                            "attributes": {},
+                            "elements": [],
+                            "textValues": {
+                                "en": "Valid"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "r",
+                    "attributes": {
+                        "code": "3"
+                    },
+                    "elements": [
+                        {
+                            "type": "text",
+                            "attributes": {},
+                            "elements": [],
+                            "textValues": {
+                                "en": "Invalid"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
