@@ -581,15 +581,15 @@ input[type="text"]:focus {
 /* Styles for Firefox only */
 @-moz-document url-prefix() {
   /* Your Firefox-specific styles go here */
-.rsSingle > tbody:has(.rsRow), .rsMulti > tbody:has(.rsRow) {
-	width: auto;
-	height: calc((var(--answer_opens_padding) * 10) - 1px);
+  .rsSingle > tbody:has(.rsRow),
+  .rsMulti > tbody:has(.rsRow),
+  .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText),
+  .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText) {
+    width: auto;
+    height: calc((var(--answer_opens_padding) * 10) - 1px);
+  }
 }
-.rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText), .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText){
-	width: auto;
-	height: calc((var(--answer_opens_padding) * 10) - 1px);
-}
-}
+
 
 
 
