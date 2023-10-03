@@ -3,17 +3,16 @@ $(document).ready(function () {
   cthemePageReady();
 
   // Event delegation for click on .rsRow elements
-  $(".cTable").on("click", ".rsRow", function () {
+  $(".cTable").on("click", function () {
     //putSomeClasses($(this));
     console.log("clicked")
     $(this).find(".rsRow").each(function(){
-        if ($(this).find("input").prop("checked")) {
-    $(this).addClass("rsSelected");
-  } else {
-    $(this).removeClass("rsSelected");
-  }
+      if ($(this).find("input").prop("checked")) {
+        $(this).addClass("rsSelected");
+      } else {
+        $(this).removeClass("rsSelected");
+      }
     });
-
   });
 
   // Create a MutationObserver when the document is fully loaded
