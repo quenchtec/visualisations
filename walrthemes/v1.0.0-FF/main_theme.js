@@ -10,9 +10,11 @@ $(document).ready(function() {
                 //console.log("call the theme in mutation");
 
                 cthemePageReady(); // Call your function here
-                $(".cTable").click(function() {
+                $(".rsRow").click(function() {
                   putSomeClasses($(this))
+                  putSomeClasses2()
                 });
+                  putSomeClasses3()
 
                 break; // We've handled the mutation, no need to continue
             }
@@ -21,13 +23,43 @@ $(document).ready(function() {
     observer.observe(targetNode, config);
 });
 function putSomeClasses(isThis) {
+    console.log("1");
   // Let's set some classes
-  if ($(isThis).hasClass("rsSingle") || $(isThis).hasClass("rsMulti")) {
-    let $answers = $(isThis).find(".rsRow");
-    if ($answers.find("input").prop("checked")) {
+    let $answers = $(isThis).find("input");
+    if ($answers.prop("checked")) {
       $answers.addClass("rsSelected");
+    } else {
+      $answers.removeClass("rsSelected");
     }
   }
+}
+
+function putSomeClasses2() {
+    console.log("2");
+    $(".rsRow").click(function() {
+    console.log("2 clicked");
+  // Let's set some classes
+    let $answers = $(this).find("input");
+    if ($answers.prop("checked")) {
+      $answers.addClass("rsSelected");
+    } else {
+      $answers.removeClass("rsSelected");
+    }
+    });
+}
+
+function putSomeClasses3() {
+    console.log("3");
+    $(".rsRow").click(function() {
+    console.log("3 clicked");
+  // Let's set some classes
+    let $answers = $(this).find("input");
+    if ($answers.prop("checked")) {
+      $answers.addClass("rsSelected");
+    } else {
+      $answers.removeClass("rsSelected");
+    }
+    });
 }
 
 
