@@ -68,25 +68,38 @@ function cthemePageReady() {
 
 $(document).ready(function() {
     // Create a MutationObserver when the document is fully loaded
-         console.log("doc ready");
+   //console.log("doc ready");
  cthemePageReady();
     var targetNode = document.getElementById('rsPanelMain');
     var config = { attributes: true, childList: true, subtree: true };
     var observer = new MutationObserver(function(mutationsList, observer) {
         for(var mutation of mutationsList) {
             if (mutation.type === 'childList') {
-                       console.log("call the theme in mutation");
+                //console.log("call the theme in mutation");
 
                 cthemePageReady(); // Call your function here
                 break; // We've handled the mutation, no need to continue
+                $(".cTable").click(function() {
+                  putSomeClasses($(this))
+                });
             }
         }
     });
     observer.observe(targetNode, config);
 });
+function putSomeClasses(isThis) {
+  // Let's set some classes
+  if ($(isThis).hasClass("rsSingle") || $(isThis).hasClass("rsMulti")) {
+    let $answers = $(isThis).find(".rsRow");
+    if ($answers.find("input").prop("checked")) {
+      $answers.addClass("rsSelected");
+    }
+  }
+}
+
 
 function cthemePageReady() {
-           console.log("inside cthemePageReady");
+    //console.log("inside cthemePageReady");
 
     ghostText("Please, type in...");
    $(".rsSingleGrid, .rsMultiGrid").each(function(){
