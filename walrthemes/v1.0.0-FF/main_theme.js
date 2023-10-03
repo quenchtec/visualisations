@@ -3,10 +3,10 @@ $(document).ready(function () {
   cthemePageReady();
 
   // Event delegation for click on .rsRow elements
-  $(".cTable").on("click", function () {
+  $(".rsRow").on("click", function () {
     //putSomeClasses($(this));
     console.log("clicked")
-    $(this).find(".rsRow").each(function(){
+    $(".rsRow").each(function(){
       if ($(this).find("input").prop("checked")) {
         $(this).addClass("rsSelected");
       } else {
