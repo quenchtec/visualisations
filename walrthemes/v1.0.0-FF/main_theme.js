@@ -31,7 +31,6 @@ function putSomeClasses(isThis) {
     } else {
       $answers.removeClass("rsSelected");
     }
-  }
 }
 
 function putSomeClasses2() {
