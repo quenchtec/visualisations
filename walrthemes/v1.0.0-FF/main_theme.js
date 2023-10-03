@@ -1,64 +1,35 @@
-$(document).ready(function() {
-    // Create a MutationObserver when the document is fully loaded
-   //console.log("doc ready");
- cthemePageReady();
-    var targetNode = document.getElementById('rsPanelMain');
-    var config = { attributes: true, childList: true, subtree: true };
-    var observer = new MutationObserver(function(mutationsList, observer) {
-        for(var mutation of mutationsList) {
-            if (mutation.type === 'childList') {
-                //console.log("call the theme in mutation");
+$(document).ready(function () {
+  // Call your initial setup function
+  cthemePageReady();
 
-                cthemePageReady(); // Call your function here
-                $(".rsRow").click(function() {
-                  putSomeClasses($(this))
-                  putSomeClasses2()
-                });
-                  putSomeClasses3()
+  // Event delegation for click on .rsRow elements
+  $(document).on("click", ".rsRow", function () {
+    putSomeClasses($(this));
+  });
 
-                break; // We've handled the mutation, no need to continue
-            }
-        }
-    });
-    observer.observe(targetNode, config);
+  // Create a MutationObserver when the document is fully loaded
+  var targetNode = document.getElementById("rsPanelMain");
+  var config = { attributes: true, childList: true, subtree: true };
+  var observer = new MutationObserver(function (mutationsList, observer) {
+    for (var mutation of mutationsList) {
+      if (mutation.type === "childList") {
+        cthemePageReady(); // Call your function here
+        break; // We've handled the mutation, no need to continue
+      }
+    }
+  });
+  observer.observe(targetNode, config);
 });
-function putSomeClasses(isThis) {
-    console.log("1");
-  // Let's set some classes
-    let $answers = $(isThis).find("input");
-    if ($answers.prop("checked")) {
-      $answers.addClass("rsSelected");
-    } else {
-      $answers.removeClass("rsSelected");
-    }
-}
 
-function putSomeClasses2() {
-    console.log("2");
-    $(".rsRow").click(function() {
-    console.log("2 clicked");
+function putSomeClasses($row) {
+  console.log("pcpcpc");
   // Let's set some classes
-    let $answers = $(this).find("input");
-    if ($answers.prop("checked")) {
-      $answers.addClass("rsSelected");
-    } else {
-      $answers.removeClass("rsSelected");
-    }
-    });
-}
-
-function putSomeClasses3() {
-    console.log("3");
-    $(".rsRow").click(function() {
-    console.log("3 clicked");
-  // Let's set some classes
-    let $answers = $(this).find("input");
-    if ($answers.prop("checked")) {
-      $answers.addClass("rsSelected");
-    } else {
-      $answers.removeClass("rsSelected");
-    }
-    });
+  let $answers = $row.find("input");
+  if ($answers.prop("checked")) {
+    $answers.addClass("rsSelected");
+  } else {
+    $answers.removeClass("rsSelected");
+  }
 }
 
 
@@ -116,8 +87,3 @@ function cthemePageReady() {
         }
     }
 }
-
-
-
-
-
