@@ -3,8 +3,9 @@ $(document).ready(function () {
   cthemePageReady();
 
   // Event delegation for click on .rsRow elements
-  $(document).on("click", ".rsRow", function () {
-    putSomeClasses($(this));
+  $(".rsRow").on("click", function () {
+    //putSomeClasses($(this));
+    console.log("clicked")
   });
 
   // Create a MutationObserver when the document is fully loaded
