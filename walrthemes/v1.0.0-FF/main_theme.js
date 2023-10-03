@@ -6,6 +6,11 @@ $(document).ready(function () {
   $(".rsRow").on("click", function () {
     //putSomeClasses($(this));
     console.log("clicked")
+  if ($(this).find("input").prop("checked")) {
+    $(this).addClass("rsSelected");
+  } else {
+    $(this).removeClass("rsSelected");
+  }
   });
 
   // Create a MutationObserver when the document is fully loaded
