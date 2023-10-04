@@ -48,7 +48,9 @@ function putSomeClasses() {
 
 }
 
-
+    function isMobileDevice() {
+        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    }
 function cthemePageReady() {
     //console.log("inside cthemePageReady");
 
@@ -60,9 +62,7 @@ function cthemePageReady() {
          gridUpdate($(this));
      }
    });
-    function isMobileDevice() {
-        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-    }
+
     
     function ghostText(custText) {
         //console.log("TPR GT call");
