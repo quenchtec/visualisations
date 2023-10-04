@@ -23,7 +23,7 @@ $(document).ready(function () {
 function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function(){
-    if($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")){
+    if($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti") || $(this).hasClass("rsProcessedGrid")){
         $(".rsRow").on("click", function () {
     //putSomeClasses($(this));
     console.log("clicked")
