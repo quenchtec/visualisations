@@ -23,18 +23,26 @@ $(document).ready(function () {
 function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function(){
-    if($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti") || $(this).hasClass("rsProcessedGrid")){
-        $(".rsRow").on("click", function () {
-    //putSomeClasses($(this));
-    console.log("clicked")
-    $(".rsRow").each(function(){
-      if ($(this).find("input").prop("checked")) {
-        $(this).addClass("rsSelected");
-      } else {
-        $(this).removeClass("rsSelected");
-      }
-    });
-  });
+    if($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")){
+      $(".rsRow").on("click", function () {
+        $(".rsRow").each(function(){
+          if ($(this).find("input").prop("checked")) {
+            $(this).addClass("rsSelected");
+          } else {
+            $(this).removeClass("rsSelected");
+          }
+        });
+      });
+    } else if ($(this).hasClass("rsProcessedGrid")){
+      $(".rsRow").find(".cCell").on("click", function () {
+        $(".cCell").each(function(){
+          if ($(this).find("input").prop("checked")) {
+            $(this).addClass("rsSelected");
+          } else {
+            $(this).removeClass("rsSelected");
+          }
+        });
+      });
     }
   });
 
