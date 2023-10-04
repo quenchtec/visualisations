@@ -33,7 +33,7 @@ function putSomeClasses() {
           }
         });
       });
-    } else if ($(this).hasClass("rsProcessedGrid")){
+    } else if ($(this).hasClass("rsProcessedGrid") && isMobileDevice()){
       $(".rsRow").find(".cCell").on("click", function () {
         $(".cCell").each(function(){
           if ($(this).find("input").prop("checked")) {
