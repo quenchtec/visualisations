@@ -21,7 +21,10 @@ $(document).ready(function () {
 });
 
 function putSomeClasses() {
-  $(".rsRow").on("click", function () {
+  var $cTables = $(".cTable");
+  $cTables.each(function(){
+    if($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")){
+        $(".rsRow").on("click", function () {
     //putSomeClasses($(this));
     console.log("clicked")
     $(".rsRow").each(function(){
@@ -32,6 +35,9 @@ function putSomeClasses() {
       }
     });
   });
+    }
+  });
+
 }
 
 
