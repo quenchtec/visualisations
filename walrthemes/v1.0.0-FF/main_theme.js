@@ -1,8 +1,26 @@
 $(document).ready(function () {
   // Call your initial setup function
   cthemePageReady();
-
+  //putSomeClasses();
   // Event delegation for click on .rsRow elements
+
+
+  // Create a MutationObserver when the document is fully loaded
+  var targetNode = document.getElementById("rsPanelMain");
+  var config = { attributes: true, childList: true, subtree: true };
+  var observer = new MutationObserver(function (mutationsList, observer) {
+    for (var mutation of mutationsList) {
+      if (mutation.type === "childList") {
+        cthemePageReady(); // Call your function here
+        putSomeClasses();
+        break; // We've handled the mutation, no need to continue
+      }
+    }
+  });
+  observer.observe(targetNode, config);
+});
+
+function putSomeClasses() {
   $(".rsRow").on("click", function () {
     //putSomeClasses($(this));
     console.log("clicked")
@@ -14,30 +32,6 @@ $(document).ready(function () {
       }
     });
   });
-
-  // Create a MutationObserver when the document is fully loaded
-  var targetNode = document.getElementById("rsPanelMain");
-  var config = { attributes: true, childList: true, subtree: true };
-  var observer = new MutationObserver(function (mutationsList, observer) {
-    for (var mutation of mutationsList) {
-      if (mutation.type === "childList") {
-        cthemePageReady(); // Call your function here
-        break; // We've handled the mutation, no need to continue
-      }
-    }
-  });
-  observer.observe(targetNode, config);
-});
-
-function putSomeClasses($row) {
-  console.log("pcpcpc");
-  // Let's set some classes
-  let $answers = $row.find("input");
-  if ($answers.prop("checked")) {
-    $answers.addClass("rsSelected");
-  } else {
-    $answers.removeClass("rsSelected");
-  }
 }
 
 
