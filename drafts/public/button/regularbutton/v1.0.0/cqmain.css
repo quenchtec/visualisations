@@ -8,6 +8,7 @@
 
 }
 .rsBtnChecked {
+	background-color: var(--interactive_checked_background_color);
 	color: var(--interactive_checked_text_color);
 }
 .rsBtnOpen {
