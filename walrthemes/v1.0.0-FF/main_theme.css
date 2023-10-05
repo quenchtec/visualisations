@@ -821,7 +821,9 @@ background-color: var(--question_selected_background_color);
     padding: 10px;
     cursor: pointer;
 }
-
+.rsBtnRank {
+  text-align: center;
+}
 /* CLICK RANK QUESTION END */
 
 /*######################################################*/
