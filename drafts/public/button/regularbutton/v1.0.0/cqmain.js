@@ -171,11 +171,9 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
     strHTML += '</div>';
     $(QuestionID).after(strHTML);
   
-    //Check for minwidth and maxwidth (only if not specifying the number of buttons)
-    if (intNumButtonsPrRow == 0) {
-      if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParams.minwidth);
-      if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParams.maxwidth);
-    }
+    //Check for minwidth and maxwidth
+    if (rsParams.minwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-width', rsParams.minwidth);
+    if (rsParams.maxwidth != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-width', rsParams.maxwidth);
     //Check for minheight and maxheight
     if (rsParams.minheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('min-height', rsParams.minheight);
     if (rsParams.maxheight != null) $(btnDivID).find('.rsBtn, .rsImgBtn').css('max-height', rsParams.maxheight);
