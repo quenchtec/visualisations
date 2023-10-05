@@ -1126,3 +1126,7 @@ FIREFOX
 .rsSingle > tbody > tr, .rsMulti > tbody > tr {
   display: flex;
 }
+
+.rsOpenCell{
+	padding-left: 18px !important;
+}
