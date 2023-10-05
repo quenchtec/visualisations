@@ -4,6 +4,11 @@
 .rsBtnChecked:hover {
 	background-color: var(--interactive_checked_background_color);
 	outline: 2px solid grey;
+	color: var(--interactive_text_color_hover);
+
+}
+.rsBtnChecked {
+	color: var(--interactive_checked_text_color);
 }
 .rsBtnOpen {
     display: flex;
