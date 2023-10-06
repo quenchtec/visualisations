@@ -803,7 +803,7 @@ background-color: var(--question_selected_background_color);
 }
  .rsBtnChecked {
      background-color: var(--interactive_checked_background_color);
-     color: var(--main_text_color);
+     color: var(--interactive_checked_text_color);
      font-weight: bold;
 }
 /* BUTTONS QUESTIONS END*/
