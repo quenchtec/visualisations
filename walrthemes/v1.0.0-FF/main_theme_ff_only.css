@@ -26,3 +26,14 @@ FIREFOX
 .rsOpenCell{
 	padding-left: 18px !important;
 }
+
+
+/* Remove up and down arrows/buttons in Firefox */
+input[type="number"]::-moz-number-spin-box {
+  display: none;
+}
+/* Remove up and down arrows/buttons in Firefox */
+.rsBtnRank  {
+  /* Hide arrows in Firefox */
+  -moz-appearance: textfield;
+}
