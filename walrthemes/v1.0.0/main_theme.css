@@ -769,8 +769,8 @@ background-color: var(--question_selected_background_color);
      padding: var(--interactive_padding);
      text-align: var(--interactive_text_align);
      vertical-align: var(--interactive_vertical_align);
-     /*color: var(--interactive_text_color);
-     background-color: var(--interactive_background_color);*/
+     color: var(--interactive_text_color);
+     background-color: var(--interactive_background_color);
 }
  .rsBtn:hover {
      border: var(--interactive_border_hover);
@@ -779,12 +779,12 @@ background-color: var(--question_selected_background_color);
 /* Interactive buttons special variables */
  .rsBtnSpecial{
      border: var(--special_border);
-     /*color: var(--special_text_color);
-     background-color: var(--special_background_color);*/
+     color: var(--special_text_color);
+     background-color: var(--special_background_color);
 }
  .rsBtnChecked {
-     /*background-color: var(--interactive_checked_background_color);
-     color: var(--main_text_color);*/
+     background-color: var(--interactive_checked_background_color);
+     color: var(--main_text_color);
      font-weight: bold;
 }
 /* BUTTONS QUESTIONS END*/
