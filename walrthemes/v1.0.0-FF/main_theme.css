@@ -525,7 +525,8 @@ input[type="text"]:focus {
 }
 #rsPanelMain{
     width: 100%;
-    max-width: 900px;;
+    max-width: 900px;
+    min-height: 60vh;
 }
 
 .cTable{
@@ -557,9 +558,7 @@ input[type="text"]:focus {
 .cTable > tbody > tr {
     padding-bottom: 20px;
 }
-.rsPanelMain{
-	min-height:60vh;
-}
+
 
 /*######################################################*/
 /*######################################################*/
