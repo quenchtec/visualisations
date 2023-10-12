@@ -995,6 +995,10 @@ background-color: var(--question_selected_background_color);
   maximum-scale: 1.0;
 }
 
+.rsSingleGrid > tbody > .cRowSubQuestion, .rsMultiGrid > tbody > .cRowSubQuestion {
+    padding-tbottom: 20px;
+}
+	 
 .rsSingleGrid:not(.rsCQ) > tbody > .rsRow, .rsMultiGrid:not(.rsCQ) > tbody > .rsRow {
     display: flex;
     flex-direction: column;
