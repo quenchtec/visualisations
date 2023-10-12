@@ -540,7 +540,7 @@ input[type="text"]:focus {
 .cCellSubQuestion{
     width: 900px;
      text-align: left;
-     padding: 0px 0px 0px 0px;
+     padding: 0px 0px 20px 0px;
      border: none;
 }
 
@@ -993,10 +993,6 @@ background-color: var(--question_selected_background_color);
   width: device-width;
   initial-scale: 1.0;
   maximum-scale: 1.0;
-}
-
-.rsSingleGrid > tbody > .cRowSubQuestion, .rsMultiGrid > tbody > .cRowSubQuestion {
-    padding-tbottom: 20px;
 }
 	 
 .rsSingleGrid:not(.rsCQ) > tbody > .rsRow, .rsMultiGrid:not(.rsCQ) > tbody > .rsRow {
