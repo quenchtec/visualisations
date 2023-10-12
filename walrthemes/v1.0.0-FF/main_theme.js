@@ -58,7 +58,7 @@ function cthemePageReady() {
    $(".rsSingleGrid, .rsMultiGrid").each(function(){
      //if(!$(this).hasClass("rsProcessedGrid")){
      if((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))){
-       console.log("rsProcessedGrid is not in calsses");
+       //console.log("rsProcessedGrid is not in calsses");
          gridUpdate($(this));
      }
    });
@@ -79,7 +79,7 @@ function cthemePageReady() {
       if (($(_grid_this).hasClass("rsSingleGrid") || $(_grid_this).hasClass("rsMultiGrid")) && (!$(_grid_this).hasClass("rsCQ")) && (!$(_grid_this).hasClass("rsProcessedGrid"))) {
             //let gridID = $(".rsSingleGrid, .rsMultiGrid").prop("id");
             let gridIND = gridID.split("_")[1];
-             console.log("add rsProcessedGrid to ", gridID);
+             //console.log("add rsProcessedGrid to ", gridID);
               $("#"+gridID).addClass("rsProcessedGrid");
         
             //rearrange the grid for mobiles
