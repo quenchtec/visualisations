@@ -21,6 +21,7 @@ FIREFOX
 }
 .rsSingle > tbody > tr, .rsMulti > tbody > tr {
   display: flex;
+  max-width: 90vw;
 }
 
 .rsOpenCell{
