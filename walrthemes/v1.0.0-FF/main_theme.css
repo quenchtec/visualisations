@@ -798,6 +798,10 @@ background-color: var(--question_selected_background_color);
      border: var(--interactive_border_hover);
      background-color: var(--interactive_background_color_hover);
 }
+.rsBtnChecked:hover {
+    background-color: var(--interactive_checked_background_color);
+    outline: 2px solid grey;
+}
 /* Interactive buttons special variables */
  .rsBtnSpecial{
      border: var(--special_border);
