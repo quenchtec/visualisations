@@ -159,11 +159,6 @@ $(".rsImgBtn, .rsBtn").click(function () {
           wrapNoRow.find('.cRadio').prop('checked', false);
           $(btnDivID).find(baseBtnClassSelectExclusive).removeClass(checkedBtnClass);
           $(QuestionID).data('blnClickOn', true);
-          $(".rsImgBtn, .rsBtn").css({
-              "pointer-events": "none",
-              "user-select": "none",
-              "-webkit-user-select": "none"
-          });
 
       } else { //Answer is a radio
           //Change all buttons to unclicked
@@ -183,11 +178,6 @@ $(".rsImgBtn, .rsBtn").click(function () {
               }
           }
           $(QuestionID).data('blnClickOn', true);
-          $(".rsImgBtn, .rsBtn").css({
-              "pointer-events": "none",
-              "user-select": "none",
-              "-webkit-user-select": "none"
-          });
 
       }
       //Check for any answer and no-autonext, if so display next button		
@@ -205,11 +195,6 @@ $(".rsImgBtn, .rsBtn").click(function () {
   }
   //Do not allow click before animation completed
   $(QuestionID).data('blnClickOn', false);
-  $(".rsImgBtn, .rsBtn").css({
-      "pointer-events": "none",
-      "user-select": "none",
-      "-webkit-user-select": "none"
-  });
   /* Prevents mouse interactions */
   //Animate row
   $(scrollDivID).find('.rsScrollAnimate').hide();
