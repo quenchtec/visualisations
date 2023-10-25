@@ -112,9 +112,13 @@ function rsVisScrollingGrid2(rsQno, rsSubqIndex, rsParams) {
 // block click on buttons for speed click
 let clickdelay;
 
-$(".rsImgBtn, .rsBtn").click(function () {
+$(".rsImgBtn, .rsBtn").click(function (e) {
     // Clear any existing debounce timer
     clearTimeout(clickdelay);
+    if($(this).hasClass("disabled"){
+      e.preventDefault();
+      return;
+    }
     // Add a class to disable pointer events and user select
     $(".rsFlexBtnDiv").addClass("disabled");
     // Set a new debounce timer for 500ms (0.5 seconds)
