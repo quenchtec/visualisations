@@ -166,6 +166,9 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
         console.log("rsParams.autonext && !doneNext", (wrapNoRow.find('.cRadio:checked, .cCheck:checked').length > 0), wrapNoRow.find('.cRadio:checked, .cCheck:checked').length);
         if (wrapNoRow.find('.cRadio:checked, .cCheck:checked').length > 0) {
           $('#btnNext2').show();
+        } else {
+          $('#btnNext2').hide();
+
         }
       }
     });
