@@ -119,7 +119,6 @@ $(".rsImgBtn, .rsBtn").click(function () {
     $(this).addClass("disabled");
     // Set a new debounce timer for 300ms (0.5 seconds)
     clickdelay = setTimeout(() => {
-        getSuggestions(newValue);
         // Remove the 'disabled' class to enable clicks again
         $(this).removeClass("disabled");
     }, 300);
