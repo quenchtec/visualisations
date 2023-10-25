@@ -163,6 +163,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
       }
       //Check for any answer and no-autonext, if so display next button		
       if (rsParams.autonext && !doneNext) {
+        console.log("rsParams.autonext && !doneNext", (wrapNoRow.find('.cRadio:checked, .cCheck:checked').length > 0), wrapNoRow.find('.cRadio:checked, .cCheck:checked').length);
         if (wrapNoRow.find('.cRadio:checked, .cCheck:checked').length > 0) {
           $('#btnNext2').show();
         }
@@ -438,6 +439,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
         $(btnDivID).find(baseBtnClassSelect).eq(i).removeClass(checkedBtnClass);
       }
     });
+      console.log("doAutonext: ",doAutonext,"   gotAnswer: ",gotAnswer);
     if (doAutonext) {
       if (gotAnswer) {
         $('#btnNext2').show();
