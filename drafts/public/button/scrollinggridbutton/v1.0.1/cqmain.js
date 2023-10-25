@@ -114,9 +114,9 @@ function rsVisScrollingGrid2(rsQno, rsSubqIndex, rsParams) {
       //Are we allowed to click?
       if (!$(QuestionID).data('blnClickOn')) {
           $(".rsImgBtn, .rsBtn").css({
-              "pointer-events": "",
-              "user-select": "",
-              "-webkit-user-select": ""
+              "pointer-events": "auto",
+              "user-select": "auto",
+              "-webkit-user-select": "auto"
           });
           return;
       } else {
