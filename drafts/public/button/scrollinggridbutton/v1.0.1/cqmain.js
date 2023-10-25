@@ -127,7 +127,7 @@ $(".rsImgBtn, .rsBtn").click(function (e) {
         // Remove the 'disabled' class to enable clicks again
         $(".rsFlexBtnDiv").removeClass("disabled");
         $(this).removeClass("disabled");
-    }, 500);
+    }, 1000);
 });
 
 
