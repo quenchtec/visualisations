@@ -116,8 +116,7 @@ $(".rsImgBtn, .rsBtn").click(function (e) {
     // Clear any existing debounce timer
     clearTimeout(clickdelay);
     if($(this).hasClass("disabled")){
-      console.log($(this), e);
-      e.preventDefault();
+      //e.preventDefault();
       return;
     }
     // Add a class to disable pointer events and user select
@@ -128,7 +127,7 @@ $(".rsImgBtn, .rsBtn").click(function (e) {
         // Remove the 'disabled' class to enable clicks again
         $(".rsFlexBtnDiv").removeClass("disabled");
         $(this).removeClass("disabled");
-    }, 2000);
+    }, 500);
 });
 
 
