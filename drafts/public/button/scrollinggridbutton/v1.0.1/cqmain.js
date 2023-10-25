@@ -109,25 +109,32 @@ function rsVisScrollingGrid2(rsQno, rsSubqIndex, rsParams) {
       checkedBtnClass = "rsImgBtnChecked";
   }
 
+// block click on buttons for speed click
+let clickdelay;
+
+$(".rsImgBtn, .rsBtn").click(function () {
+    // Clear any existing debounce timer
+    clearTimeout(clickdelay);
+    // Add a class to disable pointer events and user select
+    $(this).addClass("disabled");
+    // Set a new debounce timer for 300ms (0.5 seconds)
+    clickdelay = setTimeout(() => {
+        getSuggestions(newValue);
+        // Remove the 'disabled' class to enable clicks again
+        $(this).removeClass("disabled");
+    }, 300);
+});
+
+
+  
   //Button Click Event
   $(btnDivID).find(baseBtnClassSelect).on('click', function() {
       //Are we allowed to click?
       if (!$(QuestionID).data('blnClickOn')) {
-          $(".rsImgBtn, .rsBtn").css({
-              "pointer-events": "auto",
-              "user-select": "auto",
-              "-webkit-user-select": "auto"
-          });
           return;
       } else {
           //Do not allow any more clicks before this is handled
           $(QuestionID).data('blnClickOn', false);
-          $(".rsImgBtn, .rsBtn").css({
-              "pointer-events": "none",
-              "user-select": "none",
-              "-webkit-user-select": "none"
-          });
-
       }
 
       let intBtnNum = 0;
