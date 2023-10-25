@@ -116,7 +116,7 @@ $(".rsImgBtn, .rsBtn").click(function (e) {
     // Clear any existing debounce timer
     clearTimeout(clickdelay);
     if($(this).hasClass("disabled")){
-      console.log($(this));
+      console.log($(this), e);
       e.preventDefault();
       return;
     }
