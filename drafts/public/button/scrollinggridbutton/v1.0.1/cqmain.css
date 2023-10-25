@@ -80,3 +80,9 @@
     font-size: 0;
     color: transparent;
 }
+
+.disabled {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
