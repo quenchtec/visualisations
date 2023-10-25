@@ -82,7 +82,7 @@
 }
 
 .disabled {
-    pointer-events: none;
-    user-select: none;
-    -webkit-user-select: none;
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
 }
