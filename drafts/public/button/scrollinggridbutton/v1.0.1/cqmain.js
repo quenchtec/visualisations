@@ -116,12 +116,12 @@ $(".rsImgBtn, .rsBtn").click(function () {
     // Clear any existing debounce timer
     clearTimeout(clickdelay);
     // Add a class to disable pointer events and user select
-    $(this).addClass("disabled");
-    // Set a new debounce timer for 300ms (0.5 seconds)
+    $(".rsFlexBtnDiv").addClass("disabled");
+    // Set a new debounce timer for 500ms (0.5 seconds)
     clickdelay = setTimeout(() => {
         // Remove the 'disabled' class to enable clicks again
-        $(this).removeClass("disabled");
-    }, 300);
+        $(".rsFlexBtnDiv").removeClass("disabled");
+    }, 500);
 });
 
 
