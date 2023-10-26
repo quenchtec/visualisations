@@ -1,4 +1,4 @@
-function rsVisIRT(rsQno,rsSubqIndex,rsParams) {
+function rsVisIRT2(rsQno,rsSubqIndex,rsParams) {
 	rsParams.blnDecresingTimer = (typeof rsParams.blnDecresingTimer === "undefined") ? true : rsParams.blnDecresingTimer;
 	rsParams.blnShowCooldown = (typeof rsParams.blnShowCooldown === "undefined") ? true : rsParams.blnShowCooldown;
 	rsParams.blnShowQuestionText = (typeof rsParams.blnShowQuestionText === "undefined") ? false : rsParams.blnShowQuestionText;
