@@ -188,7 +188,7 @@ function rsVisIRT(rsQno, rsSubqIndex, rsParams) {
     $(_vals).each(function() {
       let questionInputs = {
         strAllClasses: this.className,
-        strText: $(this).find(".rs-ht").text(),
+        strText: $(this).find(".rs-ht").html(),
         floatInput: $(this).find(":input.cFInput"),
         radioInputs: $(this).find(":input.cRadio"),
         firstRating: allHeathers[0].innerHTML,
