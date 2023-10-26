@@ -44,6 +44,14 @@
       "value": false
     },
     {
+      "id": "blnShowButtonsOnCountDown",
+      "name": "Buttons visibility",
+      "descr": "Show or Hide the answer buttons diring countdown",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": true
+    },
+    {
       "id": "intMaxMinTriggerTime",
       "name": "Timeout",
       "descr": "Time in seconds before timeout alert for a statement (default is 5 seconds)",
