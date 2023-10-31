@@ -22,6 +22,7 @@
   border: 1px solid var(--main_text_color);
   border-radius: var(--button_border_radius);
   text-align: left;
+  display:none;
 }
 
 .essay-progress-fill {
