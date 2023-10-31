@@ -54,8 +54,8 @@
     padding: 11px 11px;
     border: none;
     /*LIGHT COLOUR BUTTON DARK GREEN TEXT*/
-    background-color: rgba(220, 245, 233, 1);
-    color: var(--main_text_color);
+    background-color: var(--interactive_background_color);
+    color: var(--interactive_text_color);
       
     font-size: var(--answers_text_size);
     font-weight: var(--interactive_font_weight);;
@@ -74,18 +74,18 @@
   
   .aero-opt-out-button:hover {
      /*GREENISH COLOUR BUTTON LIGHT GREEN TEXT*/
-    background-color: var(--interactive_checked_background_color);
-    color: var(--main_text_color);
+    background-color: var(--interactive_background_color_hover);
+    color: var(--interactive_text_color_hover);
     border: var(--interactive_border_hover);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
   }
-  
+
+
   .opt-out-selected {
- 
     /*DARK COLOUR BUTTON WHITE TEXT*/
-    background-color: var(--interactive_background_color);
-    color: var(--interactive_text_color);
+    background-color: var(--interactive_checked_background_color);
+    color: var(--interactive_checked_text_color);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   }
   
