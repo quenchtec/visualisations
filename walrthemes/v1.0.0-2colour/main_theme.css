@@ -481,9 +481,9 @@ input[type="text"]:focus {
      width: 98%;
 }
  .buttonNext, .buttonPrevious {
-     background-color: var(--button_background_color);
+     background-color: var(--button_text_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
+     color: var(--button_background_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
      border-color: var(--button_border_color);
-     color: var(--button_text_color);
      border-radius: var(--button_border_radius);
      border-width: 0px;
      min-width: var(--button_min_width);
