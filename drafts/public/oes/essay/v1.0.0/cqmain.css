@@ -10,7 +10,7 @@
 }
 
 .cTextArea {
-  min-width: 97% !important;
+  min-width: 96% !important;
   border-radius: var(--button_border_radius);
   padding: 7px;
 }
