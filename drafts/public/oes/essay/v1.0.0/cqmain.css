@@ -10,7 +10,8 @@
 }
 
 .cTextArea {
-  min-width: 75% !important;
+  min-width: 97% !important;
+  border-radius: var(--button_border_radius);
 }
 
 .rsRow {
