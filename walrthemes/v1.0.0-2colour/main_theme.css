@@ -115,8 +115,9 @@ input[type="text"]:focus {
 .cTextInput{
     outline: none;
     padding: var(--answer_opens_padding);
-    border: 1px solid gainsboro;
+    border: 0px solid gainsboro;
     border-radius: var(--interactive_border_radius);
+    /*background-color: rgba(196,214,202,0.1); */
 }
 /* Radio button and check boxes, many settings to try to implement "pretty" look, but retain WCAG (Unveirsal Access) with keyboard navigation etc, and also support varous browsers and devices */
  .cRadio {
@@ -833,7 +834,7 @@ background-color: var(--question_selected_background_color);
     justify-content: flex-start;
     align-items: baseline;
     padding: var(--answer_opens_padding);
-    border: var(--interactive_border) solid var(--input_field_border_color);
+    /*border: var(--interactive_border) solid var(--input_field_border_color);*/
     border-radius: var(--interactive_border_radius);
 }
 .rsRow:has(.rsBtnRank) > .cCellRowText{
@@ -936,8 +937,16 @@ background-color: var(--question_selected_background_color);
     padding: var(--answer_opens_padding);
     width: 99% !important;
 }
+.rsCuQeEssay > .cCellRowText > .cTextArea{
+    border: 1px solid gainsboro;
+    border-radius: var(--interactive_border_radius);
+    padding: var(--answer_opens_padding);
+}
+.rsCuQeEssay > .cCellRowText > .cTextArea:active{
+    border: 1px solid gainsboro;
 
-
+}
+ 
 /* END  TEXT AREA CSS*/
 
 /* UI-SLIDER CSS*/
