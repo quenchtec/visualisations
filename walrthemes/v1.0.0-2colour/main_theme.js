@@ -24,7 +24,7 @@ function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function(){
     if($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")){
-      $(".rsRow, .cTextInput").on("click keydown", function () {
+      $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keydown", function () {
         $(".rsRow").each(function(){
           if ($(this).find("input").prop("checked")) {
             $(this).addClass("rsSelected");
