@@ -546,10 +546,12 @@ input[type="text"]:focus {
 .cCellSubQuestion{
     width: 900px;
      text-align: left;
-     padding: 0px 0px 20px 0px;
+     padding: 40px 0px 20px 0px;
      border: none;
 }
-
+.cQuestionText > .cReg {
+	font-size: var(--question_font_size);
+}
  .logo2Container {
     margin-top: 50px;
     margin-bottom: -25px;
