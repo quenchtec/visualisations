@@ -937,7 +937,8 @@ background-color: var(--question_selected_background_color);
     border: 1px solid gainsboro;
     border-radius: var(--interactive_border_radius);
     padding: var(--answer_opens_padding);
-    width: 99% !important;
+    min-width: 96% !important;
+    max-width: 96% !important;
 }
 .rsCuQeEssay > .cCellRowText > .cTextArea{
     border: 1px solid gainsboro;
