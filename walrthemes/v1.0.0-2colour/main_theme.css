@@ -256,7 +256,7 @@ input[type="text"]:focus {
      background-color: var(--page_content_background_color);
      font-size: var(--main_font_size);
      font-weight: var(--main_font_weight);
-     margin: 55px auto 8px;
+     margin: 25px auto 8px;
      border-radius: 12px;
      width: 900px;
      min-width: fit-content;
