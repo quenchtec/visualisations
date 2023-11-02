@@ -279,6 +279,7 @@ input[type="text"]:focus {
     flex-wrap: nowrap;
     justify-content: space-evenly;
     align-items: center;
+	 width: 95%;
 }
 /* Language content*/
  .languagePanel {
