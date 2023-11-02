@@ -302,16 +302,13 @@ input[type="text"]:focus {
      padding: 8px 12px;
 }
 /* Logo 1 */
+/* Logo 1 */
  .logo1Container {
-
-    position: absolute;
-    top: 32px;
-    left: 0;
-    right: 0;
-    padding: 0 24px;
-    width: calc(100% - 48px);
-    display: flex;
-    justify-content: var(--main_logo_alignment);
+     width: 100%;
+     display: flex;
+     padding-top: 8px;
+     padding-bottom: 20px;
+     justify-content: var(--main_logo_alignment);
 }
  .logo1 {
      height: 28px;
