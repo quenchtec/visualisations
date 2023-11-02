@@ -302,8 +302,7 @@ input[type="text"]:focus {
      padding: 8px 12px;
 }
 /* Logo 1 */
-/* Logo 1 */
- .logo1Container {
+.logo1Container {
      width: 100%;
      display: flex;
      padding-top: 8px;
