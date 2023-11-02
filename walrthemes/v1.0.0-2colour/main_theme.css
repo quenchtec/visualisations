@@ -542,7 +542,7 @@ input[type="text"]:focus {
 .cCellSubQuestion{
     width: 900px;
      text-align: left;
-     padding: 40px 0px 20px 0px;
+     padding: 10px 0px 20px 0px;
      border: none;
 }
 .cQuestionText > .cReg {
