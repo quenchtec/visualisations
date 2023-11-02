@@ -14,6 +14,11 @@
   max-width: 96% !important;
   border-radius: var(--button_border_radius);
   padding: 7px;
+
+    font-family: var(--main_font_family);
+    font-size: var(--main_font_size);
+    font-weight: var(--main_font_weight);
+    color: var(--main_text_color);
 }
 
 .rsRow {
