@@ -13,16 +13,16 @@
     pointer-events: none;
   }
   
-  .cRowText {
+  .cRowTextSlider {
     width: 90%;
     text-align: center;
   }
   
-  .cRowText>.rs-ht>p {
+  .cRowTextSlider>.rs-ht>p {
     margin-bottom: 3rem;
   }
   
-  .cCellF {
+  .cCellFSlider {
     visibility: hidden;
     display: none;
   }
@@ -32,7 +32,7 @@
     display: none !important;
   }
   
-  .rsRow {
+  .rsRowSlider {
     height: fit-content;
     border: 0px !important;
     display: flex;
@@ -137,7 +137,7 @@
       height: 33px;
     }
   
-    .cRowText {
+    .cRowTextSlider {
       width: 100%;
     }
   
