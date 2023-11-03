@@ -50,7 +50,7 @@ function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
   
     let arrPips = rsParams.strSliderPips.split(",").map(Number);
   
-    $(".cRowText").each(function(e) {
+    $(QuestionID).find(".cRowText").each(function(e) {
       $(this).append("<div id='slider" + e + "'></div>");
       if (rsParams.blnOptOut) {
         $(this).after("<div id='opt-out" + e + "' / class='aero-opt-out-button' title='SlideOptOut'>" + rsParams.strOptOutText + "</div>");
