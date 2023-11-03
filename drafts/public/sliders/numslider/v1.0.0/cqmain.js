@@ -3,8 +3,9 @@ function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
     $(QuestionID).find(".cTable").addClass("rsSliderQuestion");
     $(QuestionID).find(".cRowText").addClass("cRowTextSlider");
     $(QuestionID).find(".cCellF").addClass("cCellFSlider");
+    $(QuestionID).find(".rsRow").addClass("rsRowSlider");
 
-    
+        
     //////////////////////////////////////////////////////
     //ALL SLIDER FUNCTIONALITY RELATED SETTINGS
     //rsParams.strHandlePosition = (typeof rsParams.strHandlePosition === "undefined") ? 0 : rsParams.strHandlePosition; //Where the handles starts on load (if offscale handle is needed, value must be less than the min value of the slider)
