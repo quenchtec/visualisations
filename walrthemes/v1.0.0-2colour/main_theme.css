@@ -31,6 +31,10 @@ form{
 .hidden{
 	display:none;
 }
+#btnNext{
+  background-color: rgba(9, 58, 78, 1) !important;
+  color: white !important;
+}
 /*######################################################*/
 /*######################################################*/
 /*######################################################*/
@@ -112,6 +116,24 @@ input[type="text"]:focus {
      -moz-appearance: none;
      margin: 0;
 }
+
+input[type="text"] {
+    font-family: var(--main_font_family);
+    font-size: var(--main_font_size);
+    font-weight: var(--main_font_weight);
+    color: var(--main_text_color);
+}
+
+input[type="number"] {
+    font-family: var(--main_font_family);
+    font-size: var(--main_font_size);
+    font-weight: var(--main_font_weight);
+    color: var(--main_text_color);
+}
+
+[id^=instr] {
+  font-style: italic;
+}
 .cTextInput{
     outline: none;
     padding: var(--answer_opens_padding);
@@ -139,7 +161,8 @@ input[type="text"]:focus {
      content: "";
      visibility: visible;
      position: absolute;
-     border: 2px solid var(--input_main_color);
+     border: 2px solid var(--progressbar_background_color);
+     background-color: var(--custom_special_background_color);
      border-radius: 50%;
      top: 0;
      right: 0;
@@ -149,9 +172,11 @@ input[type="text"]:focus {
  .cRadio:checked:before {
      background-clip: content-box;
      padding: 3px;
-     background-color: var(--input_main_color);
+     background-color: var(--progressbar_background_color) !important;
+     color: var(--custom_special_background_color) !important;
 }
- .cCheck {
+
+.cCheck {
      outline: 0;
     /* Maybe we should change this to indicate focus */
      accent-color: transparent;
@@ -172,7 +197,8 @@ input[type="text"]:focus {
      content: "";
      visibility: visible;
      position: absolute;
-     border: 2px solid var(--input_main_color);
+     border: 2px solid var(--progressbar_background_color);
+     background-color: var(--custom_special_background_color);
      top: 0;
      right: 0;
      bottom: 0;
@@ -184,16 +210,10 @@ input[type="text"]:focus {
      line-height: 1.2;
      font-size: calc((var(--input_check_size) * 0.8) - 2px);
      text-align: center;
-     color: #FFFFFF;
+  background-color: var(--progressbar_background_color) !important;
+  border-color: var(--progressbar_background_color) !important;
+  color: var(--custom_special_background_color);
 }
-
-
-
-
-
-
-
-
 
 
 /* ############# END Define standard variables #################### */
@@ -789,14 +809,14 @@ background-color: var(--question_selected_background_color);
  .rsBtn {
      font-size: var(--answers_text_size);
      font-weight: var(--interactive_font_weight);
-     border: var(--interactive_border);
-     border-radius: var(--interactive_border_radius);
      margin: var(--interactive_margin);
      padding: var(--interactive_padding);
      text-align: var(--interactive_text_align);
      vertical-align: var(--interactive_vertical_align);
      color: var(--interactive_text_color);
      background-color: var(--interactive_background_color);
+     border: 1px solid var(--input_field_border_color) !important;
+     border-radius: var(--interactive_border_radius) !important;
 }
  .rsBtn:hover {
      border: var(--interactive_border_hover);
@@ -817,6 +837,7 @@ background-color: var(--question_selected_background_color);
      color: var(--interactive_checked_text_color);
      font-weight: bold;
 }
+
 /* BUTTONS QUESTIONS END*/
 
 /*######################################################*/
@@ -842,7 +863,10 @@ background-color: var(--question_selected_background_color);
 }
 .rsBtnRank {
   text-align: center;
+  background-color: white !important;
+  color: var(--main_text_color) !important;
 }
+
 /* CLICK RANK QUESTION END */
 
 /*######################################################*/
@@ -990,7 +1014,12 @@ background-color: var(--question_selected_background_color);
 .rsRatingSlider > tbody > .rsRow {
 	height: 140px !important;
 }
-
+.noUi-tooltip{
+    font-family: var(--main_font_family) !important;
+    font-size: var(--main_font_size) !important;
+    font-weight: var(--main_font_weight) !important;
+    color: var(--main_text_color) !important;
+}
 /* END noUI-SLIDER GRID CSS*/
 
 /*########### END CUSTOM QUESTIONS CSS#############*/
@@ -1095,8 +1124,6 @@ background-color: var(--question_selected_background_color);
 
 
 /* ######### END GRID CSS FOR MOBILE ########## */
-
-
 
 
 
