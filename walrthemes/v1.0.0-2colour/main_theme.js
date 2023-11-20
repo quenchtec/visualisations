@@ -1,5 +1,6 @@
 $(document).ready(function () {
   // Call your initial setup function
+  cthemeff();
   cthemePageReady();
   //putSomeClasses();
   // Event delegation for click on .rsRow elements
@@ -18,7 +19,22 @@ $(document).ready(function () {
     }
   });
   observer.observe(targetNode, config);
+  
 });
+
+function cthemeff(){
+  // Detect Firefox using JavaScript
+  if (navigator.userAgent.indexOf("Firefox") != -1) {
+      // User is using Firefox
+      // You can add a new CSS file or apply inline styles here
+      var firefoxStyles = document.createElement("link");
+      firefoxStyles.rel = "stylesheet";
+      firefoxStyles.type = "text/css";
+      firefoxStyles.href = "https://quenchtec.github.io/visualisations/walrthemes/v1.0.0-2colour/main_theme_ff_only.css"; // Link to your Firefox-specific styles
+      document.head.appendChild(firefoxStyles);
+  }
+}
+
 
 function putSomeClasses() {
   var $cTables = $(".cTable");
