@@ -38,3 +38,7 @@ input[type="number"]::-moz-number-spin-box {
   /* Hide arrows in Firefox */
   -moz-appearance: textfield;
 }
+
+table.rsCQBalls tbody tr.rsRow.rsNumRow.cRow td.cCellRowText{
+    max-width: 98%;
+}
