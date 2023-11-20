@@ -42,3 +42,6 @@ input[type="number"]::-moz-number-spin-box {
 table.rsCQBalls tbody tr.rsRow.rsNumRow.cRow td.cCellRowText{
     max-width: 98%;
 }
+table.rsCQBalls tbody{
+    margin-left: 15%;
+}
