@@ -69,8 +69,16 @@ function putSomeClasses() {
     }
 function cthemePageReady() {
     //console.log("inside cthemePageReady");
-
+  var strID = "";
+  strID = $('#rs_lang').val();
+  if (strID == "sv") {
+    ghostText("Snälla, skriv in...");
+  } else {
+    //EN
     ghostText("Please, type in...");
+  }
+  
+    
    $(".rsSingleGrid, .rsMultiGrid").each(function(){
      //if(!$(this).hasClass("rsProcessedGrid")){
      if((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))){
