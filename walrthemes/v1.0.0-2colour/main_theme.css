@@ -32,8 +32,8 @@ form{
 	display:none;
 }
 #btnNext{
-  background-color: rgba(9, 58, 78, 1) !important;
-  color: white !important;
+  background-color: var(--button_background_color);
+  color: white;
 }
 /*######################################################*/
 /*######################################################*/
