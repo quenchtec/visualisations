@@ -69,16 +69,16 @@ function putSomeClasses() {
     }
 function cthemePageReady() {
     //console.log("inside cthemePageReady");
-  var strID = "";
+  if(typeof strOeMessage === "undefined"){
+    strOeMessage = "Please, type in...";
+  }
   strID = $('#rs_lang').val();
+  
   if (strID == "sv") {
-    ghostText("Snälla, skriv in...");
-  } else {
-    //EN
-    ghostText("Please, type in...");
+    strOeMessage = "Snälla, skriv in...";
   }
   
-    
+    ghostText(strOeMessage);
    $(".rsSingleGrid, .rsMultiGrid").each(function(){
      //if(!$(this).hasClass("rsProcessedGrid")){
      if((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))){
