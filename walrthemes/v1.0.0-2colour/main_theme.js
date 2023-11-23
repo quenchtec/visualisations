@@ -69,16 +69,16 @@ function putSomeClasses() {
     }
 function cthemePageReady() {
     //console.log("inside cthemePageReady");
-  if(typeof strOeMessage === "undefined"){
-    strOeMessage = "Please, type in...";
+  if(typeof CustomGhostMessage === "undefined"){
+    CustomGhostMessage = "Please, type in...";
   }
   strID = $('#rs_lang').val();
   
   if (strID == "sv") {
-    strOeMessage = "Snälla, skriv in...";
+    CustomGhostMessage = "Snälla, skriv in...";
   }
   
-    ghostText(strOeMessage);
+    ghostText(CustomGhostMessage);
    $(".rsSingleGrid, .rsMultiGrid").each(function(){
      //if(!$(this).hasClass("rsProcessedGrid")){
      if((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))){
