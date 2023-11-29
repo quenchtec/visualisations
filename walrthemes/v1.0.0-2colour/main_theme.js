@@ -73,7 +73,7 @@ function cthemePageReady() {
     CustomGhostMessage = myCustomGhost[`$('#rs_lang').val()`];
     console.log(CustomGhostMessage, "message");
     console.log(myCustomGhost, "MCG");
-    console.log($('#rs_lang').val(), lang);
+    console.log($('#rs_lang').val(), "lang");
   }
   strID = $('#rs_lang').val();
   console.log(strID, "stand");
