@@ -70,9 +70,12 @@ function cthemePageReady() {
     CustomGhostMessage = "Please, type in...";
   } else {
     CustomGhostMessage = myCustomGhost[`$('#rs_lang').val()`];
+    console.log(CustomGhostMessage, "message");
+    console.log(myCustomGhost, "MCG");
+    console.log($('#rs_lang').val(), lang);
   }
   strID = $('#rs_lang').val();
-  console.log(strID);
+  console.log(strID, "stand");
   
   if (strID == "sv") {
     CustomGhostMessage = "Snälla, skriv in...";
