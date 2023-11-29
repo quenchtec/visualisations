@@ -4,8 +4,6 @@ $(document).ready(function () {
   cthemePageReady();
   //putSomeClasses();
   // Event delegation for click on .rsRow elements
-
-
   // Create a MutationObserver when the document is fully loaded
   var targetNode = document.getElementById("rsPanelMain");
   var config = { attributes: true, childList: true, subtree: true };
@@ -19,7 +17,6 @@ $(document).ready(function () {
     }
   });
   observer.observe(targetNode, config);
-  
 });
 
 function cthemeff(){
@@ -73,6 +70,7 @@ function cthemePageReady() {
     CustomGhostMessage = "Please, type in...";
   }
   strID = $('#rs_lang').val();
+  console.log(strID);
   
   if (strID == "sv") {
     CustomGhostMessage = "Snälla, skriv in...";
