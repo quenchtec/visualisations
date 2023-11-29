@@ -65,18 +65,13 @@ function putSomeClasses() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
 function cthemePageReady() {
-  console.log("inside cthemePageReady");
   if(typeof CustomGhostMessage === "undefined"){
     CustomGhostMessage = "Please, type in...";
   } 
   if (typeof myCustomGhost !="undefined") {
     CustomGhostMessage = myCustomGhost[$('#rs_lang').val()];
-    console.log(CustomGhostMessage, "message");
-    console.log(myCustomGhost, "MCG");
-    console.log($('#rs_lang').val(), "lang");
   }
   strID = $('#rs_lang').val();
-  console.log(strID, "stand");
   
   if (strID == "sv") {
     CustomGhostMessage = "Snälla, skriv in...";
