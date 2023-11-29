@@ -65,10 +65,11 @@ function putSomeClasses() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
 function cthemePageReady() {
-    //console.log("inside cthemePageReady");
+  console.log("inside cthemePageReady");
   if(typeof CustomGhostMessage === "undefined"){
     CustomGhostMessage = "Please, type in...";
-  } else if (typeof myCustomGhost !="undefined") {
+  } 
+  if (typeof myCustomGhost !="undefined") {
     CustomGhostMessage = myCustomGhost[`$('#rs_lang').val()`];
     console.log(CustomGhostMessage, "message");
     console.log(myCustomGhost, "MCG");
