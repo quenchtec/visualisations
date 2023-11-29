@@ -68,7 +68,7 @@ function cthemePageReady() {
     //console.log("inside cthemePageReady");
   if(typeof CustomGhostMessage === "undefined"){
     CustomGhostMessage = "Please, type in...";
-  } else {
+  } else if (typeof myCustomGhost !="undefined") {
     CustomGhostMessage = myCustomGhost[`$('#rs_lang').val()`];
     console.log(CustomGhostMessage, "message");
     console.log(myCustomGhost, "MCG");
