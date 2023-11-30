@@ -154,6 +154,12 @@ function rsVisHoriSlider(rsQno, rsSubqIndex, rsParams) { // Creates a basic slid
                 }
             }
             break;
+        case "all":
+            objHeadRow = $(QuestionID).find('.cCellHeader.cCellFirstHeader').parent();
+            for (let i = 1; i <= intNumCol; i++) {
+                $(objHeadRow).find('th,td').eq(i).css('width', cellWidth);
+            }
+            break;
     }
     //Handle floats
     let floatTexts = [];
