@@ -64,10 +64,11 @@ function putSomeClasses() {
     function isMobileDevice() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
+
 function cthemePageReady() {
   if(typeof CustomGhostMessage === "undefined"){
     CustomGhostMessage = "Please, type in...";
-  } 
+  }
   if (typeof myCustomGhost !="undefined") {
     CustomGhostMessage = myCustomGhost[$('#rs_lang').val()];
   }
@@ -114,11 +115,12 @@ function cthemePageReady() {
                 }, 100);
             } else {
                 //console.log("TPR DESK GU call");
-                let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
-                var cHeight = 19;
-                $(".cCellFirstHeader").css("min-width", 100 / colLength + 'rem');
-                $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) / 2 + 'rem');
                 setTimeout(function () {
+                    let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
+                    var cHeight = 19;
+                    $(".cCellFirstHeader").css("min-width", 100 / colLength + 'rem');
+                    $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) / 2 + 'rem');
+                //setTimeout(function () {
                     $('.rsRow').find(".rs-ht").each(function () { if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
                     $(".rsRow").each(function () { $(this).css("height", cHeight + "px"); });
                 }, 100);
