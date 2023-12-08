@@ -2,24 +2,23 @@ $(document).ready(function () {
   // Call your initial setup function
   cthemeff();
   cthemePageReady();
-  //putSomeClasses();
   // Event delegation for click on .rsRow elements
   // Create a MutationObserver when the document is fully loaded
   var targetNode = document.getElementById("rsPanelMain");
   var config = { attributes: true, childList: true, subtree: true };
   var observer = new MutationObserver(function (mutationsList, observer) {
-    for (var mutation of mutationsList) {
-      if (mutation.type === "childList") {
-        cthemePageReady(); // Call your function here
-        putSomeClasses();
-        break; // We've handled the mutation, no need to continue
+      for (var mutation of mutationsList) {
+          if (mutation.type === "childList") {
+              cthemePageReady(); // Call your function here
+              putSomeClasses();
+              break; // We've handled the mutation, no need to continue
+          }
       }
-    }
   });
   observer.observe(targetNode, config);
 });
 
-function cthemeff(){
+function cthemeff() {
   // Detect Firefox using JavaScript
   if (navigator.userAgent.indexOf("Firefox") != -1) {
       // User is using Firefox
@@ -35,96 +34,126 @@ function cthemeff(){
 
 function putSomeClasses() {
   var $cTables = $(".cTable");
-  $cTables.each(function(){
-    if($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")){
-      $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
-        $(".rsRow").each(function(){
-          if ($(this).find("input").prop("checked")) {
-            $(this).addClass("rsSelected");
-          } else {
-            $(this).removeClass("rsSelected");
-          }
-        });
-      });
-    } else if ($(this).hasClass("rsProcessedGrid") && isMobileDevice()){
-      $(".rsRow").find(".cCell").on("click", function () {
-        $(".cCell").each(function(){
-          if ($(this).find("input").prop("checked")) {
-            $(this).addClass("rsSelected");
-          } else {
-            $(this).removeClass("rsSelected");
-          }
-        });
-      });
-    }
+  $cTables.each(function () {
+      if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
+          $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
+              $(".rsRow").each(function () {
+                  if ($(this).find("input").prop("checked")) {
+                      $(this).addClass("rsSelected");
+                  } else {
+                      $(this).removeClass("rsSelected");
+                  }
+              });
+          });
+      } else if ($(this).hasClass("rsProcessedGrid") && isMobileDevice()) {
+          $(".rsRow").find(".cCell").on("click", function () {
+              $(".cCell").each(function () {
+                  if ($(this).find("input").prop("checked")) {
+                      $(this).addClass("rsSelected");
+                  } else {
+                      $(this).removeClass("rsSelected");
+                  }
+              });
+          });
+      }
   });
 
 }
 
-    function isMobileDevice() {
-        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-    }
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || navigator.vendor || window.opera);
+}
 
 function cthemePageReady() {
-  if(typeof CustomGhostMessage === "undefined"){
-    CustomGhostMessage = "Please, type in...";
+  if (typeof CustomGhostMessage === "undefined") {
+      CustomGhostMessage = "Please, type in...";
   }
-  if (typeof myCustomGhost !="undefined") {
-    CustomGhostMessage = myCustomGhost[$('#rs_lang').val()];
+  if (typeof myCustomGhost != "undefined") {
+      CustomGhostMessage = myCustomGhost[$('#rs_lang').val()];
   }
   strID = $('#rs_lang').val();
-  
+
   if (strID == "sv") {
-    CustomGhostMessage = "Snälla, skriv in...";
+      CustomGhostMessage = "Snälla, skriv in...";
   }
-  
-    ghostText(CustomGhostMessage);
-   $(".rsSingleGrid, .rsMultiGrid").each(function(){
-     //if(!$(this).hasClass("rsProcessedGrid")){
-     if((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))){
-       //console.log("rsProcessedGrid is not in calsses");
-         gridUpdate($(this));
-     }
-   });
 
-    
-    function ghostText(custText) {
-        //console.log("TPR GT call");
-        $('.cTextInput').each(function () {
-            $(this).attr("placeholder", custText);
-        });
-    }
-    
-    function gridUpdate(grid_this) {
-      let _grid_this = grid_this;
-      let gridID = $(_grid_this).prop("id");
+  ghostText(CustomGhostMessage);
+  $(".rsSingleGrid, .rsMultiGrid").each(function () {
+      if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
+          gridUpdate($(this));
+      }
+  });
 
-      
-      if (($(_grid_this).hasClass("rsSingleGrid") || $(_grid_this).hasClass("rsMultiGrid")) && (!$(_grid_this).hasClass("rsCQ")) && (!$(_grid_this).hasClass("rsProcessedGrid"))) {
-            //let gridID = $(".rsSingleGrid, .rsMultiGrid").prop("id");
-            let gridIND = gridID.split("_")[1];
-             //console.log("add rsProcessedGrid to ", gridID);
-              $("#"+gridID).addClass("rsProcessedGrid");
-        
-            //rearrange the grid for mobiles
-            if (isMobileDevice()) {
-                //console.log("TPR MOB GU call");
-                setTimeout(function () {
-                  $(".rsRow").each(function () { $(this).children(".cCell").each(function (e) { $(this).append($("#h_" + gridIND + "_" + e).clone()); }); });
-                  $("td.cCellHeader").parent().remove();
-                }, 100);
-            } else {
-                //console.log("TPR DESK GU call");
-                setTimeout(function () {
-                    let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
-                    var cHeight = 19;
-                    $(".cCellFirstHeader").css("min-width", 100 / colLength + 'rem');
-                    $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) / 2 + 'rem');
-                //setTimeout(function () {
-                    $('.rsRow').find(".rs-ht").each(function () { if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
-                    $(".rsRow").each(function () { $(this).css("height", cHeight + "px"); });
-                }, 100);
-            }
-        }
-    }
 }
+
+
+function ghostText(custText) {
+  $('.cTextInput').each(function () {
+      $(this).attr("placeholder", custText);
+  });
+}
+
+function gridUpdate(grid_this) {
+  var _grid_this;
+  if (grid_this) {
+      _grid_this = grid_this;
+  } else {
+      $(".rsSingleGrid, .rsMultiGrid").each(function () {
+          if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
+              _grid_this = $(this);
+          }
+      });
+  }
+
+  let gridID = $(_grid_this).prop("id");
+
+  if (($(_grid_this).hasClass("rsSingleGrid") || $(_grid_this).hasClass("rsMultiGrid")) && (!$(_grid_this).hasClass("rsCQ")) && (!$(_grid_this).hasClass("rsProcessedGrid"))) {
+      let gridIND = gridID.split("_")[1];
+      $("#" + gridID).addClass("rsProcessedGrid");
+
+      //rearrange the grid for mobiles
+      if (isMobileDevice()) {
+          $(".rsProcessedGrid").addClass("mobileGrid");
+          setTimeout(function () {
+              $(".rsRow").each(function () { $(this).children(".cCell").each(function (e) { $(this).append($("#h_" + gridIND + "_" + e).clone()); }); });
+              $("td.cCellHeader").parent().remove();
+          }, 200);
+      } else {
+          $(".rsProcessedGrid").addClass("desktopGrid");
+          setTimeout(function () {
+              let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
+              var cHeight = 19;
+              $(".cCellFirstHeader").css("min-width", 100 / colLength + 'rem');
+              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) / 2 + 'rem');
+              $('.rsRow').find(".rs-ht").each(function () { if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
+              $(".rsRow").each(function () { $(this).css("height", cHeight + "px"); });
+          }, 200);
+      }
+  }
+}
+function debounce(func, timeout = 500) {
+  let timer;
+  return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+
+window.addEventListener('resize', debounce(function (event) {
+
+  if (window.innerWidth > 800) {
+      if ($(".rsProcessedGrid").hasClass("mobileGrid")) {
+          $(".rsProcessedGrid").removeClass("mobileGrid");
+          $(".rsProcessedGrid").addClass("desktopGrid");
+      }
+  } else {
+      if (isMobileDevice()){
+          if (!$(".rsProcessedGrid").hasClass("mobileGrid")) {
+              $(".rsProcessedGrid").addClass("mobileGrid");
+              $(".rsProcessedGrid").removeClass("desktopGrid");
+          }
+      }
+  }
+  cthemePageReady();
+  gridUpdate();
+}));
