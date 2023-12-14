@@ -7,6 +7,6 @@ function rsTxtArea(rsQno,rsSubqIndex,rsParams) {
   let QuestionID = "#" + rsQno; //This we use in selectors to stay within the question
   let SubQIndex = rsSubqIndex; //This we use in selectors to stay within the question
   $(QuestionID).find(".rsRowOpen").addClass("rsCuQeTextArea");
-  $(QuestionID).addClass("rsCQTextArea").addClass("rsCQ");
+  $(QuestionID).find(".cTable").addClass("rsCQTextArea").addClass("rsCQ");
  
 };
