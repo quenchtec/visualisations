@@ -601,7 +601,7 @@ form{
      flex-direction: column;
      align-items: stretch;
  }
- .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText), .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText){
+ .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea), .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea){
  /*.rsRow:not(.cRowBlockText){*/
      cursor: pointer;
      padding: var(--answer_opens_padding);
@@ -617,8 +617,8 @@ form{
    /* Your Firefox-specific styles go here */
    .rsSingle > tbody:has(.rsRow),
    .rsMulti > tbody:has(.rsRow),
-   .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText),
-   .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText) {
+   .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea),
+   .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea) {
      width: auto;
      height: calc((var(--answer_opens_padding) * 10) - 1px);
    }
@@ -632,7 +632,7 @@ form{
   /*NOT FOR MOBILE, as hover will overwrite the checked css*/
   @media only screen and (min-width: 981px) {
  
- .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):hover, .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):hover{
+ .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover, .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover{
  /*.rsSingle > tbody > .rsRow:not([class=cRowBlockText]):hover, .rsMulti > tbody > .rsRow:not([class=cRowBlockText]):hover{*/
  background-color: gainsboro;
    transform: translate3d(0, -2px, 0);
@@ -663,7 +663,7 @@ form{
      flex-direction: column;
      align-items: stretch;
  }
- .cColumn > tbody > .rsRow:not(.cRowBlockText):not(.openText) {
+ .cColumn > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea) {
  /*.rsRow:not(.cRowBlockText){*/
      cursor: pointer;
      padding: var(--answer_opens_padding);
@@ -674,7 +674,7 @@ form{
  }
  
  
- .cColumn > tbody > .rsRow:not(.cRowBlockText):not(.openText):hover{
+ .cColumn > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover{
  /*.rsSingle > tbody > .rsRow:not([class=cRowBlockText]):hover, .rsMulti > tbody > .rsRow:not([class=cRowBlockText]):hover{*/
  background-color: gainsboro;
    transform: translate3d(0, -2px, 0);
