@@ -293,6 +293,8 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
     const valuepr = $(btnDivID).find('.rsBtn, .rsImgBtn').css('padding-right');
     $(btnDivID).find(baseBtnClassSelect).not('.rsBtnSpecial').css('width', 'calc(' + pctWidth + '% - ' + valuel + ' - ' + valuer + ' - ' + valuepl + ' - ' + valuepr + ' - 10px)');
   }
+  //Try to prevent input focus on open text
+  $(QuestionID).find('.cTextInput, .cTextArea').blur();	
   //Check for postscript
   if (rsParams.postscript.length > 0) sParam.postscript;
 }
