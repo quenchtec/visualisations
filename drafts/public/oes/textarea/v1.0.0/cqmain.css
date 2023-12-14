@@ -1,19 +1,19 @@
-.cTable>tbody {
+.rsCQTextArea > tbody {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: flex-start;
 }
 
-.cCell {
+.rsCuQeTextArea > .cCell {
   display: none !important;
 }
 
-.cTextArea {
+.rsCuQeTextArea > .cCellOpenText > .rsRow > .cTextArea {
   min-width: 75% !important;
 }
 
-.rsRow {
+.rsCuQeTextArea > .cCellOpenText > .rsRow {
   display: contents !important;
 }
 
