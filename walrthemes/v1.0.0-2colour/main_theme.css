@@ -109,13 +109,21 @@ form{
  input[type="text"]:focus {
    outline: none;
  }
+textarea:focus {
+   outline: none;
+ }
  /* Turn off spinners */
   input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
       -moz-appearance: none;
       margin: 0;
  }
- 
+textarea{
+     font-family: var(--main_font_family);
+     font-size: var(--main_font_size);
+     font-weight: var(--main_font_weight);
+     color: var(--main_text_color);
+}
  input[type="text"] {
      font-family: var(--main_font_family);
      font-size: var(--main_font_size);
