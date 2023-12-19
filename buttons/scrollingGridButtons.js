@@ -22,6 +22,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   rsParams.scrollMinwidth = (typeof rsParams.scrollMinwidth === "undefined") ? "" : rsParams.scrollMinwidth;
   rsParams.scrollMaxwidth = (typeof rsParams.scrollMaxwidth === "undefined") ? "" : rsParams.scrollMaxwidth;
   rsParams.useimagesasbackground = (typeof rsParams.useimagesasbackground === "undefined") ? true : rsParams.useimagesasbackground;
+  rsParams.scrollAreaTop = (typeof rsParams.scrollAreaTop === "undefined") ? false : rsParams.scrollAreaTop;
   rsParams.randomizecolumns = (typeof rsParams.randomizecolumns === "undefined") ? "no" : rsParams.randomizecolumns;
   rsParams.randomseed = (typeof rsParams.randomseed === "undefined") ? 0 : rsParams.randomseed;
   rsParams.excludecolumnend = (typeof rsParams.excludecolumnend === "undefined") ? 0 : rsParams.excludecolumnend;
@@ -177,7 +178,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
   $(QuestionID).data('blnClickOn', false);
   //Animate row
   $(scrollDivID).find('.rsScrollAnimate').hide();
-  animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, startRow, direction, rsParams.useimagesasbackground, rsParams.autonext);
+  animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, startRow, direction, rsParams.useimagesasbackground, rsParams.autonext, rsParams.scrollAreaTop);
 
   //Check for prescript
   if (rsParams.postscript.length > 0) sParam.postscript;
@@ -372,7 +373,7 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
   }
 }
 
-function animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, direction, useimagesasbackground, doAutonext) {
+function animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, direction, useimagesasbackground, doAutonext, scrollAreaTop)) {
   const wrpScrollTime = 200;
   let strHTML = "";
   let baseBtnClass = "rsBtn";
@@ -392,6 +393,12 @@ function animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, dire
   let wrpScrollTimeOut = wrpScrollTime;
   if ($(scrollDivID).find('.rsScrollGridContent').is(':empty')) {
     wrpScrollTimeOut = 0;
+  }
+  if (scrollAreaTop) {
+    if ((wrapNo>0)||((wrapNo == 0) && (direction == -1))) {
+        let wrapPos = $(scrollDivID).find('.rsScrollAnimate').offset().top;
+        $('html, body').scrollTop(wrapPos);
+    }
   }
   $(scrollDivID).find('.rsScrollAnimate').hide("slide", {
       direction: animateDirectionOut
@@ -431,11 +438,11 @@ function scrollingGridSetAnswers(QuestionID, btnDivID, wrapNo, baseBtnClassSelec
     }
   }
 }
-window.rsScrollingGridNextClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext) {
+window.rsScrollingGridNextClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext, scrollAreaTop) {
   let wrapNo = parseInt($(scrollDivID).find('.rsScrollGridContent').data('wrapNo'));
   if (wrapNo < intNumRows - 1) {
     wrapNo++;
-    animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, 1, useimagesasbackground, doAutonext);
+    animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, 1, useimagesasbackground, doAutonext, scrollAreaTop);
     return;
   }
   //Display buttons again
@@ -446,11 +453,11 @@ window.rsScrollingGridNextClick = function(QuestionID, btnDivID, scrollDivID, in
   $('#btnNext').click();
 }
 
-window.rsScrollingGridPreviousClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext) {
+window.rsScrollingGridPreviousClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext, scrollAreaTop) {
   let wrapNo = parseInt($(scrollDivID).find('.rsScrollGridContent').data('wrapNo'));
   if (wrapNo > 0) {
     wrapNo--;
-    animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, -1, useimagesasbackground, doAutonext);
+    animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, -1, useimagesasbackground, doAutonext, scrollAreaTop);
     return;
   }
   //Display buttons again
