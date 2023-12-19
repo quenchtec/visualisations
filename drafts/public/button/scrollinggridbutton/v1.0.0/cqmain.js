@@ -373,7 +373,7 @@ function buildScrollingGridButtons(QuestionID, intNumButtons, intNumButtonsPrRow
   }
 }
 
-function animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, direction, useimagesasbackground, doAutonext, scrollAreaTop)) {
+function animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, direction, useimagesasbackground, doAutonext, scrollAreaTop) {
   const wrpScrollTime = 200;
   let strHTML = "";
   let baseBtnClass = "rsBtn";
