@@ -80,7 +80,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
       $('#btnPrevious2').val($('#btnPrevious').val());
       $('#btnPrevious').hide();
     }
-    $('#btnNext').after('<input id="btnNext2" onclick="rsScrollingGridNextClick(\'' + QuestionID + '\',\'' + btnDivID + '\',\'' + scrollDivID + '\',' + intNumRows + ',' + rsParams.useimagesasbackground + ',' + rsParams.autonext ',' + rsParams.scrollAreaTop + ')" class="buttonNext" name="btnNext2" value="Next" type="button"></input>');
+    $('#btnNext').after('<input id="btnNext2" onclick="rsScrollingGridNextClick(\'' + QuestionID + '\',\'' + btnDivID + '\',\'' + scrollDivID + '\',' + intNumRows + ',' + rsParams.useimagesasbackground + ',' + rsParams.autonext + ',' + rsParams.scrollAreaTop + ')" class="buttonNext" name="btnNext2" value="Next" type="button"></input>');
     $('#btnNext2').val($('#btnNext').val());
     $('#btnNext').hide();
     //Hide the next button until something selected if autonext
