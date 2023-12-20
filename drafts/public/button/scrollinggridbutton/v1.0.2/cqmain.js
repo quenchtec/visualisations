@@ -22,6 +22,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
     rsParams.maxheight = (typeof rsParams.maxheight === "undefined") ? "" : rsParams.maxheight;
     rsParams.scrollMinwidth = (typeof rsParams.scrollMinwidth === "undefined") ? "" : rsParams.scrollMinwidth;
     rsParams.scrollMaxwidth = (typeof rsParams.scrollMaxwidth === "undefined") ? "" : rsParams.scrollMaxwidth;
+    rsParams.scrollAreaTop = (typeof rsParams.scrollAreaTop === "undefined") ? false : rsParams.scrollAreaTop;
     rsParams.useimagesasbackground = (typeof rsParams.useimagesasbackground === "undefined") ? true : rsParams.useimagesasbackground;
     rsParams.randomizecolumns = (typeof rsParams.randomizecolumns === "undefined") ? "no" : rsParams.randomizecolumns;
     rsParams.randomseed = (typeof rsParams.randomseed === "undefined") ? 0 : rsParams.randomseed;
@@ -79,7 +80,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
       $('#btnPrevious2').val($('#btnPrevious').val());
       $('#btnPrevious').hide();
     }
-    $('#btnNext').after('<input id="btnNext2" onclick="rsScrollingGridNextClick(\'' + QuestionID + '\',\'' + btnDivID + '\',\'' + scrollDivID + '\',' + intNumRows + ',' + rsParams.useimagesasbackground + ',' + rsParams.autonext + ')" class="buttonNext" name="btnNext2" value="Next" type="button"></input>');
+    $('#btnNext').after('<input id="btnNext2" onclick="rsScrollingGridNextClick(\'' + QuestionID + '\',\'' + btnDivID + '\',\'' + scrollDivID + '\',' + intNumRows + ',' + rsParams.useimagesasbackground + ',' + rsParams.autonext ',' + rsParams.scrollAreaTop + ')" class="buttonNext" name="btnNext2" value="Next" type="button"></input>');
     $('#btnNext2').val($('#btnNext').val());
     $('#btnNext').hide();
     //Hide the next button until something selected if autonext
@@ -449,13 +450,19 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
       }
     }
   }
-  window.rsScrollingGridNextClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext) {
-    $(window).scrollTop(0);
+  window.rsScrollingGridNextClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext, scrollAreaTop) {
     let wrapNo = parseInt($(scrollDivID).find('.rsScrollGridContent').data('wrapNo'));
     if (wrapNo < intNumRows - 1) {
-      wrapNo++;
-      animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, 1, useimagesasbackground, doAutonext);
-      return;
+        wrapNo++;
+        animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, 1, useimagesasbackground, doAutonext);
+        if (scrollAreaTop) {
+            let wrapPos = $(scrollDivID).find('.rsScrollAnimate').offset().top;
+            $('html, body').scrollTop(wrapPos);   
+        }
+        else {
+            $(window).scrollTop(0);
+        }
+        return;
     }
     //Display buttons again
     $('#btnNext2').remove();
