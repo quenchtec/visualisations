@@ -1107,6 +1107,14 @@ textarea{
    transform: translate3d(0, 1px, 0);
    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
  }
+
+ .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cCellHeader > .cReg > p {
+    text-wrap: balance;
+    min-height: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
  }
  
  
