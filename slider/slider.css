@@ -11,7 +11,7 @@
  }
 
  .rsGridSlider.rsSingleGrid .rsRow .cCell {
-   display: table-cell!important;
+   display: table-cell;
  }
 
  .rsGridSlider .cSliderCell {
