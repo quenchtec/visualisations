@@ -11,7 +11,7 @@
  }
 
  .rsGridSlider.rsSingleGrid .rsRow .cCell {
-   display: table-cell;
+   display: table-cell!important;
  }
 
  .rsGridSlider .cSliderCell {
@@ -22,5 +22,5 @@
 
  .ui-slider-tip {
    min-width: 34px;
-   width: auto !important;
+   width: auto!important;
 }
