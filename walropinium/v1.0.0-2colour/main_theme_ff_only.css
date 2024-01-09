@@ -1,0 +1,47 @@
+/*#########################################################
+FIREFOX
+#########################################################*/
+.rsSingle > tbody > .rsRow > .cCellRowText:not(.cRowBlockText):not(.openText), .rsMulti > tbody > .rsRow > .cCellRowText:not(.cRowBlockText):not(.openText){
+  cursor: pointer;
+  padding: var(--answer_opens_padding);
+  /*border: 1px solid var(--input_field_border_color);*/
+  border-radius: var(--interactive_border_radius);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.rsSingle > tbody > .rsRow > .cCellRowText > .textleft > .cRowText :not(.cRowBlockText):not(.openText), .rsMulti > tbody > .rsRow > .cCellRowText > .textleft > .cRowText :not(.cRowBlockText):not(.openText){
+  margin: 6px;
+}
+
+
+.rsSelected  {
+    background-color: var(--question_selected_background_color);
+    transform: translate3d(0, 1px, 0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.rsSingle > tbody > tr, .rsMulti > tbody > tr {
+  display: flex;
+  max-width: 90vw;
+}
+
+.rsOpenCell{
+	padding-left: 18px !important;
+}
+
+
+/* Remove up and down arrows/buttons in Firefox */
+input[type="number"]::-moz-number-spin-box {
+  display: none;
+}
+/* Remove up and down arrows/buttons in Firefox */
+.rsBtnRank  {
+  /* Hide arrows in Firefox */
+  -moz-appearance: textfield;
+}
+
+table.rsCQBalls tbody tr.rsRow.rsNumRow.cRow td.cCellRowText{
+    max-width: 98%;
+}
+table.rsCQBalls tbody{
+    margin-left: 15%;
+}
