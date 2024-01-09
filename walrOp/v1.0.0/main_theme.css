@@ -548,7 +548,6 @@ textarea{
         }
  .buttonNext{
      float: right;
-     width: 100%;
      font-weight: bold;
      transition: box-shadow 0.2s ease-in-out;
     }
