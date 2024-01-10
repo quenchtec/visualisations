@@ -145,9 +145,11 @@ textarea{
  }
  
  [id^=instr] {
-   font-style: italic;
-   color: var(--main_text_color);
- }
+   font-style: var(--text_style_instruction);
+   color: var(--text_color_instruction);
+   font-size: var(--text_size_instruction);
+   font-weight: var(--text_weight_instruction);
+}
 
  .cTextInput{
      outline: none;
