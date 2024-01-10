@@ -597,7 +597,8 @@ input[type="text"]:focus {
   .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText),
   .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText) {
     width: auto;
-    height: calc((var(--answer_opens_padding) * 10) - 1px);
+    /*height: calc((var(--answer_opens_padding) * 10) - 1px);*/
+    height: fit-content;
   }
 }
 
