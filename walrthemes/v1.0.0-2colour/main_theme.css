@@ -180,7 +180,7 @@ textarea{
       background-clip: content-box;
       padding: 3px;
       background-color: var(--progressbar_background_color) !important;
-      color: var(--custom_special_background_color) !important;
+      color: var(--main_text_color) !important;
       filter: brightness(0.7);
  }
  
