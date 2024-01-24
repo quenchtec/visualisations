@@ -32,7 +32,7 @@ form{
  }
  #btnNext{
    background-color: var(--button_background_color);
-   color: white;
+   color: var(--button_text_color);
  }
  /*######################################################*/
  /*######################################################*/
