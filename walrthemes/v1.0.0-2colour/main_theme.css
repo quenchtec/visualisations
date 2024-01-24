@@ -219,7 +219,7 @@ textarea{
       font-size: calc((var(--input_check_size) * 0.8) - 2px);
       text-align: center;
        background-color: var(--progressbar_background_color) !important;
-       border-color: var(--progressbar_background_color) !important;
+       border-color: var(--main_text_color) !important;
        color: var(--custom_special_background_color);
        filter: brightness(0.7);
 
