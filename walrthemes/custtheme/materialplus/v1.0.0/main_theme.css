@@ -168,8 +168,8 @@ textarea{
       content: "";
       visibility: visible;
       position: absolute;
-      border: 2px solid var(--main_text_color);
-      background-color: var(--custom_special_background_color);
+      border: 2px solid var(--input_button_background_colour);
+      background-color: var(--input_button_background_colour);
       border-radius: 50%;
       top: 0;
       right: 0;
@@ -179,10 +179,10 @@ textarea{
   .cRadio:checked:before {
       background-clip: content-box;
       padding: 3px;
-      background-color: var(--progressbar_background_color) !important;
+      background-color: var(--input_button_background_colour) !important;
       color: var(--main_text_color) !important;
       filter: brightness(0.7);
-       border-color: var(--main_text_color) !important;
+       border-color: var(--input_button_border_colour) !important;
 
   }
  
@@ -207,8 +207,8 @@ textarea{
       content: "";
       visibility: visible;
       position: absolute;
-      border: 2px solid var(--main_text_color);
-      background-color: var(--custom_special_background_color);
+      border: 2px solid var(--input_button_background_colour);
+      background-color: var(--input_button_background_colour);
       top: 0;
       right: 0;
       bottom: 0;
@@ -220,8 +220,8 @@ textarea{
       line-height: 1.2;
       font-size: calc((var(--input_check_size) * 0.8) - 2px);
       text-align: center;
-       background-color: var(--progressbar_background_color) !important;
-       border-color: var(--main_text_color) !important;
+       background-color: var(--input_button_background_colour) !important;
+       border-color: var(--input_button_border_colour) !important;
        color: var(--custom_special_background_color);
        filter: brightness(0.7);
 
