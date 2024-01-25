@@ -532,8 +532,8 @@ textarea{
  
  
  .buttonNext{
-     float: left;
-     width: 20%;
+     float: var(--button_next_float);
+     width: var(--button_next_width);
      transition: box-shadow 0.2s ease-in-out;
  }
  
@@ -543,11 +543,14 @@ textarea{
      transition: box-shadow 0.2s ease-in-out;
  }
   .buttonPrevious {
-      border-width: var(--button_border_width);
-      float: left;
-      width: 10%;
+      float: var(--button_previous_float);
+      width: var(--button_previous_width);
  }
- 
+  .buttonPrevious:hover{
+    background-color: var(--button_background_hover);
+     box-shadow: 0px 0px 5px 1px #07558c;
+     transition: box-shadow 0.2s ease-in-out;
+ }
  /* ########### NAVIGATION BUTTONS END ######### */
  /*######################################################*/
  /*######################################################*/
