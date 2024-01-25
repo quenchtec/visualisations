@@ -165,7 +165,7 @@ textarea{
       cursor: pointer;
  }
   .cRadio:before {
-      content: "";
+      content: var(--input_radio_tick);
       visibility: visible;
       position: absolute;
       border: 2px solid var(--input_button_background_colour);
@@ -215,7 +215,7 @@ textarea{
       left: 0;
  }
 .cCheck:checked:before {
-      content: '\2714';
+      content: var(--input_checkbox_tick);
       font-weight: 800;
       line-height: 1.2;
       font-size: calc((var(--input_check_size) * 0.8) - 2px);
