@@ -516,7 +516,7 @@ textarea{
       color: var(--button_text_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
       border-color: var(--button_border_color);
       border-radius: var(--button_border_radius);
-      border-width: 0px;
+      border-width: var(--button_border_width);
       min-width: var(--button_min_width);
       height: var(--button_height);
       font-size: var(--button_font_size);
@@ -524,7 +524,7 @@ textarea{
       border-style: solid;
       text-align: center;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: var(--button_font_weight);
       line-height: 18px;
       padding-left: 12px;
       padding-right: 12px;
@@ -534,17 +534,16 @@ textarea{
  .buttonNext{
      float: left;
      width: 20%;
-     font-weight: bold;
      transition: box-shadow 0.2s ease-in-out;
  }
  
  .buttonNext:hover{
-      background-color: var(--button_background_hover);
+    background-color: var(--button_background_hover);
      box-shadow: 0px 0px 5px 1px #07558c;
      transition: box-shadow 0.2s ease-in-out;
  }
   .buttonPrevious {
-      border-width: var(--button_border-width);
+      border-width: var(--button_border_width);
       float: left;
       width: 10%;
  }
