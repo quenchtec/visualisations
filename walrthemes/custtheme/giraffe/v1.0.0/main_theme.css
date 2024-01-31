@@ -1,0 +1,1179 @@
+form{
+    /* background-image: var(--page_background_image);*/
+      background-size: 100vw 100vh;
+ }
+  body {
+      background: var(--page_background_color);
+    /* background-image: var(--page_background_image);*/
+      font-family: var(--main_font_family);
+      color: var(--main_text_color);
+      font-weight: var(--main_font_weight);
+      background-repeat: no-repeat;
+      background-size: auto;
+      overflow-y: auto;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+ /* let's flex it all*/
+     display: flex;
+     flex-direction: column;
+     align-content: stretch;
+     align-items: stretch;
+     justify-content: space-evenly;
+     flex-wrap: wrap;
+ }
+ @viewport {
+   width: device-width;
+   initial-scale: 0.8;
+   maximum-scale: 1;
+ }
+ .hidden{
+     display:none;
+ }
+ #btnNext{
+   background-color: var(--button_background_color);
+   color: white;
+ }
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ 
+ /* ############# Define standard variables #################### */
+  strong {
+      font-weight: bold;
+ }
+  label {
+      cursor: pointer;
+ }
+  .textleft {
+      text-align: left;
+ }
+  .textright {
+      text-align: right;
+ }
+  .textcenter {
+      text-align: center;
+ }
+  .textul {
+      text-decoration: underline;
+ }
+  .textitalic {
+      font-style: italic;
+ }
+  .textbold {
+      font-weight: bold;
+ }
+  .textupper {
+      text-transform: uppercase;
+ }
+  .cellw100 {
+      width: 100%;
+ }
+  .cellw1 {
+      width: 1%;
+ }
+  .imgleft {
+      display: block;
+      text-align: left;
+ }
+  .imgright {
+      display: block;
+      text-align: right;
+ }
+  .imgcenter {
+      display: block;
+      text-align: center;
+ }
+  .lpad0 {
+      padding-left: 0;
+ }
+  .rpad0 {
+      padding-right: 0;
+ }
+  .nowrap {
+      white-space: nowrap;
+ }
+ .rsRow :has(.cError) {
+     /*color: var(--main_text_color);*/
+     background-color: rgba(255, 0, 0, 0.05);
+     border: 0px solid white;
+     border-radius: var(--interactive_border_radius);
+     padding: 3px;
+ }
+ .cError{
+     /*content: "";
+     display: none;*/
+     color: rgba(255, 0, 0, 1) !important;
+ }
+ input[type="text"]:focus {
+   outline: none;
+ }
+textarea:focus {
+   outline: none;
+ }
+ /* Turn off spinners */
+  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      margin: 0;
+ }
+textarea{
+     font-family: var(--main_font_family);
+     font-size: var(--main_font_size);
+     font-weight: var(--main_font_weight);
+     color: var(--main_text_color);
+}
+ input[type="text"] {
+     font-family: var(--main_font_family);
+     font-size: var(--main_font_size);
+     font-weight: var(--main_font_weight);
+     color: var(--main_text_color);
+ }
+ 
+ input[type="number"] {
+     font-family: var(--main_font_family);
+     font-size: var(--main_font_size);
+     font-weight: var(--main_font_weight);
+     color: var(--main_text_color);
+ }
+ 
+ [id^=instr] {
+   font-style: italic;
+ }
+ .cTextInput{
+     outline: none;
+     padding: var(--answer_opens_padding);
+     border: 0px solid gainsboro;
+     border-radius: var(--interactive_border_radius);
+     /*background-color: rgba(196,214,202,0.1); */
+ }
+ /* Radio button and check boxes, many settings to try to implement "pretty" look, but retain WCAG (Unveirsal Access) with keyboard navigation etc, and also support varous browsers and devices */
+  .cRadio {
+      outline: 0;
+     /* Maybe we should change this to indicate focus */
+      accent-color: transparent;
+      color: #FFFFFF;
+      position: relative;
+      margin: 0;
+      width: var(--input_radio_checkbox_size);
+      height: var(--input_radio_checkbox_size);
+      background-color: #FFFFFF;
+      border-radius: 50%;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+ }
+  .cRadio:before {
+      content: "";
+      visibility: visible;
+      position: absolute;
+      border: 2px solid var(--main_text_color);
+      background-color: var(--custom_special_background_color);
+      border-radius: 50%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+ }
+  .cRadio:checked:before {
+      background-clip: content-box;
+      padding: 3px;
+      background-color: var(--progressbar_background_color) !important;
+      color: var(--main_text_color) !important;
+      filter: brightness(0.7);
+       border-color: var(--main_text_color) !important;
+
+  }
+ 
+ .cCheck {
+      outline: 0;
+     /* Maybe we should change this to indicate focus */
+      accent-color: transparent;
+      color: #FFFFFF;
+      position: relative;
+      margin: 0;
+      width: var(--input_radio_checkbox_size);
+      height: var(--input_radio_checkbox_size);
+      background-color: #FFFFFF;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+ }
+  .cCheck:checked {
+      background-color: var(--input_main_color);
+ }
+  .cCheck:before {
+      content: "";
+      visibility: visible;
+      position: absolute;
+      border: 2px solid var(--main_text_color);
+      background-color: var(--custom_special_background_color);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+ }
+.cCheck:checked:before {
+      content: '\2714';
+      font-weight: 800;
+      line-height: 1.2;
+      font-size: calc((var(--input_check_size) * 0.8) - 2px);
+      text-align: center;
+       background-color: var(--progressbar_background_color) !important;
+       border-color: var(--main_text_color) !important;
+       color: var(--custom_special_background_color);
+       filter: brightness(0.7);
+
+ }
+ 
+ 
+ /* ############# END Define standard variables #################### */
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ 
+ /* loading animation (displayed if the request takes more than 2 seconds), div */
+  .loadingAnimation {
+      margin: auto;
+      margin-top: 12px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      border-top: 2px solid #227BBE;
+      border-right: 2px solid #227BBE;
+      width: 12px;
+      height: 12px;
+      -webkit-animation: spin 1.5s linear infinite;
+      animation: spin 1.5s linear infinite;
+ }
+  @-webkit-keyframes spin {
+      0% {
+          -webkit-transform: rotate(0deg);
+     }
+      100% {
+          -webkit-transform: rotate(360deg);
+     }
+ }
+  @keyframes spin {
+      0% {
+          transform: rotate(0deg);
+     }
+      100% {
+          transform: rotate(360deg);
+     }
+ }
+  #cookieInfo {
+      padding: 2px 10px 6px 10px;
+      background: white;
+      font-size: 16px;
+      border: 1px solid #ddd;
+ }
+  #cookieFrameInfo {
+      padding: 2px 10px 6px 10px;
+      background: white;
+      font-size: 14px;
+      border: 1px solid #ddd;
+ }
+  #cookieInfo .cookieInfoHeader {
+      font-size: 14px;
+      font-weight: bold;
+ }
+  #cookieFrameInfo .cookieInfoHeader {
+      font-size: 14px;
+      font-weight: bold;
+ }
+ /* Main container for question and navigation buttons */
+  .mainContainer {
+      background-color: var(--page_content_background_color);
+      font-size: var(--main_font_size);
+      font-weight: var(--main_font_weight);
+      margin: 25px auto 8px;
+      border-radius: 12px;
+      width: 900px;
+      min-width: fit-content;
+      max-width: 98vw;
+ 
+ 
+     display: flex;
+     flex-direction: column;
+     align-content: space-around;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+ 
+ }
+ /* Question content (excluding navigation) */
+  .contentContainer {
+      padding: 16px;
+     display: flex;
+     flex-direction: column;
+     flex-wrap: nowrap;
+     justify-content: space-evenly;
+     align-items: center;
+      width: 98%;
+ }
+ /* Language content*/
+  .languagePanel {
+      padding: 16px;
+ }
+ /* Test label */
+  #rsPanelComments {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+ }
+  #rsPanelComments .msgBar {
+      margin: auto;
+      position: fixed;
+      top: 6px;
+      background: #fff7e1;
+      border: 1px solid #e7d7b0;
+      color: #837542;
+      font-size: 14px;
+      padding: 8px 12px;
+ }
+ /* Logo 1 */
+ .logo1Container {
+      width: 100%;
+      display: flex;
+      padding-top: 8px;
+      padding-bottom: 20px;
+      justify-content: var(--main_logo_alignment);
+ }
+  .logo1 {
+      height: 28px;
+ }
+ /* Link (powered by) */
+  .logo2link {
+      color: inherit;
+      text-decoration: none;
+ }
+  .logo2link:link {
+      color: inherit;
+ }
+  .logo2link:visited {
+      color: inherit;
+ }
+  .logo2link:hover {
+      color: inherit;
+      text-decoration: underline;
+ }
+  .logo2link:active {
+      color: inherit;
+      text-decoration: none;
+ }
+ .rsFlexBtnDiv {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
+     align-items: center;
+ }
+ 
+ 
+ 
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ 
+ /* ######## LANGUAGE BAR buttons are here ############ */
+ .languagePanel {
+   background-color: transparent;
+   border-color: transparent;
+   border-style: none;
+ }
+ .langContainer{
+     position: fixed;
+     bottom: 0;
+     left: 0;
+ }
+ 
+ .languagePanel a {
+   display: inline-block;
+   background-color: var(--interactive_background_color);
+   color: var(--interactive_text_color);
+   text-decoration: none;
+ }
+ 
+ #LangSelector_PanelLayout a:hover {
+   background-color: #0056b3;
+ }
+ 
+ #LangSelector_PanelLayout a.aspNetDisabled {
+   opacity: 0.6;
+   cursor: not-allowed;
+ }
+ 
+ #LangSelector_PanelLayout a {
+   padding: 4px 8px 8px 8px;
+   }
+ 
+ #LangSelector_PanelLayout a:first-child {
+   padding: 4px 8px 8px 8px;
+   border-radius: var(--interactive_border_radius) 0px 0px var(--interactive_border_radius);
+   }
+ 
+ #LangSelector_PanelLayout a:last-child {
+   padding: 4px 8px 8px 8px;
+   border-radius: 0px var(--interactive_border_radius) var(--interactive_border_radius) 0px;
+ }
+ 
+ /* ########### END LANGUAGE BAR END ######### */
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ 
+ /* ########### PROGRESS BAR START ######### */
+ 
+ /* PROGRESS BAR */
+ 
+  .progressContainer {
+      display: inline-block;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+ }
+ /* Progressbar - background */
+  .progressBarContainer {
+      width: 100%;
+      background-color: var(--progressbar_background_color);
+      height: 6px;
+      margin: 0;
+ }
+ /* Progressbar - foreground */
+  .progressBar {
+      background-color: var(--progressbar_foreground_color);
+      height: 6px;
+ }
+ /* Progressbar - text */ 
+  .progressBarText {
+      display: none;
+ }
+ 
+ 
+ 
+ 
+ /*
+ .progressContainer {
+   width: 98%;
+   background-color: #f0f0f0;
+   border-radius: 5px;
+   padding: 5px;
+   
+ }
+ 
+ .progressBarContainer {
+   width: 100%;
+   height: 20px;
+   background-color: #e0e0e0;
+   border-radius: 5px;
+   overflow: hidden;
+ }
+ 
+ .progressBar {
+   height: 100%;
+   background-color: var(--progressbar_foreground_color);
+   transition: width 0.3s ease-in-out;
+ }
+ 
+ .progressBarText {
+   text-align: center;
+   line-height: 20px;
+   color: #ffffff;
+ }
+ */
+ 
+ /* ########### END PROGRESS BAR END ######### */
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ 
+ /* ########### NAVIGATION BUTTONS ######### */
+ 
+ /* Navigation buttons */
+  #rsPanelButtons {
+      width: 100%;
+ }
+  .buttonContainer {
+      display: flex;
+      padding: 16px;
+      margin-top: 0;
+      margin-bottom: 0;
+      width: 98%;
+ }
+  .buttonNext, .buttonPrevious {
+      background-color: var(--interactive_text_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
+      color: var(--interactive_background_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
+      border-color: var(--button_border_color);
+      border-radius: var(--button_border_radius);
+      border-width: 0px;
+      min-width: var(--button_min_width);
+      height: var(--button_height);
+      font-size: var(--button_font_size);
+      font-family: var(--main_font_family);
+      border-style: solid;
+      text-align: center;
+      cursor: pointer;
+      font-weight: bold;
+      line-height: 18px;
+      padding-left: 12px;
+      padding-right: 12px;
+ }
+ 
+ 
+ .buttonNext{
+     float: right;
+     width: 100%;
+     font-weight: bold;
+     transition: box-shadow 0.2s ease-in-out;
+ }
+ 
+ .buttonNext:hover{
+     box-shadow: 0px 0px 5px 1px #07558c;
+     transition: box-shadow 0.2s ease-in-out;
+ }
+  .buttonPrevious {
+      border-width: var(--button_border-width);
+      float: left;
+      width: 10%;
+ }
+ 
+ /* ########### NAVIGATION BUTTONS END ######### */
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ 
+ 
+ .panelMainContainer{
+     width: 100%;
+ }
+ #rsPanelMain{
+     width: 100%;
+     max-width: 900px;
+     min-height: 60vh;
+ }
+ 
+ .cTable{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: stretch;
+     align-content: center;
+     flex-wrap: wrap;
+ }
+ 
+ .cCellSubQuestion{
+     width: 900px;
+      text-align: left;
+      padding: 10px 0px 20px 0px;
+      border: none;
+ }
+ .cQuestionText > .cReg {
+     font-size: var(--question_font_size);
+ }
+  .logo2Container {
+     margin-top: 50px;
+     margin-bottom: -25px;
+     display: none;
+ }
+ 
+ .rsEmptyFinalRow{
+     height: 20px;
+ }
+ 
+ .cTable > tbody > tr {
+     padding-bottom: 20px;
+ }
+ 
+ 
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ 
+ /*####### HANDLE RADIO AND CHECKBOX QUESTIONS #########*/
+ .rsSingle > tbody:has(.rsRow), .rsMulti > tbody:has(.rsRow) {
+     display: flex;
+     position: relative;
+     border-radius: 5px;
+     padding: 10px;
+     /*border: 1px solid var(--input_field_border_color);*/ /*Remove gray border arround question*/
+     border: 1px solid none;
+     border-spacing: 10px;
+     flex-direction: column;
+     align-items: stretch;
+ }
+ .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea), .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea){
+ /*.rsRow:not(.cRowBlockText){*/
+     cursor: pointer;
+     padding: var(--answer_opens_padding);
+     border: 1px solid var(--input_field_border_color);
+     border-radius: var(--interactive_border_radius);
+     margin: 3px 0px 3px 0px;
+     transition: transform 0.2s, box-shadow 0.2s;
+ }
+ 
+ 
+ /* Styles for Firefox only */
+ @-moz-document url-prefix() {
+   /* Your Firefox-specific styles go here */
+   .rsSingle > tbody:has(.rsRow),
+   .rsMulti > tbody:has(.rsRow),
+   .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea),
+   .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea) {
+     width: auto;
+     /*height: calc((var(--answer_opens_padding) * 10) - 1px);*/
+     height: fit-content;
+   }
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+  /*NOT FOR MOBILE, as hover will overwrite the checked css*/
+  @media only screen and (min-width: 981px) {
+ 
+ .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover, .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover{
+ /*.rsSingle > tbody > .rsRow:not([class=cRowBlockText]):hover, .rsMulti > tbody > .rsRow:not([class=cRowBlockText]):hover{*/
+ background-color: gainsboro;
+   transform: translate3d(0, -2px, 0);
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+ }
+  }
+ .rsMulti > tbody > .rsRow > .cCell > .cCheck,.rsMulti > tbody > .rsRow > .cCell > .cRadio, .rsSingle > tbody > .rsRow > .cCell > .cRadio{
+     display:none;
+ }
+ 
+ 
+ .rsSingle > tbody > .rsRow:has(.cRadio:checked), .rsMulti > tbody > .rsRow:has(.cCheck:checked), .rsMulti > tbody > .rsRow:has(.cRadio:checked){
+ /*.rsRow:has(.cCheck:checked), .rsRow:has(.cRadio:checked){*/
+ background-color: var(--question_selected_background_color);
+   transform: translate3d(0, 1px, 0);
+   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+ }
+ 
+ /*#########    TWO COLUMNS FIX ###################*/
+ 
+ .cColumn > tbody:has(.rsRow) {
+     display: flex;
+     position: relative;
+     border-radius: var(--interactive_border_radius);
+     padding: 10px;
+     border: 0px solid var(--input_field_border_color);
+     border-spacing: 10px;
+     flex-direction: column;
+     align-items: stretch;
+ }
+ .cColumn > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea) {
+ /*.rsRow:not(.cRowBlockText){*/
+     cursor: pointer;
+     padding: var(--answer_opens_padding);
+     border: 1px solid var(--input_field_border_color);
+     border-radius: var(--interactive_border_radius);
+     margin: 3px 0px 3px 0px;
+     transition: transform 0.2s, box-shadow 0.2s;
+ }
+ 
+ 
+ .cColumn > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover{
+ /*.rsSingle > tbody > .rsRow:not([class=cRowBlockText]):hover, .rsMulti > tbody > .rsRow:not([class=cRowBlockText]):hover{*/
+ background-color: gainsboro;
+   transform: translate3d(0, -2px, 0);
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+ }
+ 
+ .cColumn > tbody > .rsRow > .cCell > .cCheck, .cColumn > tbody > .rsRow > .cCell > .cRadio, .cColumn > tbody > .rsRow > .cCell > .cRadio{
+     display:none;
+ }
+ 
+ 
+ .cColumn > tbody > .rsRow:has(.cRadio:checked), .cColumn > tbody > .rsRow:has(.cCheck:checked), .cColumn > tbody > .rsRow:has(.cRadio:checked){
+ /*.rsRow:has(.cCheck:checked), .rsRow:has(.cRadio:checked){*/
+ background-color: var(--question_selected_background_color);
+   transform: translate3d(0, 1px, 0);
+   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+ }
+ /*#########   ENDS TWO COLUMNS FIX ###################*/
+ 
+ /*####### ENDS HANDLE RADIO AND CHECKBOX QUESTIONS #########*/
+ 
+ /*######################################################*/
+ /*######################################################*/
+ 
+ 
+ /*####### START HANDLE NUMERIC QUESTIONS #########*/
+ .rsNumeric > tbody:has(.rsRow) {
+     display: flex;
+     position: relative;
+     border-radius: var(--interactive_border_radius);
+     padding: 10px;
+     /*border: 1px solid var(--input_field_border_color);*/ /*Remove gray border arround question*/
+     border: 1px solid none;
+     border-spacing: 10px;
+     flex-direction: column;
+     align-items: stretch;
+ }
+ 
+ .rsNumeric > tbody > .rsRow > .cCellRowText {
+     min-width: fit-content;
+     max-width: 48%;
+     width: 20%;
+ }
+ 
+ 
+ /* #### THIS IS FOR THE CUSTOM SLIDERS ####*/
+ .rsNumeric > tbody > .rsRow > .cCellRowText:has(.noUi-target)  {
+     max-width: 98% !important;
+ }
+ 
+ .rsNumeric > tbody > .rsRow > .cCellLastValue > .cFInput {
+     border: 2px solid #808080a8;
+     border-radius: var(--interactive_border_radius);
+     padding: var(--answer_opens_padding);
+     font-size: var(--button_font_size);
+ }
+ 
+ /* #### THIS IS FOR THE CUSTOM RANKING ####*/
+ .rsNumeric > tbody > .rsRow > .cCellLastValue:has(.rsBtnRank) > .cFInput{
+     /*padding-left: 15px !important;*/
+     width: 27px !important;
+     font-size: var(--question_font_size) !important;
+     text-align: center;
+ }
+ /* Add some padding top for the rating slider scale values */
+ .rsRatingSlider > tbody > .rsRow > .cCellRowText > .cRowText > .noUi-horizontal > .noUi-pips > .noUi-value-horizontal {
+     padding-top: 5px;
+ }
+ 
+ 
+ 
+ /*####### ENDS HANDLE NUMERIC QUESTIONS #########*/
+ /*######################################################*/
+ /*######################################################*/
+ 
+ 
+ /* ####### DROPDOWN ########*/
+ /* Select general */
+ 
+ 
+ .rsRow select {
+   background: var(--page_content_background_color);
+   color: var(--main_text_color);
+   /* To avoid zoom on iPhones and iPads */
+   font-size: var(--main_font_size);
+   font-weight: normal;
+   border: 1px solid var(--input_field_border_color);
+   border-radius: var(--interactive_border_radius);
+   padding: 8px;
+   margin: 0;
+   min-width: fit-content;
+   max-width: 90% !important;
+   transform: translate3d(0, 0, 0);
+ }
+ .rsRow:has(.cRowBlockText):hover{
+   background-color: var(--page_content_background_color) !important;
+   transform: translate3d(0, 0, 0) !important;
+   border: none !important;
+   box-shadow: none !important;
+ }
+ .rsRow:has(.cRowBlockText){
+   background-color: var(--page_content_background_color) !important;
+   transform: translate3d(0, 0, 0) !important;
+   border: none !important;
+   box-shadow: none !important;
+ }
+ /* ####### END OF DROPDOWN ########*/
+ 
+ /*######################################################*/
+ /*######################################################*/
+ 
+ /* ######## OE BOX FROM RADIO CHECKBOX############ */
+ .rsRow-single-line,  .rsRow-single-line:hover{
+   background-color: var(--page_content_background_color) !important;
+   transform: translate3d(0, 0, 0) !important;
+   border: none !important;
+   box-shadow: none !important;
+ }
+ 
+ .rsRow-single-line > .cCellRowText > input{
+     border-radius: var(--interactive_border_radius);
+     border: var(--interactive_border) solid var(--input_field_border_color);
+     padding: var(--interactive_padding);
+ }
+ /* ######## END OF OE BOX ############ */
+ 
+ /*######################################################*/
+ /*######################################################*/
+ 
+ 
+ /*###########CUSTOM QUESTIONS CSS#############*/
+ /* BUTTONS QUESTIONS */
+  .rsBtn {
+      font-size: var(--answers_text_size);
+      font-weight: var(--interactive_font_weight);
+      margin: var(--interactive_margin);
+      padding: var(--interactive_padding);
+      text-align: var(--interactive_text_align);
+      vertical-align: var(--interactive_vertical_align);
+      color: var(--interactive_text_color);
+      background-color: var(--interactive_background_color);
+      border: 1px solid var(--input_field_border_color) !important;
+      border-radius: var(--interactive_border_radius) !important;
+ }
+  .rsBtn:hover {
+      border: var(--interactive_border_hover);
+      background-color: var(--interactive_background_color_hover);
+ }
+ .rsBtnChecked:hover {
+     background-color: var(--interactive_checked_background_color);
+     outline: 2px solid grey;
+ }
+ /* Interactive buttons special variables */
+  .rsBtnSpecial{
+      border: var(--special_border);
+      color: var(--special_text_color);
+      background-color: var(--special_background_color);
+ }
+  .rsBtnChecked {
+      background-color: var(--interactive_checked_background_color);
+      color: var(--interactive_checked_text_color);
+      font-weight: bold;
+ }
+ 
+ /* BUTTONS QUESTIONS END*/
+ 
+ /*######################################################*/
+ /*######################################################*/
+ 
+ 
+ /* CLICK RANK QUESTION */
+ 
+ .rsRow:has(.rsBtnRank) {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     align-content: flex-start;
+     justify-content: flex-start;
+     align-items: baseline;
+     padding: var(--answer_opens_padding);
+     /*border: var(--interactive_border) solid var(--input_field_border_color);*/
+     border-radius: var(--interactive_border_radius);
+ }
+ .rsRow:has(.rsBtnRank) > .cCellRowText{
+     padding: 10px;
+     cursor: pointer;
+ }
+ .rsBtnRank {
+   text-align: center;
+   background-color: white !important;
+   color: var(--main_text_color) !important;
+ }
+ 
+ /* CLICK RANK QUESTION END */
+ 
+ /*######################################################*/
+ /*######################################################*/
+ 
+ 
+ /* NUMERIC SUM CSS*/
+ .rsNumeric > tbody:has(.custTotal) > .rsRow{
+    /*we need to fix the css*/
+    background-color: unset !important;
+ }
+ 
+ /* END NUMERIC SUM CSS*/
+ 
+ /*######################################################*/
+ /*######################################################*/
+ 
+ /* SEARCHABLE ANSWER LIST CSS*/
+ .rsCuQeSal:hover{
+     background-color: #fff !important;
+     transform: translate3d(0, 0, 0) !important;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+ }
+ 
+ 
+ .rsCuQeSal > .cCellRowText > .cError{
+     background-color: #fff !important;
+     display: none !important;
+     border: none !important;
+ }
+ /* END SEARCHABLE ANSWER LIST CSS*/
+ 
+ 
+ /*######################################################*/
+ /*######################################################*/
+ 
+ 
+ /* ESSAY CSS*/
+ .rsCuQeEssay :has(.cError){
+     background-color: #fff !important;
+     border: none !important;
+ }
+ .rsCuQeEssay > .cCellRowText > .cError{
+     background-color: #fff !important;
+     display: none !important;
+     border: none !important;
+ }
+ /* END ESSAY CSS*/
+ 
+ /*######################################################*/
+ /*######################################################*/
+ 
+ 
+ /* OPEN TEXT CSS*/
+ 
+ .openText :has(.cError){
+     background-color: #fff !important;
+     border: none !important;
+ }
+ .openText > .cCellRowText > .cError{
+     background-color: #fff !important;
+     display: none !important;
+     border: none !important;
+ }
+ 
+ .openText > .cCellRowText > .cTextArea{
+     border: 1px solid gainsboro;
+     border-radius: var(--interactive_border_radius);
+     padding: var(--answer_opens_padding);
+ }
+ 
+ 
+ /* END OPEN TEXT CSS*/
+ 
+ 
+ /* TEXT AREA CSS*/
+ 
+ .rsCuQeTextArea :has(.cError){
+     background-color: #fff !important;
+     border: none !important;
+ }
+ .rsCuQeTextArea > .cCellRowText > .cError{
+     background-color: #fff !important;
+     display: none !important;
+     border: none !important;
+ }
+ 
+ .rsCuQeTextArea > .cCellRowText > .cTextArea{
+     border: 1px solid gainsboro;
+     border-radius: var(--interactive_border_radius);
+     padding: var(--answer_opens_padding);
+     min-width: 96% !important;
+     max-width: 96% !important;
+ }
+ .rsCuQeEssay > .cCellRowText > .cTextArea{
+     border: 1px solid gainsboro;
+     border-radius: var(--interactive_border_radius);
+     padding: var(--answer_opens_padding);
+ }
+ .rsCuQeEssay > .cCellRowText > .cTextArea:active{
+     border: 1px solid gainsboro;
+ 
+ }
+  
+ /* END  TEXT AREA CSS*/
+ 
+ /* UI-SLIDER CSS*/
+ 
+ .ui-slider-handle{
+     border-radius: 30px !important;
+ }
+ 
+ .rsGridSlider > tbody > .rsRow > .cCellRowText > .cRowText{
+     min-height: 4rem !important;
+     display: flex;
+     flex-direction: column;
+     flex-wrap: wrap;
+     align-items: center;
+     justify-content: center;
+     align-content: flex-start;
+ }
+ 
+ /* UI-SLIDER CSS MOBILE*/
+ /*
+ .ui-slider-handle{
+     border-radius: 20px;
+ }
+ 
+ .rsGridSlider > tbody > .rsRow > .cCellRowText > .cRowText{
+     min-height: 4rem !important;
+     display: flex;
+     flex-direction: column;
+     flex-wrap: wrap;
+     align-items: center;
+     justify-content: center;
+     align-content: flex-start;
+ }
+ */
+ /* END UI-SLIDER CSS*/
+ 
+ 
+ 
+ 
+ /* noUI-SLIDER GRID CSS*/
+ .rsRatingSlider > tbody > .rsRow {
+     height: 140px !important;
+ }
+ .noUi-tooltip{
+     font-family: var(--main_font_family) !important;
+     font-size: var(--main_font_size) !important;
+     font-weight: var(--main_font_weight) !important;
+     color: var(--main_text_color) !important;
+ }
+ /* END noUI-SLIDER GRID CSS*/
+ 
+ /*########### END CUSTOM QUESTIONS CSS#############*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ /*######################################################*/
+ 
+ /* ######### GRID CSS FOR MOBILE ########## */
+ /* small screens */
+  @media only screen and (max-width: 980px) {
+      @viewport {
+   width: device-width;
+   initial-scale: 1.0;
+   maximum-scale: 1.0;
+ }
+      
+ .mobileGrid:not(.rsCQ) > tbody > .rsRow, .mobileGrid:not(.rsCQ) > tbody > .rsRow {
+     display: flex;
+     flex-direction: column;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: stretch;
+     padding-top: 20px;
+     min-width: fit-content;
+     max-width: 95%;
+     align-content: stretch;
+ }
+ 
+ .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader  > .rs-ht > p, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader  > .rs-ht > p {
+     min-width: fit-content;
+ }
+ 
+ .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ 
+ .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCellRowText > .cRowText > .rs-ht, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCellRowText > .cRowText > .rs-ht{
+     font-size: 1.3rem;
+ }
+ 
+ .mobileGrid:not(.rsCQ) > tbody > .rsRow > td, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td {
+     padding: var(--answer_opens_padding);
+     min-width: 40%;
+     min-height: 12px;
+     background-color: #efefef;
+     border: 1px solid var(--question_row_border_color);
+     border-radius: var(--button_border_radius);
+     margin-left: 10px;
+     margin-top: 4px;
+ }
+ 
+ .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:hover, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:hover {
+     padding: var(--answer_opens_padding);
+     background-color: #efefef;
+     border: 1px solid var(--question_row_border_color);
+     border-radius: var(--button_border_radius);
+     margin-left: 10px;
+     margin-top: 4px;
+ }
+ 
+ .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cRadio, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cCheck, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cRadio {
+     display: none;
+ }
+ 
+ .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cRadio:checked), .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cCheck:checked), .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cRadio:checked){
+ background-color: var(--question_selected_background_color);
+   transform: translate3d(0, 1px, 0);
+   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+ }
+
+ .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cCellHeader > .cReg > p {
+    text-wrap: balance;
+    min-height: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+ }
+ 
+ 
+ 
+ @media only screen and (min-width: 500px) {
+    .cTable.desktopGrid:not(.rsCQ) .rsRow.cRow, .cTable.desktopGrid .rsRow.cRow {
+        background-color: #d3d3d31c;
+    }
+    .cTable.desktopGrid:not(.rsCQ) .rsRow.cRow:hover, .cTable.desktopGrid:not(.rsCQ) .rsRow.cRow:hover {
+        background-color: #F0F4F6;
+    }
+    .cTable.desktopGrid:not(.rsCQ) .rsRow.cRowSelected, .cTable.desktopGrid:not(.rsCQ) .rsRow.cRowSelected{
+        background-color: #d3d3d31c;
+    }
+    .cTable.desktopGrid:not(.rsCQ) .rsRow.cRowSelected:hover, .cTable.desktopGrid:not(.rsCQ) .rsRow.cRowSelected:hover {
+        background-color: #F0F4F6;
+    }
+    .desktopGrid:not(.rsCQ) > tbody > tr:has(.cCellHeader) > .cCellHeader > .rs-ht, .desktopGrid:not(.rsCQ)> tbody > tr:has(.cCellHeader) > .cCellHeader > .rs-ht{
+        text-wrap: balance;
+    }
+ }
+ 
+ 
+ 
+ 
+ /* ######### END GRID CSS FOR MOBILE ########## */
+ 
+ 
+ 
+ /* Safari iOS settings in order to fix scrolling, all the way to the bottom, in mainContainer */
+  @supports (-webkit-touch-callout: none) {
+     /* CSS specific to iOS devices */
+      .mainContainer {
+          /*height: 1000px;
+          width: fit-content;
+          min-height: -webkit-fill-available*/
+     }
+ 
+ }
+ 
+ 
+ .rsSelected  {
+     background-color: var(--question_selected_background_color);
+     transform: translate3d(0, 1px, 0);
+     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+ }
+ 
+ /* Turn off spinners */
+  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      margin: 0;
+ }
+ 
+ @media only screen and (max-width: 980px) {
+        .logo1Container {
+        display: none;
+ }
+ }
