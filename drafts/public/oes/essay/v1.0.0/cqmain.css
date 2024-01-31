@@ -12,7 +12,7 @@
 .cTextArea {
   min-width: 96% !important;
   max-width: 96% !important;
-  border-radius: var(--button_border_radius);
+  border-radius: var(--interactive_border_radius);
   padding: 7px;
 
     font-family: var(--main_font_family);
@@ -28,13 +28,13 @@
 .essay-progress-bar {
   height: 30px;
   border: 1px solid var(--main_text_color);
-  border-radius: var(--button_border_radius);
+  border-radius: var(--interactive_border_radius);
   text-align: left;
   display:none;
 }
 
 .essay-progress-fill {
-  border-radius: var(--button_border_radius);
+  border-radius: var(--interactive_border_radius);
   height: 30px;
   width: 0%;
   background-color: var(--page_background_color);
