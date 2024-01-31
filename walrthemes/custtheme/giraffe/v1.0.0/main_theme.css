@@ -222,9 +222,8 @@ textarea{
       text-align: center;
        background-color: var(--progressbar_background_color) !important;
        border-color: var(--main_text_color) !important;
-       color: var(--custom_special_background_color);
-       filter: brightness(0.7);
-
+       color: var(--interactive_checked_background_color);
+       filter: none;
  }
  
  
@@ -288,8 +287,8 @@ textarea{
       background-color: var(--page_content_background_color);
       font-size: var(--main_font_size);
       font-weight: var(--main_font_weight);
-      margin: 25px auto 8px;
-      border-radius: 12px;
+      margin: 130px auto 8px;
+      border-radius: 40px;
       width: 900px;
       min-width: fit-content;
       max-width: 98vw;
@@ -301,7 +300,7 @@ textarea{
      flex-wrap: wrap;
      justify-content: center;
      align-items: center;
- 
+     padding: 20px;
  }
  /* Question content (excluding navigation) */
   .contentContainer {
@@ -343,7 +342,11 @@ textarea{
       justify-content: var(--main_logo_alignment);
  }
   .logo1 {
-      height: 28px;
+    width: 250px;
+    display: block;
+    position: absolute;
+    height: 140px;
+    top: 0;
  }
  /* Link (powered by) */
   .logo2link {
@@ -511,13 +514,13 @@ textarea{
       width: 98%;
  }
   .buttonNext, .buttonPrevious {
-      background-color: var(--interactive_text_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
-      color: var(--interactive_background_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
+      background-color: var(--button_background_color);
+      color: var(--button_text_color);
       border-color: var(--button_border_color);
       border-radius: var(--button_border_radius);
-      border-width: 0px;
+      border-width: var(--button_border_width);
       min-width: var(--button_min_width);
-      height: var(--button_height);
+      min-height: var(--button_height);
       font-size: var(--button_font_size);
       font-family: var(--main_font_family);
       border-style: solid;
@@ -527,14 +530,12 @@ textarea{
       line-height: 18px;
       padding-left: 12px;
       padding-right: 12px;
- }
+  }
  
  
  .buttonNext{
      float: right;
-     width: 100%;
-     font-weight: bold;
-     transition: box-shadow 0.2s ease-in-out;
+     width: var(--button_min_width);
  }
  
  .buttonNext:hover{
@@ -542,11 +543,14 @@ textarea{
      transition: box-shadow 0.2s ease-in-out;
  }
   .buttonPrevious {
-      border-width: var(--button_border-width);
       float: left;
-      width: 10%;
+      width: var(--button_min_width);
  }
- 
+ .buttonPrevious:hover {
+    box-shadow: 0px 0px 5px 1px #07558c;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
  /* ########### NAVIGATION BUTTONS END ######### */
  /*######################################################*/
  /*######################################################*/
@@ -1163,6 +1167,8 @@ textarea{
      background-color: var(--question_selected_background_color);
      transform: translate3d(0, 1px, 0);
      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+     font-weight: var(--interactive_font_weight);
+     color: var(--interactive_checked_text_color);
  }
  
  /* Turn off spinners */
