@@ -1091,7 +1091,7 @@ textarea{
      min-height: 12px;
      background-color: #efefef;
      border: 1px solid var(--question_row_border_color);
-     border-radius: var(--button_border_radius);
+     border-radius: var(--interactive_border_radius);
      margin-left: 10px;
      margin-top: 4px;
  }
@@ -1100,7 +1100,7 @@ textarea{
      padding: var(--answer_opens_padding);
      background-color: #efefef;
      border: 1px solid var(--question_row_border_color);
-     border-radius: var(--button_border_radius);
+     border-radius: var(--interactive_border_radius);
      margin-left: 10px;
      margin-top: 4px;
  }
