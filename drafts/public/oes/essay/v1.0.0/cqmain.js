@@ -7,6 +7,7 @@ function rsEssay(rsQno, rsSubqIndex, rsParams) {
     let QuestionID = "#" + rsQno; //This we use in selectors to stay within the question
     let SubQIndex = rsSubqIndex; //This we use in selectors to stay within the question
     $(QuestionID).find(".rsRowOpen").addClass("rsCuQeEssay");
+    $(QuestionID).find(".cTable").addClass("rsCQ").addClass("rsCQEssay");
 
 
     rsParams.blnShowProgress = (typeof rsParams.blnShowProgress === "undefined") ? true : rsParams.blnShowProgress;
