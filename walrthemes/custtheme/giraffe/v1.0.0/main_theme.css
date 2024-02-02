@@ -1188,4 +1188,8 @@ textarea{
          margin: 10px auto 8px auto;
          padding: 0px;
      }
+    .buttonNext {
+        width: calc((100% - var(--button_min_width)) + var(--button_min_width));
+        border-radius: 15px;
+    }
  }
