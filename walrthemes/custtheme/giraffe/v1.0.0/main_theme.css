@@ -1182,4 +1182,10 @@ textarea{
         .logo1Container {
         display: none;
  }
+     .mainContainer{
+         width: auto;
+         border-radius: 10px;
+         margin: 10px auto 8px auto;
+         padding: 0px;
+     }
  }
