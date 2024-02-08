@@ -46,4 +46,7 @@ FIREFOX
 	table.rsCQBalls tbody{
 		margin-left: 15%;
 	}
+	th.textcenter > div > p {
+		white-space: normal;
+	}
 }
