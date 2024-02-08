@@ -122,9 +122,9 @@ function gridUpdate(grid_this) {
           $(".rsProcessedGrid").addClass("desktopGrid");
           setTimeout(function () {
               let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
-              var cHeight = 19;
-              $(".cCellFirstHeader").css("min-width", 100 / colLength + 'rem');
-              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) / 2 + 'rem');
+              var cHeight = 20;
+              $(".cCellFirstHeader").css("min-width", 100 / colLength + '%');
+              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) / 2 + '%');
               $('.rsRow').find(".rs-ht").each(function () { if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
               $(".rsRow").each(function () { $(this).css("height", cHeight + "px"); });
           }, 200);
