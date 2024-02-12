@@ -12,6 +12,8 @@ function rsEssay(rsQno, rsSubqIndex, rsParams) {
 
     rsParams.blnShowProgress = (typeof rsParams.blnShowProgress === "undefined") ? true : rsParams.blnShowProgress;
     rsParams.blnNextButton = (typeof rsParams.blnNextButton === "undefined") ? true : rsParams.blnNextButton;
+
+    if(rsParams.blnNextButton) $("#btnNext").hide();
     
     if (rsParams.blnShowProgress) {
         rsParams.blnProgressBarText = (typeof rsParams.blnProgressBarText === "undefined") ? true : rsParams.blnProgressBarText;
@@ -42,7 +44,7 @@ function rsEssay(rsQno, rsSubqIndex, rsParams) {
             x = stringInputed / (intIL / 100);
             if(rsParams.blnNextButton && (stringInputed>=intIL)){
                 $("#btnNext").show();
-            }else{
+            } else {
                 $("#btnNext").hide();
             }
         }
