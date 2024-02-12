@@ -11,6 +11,8 @@ function rsEssay(rsQno, rsSubqIndex, rsParams) {
 
 
     rsParams.blnShowProgress = (typeof rsParams.blnShowProgress === "undefined") ? true : rsParams.blnShowProgress;
+    rsParams.blnNextButton = (typeof rsParams.blnNextButton === "undefined") ? true : rsParams.blnNextButton;
+    
     if (rsParams.blnShowProgress) {
         rsParams.blnProgressBarText = (typeof rsParams.blnProgressBarText === "undefined") ? true : rsParams.blnProgressBarText;
         rsParams.intIdealLength = (typeof rsParams.intIdealLength === "undefined") ? 200 : rsParams.intIdealLength;
@@ -38,6 +40,11 @@ function rsEssay(rsQno, rsSubqIndex, rsParams) {
         var intStep = 100 / arrMessages.length;
         if ((intIL > 0) && (stringInputed > 0)) {
             x = stringInputed / (intIL / 100);
+            if(rsParams.blnNextButton && (stringInputed>=intIL)){
+                $("#btnNext").show();
+            }else{
+                $("#btnNext").hide();
+            }
         }
         if (x < 100) {
             $(".essay-progress-fill").eq(intIndex).width(x + "%");
