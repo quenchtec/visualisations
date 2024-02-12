@@ -42,10 +42,12 @@ function rsEssay(rsQno, rsSubqIndex, rsParams) {
         var intStep = 100 / arrMessages.length;
         if ((intIL > 0) && (stringInputed > 0)) {
             x = stringInputed / (intIL / 100);
-            if(rsParams.blnNextButton && (stringInputed>=intIL)){
-                $("#btnNext").show();
-            } else {
-                $("#btnNext").hide();
+            if(rsParams.blnNextButton){
+                if(stringInputed >= intIL){
+                    $("#btnNext").show();
+                } else {
+                    $("#btnNext").hide();
+                }
             }
         }
         if (x < 100) {
