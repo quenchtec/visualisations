@@ -113,10 +113,10 @@ textarea:focus {
    outline: none;
  }
  /* Turn off spinners */
-  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      margin: 0;
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
  }
 textarea{
      font-family: var(--main_font_family);
@@ -136,98 +136,105 @@ textarea{
      font-size: var(--main_font_size);
      font-weight: var(--main_font_weight);
      color: var(--main_text_color);
- }
- 
- [id^=instr] {
-   font-style: italic;
- }
- .cTextInput{
-     outline: none;
-     padding: var(--answer_opens_padding);
-     border: 0px solid gainsboro;
-     border-radius: var(--interactive_border_radius);
-     /*background-color: rgba(196,214,202,0.1); */
- }
- /* Radio button and check boxes, many settings to try to implement "pretty" look, but retain WCAG (Unveirsal Access) with keyboard navigation etc, and also support varous browsers and devices */
-  .cRadio {
-      outline: 0;
-     /* Maybe we should change this to indicate focus */
-      accent-color: transparent;
-      color: #FFFFFF;
-      position: relative;
-      margin: 0;
-      width: var(--input_radio_checkbox_size);
-      height: var(--input_radio_checkbox_size);
-      background-color: #FFFFFF;
-      border-radius: 50%;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      cursor: pointer;
- }
-  .cRadio:before {
-      content: "";
-      visibility: visible;
-      position: absolute;
-      border: 2px solid var(--main_text_color);
-      background-color: var(--custom_special_background_color);
-      border-radius: 50%;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
- }
-  .cRadio:checked:before {
-      background-clip: content-box;
-      padding: 3px;
-      background-color: var(--progressbar_background_color) !important;
-      color: var(--main_text_color) !important;
-      filter: brightness(0.7);
-       border-color: var(--main_text_color) !important;
+}
 
-  }
- 
- .cCheck {
-      outline: 0;
-     /* Maybe we should change this to indicate focus */
-      accent-color: transparent;
-      color: #FFFFFF;
-      position: relative;
-      margin: 0;
-      width: var(--input_radio_checkbox_size);
-      height: var(--input_radio_checkbox_size);
-      background-color: #FFFFFF;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      cursor: pointer;
- }
-  .cCheck:checked {
-      background-color: var(--input_main_color);
- }
-  .cCheck:before {
-      content: "";
-      visibility: visible;
-      position: absolute;
-      border: 2px solid var(--main_text_color);
-      background-color: var(--custom_special_background_color);
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
- }
+[id^=HIDDEN_], [id^=HID_], [id^=SYS_], [id^=SYSTEM_] {
+    display: none;
+}
+
+[id^=instr] {
+    font-style: italic;
+}
+.cTextInput{
+    outline: none;
+    padding: var(--answer_opens_padding);
+    border: 0px solid gainsboro;
+    border-radius: var(--interactive_border_radius);
+    /*background-color: rgba(196,214,202,0.1); */
+}
+
+/* Radio button and check boxes, many settings to try to implement "pretty" look, but retain WCAG (Unveirsal Access) with keyboard navigation etc, and also support varous browsers and devices */
+.cRadio {
+    outline: 0;
+    /* Maybe we should change this to indicate focus */
+    accent-color: transparent;
+    color: #FFFFFF;
+    position: relative;
+    margin: 0;
+    width: var(--input_radio_checkbox_size);
+    height: var(--input_radio_checkbox_size);
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.cRadio:before {
+    content: "";
+    visibility: visible;
+    position: absolute;
+    border: 2px solid var(--main_text_color);
+    background-color: var(--custom_special_background_color);
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.cRadio:checked:before {
+    background-clip: content-box;
+    padding: 3px;
+    background-color: var(--progressbar_background_color) !important;
+    color: var(--main_text_color) !important;
+    filter: brightness(0.7);
+    border-color: var(--main_text_color) !important;
+}
+
+.cCheck {
+    outline: 0;
+    /* Maybe we should change this to indicate focus */
+    accent-color: transparent;
+    color: #FFFFFF;
+    position: relative;
+    margin: 0;
+    width: var(--input_radio_checkbox_size);
+    height: var(--input_radio_checkbox_size);
+    background-color: #FFFFFF;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.cCheck:checked {
+    background-color: var(--input_main_color);
+}
+
+.cCheck:before {
+    content: "";
+    visibility: visible;
+    position: absolute;
+    border: 2px solid var(--main_text_color);
+    background-color: var(--custom_special_background_color);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
 .cCheck:checked:before {
-      content: '\2714';
-      font-weight: 800;
-      line-height: 1.2;
-      font-size: calc((var(--input_check_size) * 0.8) - 2px);
-      text-align: center;
-       background-color: var(--progressbar_background_color) !important;
-       border-color: var(--main_text_color) !important;
-       color: var(--custom_special_background_color);
-       filter: brightness(0.7);
+    content: '\2714';
+    font-weight: 800;
+    line-height: 1.2;
+    font-size: calc((var(--input_check_size) * 0.8) - 2px);
+    text-align: center;
+    background-color: var(--progressbar_background_color) !important;
+    border-color: var(--main_text_color) !important;
+    color: var(--custom_special_background_color);
+    filter: brightness(0.7);
+}
 
- }
- 
- 
  /* ############# END Define standard variables #################### */
  /*######################################################*/
  /*######################################################*/
