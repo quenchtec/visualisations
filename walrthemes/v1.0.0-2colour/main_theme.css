@@ -139,7 +139,7 @@ textarea{
 }
 
 [id^=HIDDEN_], [id^=HID_], [id^=SYS_], [id^=SYSTEM_] {
-    display: none;
+    /*display: none;*/
 }
 
 [id^=instr] {
