@@ -34,6 +34,12 @@ form{
    background-color: var(--button_background_color);
    color: white;
  }
+.cTDContainQues > div {
+    border: 3px solid transparent;
+    padding: 20px;
+    border-radius: var(--interactive_border_radius);
+    font-size: var(--question_font_size);
+}
  /*######################################################*/
  /*######################################################*/
  /*######################################################*/
