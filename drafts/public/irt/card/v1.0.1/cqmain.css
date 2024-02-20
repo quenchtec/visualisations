@@ -149,3 +149,8 @@
 [id^="supp"] {
   display: none;
 }
+
+.rsIRT {
+    width: 100%;
+  }
+
