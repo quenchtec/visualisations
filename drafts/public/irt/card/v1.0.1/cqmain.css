@@ -36,7 +36,7 @@
 }
 
 .cardscontainer {
-  display: table-row;
+  display: none;
   border-spacing: 10px;
   height: 100px;
   width: 100%;
