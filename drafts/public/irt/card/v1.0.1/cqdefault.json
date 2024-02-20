@@ -1,0 +1,202 @@
+{
+  "type": "ques",
+  "attributes": {
+      "id": "IRT",
+      "showsubqs": "all"
+  },
+  "elements": [
+      {
+          "type": "subq",
+          "attributes": {
+              "type": "f",
+              "range": "*",
+              "length": "9",
+              "decimals": "2"
+          },
+          "customQuestionId": "822a6316-aac5-4dae-a0b5-9211bab52cfe",
+          "_internal_qno": "IRT",
+          "elements": [
+              {
+                  "type": "stext",
+                  "attributes": {},
+                  "customQuestionId": "822a6316-aac5-4dae-a0b5-9211bab52cfe",
+                  "_internal_qno": "IRT",
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {
+                              "miext:grId": "",
+                              "textType": "regular"
+                          },
+                          "elements": [],
+                          "textValues": {
+                              "en": ""
+                          }
+                      },
+                      {
+                          "type": "text",
+                          "attributes": {
+                              "textType": "do"
+                          },
+                          "textValues": {
+                              "en": ""
+                          }
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "type": "subq",
+          "attributes": {
+              "type": "rn",
+              "range": "*",
+              "hcdir": "free"
+          },
+          "elements": [
+              {
+                  "type": "stext",
+                  "attributes": {},
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {
+                              "miext:grId": ""
+                          },
+                          "elements": [],
+                          "textValues": {
+                              "en": ""
+                          }
+                      }
+                  ]
+              },
+              {
+                  "type": "hgroup",
+                  "attributes": {},
+                  "elements": [
+                      {
+                          "type": "h",
+                          "attributes": {
+                              "code": "1"
+                          },
+                          "elements": [
+                              {
+                                  "type": "text",
+                                  "attributes": {
+                                      "miext:grId": ""
+                                  },
+                                  "elements": [],
+                                  "textValues": {
+                                      "en": "YES"
+                                  }
+                              }
+                          ]
+                      },
+                      {
+                          "type": "h",
+                          "attributes": {
+                              "code": "2"
+                          },
+                          "elements": [
+                              {
+                                  "type": "text",
+                                  "attributes": {
+                                      "miext:grId": ""
+                                  },
+                                  "elements": [],
+                                  "textValues": {
+                                      "en": "NO"
+                                  }
+                              }
+                          ]
+                      },
+                      {
+                          "type": "h",
+                          "attributes": {
+                              "code": "3"
+                          },
+                          "elements": [
+                              {
+                                  "type": "text",
+                                  "attributes": {
+                                      "miext:grId": ""
+                                  },
+                                  "elements": [],
+                                  "textValues": {
+                                      "en": "Neither"
+                                  }
+                              }
+                          ]
+                      },
+                      {
+                          "type": "h",
+                          "attributes": {
+                              "code": "4"
+                          },
+                          "elements": [
+                              {
+                                  "type": "text",
+                                  "attributes": {
+                                      "miext:grId": ""
+                                  },
+                                  "elements": [],
+                                  "textValues": {
+                                      "en": "TIMED OUT"
+                                  }
+                              }
+                          ]
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "type": "rgroup",
+          "attributes": {},
+          "elements": [
+              {
+                  "type": "r",
+                  "attributes": {},
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "elements": [],
+                          "textValues": {
+                              "en": "Statement 1"
+                          }
+                      }
+                  ]
+              },
+              {
+                  "type": "r",
+                  "attributes": {},
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "elements": [],
+                          "textValues": {
+                              "en": "Statement 2"
+                          }
+                      }
+                  ]
+              },
+              {
+                  "type": "r",
+                  "attributes": {},
+                  "elements": [
+                      {
+                          "type": "text",
+                          "attributes": {},
+                          "elements": [],
+                          "textValues": {
+                              "en": "Statement 3"
+                          }
+                      }
+                  ]
+              }
+          ]
+      }
+  ]
+}
