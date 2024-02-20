@@ -124,6 +124,7 @@ function rsVisIRTtest(rsQno, rsSubqIndex, rsParams) {
 
     //Lets start it all by clicking on the start button
     $(".start").click(function() {
+        $(".cardscontainer").css("display", "table-row");
         $(this).hide();
         if (blnStopMouse) {
             console.log(blnStopMouse);
