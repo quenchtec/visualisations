@@ -212,7 +212,7 @@ function rsVisIRT_v1_0_1(rsQno, rsSubqIndex, rsParams) {
             } else if ($(this).hasClass('iqtNeither')) {
                 buttonCheck(2);
             }
-            if (!isMobile) allowedToProceed = false;
+            if (!isMobile && blnStopMouse) allowedToProceed = false;
         }
     });
 
