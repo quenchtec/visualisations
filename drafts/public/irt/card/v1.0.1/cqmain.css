@@ -1,7 +1,9 @@
 .cTDContainQues {
   text-align: center !important;
 }
-
+.rsIRT {
+    width: 100%;
+}
 #IQTcontainer {
   display: flex;
   flex-direction: row;
@@ -149,8 +151,3 @@
 [id^="supp"] {
   display: none;
 }
-
-.rsIRT {
-    width: 100%;
-  }
-
