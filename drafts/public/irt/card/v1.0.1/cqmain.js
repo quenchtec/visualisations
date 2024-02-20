@@ -1,4 +1,4 @@
-function rsVisIRTtest(rsQno, rsSubqIndex, rsParams) {
+function rsVisIRT_v1_0_1(rsQno, rsSubqIndex, rsParams) {
     //Check for WCAG
     if ($('#btnToggleWcag').val() == 1) {
         return false;
