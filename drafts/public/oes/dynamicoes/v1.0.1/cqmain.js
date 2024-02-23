@@ -29,7 +29,7 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
 
    
     $(allTXTInputs).on("keydown keyup click change", function(e) {
-        if (event.keyCode == 13) {
+        if (e.keyCode == 13) {
           var currentRow = $(this).closest("tr");
           var nextRow = currentRow.nextAll(":visible").first();
           var nextInput = nextRow.find(".cTextInput");
@@ -42,8 +42,8 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
             var form = $(this).closest("form");
             form.submit();
           }
-          event.preventDefault();
-          event.stopPropagation();
+          e.preventDefault();
+          e.stopPropagation();
         }
         
         if (rsParams.blnHideNextOpenEnd) HideNextTextBox("called from row 23");
