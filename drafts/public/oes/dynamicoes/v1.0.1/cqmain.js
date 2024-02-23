@@ -27,24 +27,27 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
     if (rsParams.blnHideAnswerText) $(".rsRowOpen >.cCell").hide();
 
 
-   
+
     $(allTXTInputs).on("keydown keyup click change", function(e) {
         if (e.keyCode == 13) {
-          var currentRow = $(this).closest("tr");
-          var nextRow = currentRow.nextAll(":visible").first();
-          var nextInput = nextRow.find(".cTextInput");
-          if (nextInput.length === 0) {
-            nextInput = currentRow.closest("tbody").nextAll(":visible").find(".cTextInput").first();
-          }
-          if (nextInput.length > 0) {
-            nextInput.focus();
-          } else {
-            $("#btnNext").click();
-          }
-          e.preventDefault();
-          e.stopPropagation();
+            var currentRow = $(this).closest("tr");
+            var nextRow = currentRow.nextAll(":visible").first();
+            var nextInput = nextRow.find(".cTextInput");
+            if (nextInput.length === 0) {
+                nextInput = currentRow.closest("tbody").nextAll(":visible").find(".cTextInput").first();
+            }
+
+            if (nextInput.length > 0) {
+                nextInput.focus();
+            } else {
+                if (e.type == "keydown" && nextInput.length == 0 && $("#btnNext").is(":visible")) {
+                    $("#btnNext").click();
+                }
+            }
+            e.preventDefault();
+            e.stopPropagation();
         }
-        
+
         if (rsParams.blnHideNextOpenEnd) HideNextTextBox("called from row 23");
         let intIndexTxt = e.currentTarget.getAttribute("aria-labelledby").split("_")[2];
         //Now making sure that the data-text is being always populated
