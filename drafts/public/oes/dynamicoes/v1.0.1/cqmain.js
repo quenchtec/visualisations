@@ -26,7 +26,26 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
     //Hide answers text
     if (rsParams.blnHideAnswerText) $(".rsRowOpen >.cCell").hide();
 
+
+   
     $(allTXTInputs).on("keydown keyup click change", function(e) {
+        if (event.keyCode == 13) {
+          var currentRow = $(this).closest("tr");
+          var nextRow = currentRow.nextAll(":visible").first();
+          var nextInput = nextRow.find(".cTextInput");
+          if (nextInput.length === 0) {
+            nextInput = currentRow.closest("tbody").nextAll(":visible").find(".cTextInput").first();
+          }
+          if (nextInput.length > 0) {
+            nextInput.focus();
+          } else {
+            var form = $(this).closest("form");
+            form.submit();
+          }
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        
         if (rsParams.blnHideNextOpenEnd) HideNextTextBox("called from row 23");
         let intIndexTxt = e.currentTarget.getAttribute("aria-labelledby").split("_")[2];
         //Now making sure that the data-text is being always populated
