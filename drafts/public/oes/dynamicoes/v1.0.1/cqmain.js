@@ -39,8 +39,7 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
           if (nextInput.length > 0) {
             nextInput.focus();
           } else {
-            var form = $(this).closest("form");
-            form.submit();
+            $("#btnNext").click();
           }
           e.preventDefault();
           e.stopPropagation();
