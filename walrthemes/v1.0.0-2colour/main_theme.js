@@ -135,6 +135,8 @@ function gridUpdate(grid_this) {
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").each(function(){if(cWidth < $(this)[0].clientWidth) cWidth = $(this)[0].clientWidth;});
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", cWidth + 'px');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", cWidth + 'px');
+              $(".cCellFirstHeader").css("min-width", gridWidth-(cWidth*colLength) + 'px');
+              $(".cCellFirstHeader").css("width", gridWidth-(cWidth*colLength) + 'px');
             
               $('.rsRow').find(".rs-ht").each(function () {if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
               $(".rsRow").each(function () { $(this).css("height", cHeight + "px"); });
