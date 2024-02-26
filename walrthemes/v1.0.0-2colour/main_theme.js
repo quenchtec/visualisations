@@ -141,7 +141,7 @@ function gridUpdate(grid_this) {
               $('.rsRow').find(".rs-ht").each(function () {if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
               console.log(cHeight)
               $(".rsRow").each(function () { $(this).css("height", cHeight + "px"); });
-          }, 200);
+          }, 350);
       }
   }
 }
