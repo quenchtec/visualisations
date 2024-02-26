@@ -8,7 +8,12 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
     const allTXTInputs = $(QuestionID).find(".rsRowOpen").find("input[type='text']");
     //const arrAllRows = document.getElementsByClassName("rsRowOpen");
     const arrAllRows = $(QuestionID).find(".rsRowOpen");
-    if (rsParams.blnHideNextOpenEnd) HideFollowTextBoxes(arrAllRows);
+    if (!PreviousAnswers()) {
+        if (rsParams.blnHideNextOpenEnd) HideFollowTextBoxes(arrAllRows);
+    } else {
+        HideNextTextBox();
+        ShowNextTextBox(allTXTInputs, PreviousAnswers());
+    }
 
     rsParams.blnHideNextOnDuplicates = (typeof rsParams.blnHideNextOnDuplicates === "undefined") ? false : rsParams.blnHideNextOnDuplicates; // Hide the next button if duplicates were located
     rsParams.blnHighlightOnDuplicates = (typeof rsParams.blnHighlightOnDuplicates === "undefined") ? true : rsParams.blnHighlightOnDuplicates; // Highlight if duplicates were located
@@ -23,7 +28,12 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
     //Check for prescript
     if (rsParams.prescript.length) rsParam.prescript;
     //Hide unseen boxes
-    if (rsParams.blnHideNextOpenEnd) HideFollowTextBoxes();
+    if (!PreviousAnswers()) {
+        if (rsParams.blnHideNextOpenEnd) HideFollowTextBoxes();
+    } else {
+        HideNextTextBox();
+        ShowNextTextBox(allTXTInputs, PreviousAnswers());
+    }
     //Hide answers text
     if (rsParams.blnHideAnswerText) $(".rsRowOpen >.cCell").hide();
 
@@ -53,7 +63,7 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
         let intIndexTxt = e.currentTarget.getAttribute("aria-labelledby").split("_")[2];
         //Now making sure that the data-text is being always populated
         e.currentTarget.setAttribute("data-text", e.currentTarget.value);
-        if ((checkUniqueInputs(allTXTInputs)) && ((e.currentTarget.getAttribute("data-text").length > (rsParams.intMinLength-1)))) {
+        if ((checkUniqueInputs(allTXTInputs)) && ((e.currentTarget.getAttribute("data-text").length > (rsParams.intMinLength - 1)))) {
             ShowNextTextBox(allTXTInputs, intIndexTxt);
         }
     });
@@ -105,7 +115,6 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
     }
 
     function ShowNextTextBox(textInputs, intIndex) {
-        //console.log("ShowNextTextBox function ");
         let txtInp = textInputs;
         let intInd = intIndex;
         if (typeof arrAllRows[intInd] !== 'undefined') {
@@ -137,6 +146,17 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
             arrAllRows[x].style.display = 'none';
             allTXTInputs[x].setAttribute('data-text', '');
         }
+    }
+
+    function PreviousAnswers() {
+        let theReturn = 0;
+        $(allTXTInputs).each(function(e) {
+            if ($(allTXTInputs[e]).val()) {
+                theReturn = e;
+            }
+        });
+        console.log(theReturn);
+        return theReturn;
     }
     //Check for postscript
     if (rsParams.postscript.length) rsParam.postscript;
