@@ -124,14 +124,19 @@ function gridUpdate(grid_this) {
               //let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
               let colLength = $('#' + gridID).find(".cCellHeader").length;
               var cHeight = 40;
+              var cWidth = 0;
               $(".cCellFirstHeader").css("min-width", (100 / (colLength+2))*3 - (colLength*2) + '%');
               $(".cCellFirstHeader").css("width", (100 / (colLength+2))*3 - (colLength*2) + '%');
-              //$('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (100 / colLength) + '%');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (100 / colLength) * ((colLength-3)/10) + '%');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) * ((colLength-3)/10) + '%');
-              $('.rsRow').find(".rs-ht").each(function () {
-                console.log($(this)[0].clientHeight, cHeight);
-                if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
+            
+              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").each(function(){
+                //if($(this)[0].clientWidth)
+                console.log($(this)[0],$(this)[0].clientWidth)
+              });
+
+            
+              $('.rsRow').find(".rs-ht").each(function () {if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
               $(".rsRow").each(function () { $(this).css("height", cHeight + "px"); });
           }, 200);
       }
