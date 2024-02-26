@@ -124,8 +124,8 @@ function gridUpdate(grid_this) {
               //let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
               let colLength = $('#' + gridID).find(".cCellHeader").length;
               var cHeight = 40;
-              $(".cCellFirstHeader").css("min-width", (100 / colLength)*3 - (colLength*2) + '%');
-              $(".cCellFirstHeader").css("width", (100 / colLength)*3 - (colLength*2) + '%');
+              $(".cCellFirstHeader").css("min-width", (100 / (colLength+2))*3 - (colLength*2) + '%');
+              $(".cCellFirstHeader").css("width", (100 / (colLength+2))*3 - (colLength*2) + '%');
               //$('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (100 / colLength) + '%');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (100 / colLength) * ((colLength-3)/10) + '%');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) * ((colLength-3)/10) + '%');
