@@ -127,8 +127,10 @@ function gridUpdate(grid_this) {
               var cHeight = 40;
               var cWidth = 0;
             console.log(gridWidth)
-              $(".cCellFirstHeader").css("min-width", (100 / (colLength+2))*3 - (colLength*2) + '%');
-              $(".cCellFirstHeader").css("width", (100 / (colLength+2))*3 - (colLength*2) + '%');
+              //$(".cCellFirstHeader").css("min-width", (100 / (colLength+2))*3 - (colLength*2) + '%');
+              //$(".cCellFirstHeader").css("width", (100 / (colLength+2))*3 - (colLength*2) + '%');
+              $(".cCellFirstHeader").css("min-width", (gridWidth / colLength) + 'px');
+              $(".cCellFirstHeader").css("width", (gridWidth / colLength) + 'px');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (100 / colLength) * ((colLength-3)/10) + '%');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) * ((colLength-3)/10) + '%');
             
