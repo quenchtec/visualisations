@@ -123,18 +123,18 @@ function gridUpdate(grid_this) {
           setTimeout(function () {
               //let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
               let colLength = $('#' + gridID).find(".cCellHeader").length;
+              let gridWidth = $('#' + gridID).find(".rsHeaderRow")[0].clientWidth;
               var cHeight = 40;
               var cWidth = 0;
+            console.log(gridWidth)
               $(".cCellFirstHeader").css("min-width", (100 / (colLength+2))*3 - (colLength*2) + '%');
               $(".cCellFirstHeader").css("width", (100 / (colLength+2))*3 - (colLength*2) + '%');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (100 / colLength) * ((colLength-3)/10) + '%');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) * ((colLength-3)/10) + '%');
             
-              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").each(function(){
-                //if($(this)[0].clientWidth)
-                console.log($(this)[0],$(this)[0].clientWidth)
-              });
-
+              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").each(function(){if(cWidth < $(this)[0].clientWidth) cWidth = $(this)[0].clientWidth;});
+              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", cWidth + 'px');
+              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", cWidth + 'px');
             
               $('.rsRow').find(".rs-ht").each(function () {if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
               $(".rsRow").each(function () { $(this).css("height", cHeight + "px"); });
