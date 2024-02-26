@@ -14,6 +14,7 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
     rsParams.blnHighlightOnDuplicates = (typeof rsParams.blnHighlightOnDuplicates === "undefined") ? true : rsParams.blnHighlightOnDuplicates; // Highlight if duplicates were located
     rsParams.blnHideNextOpenEnd = (typeof rsParams.blnHideNextOpenEnd === "undefined") ? false : rsParams.blnHideNextOpenEnd; // Hide unseen boxes
     rsParams.blnHideAnswerText = (typeof rsParams.blnHideAnswerText === "undefined") ? true : rsParams.blnHideAnswerText; // Hide answers text
+    rsParams.intMinLength = (typeof rsParams.intMinLength === "undefined") ? 1 : rsParams.intMinLength; // Minimul length to show nexr
     rsParams.prescript = (typeof rsParams.prescript === "undefined") ? "" : rsParams.prescript;
     rsParams.postscript = (typeof rsParams.postscript === "undefined") ? "" : rsParams.postscript;
 
@@ -52,7 +53,7 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
         let intIndexTxt = e.currentTarget.getAttribute("aria-labelledby").split("_")[2];
         //Now making sure that the data-text is being always populated
         e.currentTarget.setAttribute("data-text", e.currentTarget.value);
-        if ((checkUniqueInputs(allTXTInputs)) && ((e.currentTarget.getAttribute("data-text").length > 1))) {
+        if ((checkUniqueInputs(allTXTInputs)) && ((e.currentTarget.getAttribute("data-text").length > (rsParams.intMinLength-1)))) {
             ShowNextTextBox(allTXTInputs, intIndexTxt);
         }
     });
