@@ -140,6 +140,7 @@ function gridUpdate(grid_this) {
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", cWidth + 'px');
             
               $(".cCellFirstHeader").css("max-width", (100-(colLength*10))+"%");
+              $(".cCellFirstHeader").css("width", "auto");
               //$(".cCellFirstHeader").css("width", gridWidth-((cWidth * 1.5)*colLength) + 'px');
 
               $('.rsRow').find(".rs-ht").each(function () {if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
