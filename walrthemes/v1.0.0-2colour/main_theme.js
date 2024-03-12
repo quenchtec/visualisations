@@ -129,7 +129,7 @@ function gridUpdate(grid_this) {
             console.log(gridWidth);
             $(".rsHeaderRow").css("width", gridWidth+"px");
               $(".cCellFirstHeader").css("min-width", '100px');
-              //$(".cCellFirstHeader").css("width", (gridWidth / colLength) + 'px');
+              $(".cCellFirstHeader").css("width", ((gridWidth * 0.8) / colLength) + 'px');
               $(".cCellFirstHeader").addClass("revisedCellFirstHeader");
 
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (50 / colLength) + '%');
