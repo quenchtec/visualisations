@@ -126,17 +126,14 @@ function gridUpdate(grid_this) {
               let gridWidth = $('#' + gridID).find(".rsHeaderRow")[0].clientWidth;
               var cHeight = 40;
               var cWidth = 0;
-              console.log("grid width ",gridWidth);
 
               $('#' + gridID).find(".rsHeaderRow").css("width", gridWidth+"px");
-              $('#' + gridID).find(".cCellFirstHeader").css("min-width", '100px');
-              console.log("grid width calculated  ",((gridWidth * 0.8) / colLength) + 'px');
-              $('#' + gridID).find(".cCellFirstHeader").css("width", ((gridWidth * 0.8) / colLength) + 'px');
+              $('#' + gridID).find(".cCellFirstHeader").css("min-width", '30%');
+              $('#' + gridID).find(".cCellFirstHeader").css("width", ((gridWidth * 1.2) / colLength) + 'px');
               $('#' + gridID).find(".cCellFirstHeader").addClass("revisedCellFirstHeader");
-              console.log("grid width ",gridWidth);
 
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (50 / colLength) + '%');
-              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", "auto");
+              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (gridWidth / colLength) + 'px');
 
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").each(function(){if(cWidth < $(this)[0].clientWidth) {cWidth = $(this)[0].clientWidth;$(this).addClass("revisedColumn");}});
               //$('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (cWidth * 1.2) + 'px');
