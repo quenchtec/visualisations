@@ -129,10 +129,8 @@ function gridUpdate(grid_this) {
             console.log(gridWidth);
               //$(".cCellFirstHeader").css("min-width", (100 / (colLength+2))*3 - (colLength*2) + '%');
               //$(".cCellFirstHeader").css("width", (100 / (colLength+2))*3 - (colLength*2) + '%');
-              $(".cCellFirstHeader").css("min-width", (gridWidth / colLength) + 'px');
+              $(".cCellFirstHeader").css("min-width", '100px');
               $(".cCellFirstHeader").css("width", (gridWidth / colLength) + 'px');
-              //$(".cCellFirstHeader").css({"min-width":`${(gridWidth / colLength)}px`,"width":`${(gridWidth / colLength)}px`});
-              $(".cCellFirstHeader").css({"min-width":`33px`,"width":`33px`});
 
               console.log("header width : ",(gridWidth / colLength));
 
