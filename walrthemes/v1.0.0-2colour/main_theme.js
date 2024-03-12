@@ -131,17 +131,19 @@ function gridUpdate(grid_this) {
               //$(".cCellFirstHeader").css("width", (100 / (colLength+2))*3 - (colLength*2) + '%');
               $(".cCellFirstHeader").css("min-width", '100px');
               $(".cCellFirstHeader").css("width", (gridWidth / colLength) + 'px');
-
+              $(".cCellFirstHeader").addClass("revisedCellFirstHeader");
+            
               console.log("header width : ",(gridWidth / colLength));
 
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (100 / colLength) * ((colLength-3)/10) + '%');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) * ((colLength-3)/10) + '%');
             
-              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").each(function(){if(cWidth < $(this)[0].clientWidth) cWidth = $(this)[0].clientWidth;});
-              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", cWidth + 'px');
-              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", cWidth + 'px');
-              $(".cCellFirstHeader").css("min-width", gridWidth-(cWidth*colLength) + 'px');
-              $(".cCellFirstHeader").css("width", gridWidth-(cWidth*colLength) + 'px');
+              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").each(function(){if(cWidth < $(this)[0].clientWidth) {cWidth = $(this)[0].clientWidth;$(this).addClass("revisedColumn");}});
+              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (cWidth * 1.2) + 'px');
+              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (cWidth * 1.2) + 'px');
+            
+              $(".cCellFirstHeader").css("max-width", '50%');
+              $(".cCellFirstHeader").css("width", gridWidth-((cWidth * 1.2)*colLength) + 'px');
               console.log("column width : ",cWidth);
 
               $('.rsRow').find(".rs-ht").each(function () {if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
