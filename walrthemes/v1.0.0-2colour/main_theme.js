@@ -131,6 +131,9 @@ function gridUpdate(grid_this) {
               //$(".cCellFirstHeader").css("width", (100 / (colLength+2))*3 - (colLength*2) + '%');
               $(".cCellFirstHeader").css("min-width", (gridWidth / colLength) + 'px');
               $(".cCellFirstHeader").css("width", (gridWidth / colLength) + 'px');
+              //$(".cCellFirstHeader").css({"min-width":`${(gridWidth / colLength)}px`,"width":`${(gridWidth / colLength)}px`});
+              $(".cCellFirstHeader").css({"min-width":`33px`,"width":`33px`});
+
               console.log("header width : ",(gridWidth / colLength));
 
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (100 / colLength) * ((colLength-3)/10) + '%');
