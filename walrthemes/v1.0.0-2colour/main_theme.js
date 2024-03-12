@@ -126,11 +126,13 @@ function gridUpdate(grid_this) {
               let gridWidth = $('#' + gridID).find(".rsHeaderRow")[0].clientWidth;
               var cHeight = 40;
               var cWidth = 0;
-            console.log(gridWidth)
+            console.log(gridWidth);
               //$(".cCellFirstHeader").css("min-width", (100 / (colLength+2))*3 - (colLength*2) + '%');
               //$(".cCellFirstHeader").css("width", (100 / (colLength+2))*3 - (colLength*2) + '%');
               $(".cCellFirstHeader").css("min-width", (gridWidth / colLength) + 'px');
               $(".cCellFirstHeader").css("width", (gridWidth / colLength) + 'px');
+              console.log("header width : ",(gridWidth / colLength));
+
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (100 / colLength) * ((colLength-3)/10) + '%');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (100 / colLength) * ((colLength-3)/10) + '%');
             
@@ -139,9 +141,9 @@ function gridUpdate(grid_this) {
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", cWidth + 'px');
               $(".cCellFirstHeader").css("min-width", gridWidth-(cWidth*colLength) + 'px');
               $(".cCellFirstHeader").css("width", gridWidth-(cWidth*colLength) + 'px');
-            
+              console.log("column width : ",cWidth);
+
               $('.rsRow').find(".rs-ht").each(function () {if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
-              console.log(cHeight)
               $(".rsRow").each(function () { $(this).css("height", cHeight + "px"); });
           }, 350);
       }
