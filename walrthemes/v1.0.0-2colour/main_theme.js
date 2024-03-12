@@ -143,7 +143,7 @@ function gridUpdate(grid_this) {
               //$('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", (cWidth * 1.5) + 'px');
             
               $(".cCellFirstHeader").css("max-width", (100-(colLength*10))+"%");
-              $(".cCellFirstHeader").css("width", gridWidth-((cWidth * 1.5)*colLength) + 'px');
+              //$(".cCellFirstHeader").css("width", gridWidth-((cWidth * 1.5)*colLength) + 'px');
 
               $('.rsRow').find(".rs-ht").each(function () {if ($(this)[0].clientHeight > cHeight) { cHeight = $(this)[0].clientHeight; } });
               $(".rsRow").each(function () { $(this).css("height", cHeight + "px"); });
