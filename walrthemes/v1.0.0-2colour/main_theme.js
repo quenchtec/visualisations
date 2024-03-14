@@ -11,8 +11,12 @@ $(document).ready(function () {
           if (mutation.type === "childList") {
               cthemePageReady(); // Call your function here
               putSomeClasses();
-            console.log("called me in")
-              window.scrollTo(0, 0); // Scroll to the top of the page
+              const scrollFunc = () => {
+                var targetElement = document.querySelector('.cTDContainQues');
+                if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });console.log("called me in");
+              };
+              const debouncedScrollFunc = debounce(scrollFunc, 300); // Adjust the delay as needed
+              debouncedScrollFunc();
               break; // We've handled the mutation, no need to continue
           }
       }
