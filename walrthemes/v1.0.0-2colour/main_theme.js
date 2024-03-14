@@ -11,6 +11,7 @@ $(document).ready(function () {
           if (mutation.type === "childList") {
               cthemePageReady(); // Call your function here
               putSomeClasses();
+              window.scrollTo(0, 0); // Scroll to the top of the page
               break; // We've handled the mutation, no need to continue
           }
       }
