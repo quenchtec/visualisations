@@ -33,8 +33,10 @@ function cthemeff() {
 
 
 function putSomeClasses() {
+  console.log("lets put some classes")
   var $cTables = $(".cTable");
   $cTables.each(function () {
+  console.log("each ctable", $(this).hasClass("desktopGrid"))
             console.log(($(this).hasClass("rsProcessedGrid") && !isMobileDevice()), $(this).hasClass("rsProcessedGrid"), !isMobileDevice());
 
       if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
@@ -57,7 +59,7 @@ function putSomeClasses() {
                   }
               });
           });
-      } else if ($(this).hasClass("rsProcessedGrid") && !isMobileDevice()) {
+      } else if ($(this).hasClass("desktopGrid")) {
         console.log("we are in new if");
           $(".rsRow").find("input").on("change", function () {
             console.log("Change");
