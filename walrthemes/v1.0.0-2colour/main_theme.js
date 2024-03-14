@@ -10,7 +10,7 @@ $(document).ready(function () {
       for (var mutation of mutationsList) {
           if (mutation.type === "childList") {
               cthemePageReady(); // Call your function here
-              putSomeClasses("activate");
+              putSomeClasses();
               break; // We've handled the mutation, no need to continue
           }
       }
@@ -32,14 +32,9 @@ function cthemeff() {
 }
 
 
-function putSomeClasses(message) {
-  console.log(message)
-  console.log("lets put some classes")
+function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function () {
-        console.log("each ctable", $(this).hasClass("desktopGrid"))
-        console.log(($(this).hasClass("rsProcessedGrid") && !isMobileDevice()), $(this).hasClass("rsProcessedGrid"), !isMobileDevice());
-
       if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
           $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
               $(".rsRow").each(function () {
@@ -61,13 +56,13 @@ function putSomeClasses(message) {
               });
           });
       } else if ($(this).hasClass("desktopGrid")) {
-        console.log("we are in new if");
           $(".rsRow").find("input").on("change", function () {
-            console.log("Change");
             if ($(this).prop("checked")) {
-                $(this).parent(".cCell").addClass("rsGridCellSelected");
+              $(this).parent(".cCell").addClass("rsGridCellSelected");
+              console.log("checked");
             } else {
-                $(this).parent(".cCell").removeClass("rsGridCellSelected");
+              $(this).parent(".cCell").removeClass("rsGridCellSelected");
+              console.log("unchecked");
             }
           });
       }
