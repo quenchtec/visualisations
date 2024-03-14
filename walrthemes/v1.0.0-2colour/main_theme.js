@@ -35,6 +35,8 @@ function cthemeff() {
 function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function () {
+            console.log(($(this).hasClass("rsProcessedGrid") && !isMobileDevice()), $(this).hasClass("rsProcessedGrid"), !isMobileDevice());
+
       if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
           $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
               $(".rsRow").each(function () {
