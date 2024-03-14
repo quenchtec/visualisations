@@ -46,8 +46,8 @@ function putSomeClasses() {
               });
           });
       } else if ($(this).hasClass("rsProcessedGrid") && isMobileDevice()) {
-          $(".rsRow").find(".cCell").on("click", function () {
-              $(".cCell").each(function () {
+          $(this).find(".rsRow > .cCell").on("click", function () {
+              $(this).each(function () {
                   if ($(this).find("input").prop("checked")) {
                       $(this).addClass("rsSelected");
                   } else {
@@ -57,13 +57,13 @@ function putSomeClasses() {
           });
       } else if ($(this).hasClass("desktopGrid")) {
           $(".rsRow").find("input").on("change", function () {
-            if ($(this).prop("checked")) {
-              $(this).parent(".cCell").addClass("rsGridCellSelected");
-              console.log("checked");
-            } else {
-              $(this).parent(".cCell").removeClass("rsGridCellSelected");
-              console.log("unchecked");
-            }
+              $(this).parent(".cCell").each(function () {
+                  if ($(this).find("input").prop("checked")) {
+                    $(this).parent(".cCell").addClass("rsGridCellSelected");
+                  } else {
+                    $(this).parent(".cCell").removeClass("rsGridCellSelected");
+                  }
+              });
           });
       }
   });
