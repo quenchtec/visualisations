@@ -55,6 +55,16 @@ function putSomeClasses() {
                   }
               });
           });
+      } else if ($(this).hasClass("rsProcessedGrid") && !isMobileDevice()) {
+          $(".rsRow").find(".cCell, input").on("click", function () {
+              $(".cCell").each(function () {
+                  if ($(this).find("input").prop("checked")) {
+                      $(this).addClass("rsGridCellSelected");
+                  } else {
+                      $(this).removeClass("rsGridCellSelected");
+                  }
+              });
+          });
       }
   });
 
