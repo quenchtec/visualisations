@@ -51,7 +51,7 @@ function putSomeClasses() {
           $(this).find(".rsRow").find(".cCell").on("click", function () {
             console.log("clicked ", $(this).attr("class"))
           //$(".rsRow").find(".cCell").on("click", function () {
-              $(this).find(".cCell").each(function () {
+              $(this).each(function () {
               //$(".cCell").each(function () {
                 console.log($(this).attr("class"))
                   if ($(this).find("input").prop("checked")) {
