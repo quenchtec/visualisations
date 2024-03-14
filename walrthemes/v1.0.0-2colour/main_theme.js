@@ -46,8 +46,8 @@ function putSomeClasses() {
               });
           });
       } else if ($(this).hasClass("rsProcessedGrid") && isMobileDevice()) {
-          $(this).find(".rsRow > .cCell").on("click", function () {
-              $(this).find(".cCell").each(function () {
+          $(this).find(".cCell").on("click", function () {
+              $(this).each(function () {
                   if ($(this).find("input").prop("checked")) {
                       $(this).addClass("rsSelected");
                   } else {
