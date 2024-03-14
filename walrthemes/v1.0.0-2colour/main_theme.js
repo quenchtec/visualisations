@@ -35,7 +35,6 @@ function cthemeff() {
 function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function () {
-    console.log("grid class is ",$(this).attr("class"));
       if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
           $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
               $(".rsRow").each(function () {
@@ -46,14 +45,9 @@ function putSomeClasses() {
                   }
               });
           });
-      } else if ($(this).hasClass("rsProcessedGrid") && isMobileDevice()) {
-          console.log("rsProcessedGrid class is ",$(this).attr("class"));
+      } else if ($(this).hasClass("mobileGrid")) {
           $(this).find(".rsRow").find(".cCell").on("click", function () {
-            console.log("clicked ", $(this).attr("class"))
-          //$(".rsRow").find(".cCell").on("click", function () {
               $(this).parent().find(".cCell").each(function () {
-              //$(".cCell").each(function () {
-                console.log($(this).attr("class"))
                   if ($(this).find("input").prop("checked")) {
                       $(this).addClass("rsSelected");
                   } else {
@@ -62,12 +56,12 @@ function putSomeClasses() {
               });
           });
       } else if ($(this).hasClass("desktopGrid")) {
-          $(".rsRow").find("input").on("change", function () {
-              $(this).parent(".cCell").each(function () {
+           $(this).find(".rsRow").find("input").on("change", function () {
+              $(this).parent().parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
-                    $(this).parent(".cCell").addClass("rsGridCellSelected");
+                    $(this).addClass("rsGridCellSelected");
                   } else {
-                    $(this).parent(".cCell").removeClass("rsGridCellSelected");
+                    $(this).removeClass("rsGridCellSelected");
                   }
               });
           });
