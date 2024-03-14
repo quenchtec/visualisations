@@ -56,14 +56,14 @@ function putSomeClasses() {
               });
           });
       } else if ($(this).hasClass("rsProcessedGrid") && !isMobileDevice()) {
-          $(".rsRow").find(".cCell, input").on("click", function () {
-              $(".cCell").each(function () {
-                  if ($(this).find("input").prop("checked")) {
-                      $(this).addClass("rsGridCellSelected");
-                  } else {
-                      $(this).removeClass("rsGridCellSelected");
-                  }
-              });
+        console.log("we are in new if");
+          $(".rsRow").find("input").on("change", function () {
+            console.log("Change");
+            if ($(this).prop("checked")) {
+                $(this).parent(".cCell").addClass("rsGridCellSelected");
+            } else {
+                $(this).parent(".cCell").removeClass("rsGridCellSelected");
+            }
           });
       }
   });
