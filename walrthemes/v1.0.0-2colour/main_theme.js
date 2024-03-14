@@ -35,6 +35,7 @@ function cthemeff() {
 function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function () {
+    console.log("grid class is ",$(this).attr("class"));
       if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
           $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
               $(".rsRow").each(function () {
@@ -46,7 +47,9 @@ function putSomeClasses() {
               });
           });
       } else if ($(this).hasClass("rsProcessedGrid") && isMobileDevice()) {
+          console.log("rsProcessedGrid class is ",$(this).attr("class"));
           $(this).find(".rsRow").find(".cCell").on("click", function () {
+            console.log("clicked ", $(this).attr("class"))
           //$(".rsRow").find(".cCell").on("click", function () {
               $(this).find(".cCell").each(function () {
               //$(".cCell").each(function () {
