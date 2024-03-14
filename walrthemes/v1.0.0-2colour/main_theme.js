@@ -10,7 +10,7 @@ $(document).ready(function () {
       for (var mutation of mutationsList) {
           if (mutation.type === "childList") {
               cthemePageReady(); // Call your function here
-              putSomeClasses();
+              putSomeClasses("activate");
               break; // We've handled the mutation, no need to continue
           }
       }
@@ -32,12 +32,13 @@ function cthemeff() {
 }
 
 
-function putSomeClasses() {
+function putSomeClasses(message) {
+  console.log(message)
   console.log("lets put some classes")
   var $cTables = $(".cTable");
   $cTables.each(function () {
-  console.log("each ctable", $(this).hasClass("desktopGrid"))
-            console.log(($(this).hasClass("rsProcessedGrid") && !isMobileDevice()), $(this).hasClass("rsProcessedGrid"), !isMobileDevice());
+        console.log("each ctable", $(this).hasClass("desktopGrid"))
+        console.log(($(this).hasClass("rsProcessedGrid") && !isMobileDevice()), $(this).hasClass("rsProcessedGrid"), !isMobileDevice());
 
       if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
           $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
