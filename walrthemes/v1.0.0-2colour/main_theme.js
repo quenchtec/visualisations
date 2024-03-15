@@ -16,7 +16,9 @@ $(document).ready(function () {
                 if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });console.log("called me in");
               };
               const debouncedScrollFunc = debounce(scrollFunc, 300); // Adjust the delay as needed
-              debouncedScrollFunc();
+              $("#btnNext").click(function(){
+                debouncedScrollFunc();
+              });
               break; // We've handled the mutation, no need to continue
           }
       }
