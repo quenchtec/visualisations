@@ -616,7 +616,7 @@ textarea{
  /*######################################################*/
  
  /*####### HANDLE RADIO AND CHECKBOX QUESTIONS #########*/
- .rsSingle > tbody:has(.rsRow), .rsMulti > tbody:has(.rsRow) {
+ .rsSingle:not(.rsCQnoTheme) > tbody:has(.rsRow), .rsMulti > tbody:has(.rsRow) {
      display: flex;
      position: relative;
      border-radius: 5px;
@@ -627,7 +627,7 @@ textarea{
      flex-direction: column;
      align-items: stretch;
  }
- .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme),
+ .rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme),
  .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme) {
 
      /*.rsRow:not(.cRowBlockText){*/
