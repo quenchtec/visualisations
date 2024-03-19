@@ -12,8 +12,8 @@ $(document).ready(function () {
               cthemePageReady(); // Call your function here
               putSomeClasses();
               const scrollFunc = () => {
-                var targetElement = document.querySelector('.cTDContainQues');
-                if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });console.log("called me in");
+                var targetElement = document.querySelector('.progressContainer');
+                if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
               };
               const debouncedScrollFunc = debounce(scrollFunc, 300); // Adjust the delay as needed
               $("#btnNext").click(function(){
@@ -144,7 +144,7 @@ function gridUpdate(grid_this) {
               let gridWidth = $('#' + gridID).find(".rsHeaderRow")[0].clientWidth;
               var cHeight = 40;
               var cWidth = 0;
-              console.log(gridWidth);
+              //console.log(gridWidth);
               $('#' + gridID).find(".rsHeaderRow").css("width", gridWidth+"px");
               $('#' + gridID).find(".cCellFirstHeader").css("min-width", '30%');
               $('#' + gridID).find(".cCellFirstHeader").css("width", ((gridWidth * 1.2) / colLength) + 'px');
