@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
   // Call your initial setup function
   cthemeff();
@@ -13,7 +14,11 @@ $(document).ready(function () {
               putSomeClasses();
               const scrollFunc = () => {
                 var targetElement = document.querySelector('.progressContainer');
-                if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
+                if (targetElement) {
+                  targetElement.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  debouncedScrollFunc();
+                }
               };
               const debouncedScrollFunc = debounce(scrollFunc, 300); // Adjust the delay as needed
               $("#btnNext").click(function(){
