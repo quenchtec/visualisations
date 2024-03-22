@@ -44,6 +44,10 @@ function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function () {
       if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
+          $(this).find(".rsRow > .cRowBlockText").each(function(){
+              $(this).parent().addClass("GroupingHeader");
+          });
+        
           $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
               $(".rsRow").each(function () {
                   if ($(this).find("input").prop("checked")) {
@@ -53,6 +57,7 @@ function putSomeClasses() {
                   }
               });
           });
+        
       } else if ($(this).hasClass("mobileGrid")) {
           $(this).find(".rsRow").find(".cCell").on("click", function () {
               $(this).parent().find(".cCell").each(function () {
