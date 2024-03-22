@@ -57,8 +57,10 @@ function putSomeClasses() {
               $(".rsRow").each(function () {
                   if ($(this).find("input").prop("checked")) {
                       $(this).addClass("rsSelected");
+                      console.log("add rsSelected")
                   } else {
                       $(this).removeClass("rsSelected");
+                      console.log("remove rsSelected")
                   }
               });
           });
@@ -114,7 +116,6 @@ function cthemePageReady() {
           gridUpdate($(this));
       }
   });
-
 }
 
 
