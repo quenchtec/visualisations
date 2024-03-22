@@ -51,9 +51,9 @@ function putSomeClasses() {
       if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
           //$(this).find(".rsRow > .cRowBlockText:not(:has(select))").each(function(){
           $(this).find(".rsRow").each(function(){
-            if($(this).find(".cRowBlockText:not(:has(select))")){
-              $(this).parent().addClass("GroupingHeader");
-            }
+            //if($(this).find(".cRowBlockText:not(:has(select))")){
+              $(this).children(".cRowBlockText:not(:has(select))").addClass("GroupingHeader");
+            //}
               if ($(this).find("input").prop("checked")) {
                 $(this).addClass("rsSelected");
               } else {
