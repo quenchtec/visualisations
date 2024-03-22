@@ -97,7 +97,7 @@ function cthemePageReady() {
       CustomGhostMessage = "Please, type in...";
   }
   if (typeof myCustomGhost != "undefined") {
-      CustomGhostMessage = myCustomGhost[$('#rs_lang').val()];
+      CustomGhostMessage = myCustomGhost[$('.aspNetDisabled').val()];
   }
   strID = $('#rs_lang').val();
 
