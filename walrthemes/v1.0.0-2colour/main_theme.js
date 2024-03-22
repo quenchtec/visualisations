@@ -13,13 +13,10 @@ $(document).ready(function () {
               cthemePageReady(); // Call your function here
               putSomeClasses();
               const scrollFunc = () => {
-                console.log("scrollFunc");
                 var targetElement = document.querySelector('.progressContainer');
                 if (targetElement) {
                   targetElement.scrollIntoView({ behavior: 'smooth' });
-                  console.log("Found, try jump");
                 } else {
-                  console.log("Not found, try call");
                   debouncedScrollFunc();
                 }
               };
