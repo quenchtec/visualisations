@@ -16,7 +16,9 @@ $(document).ready(function () {
                 var targetElement = document.querySelector('.progressContainer');
                 if (targetElement) {
                   targetElement.scrollIntoView({ behavior: 'smooth' });
+                  console.log("Found, try jump");
                 } else {
+                  console.log("Not found, try call");
                   debouncedScrollFunc();
                 }
               };
