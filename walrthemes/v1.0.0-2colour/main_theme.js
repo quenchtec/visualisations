@@ -93,18 +93,20 @@ function isMobileDevice() {
 }
 
 function cthemePageReady() {
+  var strID = $('#rs_lang').val();
   if (typeof CustomGhostMessage === "undefined") {
       CustomGhostMessage = "Please, type in...";
   }
   if (typeof myCustomGhost != "undefined") {
-      CustomGhostMessage = myCustomGhost[$('.aspNetDisabled').val()];
+      CustomGhostMessage = myCustomGhost[strID];
   }
-  strID = $('.aspNetDisabled').val();
 
   if (strID == "sv") {
       CustomGhostMessage = "Snälla, skriv in...";
   }
-
+  
+  console.log("calling text change :  ",strID,myCustomGhost,myCustomGhost[strID],CustomGhostMessage);
+  
   ghostText(CustomGhostMessage);
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
