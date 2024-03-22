@@ -49,20 +49,27 @@ function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function () {
       if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
-          $(this).find(".rsRow > .cRowBlockText:not(:has(select))").each(function(){
+          //$(this).find(".rsRow > .cRowBlockText:not(:has(select))").each(function(){
+          $(this).find(".rsRow").each(function(){
+            if($(this).find(".cRowBlockText:not(:has(select))"){
               $(this).parent().addClass("GroupingHeader");
+            }
+              if ($(this).find("input").prop("checked")) {
+                $(this).addClass("rsSelected");
+              } else {
+                $(this).removeClass("rsSelected");
+              }
           });
 
+        
           $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
-              $(".rsRow").each(function () {
-                  if ($(this).find("input").prop("checked")) {
-                      $(this).addClass("rsSelected");
-                      console.log("add rsSelected")
-                  } else {
-                      $(this).removeClass("rsSelected");
-                      console.log("remove rsSelected")
-                  }
-              });
+            $(".rsRow").each(function () {
+              if ($(this).find("input").prop("checked")) {
+                $(this).addClass("rsSelected");
+              } else {
+                $(this).removeClass("rsSelected");
+              }
+            });
           });
         
       } else if ($(this).hasClass("mobileGrid")) {
