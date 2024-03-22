@@ -99,7 +99,7 @@ function cthemePageReady() {
   if (typeof myCustomGhost != "undefined") {
       CustomGhostMessage = myCustomGhost[$('.aspNetDisabled').val()];
   }
-  strID = $('#rs_lang').val();
+  strID = $('.aspNetDisabled').val();
 
   if (strID == "sv") {
       CustomGhostMessage = "Snälla, skriv in...";
