@@ -5,10 +5,10 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
     }
 
     const QuestionID = "#" + rsQno; //This we use in selectors to stay within the question
-    $(QuestionID).find("cTable").addClass("rsMultiOE").addClass("rsCQ")
-    const allTXTInputs = $(QuestionID).find(".rsRowOpen").find("input[type='text']");
+    $(QuestionID).find(".cTable").addClass("rsMultiOE").addClass("rsCQ")
+    const allTXTInputs = $(".rsMultiOE").find(".rsRowOpen").find("input[type='text']");
     //const arrAllRows = document.getElementsByClassName("rsRowOpen");
-    const arrAllRows = $(QuestionID).find(".rsRowOpen");
+    const arrAllRows = $(".rsMultiOE").find(".rsRowOpen");
     if (!PreviousAnswers()) {
         if (rsParams.blnHideNextOpenEnd) HideFollowTextBoxes(arrAllRows);
     } else {
