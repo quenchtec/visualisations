@@ -36,7 +36,7 @@ function rsMultiOE(rsQno, rsSubqIndex, rsParams) {
         ShowNextTextBox(allTXTInputs, PreviousAnswers());
     }
     //Hide answers text
-    if (rsParams.blnHideAnswerText) $(".rsMultiOE").find(".rsRowOpen >.cCell").hide();
+    if (rsParams.blnHideAnswerText) $(".rsMultiOE").find(".rsRowOpen >.cCell, .rsRowOpen >.cCellRowText").hide();
 
 
 
