@@ -3,7 +3,7 @@
 }
 
 .rsRowOpen {
-  display: block;
+  display: flex;
 }
 
 .oeShowError {
