@@ -30,10 +30,12 @@ form{
  .hidden{
      display:none;
  }
+/*
  #btnNext{
    background-color: var(--button_background_color);
    color: var(--button_text_color);
  }
+*/
 .cTDContainQues > div {
     border: 3px solid transparent;
     padding: 20px;
