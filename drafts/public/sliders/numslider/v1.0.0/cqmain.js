@@ -225,9 +225,12 @@ function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
       if (numSliderValue===""){
         $(_objQuestion).find(".cFInput:input").eq(_intSliderIndex).val("");
       } else if (_numSliderValue >= rsParams.intSliderMinValue) {
-        $(_objQuestion).find(".cFInput:input").eq(_intSliderIndex).val(Math.round(_numSliderValue).toFixed(rsParams.intSliderDecimals));
-      } else if (numSliderValue == rsParams.intSliderOptOutValue) {
-        //Set value if OptOut is selected
+          if(rsParams.intSliderDecimals){
+            $(_objQuestion).find(".cFInput:input").eq(_intSliderIndex).val(_numSliderValue.toFixed(rsParams.intSliderDecimals));
+          } else {
+            $(_objQuestion).find(".cFInput:input").eq(_intSliderIndex).val(Math.round(_numSliderValue).toFixed(rsParams.intSliderDecimals));
+          }
+      } else if (numSliderValue == rsParams.intSliderOptOutValue) {        //Set value if OptOut is selected
         $(_objQuestion).find(".cFInput:input").eq(_intSliderIndex).val(Math.round(rsParams.intSliderOptOutValue).toFixed(rsParams.intSliderDecimals));
       } else {
         $(_objQuestion).find(".cFInput:input").eq(_intSliderIndex).val("");
