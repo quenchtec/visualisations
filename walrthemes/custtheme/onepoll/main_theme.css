@@ -241,7 +241,7 @@ textarea{
     line-height: 1;
     font-size: 22px;
     text-align: center;
-    background-color: var(--main_text_color);
+    background-color: var(--question_row_background_color);
     border-color: var(--main_text_color);
     color: var(--main_text_color);
 }
