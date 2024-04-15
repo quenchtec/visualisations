@@ -636,8 +636,10 @@ textarea{
      flex-direction: column;
      align-items: stretch;
  }
- .rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme),
- .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme) {
+ /*.rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme),
+ .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme)*/
+ .rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme) > td:.rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme),.rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme), .rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme) > td:not(.cRowBlockText), .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme) > td:not(.cRowBlockText)
+ {
      cursor: pointer;
      padding: var(--answer_opens_padding);
      border: 1px solid var(--question_row_border_color);
@@ -691,8 +693,8 @@ textarea{
  .rsSingle > tbody > .rsRow:has(.cRadio:checked):hover, .rsMulti > tbody > .rsRow:has(.cCheck:checked):hover, .rsMulti > tbody > .rsRow:has(.cRadio:checked):hover{
     background-color: var(--question_row_selected_hover_background_color) !important;
     transform: translate3d(0, 1px, 0);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
-    color: var(--question_row_selected_hover_text_color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    color: var(--question_row_selected_hover_text_color) !important;
  }
  
 
@@ -821,13 +823,13 @@ textarea{
    transform: translate3d(0, 0, 0);
  }
  .rsRow:has(.cRowBlockText):hover{
-   background-color: var(--page_content_background_color);
+   background-color: var(--page_content_background_color) !important;
    transform: translate3d(0, 0, 0);
    border: none;
    box-shadow: none;
  }
  .rsRow:has(.cRowBlockText){
-   background-color: var(--page_content_background_color);
+   background-color: var(--page_content_background_color) !important;
    transform: translate3d(0, 0, 0);
    border: none;
    box-shadow: none;
