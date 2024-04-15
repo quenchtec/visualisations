@@ -636,7 +636,7 @@ textarea{
      flex-direction: column;
      align-items: stretch;
  }
- .rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.openText):not(.rsdropdown):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme):not(.cRowBlockText),
+ .rsSingle:not(.rsCQnoTheme):not(.dropdown) > tbody > .rsRow:not(.openText):not(.rsdropdown):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme):not(.cRowBlockText),
  .rsMulti:not(.rsCQnoTheme) > tbody > .rsRow:not(.openText):not(.rsdropdown):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme):not(.cRowBlockText) {
      cursor: pointer;
      padding: var(--answer_opens_padding);
