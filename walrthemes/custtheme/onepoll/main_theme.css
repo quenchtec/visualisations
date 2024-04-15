@@ -636,8 +636,8 @@ textarea{
      flex-direction: column;
      align-items: stretch;
  }
- .rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme):not(.cRowBlockText),
- .rsMulti:not(.rsCQnoTheme) > tbody > .rsRow:not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme):not(.cRowBlockText) {
+ .rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.openText):not(.rsdropdown):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme):not(.cRowBlockText),
+ .rsMulti:not(.rsCQnoTheme) > tbody > .rsRow:not(.openText):not(.rsdropdown):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme):not(.cRowBlockText) {
      cursor: pointer;
      padding: var(--answer_opens_padding);
      border: 1px solid var(--input_field_border_color);
