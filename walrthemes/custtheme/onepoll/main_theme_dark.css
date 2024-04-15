@@ -636,9 +636,7 @@ textarea{
      flex-direction: column;
      align-items: stretch;
  }
- /*.rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme),
- .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme)*/
- .rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme) > td:.rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme),.rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme), .rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme) > td:not(.cRowBlockText), .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme) > td:not(.cRowBlockText)
+.rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme), .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme)
  {
      cursor: pointer;
      padding: var(--answer_opens_padding);
@@ -670,7 +668,7 @@ textarea{
  
 /*NOT FOR MOBILE, as hover will overwrite the checked css*/
 @media only screen and (min-width: 981px) {
-    .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover, .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover, .rsSingle > tbody > .rsRow > td:not(.cRowBlockText):hover, .rsMulti > tbody > .rsRow > td:not(.cRowBlockText):hover{
+    .rsSingle > tbody > .rsRow:not(.openText):not(.rsCuQeTextArea) :not(.cRowBlockText):hover, .rsMulti > tbody > .rsRow:not(.openText):not(.rsCuQeTextArea) :not(.cRowBlockText):hover{
         background-color: var(--question_row_hover_background_color) !important;
         transform: translate3d(0, -2px, 0);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
