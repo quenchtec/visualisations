@@ -112,7 +112,7 @@ form{
  .cError{
      /*content: "";
      display: none;*/
-     color: rgba(255, 0, 0, 1) !important;
+     color: rgba(255, 0, 0, 1);
  }
  input[type="text"]:focus {
    outline: none;
@@ -194,10 +194,10 @@ textarea{
 .cRadio:checked:before {
     background-clip: content-box;
     padding: 3px;
-    background-color: var(--progressbar_background_color) !important;
-    color: var(--main_text_color) !important;
+    background-color: var(--progressbar_background_color);
+    color: var(--main_text_color);
     filter: brightness(0.7);
-    border-color: var(--main_text_color) !important;
+    border-color: var(--main_text_color);
 }
 
 .cCheck {
@@ -237,8 +237,8 @@ textarea{
     line-height: 1.2;
     font-size: calc((var(--input_check_size) * 0.8) - 2px);
     text-align: center;
-    background-color: var(--progressbar_background_color) !important;
-    border-color: var(--main_text_color) !important;
+    background-color: var(--progressbar_background_color);
+    border-color: var(--main_text_color);
     color: var(--custom_special_background_color);
     filter: brightness(0.7);
 }
@@ -753,7 +753,7 @@ textarea{
  
  /* #### THIS IS FOR THE CUSTOM SLIDERS ####*/
  .rsNumeric > tbody > .rsRow > .cCellRowText:has(.noUi-target)  {
-     max-width: 98% !important;
+     max-width: 98%;
  }
  
  .rsNumeric > tbody > .rsRow > .cCellLastValue > .cFInput {
@@ -765,9 +765,9 @@ textarea{
  
  /* #### THIS IS FOR THE CUSTOM RANKING ####*/
  .rsNumeric > tbody > .rsRow > .cCellLastValue:has(.rsBtnRank) > .cFInput{
-     /*padding-left: 15px !important;*/
-     width: 27px !important;
-     font-size: var(--question_font_size) !important;
+     /*padding-left: 15px;*/
+     width: 27px;
+     font-size: var(--question_font_size);
      text-align: center;
  }
  /* Add some padding top for the rating slider scale values */
@@ -797,20 +797,20 @@ textarea{
    padding: 8px;
    margin: 0;
    min-width: fit-content;
-   max-width: 90% !important;
+   max-width: 90%;
    transform: translate3d(0, 0, 0);
  }
  .rsRow:has(.cRowBlockText):hover{
-   background-color: var(--page_content_background_color) !important;
-   transform: translate3d(0, 0, 0) !important;
-   border: none !important;
-   box-shadow: none !important;
+   background-color: var(--page_content_background_color);
+   transform: translate3d(0, 0, 0);
+   border: none;
+   box-shadow: none;
  }
  .rsRow:has(.cRowBlockText){
-   background-color: var(--page_content_background_color) !important;
-   transform: translate3d(0, 0, 0) !important;
-   border: none !important;
-   box-shadow: none !important;
+   background-color: var(--page_content_background_color);
+   transform: translate3d(0, 0, 0);
+   border: none;
+   box-shadow: none;
  }
  /* ####### END OF DROPDOWN ########*/
  
@@ -819,10 +819,10 @@ textarea{
  
  /* ######## OE BOX FROM RADIO CHECKBOX############ */
  .rsRow-single-line,  .rsRow-single-line:hover{
-   background-color: var(--page_content_background_color) !important;
-   transform: translate3d(0, 0, 0) !important;
-   border: none !important;
-   box-shadow: none !important;
+   background-color: var(--page_content_background_color);
+   transform: translate3d(0, 0, 0);
+   border: none;
+   box-shadow: none;
  }
  
  .rsRow-single-line > .cCellRowText > input{
@@ -847,8 +847,8 @@ textarea{
       vertical-align: var(--interactive_vertical_align);
       color: var(--interactive_text_color);
       background-color: var(--interactive_background_color);
-      border: 1px solid var(--input_field_border_color) !important;
-      border-radius: var(--interactive_border_radius) !important;
+      border: 1px solid var(--input_field_border_color);
+      border-radius: var(--interactive_border_radius);
  }
   .rsBtn:hover {
       border: var(--interactive_border_hover);
@@ -895,8 +895,8 @@ textarea{
  }
  .rsBtnRank {
    text-align: center;
-   background-color: white !important;
-   color: var(--main_text_color) !important;
+   background-color: white;
+   color: var(--main_text_color);
  }
  
  /* CLICK RANK QUESTION END */
@@ -908,7 +908,7 @@ textarea{
  /* NUMERIC SUM CSS*/
  .rsNumeric > tbody:has(.custTotal) > .rsRow{
     /*we need to fix the css*/
-    background-color: unset !important;
+    background-color: unset;
  }
  
  /* END NUMERIC SUM CSS*/
@@ -918,16 +918,16 @@ textarea{
  
  /* SEARCHABLE ANSWER LIST CSS*/
  .rsCuQeSal:hover{
-     background-color: #fff !important;
-     transform: translate3d(0, 0, 0) !important;
-     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+     background-color: #fff;
+     transform: translate3d(0, 0, 0);
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
  }
  
  
  .rsCuQeSal > .cCellRowText > .cError{
-     background-color: #fff !important;
-     display: none !important;
-     border: none !important;
+     background-color: #fff;
+     display: none;
+     border: none;
  }
  /* END SEARCHABLE ANSWER LIST CSS*/
  
@@ -938,13 +938,13 @@ textarea{
  
  /* ESSAY CSS*/
  .rsCuQeEssay :has(.cError){
-     background-color: #fff !important;
-     border: none !important;
+     background-color: #fff;
+     border: none;
  }
  .rsCuQeEssay > .cCellRowText > .cError{
-     background-color: #fff !important;
-     display: none !important;
-     border: none !important;
+     background-color: #fff;
+     display: none;
+     border: none;
  }
  /* END ESSAY CSS*/
  
@@ -955,13 +955,13 @@ textarea{
  /* OPEN TEXT CSS*/
  
  .openText :has(.cError){
-     background-color: #fff !important;
-     border: none !important;
+     background-color: #fff;
+     border: none;
  }
  .openText > .cCellRowText > .cError{
-     background-color: #fff !important;
-     display: none !important;
-     border: none !important;
+     background-color: #fff;
+     display: none;
+     border: none;
  }
  
  .openText > .cCellRowText > .cTextArea{
@@ -977,21 +977,21 @@ textarea{
  /* TEXT AREA CSS*/
  
  .rsCuQeTextArea :has(.cError){
-     background-color: #fff !important;
-     border: none !important;
+     background-color: #fff;
+     border: none;
  }
  .rsCuQeTextArea > .cCellRowText > .cError{
-     background-color: #fff !important;
-     display: none !important;
-     border: none !important;
+     background-color: #fff;
+     display: none;
+     border: none;
  }
  
  .rsCuQeTextArea > .cCellRowText > .cTextArea{
      border: 1px solid gainsboro;
      border-radius: var(--interactive_border_radius);
      padding: var(--answer_opens_padding);
-     min-width: 96% !important;
-     max-width: 96% !important;
+     min-width: 96%;
+     max-width: 96%;
  }
  .rsCuQeEssay > .cCellRowText > .cTextArea{
      border: 1px solid gainsboro;
@@ -1008,11 +1008,11 @@ textarea{
  /* UI-SLIDER CSS*/
  
  .ui-slider-handle{
-     border-radius: 30px !important;
+     border-radius: 30px;
  }
  
  .rsGridSlider > tbody > .rsRow > .cCellRowText > .cRowText{
-     min-height: 4rem !important;
+     min-height: 4rem;
      display: flex;
      flex-direction: column;
      flex-wrap: wrap;
@@ -1028,7 +1028,7 @@ textarea{
  }
  
  .rsGridSlider > tbody > .rsRow > .cCellRowText > .cRowText{
-     min-height: 4rem !important;
+     min-height: 4rem;
      display: flex;
      flex-direction: column;
      flex-wrap: wrap;
@@ -1044,13 +1044,13 @@ textarea{
  
  /* noUI-SLIDER GRID CSS*/
  .rsRatingSlider > tbody > .rsRow {
-     height: 140px !important;
+     height: 140px;
  }
  .noUi-tooltip{
-     font-family: var(--main_font_family) !important;
-     font-size: var(--main_font_size) !important;
-     font-weight: var(--main_font_weight) !important;
-     color: var(--main_text_color) !important;
+     font-family: var(--main_font_family);
+     font-size: var(--main_font_size);
+     font-weight: var(--main_font_weight);
+     color: var(--main_text_color);
  }
  /* END noUI-SLIDER GRID CSS*/
  
