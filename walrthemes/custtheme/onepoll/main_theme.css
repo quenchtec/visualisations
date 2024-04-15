@@ -636,16 +636,15 @@ textarea{
      flex-direction: column;
      align-items: stretch;
  }
- .rsSingle:not(.rsCQnoTheme) > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme),
- .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme) {
-
-     /*.rsRow:not(.cRowBlockText){*/
+ .rsSingle:not(.rsCQnoTheme) > tbody > .rsRow :not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme),
+ .rsMulti:not(.rsCQnoTheme) > tbody > .rsRow :not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):not(.rsCuQeTextArea):not(.rsCQnoTheme) {
      cursor: pointer;
      padding: var(--answer_opens_padding);
      border: 1px solid var(--input_field_border_color);
      border-radius: var(--interactive_border_radius);
      margin: 3px 0px 3px 0px;
      transition: transform 0.2s, box-shadow 0.2s;
+     color: var(--question_row_text_color);
  }
  
  
@@ -657,7 +656,6 @@ textarea{
    .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea),
    .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea) {
      width: auto;
-     /*height: calc((var(--answer_opens_padding) * 10) - 1px);*/
      height: fit-content;
    }
  }
@@ -671,10 +669,10 @@ textarea{
   @media only screen and (min-width: 981px) {
  
  .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover, .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover{
- /*.rsSingle > tbody > .rsRow:not([class=cRowBlockText]):hover, .rsMulti > tbody > .rsRow:not([class=cRowBlockText]):hover{*/
- background-color: gainsboro;
-   transform: translate3d(0, -2px, 0);
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: var(--question_row_hover_background_color) !important;
+    color: var(--question_row_selected_background_color) !important;
+    transform: translate3d(0, -2px, 0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
  }
   }
  .rsMulti > tbody > .rsRow > .cCell > .cCheck,.rsMulti > tbody > .rsRow > .cCell > .cRadio, .rsSingle > tbody > .rsRow > .cCell > .cRadio{
@@ -683,10 +681,10 @@ textarea{
  
  
  .rsSingle > tbody > .rsRow:has(.cRadio:checked), .rsMulti > tbody > .rsRow:has(.cCheck:checked), .rsMulti > tbody > .rsRow:has(.cRadio:checked){
- /*.rsRow:has(.cCheck:checked), .rsRow:has(.cRadio:checked){*/
- background-color: var(--question_row_selected_background_color);
-   transform: translate3d(0, 1px, 0);
-   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    background-color: var(--question_row_selected_background_color) !important;
+    color: var(--question_row_selected_background_color) !important;
+    transform: translate3d(0, 1px, 0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
  }
  
  /*#########    TWO COLUMNS FIX ###################*/
