@@ -682,7 +682,7 @@ textarea{
  
  .rsSingle > tbody > .rsRow:has(.cRadio:checked), .rsMulti > tbody > .rsRow:has(.cCheck:checked), .rsMulti > tbody > .rsRow:has(.cRadio:checked){
     background-color: var(--question_row_selected_background_color) !important;
-    color: var(--question_row_selected_background_color) !important;
+    color: var(--question_row_selected_text_color) !important;
     transform: translate3d(0, 1px, 0);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
  }
