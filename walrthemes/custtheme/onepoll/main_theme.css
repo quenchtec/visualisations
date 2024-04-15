@@ -670,7 +670,7 @@ textarea{
  
  .rsSingle > tbody > .rsRow:not(.openText):not(.rsCuQeTextArea):not(.cRowBlockText):hover, .rsMulti > tbody > .rsRow:not(.openText):not(.rsCuQeTextArea):not(.cRowBlockText):hover{
     background-color: var(--question_row_hover_background_color) !important;
-    color: var(--question_row_selected_background_color) !important;
+    color: var(--question_row_hover_text_color) !important;
     transform: translate3d(0, -2px, 0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
  }
