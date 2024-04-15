@@ -53,7 +53,7 @@ function putSomeClasses() {
           $(this).find(".rsRow").each(function(){
             // if($(this).find(".cRowBlockText:not(:has(select))")){
               $(this).children(".cRowBlockText:not(:has(select))").addClass("GroupingHeader");
-              $(this).children(".cRowBlockText:has(select)").parent().parent().parent().addClass("droptdown");
+              $(this).children(".cRowBlockText:has(select)").addClass("rsdroptdown").parent().parent().parent().addClass("droptdown");
             //}
               if ($(this).find("input").prop("checked")) {
                 $(this).addClass("rsSelected");
