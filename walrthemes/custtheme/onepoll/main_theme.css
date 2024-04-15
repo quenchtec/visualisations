@@ -2,34 +2,37 @@ form{
     /* background-image: var(--page_background_image);*/
       background-size: 100vw 100vh;
  }
-  body {
-      background: var(--page_background_color);
-    /* background-image: var(--page_background_image);*/
-      font-family: var(--main_font_family);
-      color: var(--main_text_color);
-      font-weight: var(--main_font_weight);
-      background-repeat: no-repeat;
-      background-size: auto;
-      overflow-y: auto;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-      margin: 0;
- /* let's flex it all*/
-     display: flex;
-     flex-direction: column;
-     align-content: stretch;
-     align-items: stretch;
-     justify-content: space-evenly;
-     flex-wrap: wrap;
- }
- @viewport {
-   width: device-width;
-   initial-scale: 0.8;
-   maximum-scale: 1;
- }
+body {
+    background-color: var(--body_background_color);
+    background-image: var(--body_background_image);
+    font-family: var(--main_font_family);
+    color: var(--main_text_color);
+    font-weight: var(--main_font_weight);
+    background-repeat: no-repeat;
+    background-size: auto;
+    overflow-y: auto;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    /* let's flex it all*/
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+#html{
+    height: -webkit-fill-available;
+}
+@viewport {
+    width: device-width;
+    initial-scale: 0.8;
+    maximum-scale: 1;
+}
  .hidden{
-     display:none;
- }
+    display:none;
+}
 /*
  #btnNext{
    background-color: var(--button_background_color);
@@ -194,9 +197,10 @@ textarea{
 .cRadio:checked:before {
     background-clip: content-box;
     padding: 3px;
-    background-color: var(--progressbar_background_color);
+    line-height: 1;
+    font-size: 22px;
+    background-color: var(--main_text_color);
     color: var(--main_text_color);
-    filter: brightness(0.7);
     border-color: var(--main_text_color);
 }
 
@@ -234,13 +238,12 @@ textarea{
 .cCheck:checked:before {
     content: '\2714';
     font-weight: 800;
-    line-height: 1.2;
-    font-size: calc((var(--input_check_size) * 0.8) - 2px);
+    line-height: 1;
+    font-size: 22px;
     text-align: center;
-    background-color: var(--progressbar_background_color);
+    background-color: var(--main_text_color);
     border-color: var(--main_text_color);
-    color: var(--custom_special_background_color);
-    filter: brightness(0.7);
+    color: var(--main_text_color);
 }
 
  /* ############# END Define standard variables #################### */
@@ -519,13 +522,17 @@ textarea{
       width: 100%;
  }
   .buttonContainer {
-      display: flex;
-      padding: 16px;
-      margin-top: 0;
-      margin-bottom: 0;
-      width: 98%;
- }
-  .buttonNext, .buttonPrevious {
+    display: flex;
+    padding: 16px;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 98%;
+    padding: 16px 16px 16px 0px;
+}
+.rsScrollGridWrappper{
+    min-height: 240px;
+}
+.buttonNext, .buttonPrevious {
       background-color: var(--button_background_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
       color: var(--button_text_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
       border-color: var(--button_border_color);
