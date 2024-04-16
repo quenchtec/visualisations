@@ -103,7 +103,9 @@ function isMobileDevice() {
 
 function cthemePageReady() {
   var strID = $('#rs_lang').val();
-  
+  var customNext = "";
+  var customPrev = "";
+
   if (typeof CustomGhostMessage === "undefined") {
       CustomGhostMessage = "Please, type in...";
   }
@@ -114,10 +116,21 @@ function cthemePageReady() {
   if (strID == "sv") {
       CustomGhostMessage = "Snälla, skriv in...";
   }
+
+
+ 
+  if (typeof myCustomNext != "undefined") {
+      customNext = myCustomNext[strID];
+  }
+  if (typeof myCustomPrevious != "undefined") {
+      customPrev = myCustomPrevious[strID];
+  }
+
   
-  //console.log("calling text change :  ",strID,myCustomGhost,myCustomGhost[strID],CustomGhostMessage);
   
   ghostText(CustomGhostMessage);
+  custNavigationText(customNext,customPrev);
+  
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
           gridUpdate($(this));
@@ -125,7 +138,10 @@ function cthemePageReady() {
   });
 }
 
-
+function custNavigationText(theNext, thePrevious) {
+  if(theNext !="") $('#btnNext').val(theNext);
+  if(thePrevious !="") $('#btnPrevious').val(thePrevious);
+}
 function ghostText(custText) {
   $('.cTextInput').each(function () {
       $(this).attr("placeholder", custText);
