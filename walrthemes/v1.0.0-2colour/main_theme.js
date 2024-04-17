@@ -105,6 +105,7 @@ function cthemePageReady() {
   var strID = $('#rs_lang').val();
   var customNext = "";
   var customPrev = "";
+  var customError = "";
 
   if (typeof CustomGhostMessage === "undefined") {
       CustomGhostMessage = "Please, type in...";
