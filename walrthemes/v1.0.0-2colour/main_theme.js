@@ -125,11 +125,14 @@ function cthemePageReady() {
   if (typeof myCustomPrevious != "undefined") {
       customPrev = myCustomPrevious[strID];
   }
+  if (typeof myCustomError != "undefined") {
+      customError = myCustomError[strID];
+  }
 
   
   
   ghostText(CustomGhostMessage);
-  custNavigationText(customNext,customPrev);
+  custNavigationText(customNext,customPrev,customError);
   
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
@@ -138,9 +141,10 @@ function cthemePageReady() {
   });
 }
 
-function custNavigationText(theNext, thePrevious) {
+function custNavigationText(theNext, thePrevious, theError) {
   if(theNext !="") $('#btnNext').val(theNext);
   if(thePrevious !="") $('#btnPrevious').val(thePrevious);
+  if(theError !="") $('.cError').val(theError);
 }
 function ghostText(custText) {
   $('.cTextInput').each(function () {
