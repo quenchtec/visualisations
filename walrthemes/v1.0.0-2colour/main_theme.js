@@ -14,20 +14,20 @@ $(document).ready(function () {
               putSomeClasses();
               const scrollFunc = () => {
                 var targetElement = document.querySelector('.progressContainer');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                //window.scrollTo({ top: 0, behavior: 'smooth' });
                 if (targetElement) {
-                  targetElement.focus();
+                  //targetElement.focus();
                   targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
                   debouncedScrollFunc();
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  //window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               };
-              const debouncedScrollFunc = debounce(scrollFunc, 500); // Adjust the delay as needed
+              const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
               $("#btnNext").click(function(){
-                targetElement.focus();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                //targetElement.focus();
+                //window.scrollTo({ top: 0, behavior: 'smooth' });
                 debouncedScrollFunc();
               });
               break; // We've handled the mutation, no need to continue
@@ -112,14 +112,14 @@ function cthemePageReady() {
   var customNext = "";
   var customPrev = "";
   var customError = "";
-  var $targetElement = $('.progressContainer');
+  //var $targetElement = $('.progressContainer');
   try {
     removeFocusFromAllElements();
-    $targetElement.get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    //$targetElement.get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (error) {
     console.error('An error occurred while scrolling:', error);
   }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  //window.scrollTo({ top: 0, behavior: 'smooth' });
   
   if (typeof CustomGhostMessage === "undefined") {
       CustomGhostMessage = "Please, type in...";
