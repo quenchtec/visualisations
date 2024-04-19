@@ -15,8 +15,10 @@ $(document).ready(function () {
               const scrollFunc = () => {
                 var targetElement = document.querySelector('.progressContainer');
                 if (targetElement) {
+                  console.log("F-S-N");
                   targetElement.scrollIntoView({ behavior: 'smooth' });
                 } else {
+                  console.log("E-F-S-N");
                   debouncedScrollFunc();
                 }
               };
