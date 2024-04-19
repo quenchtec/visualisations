@@ -663,12 +663,12 @@ textarea{
   /*NOT FOR MOBILE, as hover will overwrite the checked css*/
   @media only screen and (min-width: 981px) {
  
- .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover, .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover{
- /*.rsSingle > tbody > .rsRow:not([class=cRowBlockText]):hover, .rsMulti > tbody > .rsRow:not([class=cRowBlockText]):hover{*/
- background-color: gainsboro;
-   transform: translate3d(0, -2px, 0);
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
- }
+     .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover, .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover{
+        /*.rsSingle > tbody > .rsRow:not([class=cRowBlockText]):hover, .rsMulti > tbody > .rsRow:not([class=cRowBlockText]):hover{*/
+        background-color: gainsboro;
+        transform: translate3d(0, -2px, 0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+     }
   }
  .rsMulti > tbody > .rsRow > .cCell > .cCheck,.rsMulti > tbody > .rsRow > .cCell > .cRadio, .rsSingle > tbody > .rsRow > .cCell > .cRadio{
      display:none;
@@ -850,9 +850,17 @@ textarea{
       border: 1px solid var(--input_field_border_color) !important;
       border-radius: var(--interactive_border_radius) !important;
  }
-  .rsBtn:hover {
-      border: var(--interactive_border_hover);
-      background-color: var(--interactive_background_color_hover);
+ @media only screen and (man-width: 980px) {
+      .rsBtn:hover {
+          background-color: var(--interactive_background_color);
+          border: 1px solid var(--input_field_border_color);
+     }
+ }
+ @media only screen and (min-width: 981px) {
+      .rsBtn:hover {
+          border: var(--interactive_border_hover);
+          background-color: var(--interactive_background_color_hover);
+     }
  }
  .rsBtnChecked:hover {
      background-color: var(--interactive_checked_background_color);
@@ -1067,74 +1075,79 @@ textarea{
  /* small screens */
   @media only screen and (max-width: 980px) {
       @viewport {
-   width: device-width;
-   initial-scale: 1.0;
-   maximum-scale: 1.0;
- }
+       width: device-width;
+       initial-scale: 1.0;
+       maximum-scale: 1.0;
+     }
       
- .mobileGrid:not(.rsCQ) > tbody > .rsRow, .mobileGrid:not(.rsCQ) > tbody > .rsRow {
-     display: flex;
-     flex-direction: column;
-     flex-wrap: wrap;
-     justify-content: center;
-     align-items: stretch;
-     padding-top: 20px;
-     min-width: fit-content;
-     max-width: 95%;
-     align-content: stretch;
- }
+     .mobileGrid:not(.rsCQ) > tbody > .rsRow, .mobileGrid:not(.rsCQ) > tbody > .rsRow {
+         display: flex;
+         flex-direction: column;
+         flex-wrap: wrap;
+         justify-content: center;
+         align-items: stretch;
+         padding-top: 20px;
+         min-width: fit-content;
+         max-width: 95%;
+         align-content: stretch;
+     }
  
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader  > .rs-ht > p, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader  > .rs-ht > p {
-     min-width: fit-content;
- }
+     .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader  > .rs-ht > p, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader  > .rs-ht > p {
+         min-width: fit-content;
+     }
+     
+     .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader {
+         display: flex;
+         flex-direction: column;
+         align-content: center;
+         align-items: center;
+     }
+     
+     
+     .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCellRowText > .cRowText > .rs-ht, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCellRowText > .cRowText > .rs-ht{
+         font-size: 1.3rem;
+     }
  
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader {
-     display: flex;
-     flex-direction: column;
- }
- 
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCellRowText > .cRowText > .rs-ht, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCellRowText > .cRowText > .rs-ht{
-     font-size: 1.3rem;
- }
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > td, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td {
-     padding: var(--answer_opens_padding);
-     min-width: 40%;
-     min-height: 12px;
-     background-color: #efefef;
-     border: 1px solid var(--question_row_border_color);
-     border-radius: var(--button_border_radius);
-     margin-left: 10px;
-     margin-top: 4px;
- }
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:hover, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:hover {
-     padding: var(--answer_opens_padding);
-     background-color: #efefef;
-     border: 1px solid var(--question_row_border_color);
-     border-radius: var(--button_border_radius);
-     margin-left: 10px;
-     margin-top: 4px;
- }
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cRadio, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cCheck, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cRadio {
-     display: none;
- }
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cRadio:checked), .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cCheck:checked), .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cRadio:checked){
- background-color: var(--question_selected_background_color);
-   transform: translate3d(0, 1px, 0);
-   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
- }
-
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cCellHeader > .cReg > p {
-    text-wrap: balance;
-    min-height: 38px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+     .mobileGrid:not(.rsCQ) > tbody > .rsRow > td, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td {
+         padding: var(--answer_opens_padding);
+         min-width: 40%;
+         min-height: 12px;
+         max-width: 93vw;
+         background-color: #efefef;
+         border: 1px solid var(--question_row_border_color);
+         border-radius: var(--button_border_radius);
+         margin-left: 10px;
+         margin-top: 4px;
+     }
+     
+     .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:hover, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:hover {
+         padding: var(--answer_opens_padding);
+         background-color: #efefef;
+         border: 1px solid var(--question_row_border_color);
+         border-radius: var(--button_border_radius);
+         margin-left: 10px;
+         margin-top: 4px;
+     }
+     
+     .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cRadio, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cCheck, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cRadio {
+         display: none;
+     }
+     
+     .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cRadio:checked), .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cCheck:checked), .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cRadio:checked){
+     background-color: var(--question_selected_background_color);
+       transform: translate3d(0, 1px, 0);
+       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+     }
+    
+     .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cCellHeader > .cReg > p {
+        white-space: normal;
+        text-wrap: balance;
+        min-height: 38px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 80%;
+    }
  }
  
  
