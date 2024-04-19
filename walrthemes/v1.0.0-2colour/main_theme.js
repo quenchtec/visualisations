@@ -115,14 +115,14 @@ function cthemePageReady() {
   var customNext = "";
   var customPrev = "";
   var customError = "";
-
+  var $targetElement = $('.cRowSubQuestion');
   try {
-    document.querySelector('.cRowSubQuestion').focus();
+    removeFocusFromAllElements();
+    $targetElement.get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (error) {
-    console.error('no : cRSQ');
+    console.error('An error occurred while scrolling:', error);
   }
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  document.querySelector('.cRowSubQuestion').scrollIntoView({ behavior: 'smooth', block: 'start' });
   
   if (typeof CustomGhostMessage === "undefined") {
       CustomGhostMessage = "Please, type in...";
@@ -158,7 +158,12 @@ function cthemePageReady() {
       }
   });
 }
-
+function removeFocusFromAllElements() {
+    var focusableElements = document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    focusableElements.forEach(function(element) {
+        element.blur();
+    });
+}
 function custNavigationText(theNext, thePrevious, theError) {
   if(theNext !="") $('#btnNext').val(theNext);
   if(thePrevious !="") $('#btnPrevious').val(thePrevious);
