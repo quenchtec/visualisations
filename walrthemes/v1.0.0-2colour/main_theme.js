@@ -16,19 +16,17 @@ $(document).ready(function () {
                 var targetElement = document.querySelector('.progressContainer');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 if (targetElement) {
-                  console.log("F-S-N");
-                  document.querySelector('.progressContainer').focus();
+                  targetElement.focus();
                   targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
-                  console.log("E-F-S-N");
                   debouncedScrollFunc();
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               };
               const debouncedScrollFunc = debounce(scrollFunc, 500); // Adjust the delay as needed
               $("#btnNext").click(function(){
-                document.querySelector('.progressContainer').focus();
+                targetElement.focus();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 debouncedScrollFunc();
               });
@@ -114,7 +112,7 @@ function cthemePageReady() {
   var customNext = "";
   var customPrev = "";
   var customError = "";
-  var $targetElement = $('.cRowSubQuestion');
+  var $targetElement = $('.progressContainer');
   try {
     removeFocusFromAllElements();
     $targetElement.get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
