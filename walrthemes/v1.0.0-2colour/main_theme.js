@@ -14,11 +14,12 @@ $(document).ready(function () {
               putSomeClasses();
               const scrollFunc = () => {
                 //var targetElement = document.querySelector('.progressContainer');
+                document.querySelector('.cRowSubQuestion').focus();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                var targetElement = document.querySelector('.mainContainer');
+                var targetElement = document.querySelector('.cRowSubQuestion');
                 if (targetElement) {
                   console.log("F-S-N");
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  document.querySelector('.cRowSubQuestion').focus();
                   targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
@@ -29,8 +30,9 @@ $(document).ready(function () {
               };
               const debouncedScrollFunc = debounce(scrollFunc, 500); // Adjust the delay as needed
               $("#btnNext").click(function(){
-                debouncedScrollFunc();
+                document.querySelector('.cRowSubQuestion').focus();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                debouncedScrollFunc();
               });
               break; // We've handled the mutation, no need to continue
           }
@@ -115,6 +117,10 @@ function cthemePageReady() {
   var customPrev = "";
   var customError = "";
 
+  document.querySelector('.cRowSubQuestion').focus();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.querySelector('.cRowSubQuestion').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  
   if (typeof CustomGhostMessage === "undefined") {
       CustomGhostMessage = "Please, type in...";
   }
