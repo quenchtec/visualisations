@@ -1193,4 +1193,8 @@ textarea{
         .logo1Container {
         display: none;
  }
+    .rsRow:has(.rsBtnRank) {
+        flex-wrap: nowrap;
+        align-items: center;
+    }
  }
