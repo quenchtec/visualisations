@@ -14,7 +14,6 @@ $(document).ready(function () {
               putSomeClasses();
               const scrollFunc = () => {
                 //var targetElement = document.querySelector('.progressContainer');
-                document.querySelector('.cRowSubQuestion').focus();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 var targetElement = document.querySelector('.cRowSubQuestion');
                 if (targetElement) {
@@ -117,7 +116,11 @@ function cthemePageReady() {
   var customPrev = "";
   var customError = "";
 
-  document.querySelector('.cRowSubQuestion').focus();
+  try {
+    document.querySelector('.cRowSubQuestion').focus();
+  } catch (error) {
+    console.error('no : cRSQ');
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
   document.querySelector('.cRowSubQuestion').scrollIntoView({ behavior: 'smooth', block: 'start' });
   
