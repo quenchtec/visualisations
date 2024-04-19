@@ -13,23 +13,22 @@ $(document).ready(function () {
               cthemePageReady(); // Call your function here
               putSomeClasses();
               const scrollFunc = () => {
-                //var targetElement = document.querySelector('.progressContainer');
+                var targetElement = document.querySelector('.progressContainer');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                var targetElement = document.querySelector('.cRowSubQuestion');
                 if (targetElement) {
                   console.log("F-S-N");
-                  document.querySelector('.cRowSubQuestion').focus();
+                  document.querySelector('.progressContainer').focus();
                   targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
-                console.log("E-F-S-N");
+                  console.log("E-F-S-N");
                   debouncedScrollFunc();
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               };
               const debouncedScrollFunc = debounce(scrollFunc, 500); // Adjust the delay as needed
               $("#btnNext").click(function(){
-                document.querySelector('.cRowSubQuestion').focus();
+                document.querySelector('.progressContainer').focus();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 debouncedScrollFunc();
               });
