@@ -18,16 +18,19 @@ $(document).ready(function () {
                 var targetElement = document.querySelector('.mainContainer');
                 if (targetElement) {
                   console.log("F-S-N");
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                   targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
-                  console.log("E-F-S-N");
+                console.log("E-F-S-N");
                   debouncedScrollFunc();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               };
-              const debouncedScrollFunc = debounce(scrollFunc, 300); // Adjust the delay as needed
+              const debouncedScrollFunc = debounce(scrollFunc, 500); // Adjust the delay as needed
               $("#btnNext").click(function(){
                 debouncedScrollFunc();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               });
               break; // We've handled the mutation, no need to continue
           }
