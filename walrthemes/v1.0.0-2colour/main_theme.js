@@ -13,10 +13,11 @@ $(document).ready(function () {
               cthemePageReady(); // Call your function here
               putSomeClasses();
               const scrollFunc = () => {
-                var targetElement = document.querySelector('.progressContainer');
+                //var targetElement = document.querySelector('.progressContainer');
+                var targetElement = document.querySelector('.mainContainer');
                 if (targetElement) {
                   console.log("F-S-N");
-                  targetElement.scrollIntoView({ behavior: 'smooth' });
+                  targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 } else {
                   console.log("E-F-S-N");
                   debouncedScrollFunc();
