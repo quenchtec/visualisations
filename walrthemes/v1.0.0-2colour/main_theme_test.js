@@ -160,11 +160,16 @@ function cthemePageReady() {
   });
 }
 function removeFocusFromAllElements() {
-  alert("remove focus")
+  /*
     var focusableElements = document.getElementById("btnNext");
     focusableElements.forEach(function(element) {
         element.blur();
-    });
+    });*/
+var btnNext = document.getElementById("btnNext");
+if (btnNext === document.activeElement) {
+  alert("remove focus from the next button")
+    btnNext.blur();
+}
 }
 function custNavigationText(theNext, thePrevious, theError) {
   if(theNext !="") $('#btnNext').val(theNext);
