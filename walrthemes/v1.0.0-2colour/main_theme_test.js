@@ -161,7 +161,7 @@ function cthemePageReady() {
 }
 function removeFocusFromAllElements() {
   alert("remove focus")
-    var focusableElements = document.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+    var focusableElements = document.getElementById("btnNext");
     focusableElements.forEach(function(element) {
         element.blur();
     });
