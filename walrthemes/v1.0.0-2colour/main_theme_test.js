@@ -21,7 +21,7 @@ $(document).ready(function () {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
                   debouncedScrollFunc();
-                  console.log("1 debouncedScrollFunc called");
+                  alert("1 debouncedScrollFunc called");
                   //window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               };
@@ -30,7 +30,7 @@ $(document).ready(function () {
                 //targetElement.focus();
                 //window.scrollTo({ top: 0, behavior: 'smooth' });
                 debouncedScrollFunc();
-                console.log("2 debouncedScrollFunc called");
+                alert("2 debouncedScrollFunc called");
               });
               break; // We've handled the mutation, no need to continue
           }
@@ -159,6 +159,7 @@ function cthemePageReady() {
   });
 }
 function removeFocusFromAllElements() {
+  alert("remove focus")
     var focusableElements = document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
     focusableElements.forEach(function(element) {
         element.blur();
