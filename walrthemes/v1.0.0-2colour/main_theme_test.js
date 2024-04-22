@@ -13,6 +13,12 @@ $(document).ready(function () {
               cthemePageReady(); // Call your function here
               putSomeClasses();
               isMobileDevice();
+              var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+              if (viewportMetaTag) {
+                  var newContent = viewportMetaTag.getAttribute("content") + ", maximum-scale=1.0, user-scalable=no";
+                  viewportMetaTag.setAttribute("content", newContent);
+              }
+
               const scrollFunc = () => {
                 var targetElement = document.querySelector('.progressContainer');
                 //window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -56,6 +62,7 @@ function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function () {
       if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
+        console.log("nongrid")
           //$(this).find(".rsRow > .cRowBlockText:not(:has(select))").each(function(){
           $(this).find(".rsRow").each(function(){
             //if($(this).find(".cRowBlockText:not(:has(select))")){
@@ -80,6 +87,7 @@ function putSomeClasses() {
           });
         
       } else if ($(this).hasClass("mobileGrid")) {
+        console.log("mob grid")
           $(this).find(".rsRow").find(".cCell").on("click", function () {
               $(this).parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
@@ -88,9 +96,12 @@ function putSomeClasses() {
                       $(this).removeClass("rsSelected");
                   }
               });
-             $(this).parent().find(".rsRow").removeClass("rsSelected");
+            console.log("this grid class ", $(this).prop("class"));
+            
+             $(this).parent().parent().find(".rsRow").removeClass("rsSelected");
           });
       } else if ($(this).hasClass("desktopGrid")) {
+        console.log("des grid")
            $(this).find(".rsRow").find("input").on("change", function () {
               $(this).parent().parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
