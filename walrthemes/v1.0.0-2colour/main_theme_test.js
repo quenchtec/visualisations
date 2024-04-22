@@ -15,6 +15,7 @@ $(document).ready(function () {
               isMobileDevice();
               var viewportMetaTag = document.querySelector('meta[name="viewport"]');
               if (viewportMetaTag) {
+                console.log("try changing the meta");
                   var newContent = viewportMetaTag.getAttribute("content") + ", maximum-scale=1.0, user-scalable=no";
                   viewportMetaTag.setAttribute("content", newContent);
               }
