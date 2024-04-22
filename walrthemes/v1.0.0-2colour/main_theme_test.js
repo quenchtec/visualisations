@@ -81,7 +81,6 @@ function putSomeClasses() {
         
       } else if ($(this).hasClass("mobileGrid")) {
           $(this).find(".rsRow").find(".cCell").on("click", function () {
-             $(this).parent().removeClass("rsSelected");
               $(this).parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
                       $(this).addClass("rsSelected");
@@ -89,6 +88,7 @@ function putSomeClasses() {
                       $(this).removeClass("rsSelected");
                   }
               });
+             $(this).parent().find(".rsRow").removeClass("rsSelected");
           });
       } else if ($(this).hasClass("desktopGrid")) {
            $(this).find(".rsRow").find("input").on("change", function () {
