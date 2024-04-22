@@ -3,6 +3,12 @@ FIREFOX
 #########################################################*/
 /* Styles only for Firefox */
 @-moz-document url-prefix() {
+	.cTable{
+		max-width: 96%;
+	}
+	.cTable > tbody {
+		max-width: 96%;
+	}
 	.rsSingle > tbody > .rsRow > .cCellRowText:not(.cRowBlockText):not(.openText), .rsMulti > tbody > .rsRow > .cCellRowText:not(.cRowBlockText):not(.openText){
 		cursor: pointer;
 		padding: var(--answer_opens_padding);
