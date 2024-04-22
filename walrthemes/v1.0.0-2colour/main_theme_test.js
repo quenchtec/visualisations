@@ -21,8 +21,6 @@ $(document).ready(function () {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
                   debouncedScrollFunc();
-                  removeFocusFromAllElements();
-                  //alert("1 debouncedScrollFunc called");
                   //window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               };
@@ -31,7 +29,6 @@ $(document).ready(function () {
                 //targetElement.focus();
                 //window.scrollTo({ top: 0, behavior: 'smooth' });
                 debouncedScrollFunc();
-                //alert("2 debouncedScrollFunc called");
               });
               break; // We've handled the mutation, no need to continue
           }
@@ -83,6 +80,7 @@ function putSomeClasses() {
         
       } else if ($(this).hasClass("mobileGrid")) {
           $(this).find(".rsRow").find(".cCell").on("click", function () {
+             $(this).parent().removeClass("rsSelected");
               $(this).parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
                       $(this).addClass("rsSelected");
@@ -118,7 +116,6 @@ function cthemePageReady() {
   //var $targetElement = $('.progressContainer');
   try {
     removeFocusFromAllElements();
-    console.log("try removing focus")
     //$targetElement.get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (error) {
     console.error('An error occurred while scrolling:', error);
@@ -160,21 +157,19 @@ function cthemePageReady() {
   });
 }
 function removeFocusFromAllElements() {
-  /*
-    var focusableElements = document.getElementById("btnNext");
+    /*var focusableElements = document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
     focusableElements.forEach(function(element) {
         element.blur();
     });*/
-var btnNext = document.getElementById("btnNext");
-if (btnNext === document.activeElement) {
-  alert("remove focus from the next button")
-    btnNext.blur();
-}
+    var btnNext = document.getElementById("btnNext");
+    if (btnNext === document.activeElement) {
+        btnNext.blur();
+    }
 }
 function custNavigationText(theNext, thePrevious, theError) {
-  if(theNext !="") $('#btnNext').val(theNext);
-  if(thePrevious !="") $('#btnPrevious').val(thePrevious);
-  if(theError !="") $('.cError').val(theError);
+  if((theNext !="") && (theNext !=" ")) {$('#btnNext').val(theNext);}
+  if((thePrevious !="") && (thePrevious !=" ")) {$('#btnPrevious').val(thePrevious);}
+  if((theError !="") && (theError !=" ")) {$('.cError').val(theError);}
 }
 function ghostText(custText) {
   $('.cTextInput').each(function () {
@@ -204,7 +199,11 @@ function gridUpdate(grid_this) {
       if (isMobileDevice()) {
           $(".rsProcessedGrid").addClass("mobileGrid");
           setTimeout(function () {
-              $(".rsRow").each(function () { $(this).children(".cCell").each(function (e) { $(this).append($("#h_" + gridIND + "_" + e).clone()); }); });
+              $(".rsRow").each(function () {
+                $(this).children(".cCell").each(function (e) {
+                  $(this).append($("#h_" + gridIND + "_" + e).clone());
+                });
+              });
               $("td.cCellHeader").parent().remove();
           }, 200);
       } else {
