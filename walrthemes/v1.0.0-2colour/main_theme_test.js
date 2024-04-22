@@ -21,7 +21,8 @@ $(document).ready(function () {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
                   debouncedScrollFunc();
-                  alert("1 debouncedScrollFunc called");
+                  removeFocusFromAllElements();
+                  //alert("1 debouncedScrollFunc called");
                   //window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
               };
@@ -30,7 +31,7 @@ $(document).ready(function () {
                 //targetElement.focus();
                 //window.scrollTo({ top: 0, behavior: 'smooth' });
                 debouncedScrollFunc();
-                alert("2 debouncedScrollFunc called");
+                //alert("2 debouncedScrollFunc called");
               });
               break; // We've handled the mutation, no need to continue
           }
