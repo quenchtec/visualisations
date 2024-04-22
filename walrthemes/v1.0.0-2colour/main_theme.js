@@ -156,10 +156,14 @@ function cthemePageReady() {
   });
 }
 function removeFocusFromAllElements() {
-    var focusableElements = document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    /*var focusableElements = document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
     focusableElements.forEach(function(element) {
         element.blur();
-    });
+    });*/
+    var btnNext = document.getElementById("btnNext");
+    if (btnNext === document.activeElement) {
+        btnNext.blur();
+    }
 }
 function custNavigationText(theNext, thePrevious, theError) {
   if(theNext !="") $('#btnNext').val(theNext);
