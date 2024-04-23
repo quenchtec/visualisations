@@ -14,10 +14,10 @@ $(document).ready(function () {
               cthemePageReady(); // Call your function here
               //isMobileDevice();
               var viewportMetaTag = document.querySelector('meta[name="viewport"]');
-              if (viewportMetaTag) {
-                console.log("try changing the meta");
-                  var newContent = viewportMetaTag.getAttribute("content") + ", maximum-scale=1.0, user-scalable=no";
-                  viewportMetaTag.setAttribute("content", newContent);
+              var content = viewportMetaTag.getAttribute("content");
+              if (!content.includes("maximum-scale")) {
+                var newContent = content + ", maximum-scale=1.0, user-scalable=no";
+                viewportMetaTag.setAttribute("content", newContent);
               }
 
               const scrollFunc = () => {
@@ -63,8 +63,8 @@ function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function () {
       if (($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) && !$(this).hasClass("mobileGrid") && !$(this).hasClass("desktopGrid")) {
-        console.log("nongrid");
-        console.log("this class ", $(this).prop("class"));
+        //console.log("nongrid");
+        //console.log("this class ", $(this).prop("class"));
 
           //$(this).find(".rsRow > .cRowBlockText:not(:has(select))").each(function(){
           $(this).find(".rsRow").each(function(){
@@ -90,7 +90,7 @@ function putSomeClasses() {
           });
         
       } else if ($(this).hasClass("mobileGrid")) {
-        console.log("mob grid")
+        //console.log("mob grid")
           $(this).find(".rsRow").find(".cCell").on("click", function () {
               $(this).parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
@@ -99,12 +99,12 @@ function putSomeClasses() {
                       $(this).removeClass("rsSelected");
                   }
               });
-            console.log("this grid class ", $(this).prop("class"));
+            //console.log("this grid class ", $(this).prop("class"));
             
              $(this).parent().find(".rsRow").removeClass("rsSelected");
           });
       } else if ($(this).hasClass("desktopGrid")) {
-        console.log("des grid")
+        //console.log("des grid")
            $(this).find(".rsRow").find("input").on("change", function () {
               $(this).parent().parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
