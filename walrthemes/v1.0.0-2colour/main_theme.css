@@ -515,7 +515,7 @@ textarea{
  
  /* Navigation buttons */
   #rsPanelButtons {
-      width: 94%;
+      width: 99%;
  }
   .buttonContainer {
       display: flex;
@@ -1202,6 +1202,9 @@ textarea{
  }
  
  @media only screen and (max-width: 980px) {
+       #rsPanelButtons {
+      width: 94%;
+ }
         .logo1Container {
         display: none;
  }
