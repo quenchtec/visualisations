@@ -10,9 +10,9 @@ $(document).ready(function () {
   var observer = new MutationObserver(function (mutationsList, observer) {
       for (var mutation of mutationsList) {
           if (mutation.type === "childList") {
-              cthemePageReady(); // Call your function here
               putSomeClasses();
-              isMobileDevice();
+              cthemePageReady(); // Call your function here
+              //isMobileDevice();
               var viewportMetaTag = document.querySelector('meta[name="viewport"]');
               if (viewportMetaTag) {
                 console.log("try changing the meta");
@@ -62,8 +62,10 @@ function cthemeff() {
 function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function () {
-      if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
-        console.log("nongrid")
+      if (($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) && !$(this).hasClass("mobileGrid") && !$(this).hasClass("desktopGrid")) {
+        console.log("nongrid");
+        console.log("this class ", $(this).prop("class"));
+
           //$(this).find(".rsRow > .cRowBlockText:not(:has(select))").each(function(){
           $(this).find(".rsRow").each(function(){
             //if($(this).find(".cRowBlockText:not(:has(select))")){
@@ -77,7 +79,7 @@ function putSomeClasses() {
           });
 
         
-          $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
+          $(this).find(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
             $(".rsRow").each(function () {
               if ($(this).find("input").prop("checked")) {
                 $(this).addClass("rsSelected");
@@ -99,7 +101,7 @@ function putSomeClasses() {
               });
             console.log("this grid class ", $(this).prop("class"));
             
-             $(this).parent().parent().find(".rsRow").removeClass("rsSelected");
+             $(this).parent().find(".rsRow").removeClass("rsSelected");
           });
       } else if ($(this).hasClass("desktopGrid")) {
         console.log("des grid")
