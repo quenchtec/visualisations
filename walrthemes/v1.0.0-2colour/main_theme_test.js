@@ -14,10 +14,10 @@ $(document).ready(function () {
               cthemePageReady(); // Call your function here
 
               if(navigator.userAgent.indexOf('iPhone') > -1 ){
-                if (!content.includes("maximum-scale")) {
+                //if (!content.includes("maximum-scale")) {
                   document.querySelector("[name=viewport]").setAttribute("content","");
                   document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
-                }
+                //}
               }
 
               const scrollFunc = () => {
