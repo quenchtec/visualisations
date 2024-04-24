@@ -15,9 +15,13 @@ $(document).ready(function () {
               //isMobileDevice();
               var viewportMetaTag = document.querySelector('meta[name="viewport"]');
               var content = viewportMetaTag.getAttribute("content");
+              var newContent = content + ", maximum-scale=1.0, user-scalable=no";
+            
               if (!content.includes("maximum-scale")) {
-                var newContent = content + ", maximum-scale=1.0, user-scalable=no";
-                viewportMetaTag.setAttribute("content", newContent);
+                  viewportMetaTag.setAttribute("content", newContent);
+              } else {
+                  viewportMetaTag.setAttribute("content", "");
+                  viewportMetaTag.setAttribute("content", newContent);
               }
 
               const scrollFunc = () => {
@@ -121,6 +125,7 @@ function putSomeClasses() {
 
 function isMobileDevice() {
   if(navigator.userAgent.indexOf('iPhone') > -1 ){
+    document.querySelector("[name=viewport]").setAttribute("content","");
     document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1");
   }
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || navigator.vendor || window.opera);
