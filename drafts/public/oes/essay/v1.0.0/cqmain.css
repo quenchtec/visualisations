@@ -46,13 +46,16 @@
   color: var(--progressbar_foreground_color);
 }
 
+.progress-bar-messages-holder {
+  width: 100%;
+  position: relative;
+}
+
 .progress-bar-messages {
   width: 100%;
   position: absolute;
-  padding: 3px 0px 0px 7px
+  padding: 3px 0px 0px 7px;
 }
-
-
 
  @media only screen and (max-width: 980px) {
     .essay-progress-bar {
