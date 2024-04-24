@@ -12,19 +12,11 @@ $(document).ready(function () {
           if (mutation.type === "childList") {
               putSomeClasses();
               cthemePageReady(); // Call your function here
-              //isMobileDevice();
-              var viewportMetaTag = document.querySelector('meta[name="viewport"]');
-              var content = viewportMetaTag.getAttribute("content");
-              var newContent = content + ", maximum-scale=1.0, user-scalable=no";
-            /*
-              if (!content.includes("maximum-scale")) {
-                  viewportMetaTag.setAttribute("content", newContent);
-              } else {
-                  viewportMetaTag.setAttribute("content", "");
-                  viewportMetaTag.setAttribute("content", newContent);
-              }*/
-                  viewportMetaTag.setAttribute("content", "");
-                  viewportMetaTag.setAttribute("content", newContent);
+
+              if(navigator.userAgent.indexOf('iPhone') > -1 ){
+                document.querySelector("[name=viewport]").setAttribute("content","");
+                document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
+              }
               const scrollFunc = () => {
                 var targetElement = document.querySelector('.progressContainer');
                 //window.scrollTo({ top: 0, behavior: 'smooth' });
