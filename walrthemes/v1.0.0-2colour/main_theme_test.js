@@ -126,7 +126,7 @@ function putSomeClasses() {
 function isMobileDevice() {
   if(navigator.userAgent.indexOf('iPhone') > -1 ){
     document.querySelector("[name=viewport]").setAttribute("content","");
-    document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1");
+    document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
   }
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || navigator.vendor || window.opera);
 }
