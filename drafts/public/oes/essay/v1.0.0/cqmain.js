@@ -25,7 +25,7 @@ function rsEssay(rsQno, rsSubqIndex, rsParams) {
             arrMessage[e] = arrMessage[e].split("|");
         });
         $(QuestionID).find(".cTextArea").each(function(e) {
-            $(this).after("<div class='essay-progress-bar' style='width: " + intBoxWidth + "px;'><span class='progress-bar-messages'></span><div class='essay-progress-fill'></div></div>");
+            $(this).after("<div class='essay-progress-bar' style='width: " + intBoxWidth + "px;'><div class='progress-bar-messages-holder'><span class='progress-bar-messages'></div></span><div class='essay-progress-fill'></div></div>");
             $(this).on("keydown keyup", function() {
                 $(".essay-progress-bar").show();
                 OETool(rsParams.intIdealLength, arrMessage[e], e);
