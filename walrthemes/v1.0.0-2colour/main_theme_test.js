@@ -16,14 +16,15 @@ $(document).ready(function () {
               var viewportMetaTag = document.querySelector('meta[name="viewport"]');
               var content = viewportMetaTag.getAttribute("content");
               var newContent = content + ", maximum-scale=1.0, user-scalable=no";
-            
+            /*
               if (!content.includes("maximum-scale")) {
                   viewportMetaTag.setAttribute("content", newContent);
               } else {
                   viewportMetaTag.setAttribute("content", "");
                   viewportMetaTag.setAttribute("content", newContent);
-              }
-
+              }*/
+                  viewportMetaTag.setAttribute("content", "");
+                  viewportMetaTag.setAttribute("content", newContent);
               const scrollFunc = () => {
                 var targetElement = document.querySelector('.progressContainer');
                 //window.scrollTo({ top: 0, behavior: 'smooth' });
