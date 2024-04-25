@@ -93,9 +93,9 @@ function putSomeClasses() {
           $(this).find(".rsRow").find(".cCell").on("click", function () {
               $(this).parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
-                      $(this).addClass("rsSelected");
+                      $(this).addClass("rsSelected").addClass("rsGridCellSelected");
                   } else {
-                      $(this).removeClass("rsSelected");
+                      $(this).removeClass("rsSelected").removeClass("rsGridCellSelected");
                   }
               });
             //console.log("this grid class ", $(this).prop("class"));
