@@ -64,7 +64,7 @@ function putSomeClasses() {
 
   var $cTables = $(".cTable");
   $cTables.each(function () {
-                      console.log($(this).prop("class"));
+                      console.log("important check  ", $(this).prop("class"));
 
       if (($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) && !$(this).hasClass("mobileGrid") && !$(this).hasClass("desktopGrid")) {
         //console.log("nongrid");
