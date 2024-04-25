@@ -88,7 +88,6 @@ function putSomeClasses() {
               }
             });
           });
-/*
       } else if ($(this).hasClass("mobileGrid")) {
         //console.log("mob grid")
           $(this).find(".rsRow").find(".cCell").on("click", function () {
@@ -103,8 +102,7 @@ function putSomeClasses() {
             
              $(this).parent().find(".rsRow").removeClass("rsSelected");
           });
-*/
-      } else if ($(this).hasClass("desktopGrid") || $(this).hasClass("mobileGrid")) {
+      } else if ($(this).hasClass("desktopGrid")) {
         //console.log("des grid")
            $(this).find(".rsRow").find("input").on("change", function () {
               $(this).parent().parent().find(".cCell").each(function () {
@@ -216,7 +214,8 @@ function gridUpdate(grid_this) {
       $("#" + gridID).addClass("rsProcessedGrid");
 
       //rearrange the grid for mobiles
-      if (isMobileDevice()) {
+      if (false) {
+      //if (isMobileDevice()) {
           $(".rsProcessedGrid").addClass("mobileGrid");
           setTimeout(function () {
               $(".rsRow").each(function () {
@@ -227,7 +226,11 @@ function gridUpdate(grid_this) {
               $("td.cCellHeader").parent().remove();
           }, 200);
       } else {
-          $(".rsProcessedGrid").addClass("desktopGrid");
+          if (isMobileDevice()) {
+            $(".rsProcessedGrid").addClass("mobileGrid");
+          } else {
+            $(".rsProcessedGrid").addClass("desktopGrid");
+          }
           setTimeout(function () {
               //let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
               let colLength = $('#' + gridID).find(".cCellHeader").length;
