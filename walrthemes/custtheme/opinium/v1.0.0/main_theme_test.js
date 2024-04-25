@@ -88,7 +88,7 @@ function putSomeClasses() {
               }
             });
           });
-        
+/*
       } else if ($(this).hasClass("mobileGrid")) {
         //console.log("mob grid")
           $(this).find(".rsRow").find(".cCell").on("click", function () {
@@ -103,7 +103,8 @@ function putSomeClasses() {
             
              $(this).parent().find(".rsRow").removeClass("rsSelected");
           });
-      } else if ($(this).hasClass("desktopGrid")) {
+*/
+      } else if ($(this).hasClass("desktopGrid") || $(this).hasClass("mobileGrid")) {
         //console.log("des grid")
            $(this).find(".rsRow").find("input").on("change", function () {
               $(this).parent().parent().find(".cCell").each(function () {
