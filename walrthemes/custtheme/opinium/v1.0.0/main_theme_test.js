@@ -89,13 +89,15 @@ function putSomeClasses() {
             });
           });
       } else if ($(this).hasClass("mobileGrid")) {
-        //console.log("mob grid")
+        console.log("mob grid");
           $(this).find(".rsRow").find(".cCell").on("click", function () {
               $(this).parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
                       $(this).addClass("rsSelected").addClass("rsGridCellSelected");
+                      console.log($(this).prop("class"));
                   } else {
                       $(this).removeClass("rsSelected").removeClass("rsGridCellSelected");
+                      console.log($(this).prop("class"));
                   }
               });
             //console.log("this grid class ", $(this).prop("class"));
@@ -103,7 +105,7 @@ function putSomeClasses() {
              $(this).parent().find(".rsRow").removeClass("rsSelected");
           });
       } else if ($(this).hasClass("desktopGrid")) {
-        //console.log("des grid")
+        console.log("des grid");
            $(this).find(".rsRow").find("input").on("change", function () {
               $(this).parent().parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
