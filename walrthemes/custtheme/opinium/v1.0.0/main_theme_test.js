@@ -60,8 +60,12 @@ function cthemeff() {
 
 
 function putSomeClasses() {
+              console.log("put some classes");
+
   var $cTables = $(".cTable");
   $cTables.each(function () {
+                      console.log($(this).prop("class"));
+
       if (($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) && !$(this).hasClass("mobileGrid") && !$(this).hasClass("desktopGrid")) {
         //console.log("nongrid");
         //console.log("this class ", $(this).prop("class"));
@@ -230,10 +234,13 @@ function gridUpdate(grid_this) {
       } else {
           if (isMobileDevice()) {
             $(".rsProcessedGrid").addClass("mobileGrid");
+            console.log("Grid Fix mobile");
           } else {
             $(".rsProcessedGrid").addClass("desktopGrid");
+            console.log("Grid Fix desktop");
           }
           setTimeout(function () {
+            console.log("Grid Fix");
               //let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
               let colLength = $('#' + gridID).find(".cCellHeader").length;
               let gridWidth = $('#' + gridID).find(".rsHeaderRow")[0].clientWidth;
@@ -272,7 +279,6 @@ function debounce(func, timeout = 500) {
 }
 
 window.addEventListener('resize', debounce(function (event) {
-
   if (window.innerWidth > 800) {
       if ($(".rsProcessedGrid").hasClass("mobileGrid")) {
           $(".rsProcessedGrid").removeClass("mobileGrid");
