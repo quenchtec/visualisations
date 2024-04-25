@@ -10,8 +10,8 @@ $(document).ready(function () {
   var observer = new MutationObserver(function (mutationsList, observer) {
       for (var mutation of mutationsList) {
           if (mutation.type === "childList") {
-              putSomeClasses();
               cthemePageReady(); // Call your function here
+              putSomeClasses();
 
               if(navigator.userAgent.indexOf('iPhone') > -1 ){
                 //if (!content.includes("maximum-scale")) {
