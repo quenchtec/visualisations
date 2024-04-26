@@ -272,18 +272,21 @@ window.addEventListener('resize', debounce(function (event) {
       if ($(".rsProcessedGrid").hasClass("mobileGrid")) {
           $(".rsProcessedGrid").removeClass("mobileGrid");
           $(".rsProcessedGrid").addClass("desktopGrid");
+          cthemePageReady();
+          console.log("cthemePageReady resize");
+          gridUpdate();
+          console.log("gridUpdate resize");
       }
   } else {
       if (isMobileDevice()){
           if (!$(".rsProcessedGrid").hasClass("mobileGrid")) {
               $(".rsProcessedGrid").addClass("mobileGrid");
               $(".rsProcessedGrid").removeClass("desktopGrid");
+              cthemePageReady();
+              console.log("cthemePageReady resize");
+              gridUpdate();
+              console.log("gridUpdate resize");
           }
       }
   }
-  cthemePageReady();
-      console.log("cthemePageReady resize");
-
-  gridUpdate();
-      console.log("gridUpdate resize");
 }));
