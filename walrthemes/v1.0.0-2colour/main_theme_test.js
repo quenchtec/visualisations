@@ -10,33 +10,7 @@ $(document).ready(function () {
   var observer = new MutationObserver(function (mutationsList, observer) {
       for (var mutation of mutationsList) {
           if (mutation.type === "childList") {
-              cthemePageReady(); // Call your function here
-
-              if(navigator.userAgent.indexOf('iPhone') > -1 ){
-                //if (!content.includes("maximum-scale")) {
-                  document.querySelector("[name=viewport]").setAttribute("content","");
-                  document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
-                //}
-              }
-
-              const scrollFunc = () => {
-                var targetElement = document.querySelector('.progressContainer');
-                //window.scrollTo({ top: 0, behavior: 'smooth' });
-                if (targetElement) {
-                  //targetElement.focus();
-                  targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                  debouncedScrollFunc();
-                  //window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-              };
-              const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
-              $("#btnNext").click(function(){
-                //targetElement.focus();
-                //window.scrollTo({ top: 0, behavior: 'smooth' });
-                debouncedScrollFunc();
-              });
+              cthemePageReady(); // Call your function here          
               break; // We've handled the mutation, no need to continue
           }
       }
@@ -62,6 +36,8 @@ function cthemeff() {
 
 
 function putSomeClasses() {
+    console.log("putSomeClasses start");
+
   var $cTables = $(".cTable");
   $cTables.each(function () {
       if (($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) && !$(this).hasClass("mobileGrid") && !$(this).hasClass("desktopGrid")) {
@@ -132,45 +108,28 @@ function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || navigator.vendor || window.opera);
 }
 
+
+
+
 function cthemePageReady() {
   var strID = $('#rs_lang').val();
   var customNext = "";
   var customPrev = "";
   var customError = "";
-  //var $targetElement = $('.progressContainer');
+
   try {
     removeFocusFromAllElements();
-    //$targetElement.get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (error) {
     console.error('An error occurred while scrolling:', error);
   }
-  //window.scrollTo({ top: 0, behavior: 'smooth' });
   
-  if (typeof CustomGhostMessage === "undefined") {
-      CustomGhostMessage = "Please, type in...";
-  }
-  if (typeof myCustomGhost != "undefined") {
-      CustomGhostMessage = myCustomGhost[strID];
-  }
+  if (typeof CustomGhostMessage === "undefined") {CustomGhostMessage = "Please, type in...";}
+  if (typeof myCustomGhost != "undefined") {CustomGhostMessage = myCustomGhost[strID];}
+  if (strID == "sv") {CustomGhostMessage = "Snälla, skriv in...";}
+  if (typeof myCustomNext != "undefined") {customNext = myCustomNext[strID];}
+  if (typeof myCustomPrevious != "undefined") {customPrev = myCustomPrevious[strID];}
+  if (typeof myCustomError != "undefined") {customError = myCustomError[strID];}
 
-  if (strID == "sv") {
-      CustomGhostMessage = "Snälla, skriv in...";
-  }
-
-
- 
-  if (typeof myCustomNext != "undefined") {
-      customNext = myCustomNext[strID];
-  }
-  if (typeof myCustomPrevious != "undefined") {
-      customPrev = myCustomPrevious[strID];
-  }
-  if (typeof myCustomError != "undefined") {
-      customError = myCustomError[strID];
-  }
-
-  
-  
   ghostText(CustomGhostMessage);
   custNavigationText(customNext,customPrev,customError);
 
@@ -180,7 +139,25 @@ function cthemePageReady() {
       }
   });
 
+  if(navigator.userAgent.indexOf('iPhone') > -1 ){
+    document.querySelector("[name=viewport]").setAttribute("content","");
+    document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
+  }
+
+  const scrollFunc = () => {
+    var targetElement = document.querySelector('.progressContainer');
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      debouncedScrollFunc();
+    }
+  };
+
+  const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
+  $("#btnNext").click(function(){debouncedScrollFunc();});
   putSomeClasses();
+
 }
 
 
@@ -215,6 +192,7 @@ function ghostText(custText) {
 
 
 function gridUpdate(grid_this) {
+  console.log("grid update start");
   var _grid_this;
   if (grid_this) {
       _grid_this = grid_this;
@@ -300,5 +278,5 @@ window.addEventListener('resize', debounce(function (event) {
       }
   }
   cthemePageReady();
-  //gridUpdate();
+  gridUpdate();
 }));
