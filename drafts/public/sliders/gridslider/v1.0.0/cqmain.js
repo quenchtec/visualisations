@@ -10,6 +10,7 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
   let intMin = 1;
   let intMax = ($(".cCellHeader").length - 1) - intlengthFix;
     $(QuestionID).find(".cTable").eq([SubQIndex]).addClass("rsRatingSlider").addClass("rsCQ");
+    if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("add the rsCQ");
 
   $(".cCellHeader").each(function(e) {
     if (e && (e <= intMax)) {
