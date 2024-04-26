@@ -3,7 +3,9 @@ $(document).ready(function () {
   // Call your initial setup function
   cthemeff();
   cthemePageReady();
-  console.log("call from DR");
+  
+    if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("call from DR");
+    if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("add the rsCQ : ", $(QuestionID).find('.cTable').prop("class"));
   // Event delegation for click on .rsRow elements
   // Create a MutationObserver when the document is fully loaded
   var targetNode = document.getElementById("rsPanelMain");
@@ -12,7 +14,7 @@ $(document).ready(function () {
       for (var mutation of mutationsList) {
           if (mutation.type === "childList") {
               cthemePageReady(); // Call your function here
-              console.log("call from Brfore B");
+              if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("call from Brfore B and after cThemePageReady was called");
               break; // We've handled the mutation, no need to continue
           }
       }
@@ -38,7 +40,7 @@ function cthemeff() {
 
 
 function putSomeClasses() {
-    console.log("putSomeClasses start");
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("putSomeClasses start"));
 
   var $cTables = $(".cTable");
   $cTables.each(function () {
@@ -138,7 +140,7 @@ function cthemePageReady() {
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
           gridUpdate($(this));
-          console.log("gridUpdate cthemePageReady");
+          if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("gridUpdate cthemePageReady");
       }
   });
 
@@ -160,7 +162,7 @@ function cthemePageReady() {
   const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
   $("#btnNext").click(function(){debouncedScrollFunc();});
   putSomeClasses();
-          console.log("putSomeClasses from theme ready");
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("putSomeClasses from theme ready");
 
 }
 
@@ -196,7 +198,7 @@ function ghostText(custText) {
 
 
 function gridUpdate(grid_this) {
-  console.log("grid update start");
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("grid update start");
   var _grid_this;
   if (grid_this) {
       _grid_this = grid_this;
@@ -273,9 +275,9 @@ window.addEventListener('resize', debounce(function (event) {
           $(".rsProcessedGrid").removeClass("mobileGrid");
           $(".rsProcessedGrid").addClass("desktopGrid");
           cthemePageReady();
-          console.log("cthemePageReady resize");
+          if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("cthemePageReady resize IF");
           gridUpdate();
-          console.log("gridUpdate resize");
+          if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("gridUpdate resize IF");
       }
   } else {
       if (isMobileDevice()){
@@ -283,9 +285,9 @@ window.addEventListener('resize', debounce(function (event) {
               $(".rsProcessedGrid").addClass("mobileGrid");
               $(".rsProcessedGrid").removeClass("desktopGrid");
               cthemePageReady();
-              console.log("cthemePageReady resize");
+              if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("cthemePageReady resize ELSE");
               gridUpdate();
-              console.log("gridUpdate resize");
+              if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("gridUpdate resize ELSE");
           }
       }
   }
