@@ -4,8 +4,7 @@ $(document).ready(function () {
   cthemeff();
   cthemePageReady();
   
-    if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("call from DR");
-    if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("add the rsCQ : ", $(QuestionID).find('.cTable').prop("class"));
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("call from DR");
   // Event delegation for click on .rsRow elements
   // Create a MutationObserver when the document is fully loaded
   var targetNode = document.getElementById("rsPanelMain");
