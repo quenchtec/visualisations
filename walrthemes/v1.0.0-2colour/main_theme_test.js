@@ -3,6 +3,7 @@ $(document).ready(function () {
   // Call your initial setup function
   cthemeff();
   cthemePageReady();
+  console.log("call from DR");
   // Event delegation for click on .rsRow elements
   // Create a MutationObserver when the document is fully loaded
   var targetNode = document.getElementById("rsPanelMain");
@@ -10,7 +11,8 @@ $(document).ready(function () {
   var observer = new MutationObserver(function (mutationsList, observer) {
       for (var mutation of mutationsList) {
           if (mutation.type === "childList") {
-              cthemePageReady(); // Call your function here          
+              cthemePageReady(); // Call your function here
+              console.log("call from Brfore B");
               break; // We've handled the mutation, no need to continue
           }
       }
@@ -136,6 +138,7 @@ function cthemePageReady() {
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
           gridUpdate($(this));
+          console.log("gridUpdate cthemePageReady");
       }
   });
 
@@ -157,6 +160,7 @@ function cthemePageReady() {
   const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
   $("#btnNext").click(function(){debouncedScrollFunc();});
   putSomeClasses();
+          console.log("putSomeClasses from theme ready");
 
 }
 
@@ -278,5 +282,8 @@ window.addEventListener('resize', debounce(function (event) {
       }
   }
   cthemePageReady();
+      console.log("cthemePageReady resize");
+
   gridUpdate();
+      console.log("gridUpdate resize");
 }));
