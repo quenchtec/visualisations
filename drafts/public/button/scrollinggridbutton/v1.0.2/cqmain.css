@@ -10,9 +10,22 @@
 	min-width: 50%;
 	display: inline-block;
 }
-.rsBtn:hover {
-	outline: 2px solid grey;
+
+/* Apply hover effect for regular devices */
+@media (hover: hover) {
+    .rsBtn:hover {
+        outline: 2px solid grey;
+    }
 }
+
+/* Remove hover effect for mobile devices */
+@media (hover: none) {
+    .rsBtn:hover {
+        outline: none;
+    }
+}
+
+
 .rsBtnChecked:hover {
 	background-color: var(--interactive_checked_background_color);
 	outline: 2px solid grey;
