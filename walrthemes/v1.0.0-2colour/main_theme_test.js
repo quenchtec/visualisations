@@ -10,7 +10,6 @@ $(document).ready(function () {
   var observer = new MutationObserver(function (mutationsList, observer) {
       for (var mutation of mutationsList) {
           if (mutation.type === "childList") {
-              putSomeClasses();
               cthemePageReady(); // Call your function here
 
               if(navigator.userAgent.indexOf('iPhone') > -1 ){
@@ -57,6 +56,9 @@ function cthemeff() {
       document.head.appendChild(firefoxStyles);
   }
 }
+
+
+
 
 
 function putSomeClasses() {
@@ -116,8 +118,11 @@ function putSomeClasses() {
           });
       }
   });
-
 }
+
+
+
+
 
 function isMobileDevice() {
   if(navigator.userAgent.indexOf('iPhone') > -1 ){
@@ -168,13 +173,19 @@ function cthemePageReady() {
   
   ghostText(CustomGhostMessage);
   custNavigationText(customNext,customPrev,customError);
-  
+
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
           gridUpdate($(this));
       }
   });
+
+  putSomeClasses();
 }
+
+
+
+
 function removeFocusFromAllElements() {
     /*var focusableElements = document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
     focusableElements.forEach(function(element) {
@@ -185,16 +196,23 @@ function removeFocusFromAllElements() {
         btnNext.blur();
     }
 }
+
+
+
 function custNavigationText(theNext, thePrevious, theError) {
   if((theNext !="") && (theNext !=" ")) {$('#btnNext').val(theNext);}
   if((thePrevious !="") && (thePrevious !=" ")) {$('#btnPrevious').val(thePrevious);}
   if((theError !="") && (theError !=" ")) {$('.cError').val(theError);}
 }
+
+
+
 function ghostText(custText) {
   $('.cTextInput').each(function () {
       $(this).attr("placeholder", custText);
   });
 }
+
 
 function gridUpdate(grid_this) {
   var _grid_this;
@@ -257,6 +275,8 @@ function gridUpdate(grid_this) {
       }
   }
 }
+
+
 function debounce(func, timeout = 500) {
   let timer;
   return (...args) => {
@@ -266,7 +286,6 @@ function debounce(func, timeout = 500) {
 }
 
 window.addEventListener('resize', debounce(function (event) {
-
   if (window.innerWidth > 800) {
       if ($(".rsProcessedGrid").hasClass("mobileGrid")) {
           $(".rsProcessedGrid").removeClass("mobileGrid");
@@ -281,5 +300,5 @@ window.addEventListener('resize', debounce(function (event) {
       }
   }
   cthemePageReady();
-  gridUpdate();
+  //gridUpdate();
 }));
