@@ -1,9 +1,10 @@
 function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
     const QuestionID = "#" + rsQno;
-    $(QuestionID).find(".cTable").addClass("rsSliderQuestion");
+    $(QuestionID).find(".cTable").addClass("rsSliderQuestion").addClass("rsCQ");
     $(QuestionID).find(".cRowText").addClass("cRowTextSlider");
     $(QuestionID).find(".cCellF").addClass("cCellFSlider");
     $(QuestionID).find(".rsRow").addClass("rsRowSlider");
+    if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("add the rsCQ");
 
         
     //////////////////////////////////////////////////////
