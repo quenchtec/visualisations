@@ -17,6 +17,8 @@ function ClickRank(rsQno, rsSubqIndex, rsParams) {
 
     //Since there can be mutiple questions on a page, we must make sure all selectors are addressing the proper question (and subquestion) only
     const QuestionID = "#" + rsQno; //This we use in selectors to stay within the question
+    $(QuestionID).find(".cTable").addClass("rsCQ").addClass("rsClickRank");
+    if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("add the rsCQ");
     const btnDivID = "#" + rsQno + "_btn"; //We create our own ID's that will be unique within the page and question
     const btnDivIDattr = rsQno + "_btn"; //Same id without # to use when we set the ID
 
