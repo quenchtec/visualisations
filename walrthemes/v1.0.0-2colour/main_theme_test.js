@@ -39,7 +39,7 @@ function cthemeff() {
 
 
 function putSomeClasses() {
-  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("putSomeClasses start"));
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("putSomeClasses start");
 
   var $cTables = $(".cTable");
   $cTables.each(function () {
