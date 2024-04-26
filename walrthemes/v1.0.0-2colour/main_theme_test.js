@@ -289,4 +289,5 @@ window.addEventListener('resize', debounce(function (event) {
           }
       }
   }
-}));
+}, 500));
+
