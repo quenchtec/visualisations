@@ -113,6 +113,7 @@ textarea:focus {
   input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
       -moz-appearance: none;
+      appearance: none;
       margin: 0;
  }
 textarea{
@@ -156,6 +157,7 @@ textarea{
       border-radius: 50%;
       -webkit-appearance: none;
       -moz-appearance: none;
+      appearance: none;
       cursor: pointer;
  }
   .cRadio:before {
@@ -191,6 +193,7 @@ textarea{
       background-color: #FFFFFF;
       -webkit-appearance: none;
       -moz-appearance: none;
+      appearance: none;
       cursor: pointer;
  }
   .cCheck:checked {
@@ -510,7 +513,7 @@ textarea{
 	padding-top: 20px;
 }
 
-.cTDContainQues > div{
+.cTDContainQues > div.cReg{
 	border: 3px solid var(--progressbar_foreground_color);
 	padding: 20px;
 	border-radius: 5px;
@@ -630,6 +633,7 @@ textarea{
   /*NOT FOR MOBILE, as hover will overwrite the checked css*/
 @media only screen and (min-width: 981px) {
 	.rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover, .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover{
+		background-color: unset;
 		/*background-color: gainsboro;
 		transform: translate3d(0, -2px, 0);
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);*/
@@ -641,6 +645,7 @@ textarea{
  
  
 .rsSingle > tbody > .rsRow:has(.cRadio:checked), .rsMulti > tbody > .rsRow:has(.cCheck:checked), .rsMulti > tbody > .rsRow:has(.cRadio:checked){
+    background-color: unset;
 	/*background-color: var(--question_selected_background_color);
 	transform: translate3d(0, 1px, 0);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
@@ -669,6 +674,7 @@ textarea{
  
  
 .cColumn > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover{
+    background-color: unset;
 	/*background-color: var(--question_selected_background_color);
 	transform: translate3d(0, -2px, 0);
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);*/
@@ -680,9 +686,10 @@ textarea{
  
  
 .cColumn > tbody > .rsRow:has(.cRadio:checked), .cColumn > tbody > .rsRow:has(.cCheck:checked), .cColumn > tbody > .rsRow:has(.cRadio:checked){
+    background-color: unset;
 	/*background-color: var(--question_selected_background_color);
 	transform: translate3d(0, 1px, 0);
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);/*
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
 }
  /*#########   ENDS TWO COLUMNS FIX ###################*/
  
@@ -1096,9 +1103,7 @@ textarea{
 		justify-content: center;
 	}
 }
- 
- 
- 
+
  @media only screen and (min-width: 500px) {
     .cTable.desktopGrid:not(.rsCQ) .rsRow.cRow, .cTable.desktopGrid .rsRow.cRow {
         background-color: #d3d3d31c;
@@ -1118,46 +1123,30 @@ textarea{
  }
  
  
- 
- 
- /* ######### END GRID CSS FOR MOBILE ########## */
-  /* ######### GRID CSS FOR DESKTOP ########## */
+/* ######### END GRID CSS FOR MOBILE ########## */
+/* ######### GRID CSS FOR DESKTOP ########## */
 @media only screen and (min-width: 981px) {
     .desktopGrid > tbody > .cRow {
-        /*background-color: white*/
+        background-color: rgba(255, 255, 255, 0.2);
     }
 }
+/* ######### END GRID CSS FOR DESKTOP ########## */
+.rsSelected  {
+    background-color: var(--question_selected_background_color);
+    /*transform: translate3d(0, 1px, 0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
+}
 
- 
-  /* ######### END GRID CSS FOR DESKTOP ########## */
+/* Turn off spinners */
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
 
- /* Safari iOS settings in order to fix scrolling, all the way to the bottom, in mainContainer */
-  @supports (-webkit-touch-callout: none) {
-     /* CSS specific to iOS devices */
-      .mainContainer {
-          /*height: 1000px;
-          width: fit-content;
-          min-height: -webkit-fill-available*/
-     }
- 
- }
- 
- 
- .rsSelected  {
-     background-color: var(--question_selected_background_color);
-     /*transform: translate3d(0, 1px, 0);
-     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
- }
- 
- /* Turn off spinners */
-  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      margin: 0;
- }
- 
- @media only screen and (max-width: 980px) {
+@media only screen and (max-width: 980px) {
     .logo1Container {
         display: none;
     }
- }
+}
