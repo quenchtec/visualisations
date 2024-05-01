@@ -135,13 +135,6 @@ textarea{
      color: var(--main_text_color);
  }
  
- [id^=instr] {
-   font-style: var(--text_style_instruction);
-   color: var(--text_color_instruction);
-   font-size: var(--text_size_instruction);
-   font-weight: var(--text_weight_instruction);
-}
-
  .cTextInput{
      outline: none;
      padding: var(--answer_opens_padding);
@@ -429,70 +422,37 @@ textarea{
  
  /* PROGRESS BAR */
  
-  .progressContainer {
-      display: block;
-      width: 40%;
-      z-index: 1;
-      order: 3;
-    }
- /* Progressbar - background */
-  .progressBarContainer {
-      width: 100%;
-      background-color: var(--progressbar_background_color);
-      height: 25px;
-      margin: 0;
-      border-radius: 15px;
-    }
- /* Progressbar - foreground */
-  .progressBar {
-      background-color: var(--progressbar_foreground_color);
-      height: 25px;
-      text-align: center;
-      border-radius: 15px;
- }
- /* Progressbar - text */ 
-  .progressBarText {
-    font-size: 13px;
-    text-align: center;
-    width: 103%;
-    margin-top: -20px;
-    display: block;
-    font-weight: bold; 
+.progressContainer {
+	display: block;
+	width: 40%;
+	z-index: 1;
+	order: 3;
 }
- 
- 
- 
- 
- /*
- .progressContainer {
-   width: 98%;
-   background-color: #f0f0f0;
-   border-radius: 5px;
-   padding: 5px;
-   
- }
- 
- .progressBarContainer {
-   width: 100%;
-   height: 20px;
-   background-color: #e0e0e0;
-   border-radius: 5px;
-   overflow: hidden;
- }
- 
- .progressBar {
-   height: 100%;
-   background-color: var(--progressbar_foreground_color);
-   transition: width 0.3s ease-in-out;
- }
- 
- .progressBarText {
-   text-align: center;
-   line-height: 20px;
-   color: #ffffff;
- }
- */
- 
+/* Progressbar - background */
+.progressBarContainer {
+	width: 100%;
+	background-color: var(--progressbar_background_color);
+	height: 25px;
+	margin: 0;
+	border-radius: 15px;
+}
+/* Progressbar - foreground */
+.progressBar {
+	background-color: var(--progressbar_foreground_color);
+	height: 25px;
+	text-align: center;
+	border-radius: 15px;
+}
+/* Progressbar - text */ 
+.progressBarText {
+	font-size: 13px;
+	text-align: center;
+	width: 103%;
+	margin-top: -20px;
+	display: block;
+	font-weight: bold;
+	color: white;
+} 
  /* ########### END PROGRESS BAR END ######### */
  /*######################################################*/
  /*######################################################*/
@@ -590,10 +550,23 @@ textarea{
       padding: 10px 0px 20px 0px;
       border: none;
  }
- .cQuestionText > .cReg {
-     font-size: var(--question_font_size);
- }
-  .logo2Container {
+.cQuestionText > .cReg {
+	font-size: var(--question_font_size);
+}
+.cQuestionText > .cDo {
+   font-style: var(--text_style_instruction);
+   color: var(--text_color_instruction);
+   font-size: var(--text_size_instruction);
+   font-weight: var(--text_weight_instruction);
+}
+.cQuestionText > .cSay {
+	font-size: var(--question_font_size);
+}
+.cQuestionText > div {
+	padding-bottom: var(--question_text_padding);
+}
+
+.logo2Container {
      margin-top: 50px;
      margin-bottom: -25px;
      display: none;
@@ -1148,9 +1121,16 @@ textarea{
  
  
  /* ######### END GRID CSS FOR MOBILE ########## */
+  /* ######### GRID CSS FOR DESKTOP ########## */
+@media only screen and (min-width: 981px) {
+    .desktopGrid > tbody > .cRow {
+        /*background-color: white*/
+    }
+}
+
  
- 
- 
+  /* ######### END GRID CSS FOR DESKTOP ########## */
+
  /* Safari iOS settings in order to fix scrolling, all the way to the bottom, in mainContainer */
   @supports (-webkit-touch-callout: none) {
      /* CSS specific to iOS devices */
