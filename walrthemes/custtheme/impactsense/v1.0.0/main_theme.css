@@ -30,15 +30,7 @@ form{
  .hidden{
      display:none;
  }
- #btnNext{
-   background-color: var(--button_background_color);
-   color: white;
-/*   background-image: url(https://resources.walr.com/3ef11f3f-290d-4a64-925c-34ae02f863ce/Opinium/Theme/Images/icon_next_arrow.svg);
-   background-repeat: no-repeat;
-   background-size: 25px;*/
-   background-position: calc(100% - 20px) center;
-   padding-right: 2px;
- }
+
  /*######################################################*/
  /*######################################################*/
  /*######################################################*/
@@ -539,9 +531,7 @@ textarea{
       cursor: pointer;
       font-weight: bold;
       line-height: 18px;
-      padding-left: 12px;
-      padding-right: 12px;
-      border-radius: 0px;
+      border-radius: var(--button_border_radius);
       width: var(--button_width);
       transition: box-shadow 0.2s ease-in-out;
     }
@@ -563,9 +553,9 @@ textarea{
 }
 
 .cTDContainQues > div{
-    border: 3px solid var(--progressbar_foreground_color);
+	border: 3px solid var(--progressbar_foreground_color);
 	padding: 20px;
-    border-radius: 5px;
+	border-radius: 5px;
 }
 
 
