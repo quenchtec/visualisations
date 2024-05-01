@@ -1130,9 +1130,12 @@ textarea{
 /* ######### END GRID CSS FOR MOBILE ########## */
 /* ######### GRID CSS FOR DESKTOP ########## */
 @media only screen and (min-width: 981px) {
-    .desktopGrid > tbody > .cRow {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
+	.desktopGrid > tbody > .cRow {
+		background-color: rgba(255, 255, 255, 0.2);
+	}
+	.progressContainer {
+		order: 0 !important;
+	}
 }
 /* ######### END GRID CSS FOR DESKTOP ########## */
 .rsSelected  {
