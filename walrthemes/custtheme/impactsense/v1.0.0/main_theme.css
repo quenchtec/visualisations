@@ -503,50 +503,48 @@ textarea{
  /* ########### NAVIGATION BUTTONS ######### */
  
  /* Navigation buttons */
-  #rsPanelButtons {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      text-align: center;
-    }
-  .buttonContainer {
-      display: flex;
-      padding: 16px;
-      margin-top: -120px;
-      width: 98%;
-    }
-  .buttonNext, .buttonPrevious {
-      background-color: var(--button_background_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
-      color: var(--button_text_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
-      border-color: var(--button_border_color);
-      border-width: var(--button_border_width);
-      min-width: var(--button_min_width);
-      height: var(--button_height);
-      font-size: var(--button_font_size);
-      font-family: var(--main_font_family);
-      border-style: solid;
-      text-align: center;
-      cursor: pointer;
-      font-weight: bold;
-      line-height: 18px;
-      border-radius: var(--button_border_radius);
-      width: var(--button_width);
-      transition: box-shadow 0.2s ease-in-out;
-    }
-    
-
- 
- .buttonNext:hover, .buttonPrevious:hover{
-     box-shadow: 0px 0px 5px 1px var(--button_background_color);
-     transition: box-shadow 0.2s ease-in-out;
- }
-
-#_customValidator{
-    position: fixed;
+#rsPanelButtons {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	text-align: center;
+}
+.buttonContainer {
+	display: flex;
+	padding: 16px;
+	margin-top: -120px;
+	width: 95%;
+	border-top: 1px solid gray;
+  }
+.buttonNext, .buttonPrevious {
+	background-color: var(--button_background_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
+	color: var(--button_text_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
+	border-color: var(--button_border_color);
+	border-width: var(--button_border_width);
+	min-width: var(--button_min_width);
+	height: var(--button_height);
+	font-size: var(--button_font_size);
+	font-family: var(--main_font_family);
+	border-style: solid;
+	text-align: center;
+	cursor: pointer;
+	font-weight: bold;
+	line-height: 18px;
+	border-radius: var(--button_border_radius);
+	width: var(--button_width);
+	transition: box-shadow 0.2s ease-in-out;
 }
 
+.buttonNext:hover, .buttonPrevious:hover{
+	box-shadow: 0px 0px 5px 1px var(--button_background_color);
+	transition: box-shadow 0.2s ease-in-out;
+}
+
+#_customValidator{
+	position: fixed;
+}
 
 .cTABLEContainQues{
 	padding-top: 20px;
@@ -557,7 +555,6 @@ textarea{
 	padding: 20px;
 	border-radius: 5px;
 }
-
 
  /* ########### NAVIGATION BUTTONS END ######### */
  /*######################################################*/
