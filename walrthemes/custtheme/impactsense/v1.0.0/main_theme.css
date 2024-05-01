@@ -555,15 +555,19 @@ textarea{
  }
 .cQuestionText > .cReg {
 	font-size: var(--question_font_size);
+    font-style: var(--question_font_style);
+    font-weight: var(--question_font_weight);
 }
 .cQuestionText > .cDo {
-   font-style: var(--text_style_instruction);
-   color: var(--text_color_instruction);
-   font-size: var(--text_size_instruction);
-   font-weight: var(--text_weight_instruction);
+    color: var(--question_instruction_color);
+    font-style: var(--question_instruction_style);
+    font-size: var(--question_instruction_font_size);
+    font-weight: var(--question_instruction_font_weight);
 }
 .cQuestionText > .cSay {
 	font-size: var(--question_font_size);
+    font-style: var(--question_font_style);
+    font-weight: var(--question_font_weight);
 }
 .cQuestionText > div {
 	padding-bottom: var(--question_text_padding);
