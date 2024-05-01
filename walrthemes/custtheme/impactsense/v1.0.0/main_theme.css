@@ -636,7 +636,7 @@ textarea{
      border: 1px solid var(--input_field_border_color);
      border-radius: var(--interactive_border_radius);
      margin: 3px 0px 3px 0px;
-     transition: transform 0.2s, box-shadow 0.2s;
+     /*transition: transform 0.2s, box-shadow 0.2s;*/
  }
  
  
@@ -694,7 +694,7 @@ textarea{
      border: 1px solid var(--input_field_border_color);
      border-radius: var(--interactive_border_radius);
      margin: 3px 0px 3px 0px;
-     transition: transform 0.2s, box-shadow 0.2s;
+     /*transition: transform 0.2s, box-shadow 0.2s;*/
  }
  
  
@@ -740,8 +740,7 @@ textarea{
      max-width: 48%;
      width: 20%;
  }
- 
- 
+
  /* #### THIS IS FOR THE CUSTOM SLIDERS ####*/
  .rsNumeric > tbody > .rsRow > .cCellRowText:has(.noUi-target)  {
      max-width: 98% !important;
@@ -789,17 +788,17 @@ textarea{
    margin: 0;
    min-width: fit-content;
    max-width: 90% !important;
-   transform: translate3d(0, 0, 0);
+   /*transform: translate3d(0, 0, 0);*/
  }
  .rsRow:has(.cRowBlockText):hover{
    background-color: var(--page_content_background_color) !important;
-   transform: translate3d(0, 0, 0) !important;
+   /*transform: translate3d(0, 0, 0) !important;*/
    border: none !important;
    box-shadow: none !important;
  }
  .rsRow:has(.cRowBlockText){
    background-color: var(--page_content_background_color) !important;
-   transform: translate3d(0, 0, 0) !important;
+   /*transform: translate3d(0, 0, 0) !important;*/
    border: none !important;
    box-shadow: none !important;
  }
@@ -811,7 +810,7 @@ textarea{
  /* ######## OE BOX FROM RADIO CHECKBOX############ */
  .rsRow-single-line,  .rsRow-single-line:hover{
    background-color: var(--page_content_background_color) !important;
-   transform: translate3d(0, 0, 0) !important;
+   /*transform: translate3d(0, 0, 0) !important;*/
    border: none !important;
    box-shadow: none !important;
  }
@@ -910,7 +909,7 @@ textarea{
  /* SEARCHABLE ANSWER LIST CSS*/
  .rsCuQeSal:hover{
      background-color: #fff !important;
-     transform: translate3d(0, 0, 0) !important;
+     /*transform: translate3d(0, 0, 0) !important;*/
      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
  }
  
@@ -1056,77 +1055,77 @@ textarea{
  
  /* ######### GRID CSS FOR MOBILE ########## */
  /* small screens */
-  @media only screen and (max-width: 980px) {
-      @viewport {
-   width: device-width;
-   initial-scale: 1.0;
-   maximum-scale: 1.0;
- }
-      
- .mobileGrid:not(.rsCQ) > tbody > .rsRow, .mobileGrid:not(.rsCQ) > tbody > .rsRow {
-     display: flex;
-     flex-direction: column;
-     flex-wrap: wrap;
-     justify-content: center;
-     align-items: stretch;
-     padding-top: 20px;
-     min-width: fit-content;
-     max-width: 95%;
-     align-content: stretch;
- }
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader  > .rs-ht > p, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader  > .rs-ht > p {
-     min-width: fit-content;
- }
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader {
-     display: flex;
-     flex-direction: column;
- }
- 
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCellRowText > .cRowText > .rs-ht, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCellRowText > .cRowText > .rs-ht{
-     font-size: 1.3rem;
- }
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > td, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td {
-     padding: var(--answer_opens_padding);
-     min-width: 40%;
-     min-height: 12px;
-     background-color: #efefef;
-     border: 1px solid var(--question_row_border_color);
-     border-radius: var(--button_border_radius);
-     margin-left: 10px;
-     margin-top: 4px;
- }
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:hover, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:hover {
-     padding: var(--answer_opens_padding);
-     background-color: #efefef;
-     border: 1px solid var(--question_row_border_color);
-     border-radius: var(--button_border_radius);
-     margin-left: 10px;
-     margin-top: 4px;
- }
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cRadio, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cCheck, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cRadio {
-     display: none;
- }
- 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cRadio:checked), .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cCheck:checked), .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cRadio:checked){
- background-color: var(--question_selected_background_color);
-   transform: translate3d(0, 1px, 0);
-   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
- }
+@media only screen and (max-width: 980px) {
+	@viewport {
+		width: device-width;
+		initial-scale: 1.0;
+		maximum-scale: 1.0;
+	}
 
- .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cCellHeader > .cReg > p {
-    text-wrap: balance;
-    min-height: 38px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	.mobileGrid:not(.rsCQ) > tbody > .rsRow, .mobileGrid:not(.rsCQ) > tbody > .rsRow {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: stretch;
+		padding-top: 20px;
+		min-width: fit-content;
+		max-width: 95%;
+		align-content: stretch;
+	}
+	
+	.mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader  > .rs-ht > p, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader  > .rs-ht > p {
+		min-width: fit-content;
+	}
+	
+	.mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCell > .cCellHeader {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	
+	.mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCellRowText > .cRowText > .rs-ht, .mobileGrid:not(.rsCQ) > tbody > .rsRow > .cCellRowText > .cRowText > .rs-ht{
+		font-size: 1.3rem;
+	}
+	
+	.mobileGrid:not(.rsCQ) > tbody > .rsRow > td, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td {
+		padding: var(--answer_opens_padding);
+		min-width: 40%;
+		min-height: 12px;
+		background-color: #efefef;
+		border: 1px solid var(--question_row_border_color);
+		border-radius: var(--button_border_radius);
+		margin-left: 10px;
+		margin-top: 4px;
+	}
+	
+	.mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:hover, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:hover {
+		padding: var(--answer_opens_padding);
+		background-color: #efefef;
+		border: 1px solid var(--question_row_border_color);
+		border-radius: var(--button_border_radius);
+		margin-left: 10px;
+		margin-top: 4px;
+	}
+	
+	.mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cRadio, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cCheck, .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cRadio {
+		display: none;
+	}
+	
+	.mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cRadio:checked), .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cCheck:checked), .mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell:has(.cRadio:checked){
+		background-color: var(--question_selected_background_color);
+		/*transform: translate3d(0, 1px, 0);
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	.mobileGrid:not(.rsCQ) > tbody > .rsRow > td.cCell > .cCellHeader > .cReg > p {
+		text-wrap: balance;
+		min-height: 38px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
 }
- }
  
  
  
@@ -1169,8 +1168,8 @@ textarea{
  
  .rsSelected  {
      background-color: var(--question_selected_background_color);
-     transform: translate3d(0, 1px, 0);
-     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+     /*transform: translate3d(0, 1px, 0);
+     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
  }
  
  /* Turn off spinners */
