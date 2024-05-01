@@ -33,12 +33,11 @@ form{
  #btnNext{
    background-color: var(--button_background_color);
    color: white;
-   background-image: url(https://resources.walr.com/3ef11f3f-290d-4a64-925c-34ae02f863ce/Opinium/Theme/Images/icon_next_arrow.svg);
+/*   background-image: url(https://resources.walr.com/3ef11f3f-290d-4a64-925c-34ae02f863ce/Opinium/Theme/Images/icon_next_arrow.svg);
    background-repeat: no-repeat;
-   background-size: 25px;
+   background-size: 25px;*/
    background-position: calc(100% - 20px) center;
    padding-right: 2px;
-
  }
  /*######################################################*/
  /*######################################################*/
@@ -349,7 +348,7 @@ textarea{
       order: 1;
  }
   .logo1 {
-      height: 100px;
+      height: var(--main_logo_height);
  }
  /* Link (powered by) */
   .logo2link {
