@@ -1148,7 +1148,9 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     appearance: none;
     margin: 0;
 }
-
+.rsScrollGridWrappper{
+    min-height: 250px;
+}
 @media only screen and (max-width: 980px) {
     .logo1Container {
         display: none;
