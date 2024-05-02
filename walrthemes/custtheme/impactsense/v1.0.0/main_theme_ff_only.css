@@ -12,8 +12,9 @@ FIREFOX
 .rsSingle > tbody > .rsRow > .cCellRowText > .textleft > .cRowText :not(.cRowBlockText):not(.openText), .rsMulti > tbody > .rsRow > .cCellRowText > .textleft > .cRowText :not(.cRowBlockText):not(.openText){
 	margin: 6px;
 }
-
-
+.rsSingle > tbody:has(.rsRow), .rsMulti > tbody:has(.rsRow), .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea), .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea) {
+  height: -moz-available;
+}
 .rsSelected  {
 	background-color: var(--question_selected_background_color);
 	/*transform: translate3d(0, 1px, 0);
