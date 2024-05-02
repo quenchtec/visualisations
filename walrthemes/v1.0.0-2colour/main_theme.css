@@ -299,35 +299,32 @@ textarea{
       font-weight: bold;
  }
  /* Main container for question and navigation buttons */
-  .mainContainer {
-      background-color: var(--page_content_background_color);
-      font-size: var(--main_font_size);
-      font-weight: var(--main_font_weight);
-      margin: 25px auto 8px;
-      border-radius: 12px;
-      width: 900px;
-      min-width: fit-content;
-      max-width: 98vw;
- 
- 
-     display: flex;
-     flex-direction: column;
-     align-content: space-around;
-     flex-wrap: wrap;
-     justify-content: center;
-     align-items: center;
- 
- }
+.mainContainer {
+    background-color: var(--page_content_background_color);
+    font-size: var(--main_font_size);
+    font-weight: var(--main_font_weight);
+    margin: 25px auto 8px;
+    border-radius: 12px;
+    width: 900px;
+    min-width: fit-content;
+    max-width: 98vw;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
  /* Question content (excluding navigation) */
-  .contentContainer {
-      padding: 16px;
-     display: flex;
-     flex-direction: column;
-     flex-wrap: nowrap;
-     justify-content: space-evenly;
-     align-items: center;
-      width: 98%;
- }
+.contentContainer {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 98%;
+}
  /* Language content*/
   .languagePanel {
       padding: 16px;
@@ -849,7 +846,7 @@ textarea{
       border: 1px solid var(--input_field_border_color) !important;
       border-radius: var(--interactive_border_radius) !important;
  }
- @media only screen and (man-width: 980px) {
+ @media only screen and (max-width: 980px) {
       .rsBtn:hover {
           background-color: var(--interactive_background_color);
           border: 1px solid var(--input_field_border_color);
@@ -1168,14 +1165,8 @@ textarea{
         text-wrap: balance;
     }
  }
- 
- 
- 
- 
  /* ######### END GRID CSS FOR MOBILE ########## */
- 
- 
- 
+
  /* Safari iOS settings in order to fix scrolling, all the way to the bottom, in mainContainer */
   @supports (-webkit-touch-callout: none) {
      /* CSS specific to iOS devices */
@@ -1183,8 +1174,8 @@ textarea{
           /*height: 1000px;
           width: fit-content;
           min-height: -webkit-fill-available*/
-     }
- 
+          max-width: 93vw;
+        }
  }
  
  
@@ -1198,18 +1189,32 @@ textarea{
   input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
       -moz-appearance: none;
+      appearance: none;
       margin: 0;
  }
  
- @media only screen and (max-width: 980px) {
-       #rsPanelButtons {
-      width: 94%;
- }
-        .logo1Container {
+@media only screen and (max-width: 980px) {
+    .cTable{
+        max-width: 93vw;
+        padding-left: 5px;
+    }
+    .cTable > tbody{
+        width: -webkit-fill-available;
+    }
+    #rsPanelButtons {
+        width: 94%;
+    }
+    .logo1Container {
         display: none;
- }
+    }
     .rsRow:has(.rsBtnRank) {
         flex-wrap: nowrap;
         align-items: center;
     }
- }
+}
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea {
+  touch-action: manipulation; /* Disable default touch behaviors */
+}

@@ -3,7 +3,6 @@ $(document).ready(function () {
   // Call your initial setup function
   cthemeff();
   cthemePageReady();
-  
   if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("call from DR");
   // Event delegation for click on .rsRow elements
   // Create a MutationObserver when the document is fully loaded
@@ -13,7 +12,7 @@ $(document).ready(function () {
       for (var mutation of mutationsList) {
           if (mutation.type === "childList") {
               cthemePageReady(); // Call your function here
-              if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("call from Brfore B and after cThemePageReady was called");
+              if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("log from Brfore Break and after cThemePageReady was called");
               break; // We've handled the mutation, no need to continue
           }
       }
@@ -25,7 +24,6 @@ function cthemeff() {
   // Detect Firefox using JavaScript
   if (navigator.userAgent.indexOf("Firefox") != -1) {
       // User is using Firefox
-      // You can add a new CSS file or apply inline styles here
       var firefoxStyles = document.createElement("link");
       firefoxStyles.rel = "stylesheet";
       firefoxStyles.type = "text/css";
@@ -34,24 +32,13 @@ function cthemeff() {
   }
 }
 
-
-
-
-
 function putSomeClasses() {
   if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("putSomeClasses start");
-
   var $cTables = $(".cTable");
   $cTables.each(function () {
       if (($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) && !$(this).hasClass("mobileGrid") && !$(this).hasClass("desktopGrid")) {
-        //console.log("nongrid");
-        //console.log("this class ", $(this).prop("class"));
-
-          //$(this).find(".rsRow > .cRowBlockText:not(:has(select))").each(function(){
           $(this).find(".rsRow").each(function(){
-            //if($(this).find(".cRowBlockText:not(:has(select))")){
               $(this).children(".cRowBlockText:not(:has(select))").addClass("GroupingHeader");
-            //}
               if ($(this).find("input").prop("checked")) {
                 $(this).addClass("rsSelected");
               } else {
@@ -59,7 +46,6 @@ function putSomeClasses() {
               }
           });
 
-        
           $(this).find(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
             $(".rsRow").each(function () {
               if ($(this).find("input").prop("checked")) {
@@ -71,7 +57,6 @@ function putSomeClasses() {
           });
         
       } else if ($(this).hasClass("mobileGrid")) {
-        //console.log("mob grid")
           $(this).find(".rsRow").find(".cCell").on("click", function () {
               $(this).parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
@@ -80,12 +65,9 @@ function putSomeClasses() {
                       $(this).removeClass("rsSelected");
                   }
               });
-            //console.log("this grid class ", $(this).prop("class"));
-            
              $(this).parent().find(".rsRow").removeClass("rsSelected");
           });
       } else if ($(this).hasClass("desktopGrid")) {
-        //console.log("des grid")
            $(this).find(".rsRow").find("input").on("change", function () {
               $(this).parent().parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
@@ -99,10 +81,6 @@ function putSomeClasses() {
   });
 }
 
-
-
-
-
 function isMobileDevice() {
   if(navigator.userAgent.indexOf('iPhone') > -1 ){
     document.querySelector("[name=viewport]").setAttribute("content","");
@@ -111,22 +89,17 @@ function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || navigator.vendor || window.opera);
 }
 
-
-
-
 function cthemePageReady() {
   var strID = $('#rs_lang').val();
   var customNext = "";
   var customPrev = "";
   var customError = "";
-
   try {
     removeFocusFromAllElements();
   } catch (error) {
     console.error('An error occurred while scrolling:', error);
   }
-  
-  if (typeof CustomGhostMessage === "undefined") {CustomGhostMessage = "Please, type in...";}
+    if (typeof CustomGhostMessage === "undefined") {CustomGhostMessage = "Please, type in...";}
   if (typeof myCustomGhost != "undefined") {CustomGhostMessage = myCustomGhost[strID];}
   if (strID == "sv") {CustomGhostMessage = "Snälla, skriv in...";}
   if (typeof myCustomNext != "undefined") {customNext = myCustomNext[strID];}
@@ -162,24 +135,14 @@ function cthemePageReady() {
   $("#btnNext").click(function(){debouncedScrollFunc();});
   putSomeClasses();
   if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("putSomeClasses from theme ready");
-
 }
 
-
-
-
 function removeFocusFromAllElements() {
-    /*var focusableElements = document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    focusableElements.forEach(function(element) {
-        element.blur();
-    });*/
     var btnNext = document.getElementById("btnNext");
     if (btnNext === document.activeElement) {
         btnNext.blur();
     }
 }
-
-
 
 function custNavigationText(theNext, thePrevious, theError) {
   if((theNext !="") && (theNext !=" ")) {$('#btnNext').val(theNext);}
@@ -187,14 +150,11 @@ function custNavigationText(theNext, thePrevious, theError) {
   if((theError !="") && (theError !=" ")) {$('.cError').val(theError);}
 }
 
-
-
 function ghostText(custText) {
   $('.cTextInput').each(function () {
       $(this).attr("placeholder", custText);
   });
 }
-
 
 function gridUpdate(grid_this) {
   if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("grid update start");
@@ -214,8 +174,6 @@ function gridUpdate(grid_this) {
   if (($(_grid_this).hasClass("rsSingleGrid") || $(_grid_this).hasClass("rsMultiGrid")) && (!$(_grid_this).hasClass("rsCQ")) && (!$(_grid_this).hasClass("rsProcessedGrid"))) {
       let gridIND = gridID.split("_")[1];
       $("#" + gridID).addClass("rsProcessedGrid");
-
-      //rearrange the grid for mobiles
       if (isMobileDevice()) {
           $(".rsProcessedGrid").addClass("mobileGrid");
           setTimeout(function () {
@@ -259,7 +217,6 @@ function gridUpdate(grid_this) {
   }
 }
 
-
 function debounce(func, timeout = 500) {
   let timer;
   return (...args) => {
@@ -291,4 +248,3 @@ window.addEventListener('resize', debounce(function (event) {
       }
   }
 }, 500));
-

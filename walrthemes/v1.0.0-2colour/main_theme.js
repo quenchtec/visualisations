@@ -3,6 +3,7 @@ $(document).ready(function () {
   // Call your initial setup function
   cthemeff();
   cthemePageReady();
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("call from DR");
   // Event delegation for click on .rsRow elements
   // Create a MutationObserver when the document is fully loaded
   var targetNode = document.getElementById("rsPanelMain");
@@ -11,25 +12,7 @@ $(document).ready(function () {
       for (var mutation of mutationsList) {
           if (mutation.type === "childList") {
               cthemePageReady(); // Call your function here
-              putSomeClasses();
-              const scrollFunc = () => {
-                var targetElement = document.querySelector('.progressContainer');
-                //window.scrollTo({ top: 0, behavior: 'smooth' });
-                if (targetElement) {
-                  //targetElement.focus();
-                  targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                  debouncedScrollFunc();
-                  //window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-              };
-              const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
-              $("#btnNext").click(function(){
-                //targetElement.focus();
-                //window.scrollTo({ top: 0, behavior: 'smooth' });
-                debouncedScrollFunc();
-              });
+              if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("log from Brfore Break and after cThemePageReady was called");
               break; // We've handled the mutation, no need to continue
           }
       }
@@ -41,7 +24,6 @@ function cthemeff() {
   // Detect Firefox using JavaScript
   if (navigator.userAgent.indexOf("Firefox") != -1) {
       // User is using Firefox
-      // You can add a new CSS file or apply inline styles here
       var firefoxStyles = document.createElement("link");
       firefoxStyles.rel = "stylesheet";
       firefoxStyles.type = "text/css";
@@ -50,16 +32,13 @@ function cthemeff() {
   }
 }
 
-
 function putSomeClasses() {
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("putSomeClasses start");
   var $cTables = $(".cTable");
   $cTables.each(function () {
-      if ($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) {
-          //$(this).find(".rsRow > .cRowBlockText:not(:has(select))").each(function(){
+      if (($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) && !$(this).hasClass("mobileGrid") && !$(this).hasClass("desktopGrid")) {
           $(this).find(".rsRow").each(function(){
-            //if($(this).find(".cRowBlockText:not(:has(select))")){
               $(this).children(".cRowBlockText:not(:has(select))").addClass("GroupingHeader");
-            //}
               if ($(this).find("input").prop("checked")) {
                 $(this).addClass("rsSelected");
               } else {
@@ -67,8 +46,7 @@ function putSomeClasses() {
               }
           });
 
-        
-          $(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
+          $(this).find(".rsRow, .rsRow .cCellOpenText .cTextInput").on("click keyup", function () {
             $(".rsRow").each(function () {
               if ($(this).find("input").prop("checked")) {
                 $(this).addClass("rsSelected");
@@ -87,6 +65,7 @@ function putSomeClasses() {
                       $(this).removeClass("rsSelected");
                   }
               });
+             $(this).parent().find(".rsRow").removeClass("rsSelected");
           });
       } else if ($(this).hasClass("desktopGrid")) {
            $(this).find(".rsRow").find("input").on("change", function () {
@@ -100,10 +79,13 @@ function putSomeClasses() {
           });
       }
   });
-
 }
 
 function isMobileDevice() {
+  if(navigator.userAgent.indexOf('iPhone') > -1 ){
+    document.querySelector("[name=viewport]").setAttribute("content","");
+    document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
+  }
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || navigator.vendor || window.opera);
 }
 
@@ -112,64 +94,62 @@ function cthemePageReady() {
   var customNext = "";
   var customPrev = "";
   var customError = "";
-  //var $targetElement = $('.progressContainer');
   try {
     removeFocusFromAllElements();
-    //$targetElement.get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (error) {
     console.error('An error occurred while scrolling:', error);
   }
-  //window.scrollTo({ top: 0, behavior: 'smooth' });
-  
-  if (typeof CustomGhostMessage === "undefined") {
-      CustomGhostMessage = "Please, type in...";
-  }
-  if (typeof myCustomGhost != "undefined") {
-      CustomGhostMessage = myCustomGhost[strID];
-  }
+    if (typeof CustomGhostMessage === "undefined") {CustomGhostMessage = "Please, type in...";}
+  if (typeof myCustomGhost != "undefined") {CustomGhostMessage = myCustomGhost[strID];}
+  if (strID == "sv") {CustomGhostMessage = "Snälla, skriv in...";}
+  if (typeof myCustomNext != "undefined") {customNext = myCustomNext[strID];}
+  if (typeof myCustomPrevious != "undefined") {customPrev = myCustomPrevious[strID];}
+  if (typeof myCustomError != "undefined") {customError = myCustomError[strID];}
 
-  if (strID == "sv") {
-      CustomGhostMessage = "Snälla, skriv in...";
-  }
-
-
- 
-  if (typeof myCustomNext != "undefined") {
-      customNext = myCustomNext[strID];
-  }
-  if (typeof myCustomPrevious != "undefined") {
-      customPrev = myCustomPrevious[strID];
-  }
-  if (typeof myCustomError != "undefined") {
-      customError = myCustomError[strID];
-  }
-
-  
-  
   ghostText(CustomGhostMessage);
   custNavigationText(customNext,customPrev,customError);
-  
+
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
           gridUpdate($(this));
+          if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("gridUpdate cthemePageReady");
       }
   });
+
+  if(navigator.userAgent.indexOf('iPhone') > -1 ){
+    document.querySelector("[name=viewport]").setAttribute("content","");
+    document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
+  }
+
+  const scrollFunc = () => {
+    var targetElement = document.querySelector('.progressContainer');
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      debouncedScrollFunc();
+    }
+  };
+
+  const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
+  $("#btnNext").click(function(){debouncedScrollFunc();});
+  putSomeClasses();
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("putSomeClasses from theme ready");
 }
+
 function removeFocusFromAllElements() {
-    /*var focusableElements = document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    focusableElements.forEach(function(element) {
-        element.blur();
-    });*/
     var btnNext = document.getElementById("btnNext");
     if (btnNext === document.activeElement) {
         btnNext.blur();
     }
 }
+
 function custNavigationText(theNext, thePrevious, theError) {
-  if(theNext !="") $('#btnNext').val(theNext);
-  if(thePrevious !="") $('#btnPrevious').val(thePrevious);
-  if(theError !="") $('.cError').val(theError);
+  if((theNext !="") && (theNext !=" ")) {$('#btnNext').val(theNext);}
+  if((thePrevious !="") && (thePrevious !=" ")) {$('#btnPrevious').val(thePrevious);}
+  if((theError !="") && (theError !=" ")) {$('.cError').val(theError);}
 }
+
 function ghostText(custText) {
   $('.cTextInput').each(function () {
       $(this).attr("placeholder", custText);
@@ -177,6 +157,7 @@ function ghostText(custText) {
 }
 
 function gridUpdate(grid_this) {
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("grid update start");
   var _grid_this;
   if (grid_this) {
       _grid_this = grid_this;
@@ -193,12 +174,14 @@ function gridUpdate(grid_this) {
   if (($(_grid_this).hasClass("rsSingleGrid") || $(_grid_this).hasClass("rsMultiGrid")) && (!$(_grid_this).hasClass("rsCQ")) && (!$(_grid_this).hasClass("rsProcessedGrid"))) {
       let gridIND = gridID.split("_")[1];
       $("#" + gridID).addClass("rsProcessedGrid");
-
-      //rearrange the grid for mobiles
       if (isMobileDevice()) {
           $(".rsProcessedGrid").addClass("mobileGrid");
           setTimeout(function () {
-              $(".rsRow").each(function () { $(this).children(".cCell").each(function (e) { $(this).append($("#h_" + gridIND + "_" + e).clone()); }); });
+              $(".rsRow").each(function () {
+                $(this).children(".cCell").each(function (e) {
+                  $(this).append($("#h_" + gridIND + "_" + e).clone());
+                });
+              });
               $("td.cCellHeader").parent().remove();
           }, 200);
       } else {
@@ -233,6 +216,7 @@ function gridUpdate(grid_this) {
       }
   }
 }
+
 function debounce(func, timeout = 500) {
   let timer;
   return (...args) => {
@@ -242,20 +226,21 @@ function debounce(func, timeout = 500) {
 }
 
 window.addEventListener('resize', debounce(function (event) {
-
   if (window.innerWidth > 800) {
       if ($(".rsProcessedGrid").hasClass("mobileGrid")) {
           $(".rsProcessedGrid").removeClass("mobileGrid");
           $(".rsProcessedGrid").addClass("desktopGrid");
+          cthemePageReady();
+          gridUpdate();
       }
   } else {
       if (isMobileDevice()){
           if (!$(".rsProcessedGrid").hasClass("mobileGrid")) {
               $(".rsProcessedGrid").addClass("mobileGrid");
               $(".rsProcessedGrid").removeClass("desktopGrid");
+              cthemePageReady();
+              gridUpdate();
           }
       }
   }
-  cthemePageReady();
-  gridUpdate();
-}));
+}, 500));
