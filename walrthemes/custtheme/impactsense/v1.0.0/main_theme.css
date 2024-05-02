@@ -625,7 +625,7 @@ textarea{
    .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea),
    .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea) {
      width: auto;
-     height: calc((var(--answer_opens_padding) * 10) - 1px);
+     height: -moz-fit-content;
    }
  }
  
