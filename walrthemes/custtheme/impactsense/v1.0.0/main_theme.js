@@ -29,7 +29,7 @@ $(document).ready(function () {
         var firefoxStyles = document.createElement("link");
         firefoxStyles.rel = "stylesheet";
         firefoxStyles.type = "text/css";
-        firefoxStyles.href = "https://quenchtec.github.io/visualisations/walrthemes/v1.0.0-2colour/main_theme_ff_only.css"; // Link to your Firefox-specific styles
+        firefoxStyles.href = "https://quenchtec.github.io/visualisations/walrthemes/custtheme/impactsense/v1.0.0/main_theme_ff_only.css"; // Link to your Firefox-specific styles
         document.head.appendChild(firefoxStyles);
     }
   }
