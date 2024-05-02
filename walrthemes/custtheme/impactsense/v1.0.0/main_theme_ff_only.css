@@ -9,7 +9,7 @@ FIREFOX
 	transition: transform 0.2s, box-shadow 0.2s;*/
 }
 .rsSingle > tbody > .rsRow > .cCell, .rsMulti > tbody > .rsRow > .cCell{
-	align-content: inherit;
+	align-content: center;
 }
 .rsSingle > tbody > .rsRow > .cCellRowText > .textleft > .cRowText :not(.cRowBlockText):not(.openText), .rsMulti > tbody > .rsRow > .cCellRowText > .textleft > .cRowText :not(.cRowBlockText):not(.openText){
 	margin: 6px;
