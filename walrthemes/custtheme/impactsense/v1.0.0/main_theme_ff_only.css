@@ -13,7 +13,7 @@ FIREFOX
 	margin: 6px;
 }
 .rsSingle > tbody:has(.rsRow), .rsMulti > tbody:has(.rsRow), .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea), .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea) {
-  height: -moz-available;
+  height: -moz-available !important;
 }
 .rsSelected  {
 	background-color: var(--question_selected_background_color);
