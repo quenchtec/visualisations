@@ -637,7 +637,6 @@ textarea{
   /*NOT FOR MOBILE, as hover will overwrite the checked css*/
 @media only screen and (min-width: 981px) {
 	.rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover, .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover{
-		background-color: unset;
 		/*background-color: gainsboro;
 		transform: translate3d(0, -2px, 0);
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);*/
@@ -649,7 +648,6 @@ textarea{
  
  
 .rsSingle > tbody > .rsRow:has(.cRadio:checked), .rsMulti > tbody > .rsRow:has(.cCheck:checked), .rsMulti > tbody > .rsRow:has(.cRadio:checked){
-    background-color: unset;
 	/*background-color: var(--question_selected_background_color);
 	transform: translate3d(0, 1px, 0);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
@@ -678,7 +676,6 @@ textarea{
  
  
 .cColumn > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea):hover{
-    background-color: unset;
 	/*background-color: var(--question_selected_background_color);
 	transform: translate3d(0, -2px, 0);
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);*/
@@ -690,7 +687,6 @@ textarea{
  
  
 .cColumn > tbody > .rsRow:has(.cRadio:checked), .cColumn > tbody > .rsRow:has(.cCheck:checked), .cColumn > tbody > .rsRow:has(.cRadio:checked){
-    background-color: unset;
 	/*background-color: var(--question_selected_background_color);
 	transform: translate3d(0, 1px, 0);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
