@@ -211,6 +211,8 @@ function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
     if (rsParams.blnSliderLabelsSuffix || rsParams.blnSliderColumnLabels) {
       if (rsParams.choicePips == "values") {
         addSuffix(rsParams.strSliderLabelsSuffix, rsParams.strSliderColumnLabels);
+      } else {
+        addSuffix(rsParams.strSliderLabelsSuffix, "");
       }
     }
     if (rsParams.blnOptOutBigButton) {
