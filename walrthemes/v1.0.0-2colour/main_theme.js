@@ -99,9 +99,11 @@ function cthemePageReady() {
   } catch (error) {
     console.error('An error occurred while scrolling:', error);
   }
-    if (typeof CustomGhostMessage === "undefined") {CustomGhostMessage = "Please, type in...";}
+  if (typeof CustomGhostMessage === "undefined") {CustomGhostMessage = "Please, type in...";}
   if (typeof myCustomGhost != "undefined") {CustomGhostMessage = myCustomGhost[strID];}
+
   if (strID == "sv") {CustomGhostMessage = "Snälla, skriv in...";}
+  
   if (typeof myCustomNext != "undefined") {customNext = myCustomNext[strID];}
   if (typeof myCustomPrevious != "undefined") {customPrev = myCustomPrevious[strID];}
   if (typeof myCustomError != "undefined") {customError = myCustomError[strID];}
@@ -145,9 +147,10 @@ function removeFocusFromAllElements() {
 }
 
 function custNavigationText(theNext, thePrevious, theError) {
-  if((theNext !="") && (theNext !=" ")) {$('#btnNext').val(theNext);}
-  if((thePrevious !="") && (thePrevious !=" ")) {$('#btnPrevious').val(thePrevious);}
-  if((theError !="") && (theError !=" ")) {$('.cError').val(theError);}
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log(theNext,thePrevious,theError,theNext.length,thePrevious.length,theError.length);
+  if((theNext !="") && (theNext !=" ") && (theNext.length > 1)) {$('#btnNext').val(theNext);}
+  if((thePrevious !="") && (thePrevious !=" ") && (thePrevious.length > 1)) {$('#btnPrevious').val(thePrevious);}
+  if((theError !="") && (theError !=" ") && (theError.length > 1)) {$('.cError').val(theError);}
 }
 
 function ghostText(custText) {
