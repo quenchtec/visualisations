@@ -147,10 +147,15 @@ function removeFocusFromAllElements() {
 }
 
 function custNavigationText(theNext, thePrevious, theError) {
-  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log(theNext,thePrevious,theError);
-  if((theNext !="") && (theNext !=" ") && (theNext.length > 1)) {$('#btnNext').val(theNext);}
-  if((thePrevious !="") && (thePrevious !=" ") && (thePrevious.length > 1)) {$('#btnPrevious').val(thePrevious);}
-  if((theError !="") && (theError !=" ") && (theError.length > 1)) {$('.cError').val(theError);}
+  var _theNext, _thePrevious, _theError;
+  if (typeof theNext != "undefined") {_theNext = theNext;}
+  if (typeof thePrevious != "undefined") {_thePrevious = thePrevious;}
+  if (typeof theError != "undefined") {_theError = theError;}
+  
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log(_theNext,_thePrevious,_theError);
+  if((_theNext !="") && (_theNext !=" ") && (_theNext.length > 1)) {$('#btnNext').val(_theNext);}
+  if((_thePrevious !="") && (_thePrevious !=" ") && (_thePrevious.length > 1)) {$('#btnPrevious').val(_thePrevious);}
+  if((_theError !="") && (_theError !=" ") && (_theError.length > 1)) {$('.cError').val(_theError);}
 }
 
 function ghostText(custText) {
