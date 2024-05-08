@@ -147,7 +147,7 @@ function removeFocusFromAllElements() {
 }
 
 function custNavigationText(theNext, thePrevious, theError) {
-  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log(theNext,thePrevious,theError,theNext.length,thePrevious.length,theError.length);
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log(theNext,thePrevious,theError);
   if((theNext !="") && (theNext !=" ") && (theNext.length > 1)) {$('#btnNext').val(theNext);}
   if((thePrevious !="") && (thePrevious !=" ") && (thePrevious.length > 1)) {$('#btnPrevious').val(thePrevious);}
   if((theError !="") && (theError !=" ") && (theError.length > 1)) {$('.cError').val(theError);}
