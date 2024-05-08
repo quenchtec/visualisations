@@ -49,4 +49,7 @@ FIREFOX
 	th.textcenter > div > p {
 		white-space: normal;
 	}
+	.buttonContainer{
+		padding: 16px;
+	}
 }
