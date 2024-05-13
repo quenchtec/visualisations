@@ -550,7 +550,7 @@ textarea{
  .cCellSubQuestion{
      width: 900px;
       text-align: left;
-      padding: 10px 0px 20px 0px;
+      padding: 10px 0px 0px 0px;
       border: none;
  }
 .cQuestionText > .cReg {
@@ -609,7 +609,10 @@ textarea{
  .rsSingle > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea), .rsMulti > tbody > .rsRow:not(.cRowBlockText):not(.openText):not(.rsCuQeTextArea){
  /*.rsRow:not(.cRowBlockText){*/
      cursor: pointer;
-     padding: var(--answer_opens_padding);
+     padding-top: 0px;
+     padding-left: var(--answer_opens_padding);
+     padding-right: var(--answer_opens_padding);
+     padding-bottom: var(--answer_opens_padding);
      border: 1px solid var(--input_field_border_color);
      border-radius: var(--interactive_border_radius);
      margin: 3px 0px 3px 0px;
