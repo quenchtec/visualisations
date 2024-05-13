@@ -510,7 +510,7 @@ textarea{
 }
 
 .cTABLEContainQues{
-	padding-top: 20px;
+	padding-top: 0px;
 }
 
 .cTDContainQues > div.cReg{
@@ -599,7 +599,7 @@ textarea{
      display: flex;
      position: relative;
      border-radius: 5px;
-     padding: 10px;
+     padding: 0px 10px 0px 10px;
      /*border: 1px solid var(--input_field_border_color);*/ /*Remove gray border arround question*/
      border: 1px solid none;
      border-spacing: 10px;
