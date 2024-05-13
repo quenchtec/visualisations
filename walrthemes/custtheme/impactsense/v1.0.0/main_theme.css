@@ -570,7 +570,7 @@ textarea{
     font-weight: var(--question_font_weight);
 }
 .cQuestionText > div {
-	padding-bottom: var(--question_text_padding);
+	padding: var(--question_text_padding);
 }
 
 .logo2Container {
@@ -612,10 +612,10 @@ textarea{
      padding-top: 0px;
      padding-left: var(--answer_opens_padding);
      padding-right: var(--answer_opens_padding);
-     padding-bottom: var(--answer_opens_padding);
+     padding-bottom: 0px;
      border: 1px solid var(--input_field_border_color);
      border-radius: var(--interactive_border_radius);
-     margin: 3px 0px 3px 0px;
+     margin: 0px 0px 0px 0px;
      /*transition: transform 0.2s, box-shadow 0.2s;*/
  }
  
