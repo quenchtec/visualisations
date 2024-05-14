@@ -925,13 +925,16 @@ textarea{
     flex-wrap: nowrap;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 101%;
  }
  .rsNumeric > tbody:has(.custTotal) > .rsNumRow > .cCellRowText {
-    width: 75%;
- }
+    width: 80%;
+    min-width: 80%;
+    max-width: 80%; }
  .rsNumeric > tbody:has(.custTotal) > .rsNumRow > .cCellLastValue {
-    width: 25%;
+    width: 20%;
+    min-width: 20%;
+    max-width: 20%; }
  }
 
 
