@@ -910,11 +910,31 @@ textarea{
  
  
  /* NUMERIC SUM CSS*/
- .rsNumeric > tbody:has(.custTotal) > .rsRow{
+.custTotal {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+ .rsNumeric > tbody:has(.custTotal) > .rsNumRow{
     /*we need to fix the css*/
-    background-color: unset !important;
+    background-color: unset;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
  }
- 
+ .rsNumeric > tbody:has(.custTotal) > .rsNumRow > .cCellRowText {
+    width: 75%;
+ }
+ .rsNumeric > tbody:has(.custTotal) > .rsNumRow > .cCellLastValue {
+    width: 25%;
+ }
+
+
  /* END NUMERIC SUM CSS*/
  
  /*######################################################*/
