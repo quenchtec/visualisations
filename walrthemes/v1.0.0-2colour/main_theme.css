@@ -757,6 +757,7 @@ textarea{
      border-radius: var(--interactive_border_radius);
      padding: var(--answer_opens_padding);
      font-size: var(--button_font_size);
+     max-width: -webkit-fill-available;
  }
  
  /* #### THIS IS FOR THE CUSTOM RANKING ####*/
