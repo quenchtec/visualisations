@@ -251,10 +251,11 @@ function debounce(func, timeout = 500) {
     var tooltipTimeout;
     $(".tooltip").mouseenter(function(){
       var $tooltip = $(this).find('.tooltiptext');
+      var _this = $(this);
       var delay = 500;
       tooltipTimeout = setTimeout(function(){
         $tooltip.css("visibility", "visible").animate({opacity: 1}, 350);
-        adjustTooltipPosition($tooltip, $(this));
+        adjustTooltipPosition($tooltip, _this);
       }, delay);
     }).mouseleave(function(){
       clearTimeout(tooltipTimeout);
