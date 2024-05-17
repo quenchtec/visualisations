@@ -1295,8 +1295,8 @@ textarea {
     width: auto;
   }
   .tooltip .tooltiptext {
-    bottom: 150%;
-    left: 100%;
+    bottom: 100%;
+    left: 60%;
   }
 
 }
