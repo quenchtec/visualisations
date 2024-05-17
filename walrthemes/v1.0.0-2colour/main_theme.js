@@ -243,7 +243,7 @@ function debounce(func, timeout = 500) {
       tooltipLeft=0;
       tooltip.css('left', '');
     } else if (tooltipLeft + tooltipWidth > windowWidth) {
-      tooltipLeft = (windowWidth - tooltipWidth)/2;
+      tooltipLeft = (windowWidth - tooltipWidth);
       tooltip.css('left', tooltipLeft);
     }
   }
