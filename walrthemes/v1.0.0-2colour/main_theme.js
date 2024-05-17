@@ -3,6 +3,7 @@ $(document).ready(function () {
   // Call your initial setup function
   cthemeff();
   cthemePageReady();
+  tooltipshandle();
   if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("call from DR");
   // Event delegation for click on .rsRow elements
   // Create a MutationObserver when the document is fully loaded
@@ -234,7 +235,41 @@ function debounce(func, timeout = 500) {
   };
 }
 
+  function adjustTooltipPosition(tooltip, element) {
+    var tooltipWidth = tooltip.outerWidth();
+    var tooltipLeft = element.offset().left + element.outerWidth() / 2 - tooltipWidth / 2;
+    var windowWidth = $(window).width();
+    if (tooltipLeft < 0) {
+      tooltipLeft=0;
+      tooltip.css('left', '');
+    } else if (tooltipLeft + tooltipWidth > windowWidth) {
+      tooltipLeft = (windowWidth - tooltipWidth)/2;
+      tooltip.css('left', tooltipLeft);
+    }
+  }
+  function tooltipshandle(){
+    var tooltipTimeout;
+    $(".tooltip").mouseenter(function(){
+      var $tooltip = $(this).find('.tooltiptext');
+      var delay = 500;
+      tooltipTimeout = setTimeout(function(){
+        $tooltip.css("visibility", "visible").animate({opacity: 1}, 350);
+        adjustTooltipPosition($tooltip, $(this));
+      }, delay);
+    }).mouseleave(function(){
+      clearTimeout(tooltipTimeout);
+      var $tooltip = $(this).find('.tooltiptext');
+      $tooltip.css("visibility", "hidden").animate({opacity: 0}, 350);
+    });
+  }
 window.addEventListener('resize', debounce(function (event) {
+  var $tooltips = $('.tooltip .tooltiptext');
+  
+  // Check if there are any tooltips on the page
+  if ($tooltips.length > 0) {
+      var $element = $('.tooltip:hover');
+      adjustTooltipPosition($tooltips, $element);
+  }
   if (window.innerWidth > 800) {
       if ($(".rsProcessedGrid").hasClass("mobileGrid")) {
           $(".rsProcessedGrid").removeClass("mobileGrid");
