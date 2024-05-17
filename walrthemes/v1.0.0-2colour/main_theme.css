@@ -1289,6 +1289,18 @@ textarea {
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
   }
+
+@media only screen and (max-width: 980px) {
+  .tooltip:hover .tooltiptext {
+    width: auto;
+  }
+  .tooltip .tooltiptext {
+    bottom: 150%;
+    left: 100%;
+  }
+
+}
+
  /* END TOOLTIP CSS*/
  
  
