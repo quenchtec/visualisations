@@ -268,7 +268,7 @@ window.addEventListener('resize', debounce(function (event) {
   
   // Check if there are any tooltips on the page
   if ($tooltips.length > 0) {
-      var $element = $('.tooltip:hover');
+      var $element = $('.tooltip');
       adjustTooltipPosition($tooltips, $element);
   }
   if (window.innerWidth > 800) {
