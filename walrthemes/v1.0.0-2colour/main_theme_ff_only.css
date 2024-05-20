@@ -3,6 +3,9 @@ FIREFOX
 #########################################################*/
 /* Styles only for Firefox */
 @-moz-document url-prefix() {
+	#html{
+		height: 100%;
+	}
 	.cTable{
 		max-width: 96%;
 	}
