@@ -124,6 +124,7 @@ textarea:focus {
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     margin: 0;
  }
 textarea{
@@ -145,10 +146,10 @@ textarea{
      font-weight: var(--main_font_weight);
      color: var(--main_text_color);
 }
-
+/*
 [id^=HIDDEN_], [id^=HID_], [id^=SYS_], [id^=SYSTEM_] {
-    /*display: none;*/
-}
+    display: none;
+}*/
 
 [id^=instr] {
     font-style: italic;
@@ -175,6 +176,7 @@ textarea{
     border-radius: 50%;
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     cursor: pointer;
 }
 
@@ -212,6 +214,7 @@ textarea{
     background-color: #FFFFFF;
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     cursor: pointer;
 }
 
@@ -931,11 +934,12 @@ textarea{
  .rsNumeric > tbody:has(.custTotal) > .rsNumRow > .cCellRowText {
     width: 80%;
     min-width: 80%;
-    max-width: 80%; }
+    max-width: 80%;
+}
  .rsNumeric > tbody:has(.custTotal) > .rsNumRow > .cCellLastValue {
     width: 20%;
     min-width: 20%;
-    max-width: 20%; }
+    max-width: 20%;
  }
 
 

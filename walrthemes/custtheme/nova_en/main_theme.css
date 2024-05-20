@@ -127,6 +127,7 @@ textarea:focus {
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     margin: 0;
  }
 textarea{
@@ -148,11 +149,11 @@ textarea{
      font-weight: var(--main_font_weight);
      color: var(--main_text_color);
 }
-
+/*
 [id^=HIDDEN_], [id^=HID_], [id^=SYS_], [id^=SYSTEM_] {
-    /*display: none;*/
+    display: none;
 }
-
+*/
 [id^=instr] {
     font-style: italic;
 }
@@ -178,6 +179,7 @@ textarea{
     border-radius: 50%;
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     cursor: pointer;
 }
 
@@ -216,6 +218,7 @@ textarea{
     background-color: #FFFFFF;
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     cursor: pointer;
 }
 
@@ -1169,15 +1172,15 @@ textarea{
  
  
  /* Safari iOS settings in order to fix scrolling, all the way to the bottom, in mainContainer */
+/*
   @supports (-webkit-touch-callout: none) {
-     /* CSS specific to iOS devices */
       .mainContainer {
-          /*height: 1000px;
+          height: 1000px;
           width: fit-content;
-          min-height: -webkit-fill-available*/
+          min-height: -webkit-fill-available
      }
  
- }
+ }*/
  
  
  .rsSelected  {
@@ -1191,11 +1194,12 @@ textarea{
   input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
       -moz-appearance: none;
+      appearance: none;
       margin: 0;
  }
  
  @media only screen and (max-width: 980px) {
-        .logo1Container {
+    .logo1Container {
         display: none;
- }
+    }
  }
