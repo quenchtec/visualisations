@@ -42,6 +42,9 @@ function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
   rsParams.blnOptOutBigButton = (typeof rsParams.blnOptOutBigButton === "undefined") ? true : rsParams.blnOptOutBigButton;
 
 
+  if (strSliderColumnLabels.indexOf("#") != -1) strSliderColumnLabels = $(".rsSliderQuestion").find(`${strSliderColumnLabels}`).text();
+  if (strOptOutText.indexOf("#") != -1) strOptOutText = $(".rsSliderQuestion").find(`${strOptOutText}`).text();
+
   //Prevent ceating too big slider
 
   if (((Math.abs(rsParams.intSliderMaxValue - rsParams.intSliderMinValue) / rsParams.intSliderSteps) > 10000) && rsParams.choicePips == "steps") {
