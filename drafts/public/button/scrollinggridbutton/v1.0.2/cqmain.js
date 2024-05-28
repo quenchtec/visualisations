@@ -1,5 +1,6 @@
 function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
     // to handle button iQuest  
+
     const QuestionID = "#" + rsQno;
     const btnDivID = QuestionID + "_btn";
     const btnDivIDattr = rsQno + "_btn";
@@ -119,7 +120,6 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
         //Do not allow any more clicks before this is handled
         $(QuestionID).data('blnClickOn', false);
       }
-  
       let intBtnNum = 0;
       let wrapNo = $(scrollDivID).find('.rsScrollGridContent').html(strHtml).data('wrapNo');
       const intInpID = $(this).attr('alt');
@@ -132,6 +132,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
           if (!wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked')) { //If remove answer worked format button
             $(this).removeClass(checkedBtnClass);
           }
+		  $(QuestionID).data('blnClickOn', true);
         } else { //Not answered
           wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked', true);
           if (wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked')) {
@@ -152,6 +153,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
         if (wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked')) { //Already answered
           wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked', false);
           $(this).removeClass(checkedBtnClass);
+		  $(QuestionID).data('blnClickOn', true);
         } else { //Not already answered
           $(this).addClass(checkedBtnClass);
           wrapNoRow.find('.cRadio, .cCheck').eq(intInpID).prop('checked', true);
@@ -160,7 +162,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
             $('#btnNext2').click();
           }
         }
-        $(QuestionID).data('blnClickOn', true);
+        //$(QuestionID).data('blnClickOn', true);
       }
       //Check for any answer and no-autonext, if so display next button		
       if (rsParams.autonext && !doneNext) {
@@ -486,4 +488,3 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
     $('#btnPrevious').show();
     $('#btnPrevious').click();
   }
-  
