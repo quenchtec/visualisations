@@ -296,7 +296,7 @@ function strlcheck() {
                     });
 
                     flag += compareValues(correct_value, trap_value, inputsl);
-                    //console.log("x:", x, "   flag:",flag, correct_value, trap_value, "   inputs:",inputsl);
+                    console.log("x:", x, "   flag:",flag, correct_value, trap_value, "   inputs:",inputsl);
                 }
             }
         });
