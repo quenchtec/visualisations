@@ -3,6 +3,7 @@ $(document).ready(function () {
   // Call your initial setup function
   cthemeff();
   cthemePageReady();
+  tooltipshandle();
   if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("call from DR");
   // Event delegation for click on .rsRow elements
   // Create a MutationObserver when the document is fully loaded
@@ -99,17 +100,21 @@ function cthemePageReady() {
   } catch (error) {
     console.error('An error occurred while scrolling:', error);
   }
-    if (typeof CustomGhostMessage === "undefined") {CustomGhostMessage = "Please, type in...";}
+  if (typeof CustomGhostMessage === "undefined") {CustomGhostMessage = "Please, type in...";}
   if (typeof myCustomGhost != "undefined") {CustomGhostMessage = myCustomGhost[strID];}
+
   if (strID == "sv") {CustomGhostMessage = "Snälla, skriv in...";}
+  
   if (typeof myCustomNext != "undefined") {customNext = myCustomNext[strID];}
   if (typeof myCustomPrevious != "undefined") {customPrev = myCustomPrevious[strID];}
   if (typeof myCustomError != "undefined") {customError = myCustomError[strID];}
-
+  
+  checkforsec();
   ghostText(CustomGhostMessage);
   custNavigationText(customNext,customPrev,customError);
 
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
+    
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
           gridUpdate($(this));
           if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("gridUpdate cthemePageReady");
@@ -132,7 +137,7 @@ function cthemePageReady() {
   };
 
   const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
-  $("#btnNext").click(function(){debouncedScrollFunc();});
+  $("#btnNext").click(function(){strlcheck();debouncedScrollFunc();});
   putSomeClasses();
   if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("putSomeClasses from theme ready");
 }
@@ -145,9 +150,16 @@ function removeFocusFromAllElements() {
 }
 
 function custNavigationText(theNext, thePrevious, theError) {
-  if((theNext !="") && (theNext !=" ")) {$('#btnNext').val(theNext);}
-  if((thePrevious !="") && (thePrevious !=" ")) {$('#btnPrevious').val(thePrevious);}
-  if((theError !="") && (theError !=" ")) {$('.cError').val(theError);}
+  var _theNext, _thePrevious, _theError;
+  if (typeof theNext != "undefined") {_theNext = theNext;} else {_theNext = '';}
+  if (typeof thePrevious != "undefined") {_thePrevious = thePrevious;} else {_thePrevious = '';}
+  if (typeof theError != "undefined") {_theError = theError;} else {_theError = '';}
+  
+  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log(_theNext,_thePrevious,_theError);
+  
+  if((_theNext !="") && (_theNext !=" ") && (_theNext.length > 1)) {$('#btnNext').val(_theNext);}
+  if((_thePrevious !="") && (_thePrevious !=" ") && (_thePrevious.length > 1)) {$('#btnPrevious').val(_thePrevious);}
+  if((_theError !="") && (_theError !=" ") && (_theError.length > 1)) {$('.cError').val(_theError);}
 }
 
 function ghostText(custText) {
@@ -225,15 +237,103 @@ function debounce(func, timeout = 500) {
   };
 }
 
+  function adjustTooltipPosition(tooltip, element) {
+    var tooltipWidth = tooltip.outerWidth();
+    var tooltipLeft = element.offset().left + element.outerWidth() / 2 - tooltipWidth / 2;
+    var windowWidth = $(window).width();
+    if (tooltipLeft < 0) {
+      tooltipLeft=0;
+      tooltip.css('left', '');
+    } else if (tooltipLeft + tooltipWidth > windowWidth) {
+      tooltipLeft = (windowWidth - tooltipWidth);
+      tooltip.css('left', tooltipLeft);
+    }
+  }
+  function tooltipshandle(){
+    var tooltipTimeout;
+    $(".tooltip").mouseenter(function(){
+      var $tooltip = $(this).find('.tooltiptext');
+      var _this = $(this);
+      var delay = 500;
+      tooltipTimeout = setTimeout(function(){
+        $tooltip.css("visibility", "visible").animate({opacity: 1}, 350);
+        adjustTooltipPosition($tooltip, _this);
+      }, delay);
+    }).mouseleave(function(){
+      clearTimeout(tooltipTimeout);
+      var $tooltip = $(this).find('.tooltiptext');
+      $tooltip.css("visibility", "hidden").animate({opacity: 0}, 350);
+    });
+  }
+
+function strlcheck() {
+    let flag = 0;
+    if($(".rsSingleGrid").length){
+        let inputsl = $(".rsSingleGrid .rsRow:first").find("td").length;
+        $(".rsSingleGrid .rsRow").each(function(){
+            let _this = $(this);
+            if (_this.find('[id^="correct_"]').length) {
+                $('[id^="correct_"]').each(function(e){
+                    let correct_value = _this.find(`#correct_${e+1}`).find("input:checked").val();
+                    let trap_value = _this.find(`#trap_${e+1}`).find("input:checked").val();
+                    flag += compareValues(correct_value, trap_value, inputsl);
+                });
+            }
+        });
+    }
+    if(flag){
+        const newVariable = $(".cTABLEContainQues").prop("id");
+        const existingData = JSON.parse(localStorage.getItem('strlner')) || [];
+        existingData.push(newVariable);
+        localStorage.setItem('strlner', JSON.stringify(existingData));
+    }
+
+}
+
+function checkforsec() {
+    var straightLinerProtection = window.location.search.includes('&wcslpvmbmb');
+    if(straightLinerProtection && $(".rsSingleGrid").length){
+        $(".rsSingleGrid .rsRow").each(function(){
+            let _this = $(this);
+            if ($(this).find('[id^="trap_"]').length > 0) {
+                $(this).hide();
+                $('[id^="trap_"]').each(function(){
+                    _this.find("input").eq(Math.floor(_this.find("input").length / 2)).prop("checked", true);
+                });
+            }
+        });
+    }
+}
+
+function compareValues(correct_value, trap_value, inputsl) {
+    if (correct_value <= 3) {
+        if (inputsl <= 7) {
+            if(correct_value <= 2 && trap_value >= inputsl - 2){
+                return 0;
+            }
+        } else if (inputsl > 7) {
+            if(correct_value <= 3 && trap_value >= inputsl - 3){
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
 window.addEventListener('resize', debounce(function (event) {
+  var $tooltips = $('.tooltip .tooltiptext');
+  
+  // Check if there are any tooltips on the page
+  if ($tooltips.length > 0) {
+      var $element = $('.tooltip');
+      adjustTooltipPosition($tooltips, $element);
+  }
   if (window.innerWidth > 800) {
       if ($(".rsProcessedGrid").hasClass("mobileGrid")) {
           $(".rsProcessedGrid").removeClass("mobileGrid");
           $(".rsProcessedGrid").addClass("desktopGrid");
           cthemePageReady();
-          if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("cthemePageReady resize IF");
           gridUpdate();
-          if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("gridUpdate resize IF");
       }
   } else {
       if (isMobileDevice()){
@@ -241,9 +341,7 @@ window.addEventListener('resize', debounce(function (event) {
               $(".rsProcessedGrid").addClass("mobileGrid");
               $(".rsProcessedGrid").removeClass("desktopGrid");
               cthemePageReady();
-              if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("cthemePageReady resize ELSE");
               gridUpdate();
-              if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("gridUpdate resize ELSE");
           }
       }
   }
