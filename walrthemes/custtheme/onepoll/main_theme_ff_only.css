@@ -5,8 +5,8 @@ FIREFOX
 /* Styles only for Firefox */
 @-moz-document url-prefix() {
 	#html{
-		min-height: fit-content;
-		height: -moz-available;
+		min-height: fit-content !important;
+		height: -moz-available !important;
 	}
 	.cTable{
 		max-width: 96%;
