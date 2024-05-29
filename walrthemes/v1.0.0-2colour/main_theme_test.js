@@ -307,14 +307,27 @@ function strlcheck() {
                 //console.log("No match here");
               } else {
                 let totalSame = [];
+                let frequency = {};
+                let validCount = 0;
+
                 _this.each(function(){
                   totalSame.push($(this).find("input:checked").attr("value"));
                 });
-                let uniqueValues = new Set(totalSame);
-                console.log(totalSame, uniqueValues, uniqueValues.size);
-                if (uniqueValues.size >= theMinDifference + 1) {
-                    flag = 1;
+                totalSame.forEach(value => {
+                    frequency[value] = (frequency[value] || 0) + 1;
+                });
+                let frequencyValues = Object.values(frequency).sort((a, b) => b - a);
+                for (let i = 0; i < frequencyValues.length; i++) {
+                    validCount += frequencyValues[i];
+                    if (validCount >= theMinDifference) {
+                        console.log("Flag is true");
+                        return;
+                    }
                 }
+                console.log("Flag is false");
+              
+              
+              
               }
             }
         });
