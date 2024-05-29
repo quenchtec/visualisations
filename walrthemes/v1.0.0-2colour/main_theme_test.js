@@ -320,14 +320,11 @@ function strlcheck() {
                 for (let i = 0; i < frequencyValues.length; i++) {
                     validCount += frequencyValues[i];
                     if (validCount >= theMinDifference) {
-                        console.log("Flag is true");
+                        console.log("Flag is true", validCount, theMinDifference);
                         return;
                     }
                 }
-                console.log("Flag is false");
-              
-              
-              
+                console.log("Flag is false", validCount, theMinDifference);
               }
             }
         });
