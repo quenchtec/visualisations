@@ -284,6 +284,7 @@ function strlcheck() {
                     let correct_value = _this.find(`#correct_${e+1}`).find("input:checked").val();
                     let trap_value = _this.find(`#trap_${e+1}`).find("input:checked").val();
                     flag += compareValues(correct_value, trap_value, inputsl);
+                    console.log(flag, correct_value, trap_value, inputsl);
                 });
             }
         });
