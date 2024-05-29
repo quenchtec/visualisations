@@ -319,12 +319,12 @@ function strlcheck() {
                 let frequencyValues = Object.values(frequency).sort((a, b) => b - a);
                 for (let i = 0; i < frequencyValues.length; i++) {
                     validCount += frequencyValues[i];
-                    if (validCount >= theMinDifference) {
-                        console.log("Flag is true", validCount, theMinDifference);
+                    if ((rowsLength - validCount) <= theMinDifference) {
+                        console.log("Flag is true", validCount, (rowsLength - validCount), theMinDifference);
                         return;
                     }
                 }
-                console.log("Flag is false", validCount, theMinDifference);
+                console.log("Flag is false", validCount, (rowsLength - validCount), theMinDifference);
               }
             }
         });
