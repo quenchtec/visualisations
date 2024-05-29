@@ -287,17 +287,35 @@ function strlcheck() {
                     _this.each(function(){
                       if($(this).find(`#correct_${x}`).length > 0){
                         correct_value = $(this).find("input:checked").attr("value");
-                        console.log(`#correct_${x}   `, $(this), $(this).find("input:checked"), $(this).find("input:checked").attr("value"), $(this).find("input:checked").prop("value"));
+                        //console.log(`#correct_${x}   `, $(this), $(this).find("input:checked"), $(this).find("input:checked").attr("value"), $(this).find("input:checked").prop("value"));
                       }
                       if($(this).find(`#trap_${x}`).length > 0){
                         trap_value = $(this).find("input:checked").attr("value");
-                        console.log(`#trap_${x}   `, $(this), $(this).find("input:checked"), $(this).find("input:checked").attr("value"), $(this).find("input:checked").prop("value"));
+                        //console.log(`#trap_${x}   `, $(this), $(this).find("input:checked"), $(this).find("input:checked").attr("value"), $(this).find("input:checked").prop("value"));
                       }
                     });
 
                     flag += compareValues(correct_value, trap_value, inputsl);
-                    console.log("x:", x, "   flag:",flag, correct_value, trap_value, "   inputs:",inputsl);
+                    //console.log("x:", x, "   flag:",flag, correct_value, trap_value, "   inputs:",inputsl);
                 }
+            } else {
+              let arrDiff = [[5,10,0],[11,15,1],[16,18,2],[19,21,3],[22,23,4],[24,26,5],[27,28,6],[29,30,7]];
+              let rowsLength = _this.length;
+              let theMinDifference = arrDiff.findIndex(range => rowsLength >= range[0] && rowsLength <= range[1]);
+
+              if (theMinDifference === -1) {
+                //console.log("No match here");
+              } else {
+                let totalSame = [];
+                _this.each(function(){
+                  totalSame.push($(this).find("input:checked").attr("value"));
+                });
+                let uniqueValues = new Set(totalSame);
+                console,log(totalSame, uniqueValues, uniqueValues.size);
+                if (uniqueValues.size >= theMinDifference + 1) {
+                    flag = 1;
+                }
+              }
             }
         });
     }
