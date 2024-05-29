@@ -23,7 +23,8 @@ body {
     flex-wrap: wrap;
 }
 #html{
-    height: -webkit-fill-available;
+    min-height: fit-content;
+    height: 100vh;
 }
 @viewport {
     width: device-width;
