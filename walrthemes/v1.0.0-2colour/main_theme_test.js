@@ -278,7 +278,7 @@ function strlcheck() {
     let flag = 0;
     if($(".rsSingleGrid").length){
         let inputsl = $(".rsSingleGrid .rsRow:first").find("td").length;
-        $(".rsSingleGrid .rsRow").each(function(){
+        $(".rsSingleGrid").each(function(){
             let _this = $(this);
             if (_this.find('[id^="correct_"]').length) {
                 _this.find('[id^="correct_"]').each(function(e){
