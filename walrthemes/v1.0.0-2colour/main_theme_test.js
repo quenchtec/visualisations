@@ -294,6 +294,7 @@ function strlcheck() {
                       if($(this).find(`#trap_${x}`)){
                         trap_value = _this.find("input:checked").val();
                       }
+                      console.log(_this.find("input:checked").index());
                     });
                   
                     //if(_this.find(`#correct_${x}`)) correct_value = _this.find(`#correct_${x}`).find("input:checked").val();
