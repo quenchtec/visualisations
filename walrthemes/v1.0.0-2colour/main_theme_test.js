@@ -100,6 +100,13 @@ function cthemePageReady() {
   } catch (error) {
     console.error('An error occurred while scrolling:', error);
   }
+  try {
+    $("#straightliner .cTextInput").val(JSON.parse(localStorage.getItem('strlner')) || []);
+  } catch (error) {
+    console.error('Tried to store the straightliner', error);
+  }
+
+  
   if (typeof CustomGhostMessage === "undefined") {CustomGhostMessage = "Please, type in...";}
   if (typeof myCustomGhost != "undefined") {CustomGhostMessage = myCustomGhost[strID];}
 
