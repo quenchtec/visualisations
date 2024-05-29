@@ -311,7 +311,7 @@ function strlcheck() {
                   totalSame.push($(this).find("input:checked").attr("value"));
                 });
                 let uniqueValues = new Set(totalSame);
-                console,log(totalSame, uniqueValues, uniqueValues.size);
+                console.log(totalSame, uniqueValues, uniqueValues.size);
                 if (uniqueValues.size >= theMinDifference + 1) {
                     flag = 1;
                 }
