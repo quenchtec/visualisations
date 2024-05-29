@@ -284,10 +284,13 @@ function OffsideHandleHandler() {
                   intCountPips = 0;
               }
               if (_strColLabels.length < 1) {
-                  let currentText = $(this).text();
-                  $(this).text(currentText + _suffix);
+                  //let currentText = $(this).text();
+                  //$(this).text(currentText + _suffix);
+                  let currentText = $(this).html();
+                  $(this).html(currentText + _suffix);
               } else {
-                  $(this).text(_strColLabels[intCountPips]);
+                  //$(this).text(_strColLabels[intCountPips]);
+                  $(this).html(_strColLabels[intCountPips]);
                   $(this).addClass("multi-text-scale");
                   if (!rsParams.blnSliderColumnLabels) {
                       $(".aero-opt-out-button").css("margin-top", "1rem");
@@ -299,7 +302,8 @@ function OffsideHandleHandler() {
           });
       } else {
           $(QuestionID).find(".noUi-value-horizontal").each(function() {
-              $(this).text($(this).text() + _suffix);
+              //$(this).text($(this).text() + _suffix);
+              $(this).html($(this).html() + _suffix);
           });
       }
   }
