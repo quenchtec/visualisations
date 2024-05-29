@@ -289,13 +289,13 @@ function strlcheck() {
                     let correct_value, trap_value;
                     _this.each(function(){
                       if($(this).find(`#correct_${x}`)){
-                        correct_value = _this.find("input:checked").attr("value");
-                        console.log(`#correct_${x}   `, _this.find("input:checked"), _this.find("input:checked").attr("value"), _this.find("input:checked").prop("value"));
+                        correct_value = $(this).find("input:checked").attr("value");
+                        console.log(`#correct_${x}   `, $(this).find("input:checked"), $(this).find("input:checked").attr("value"), $(this).find("input:checked").prop("value"));
                       }
                       if($(this).find(`#trap_${x}`)){
                         //trap_value = _this.find("input:checked").val();
-                        trap_value = _this.find("input:checked").attr("value");
-                        console.log(`#trap_${x}   `, _this.find("input:checked"), _this.find("input:checked").attr("value"), _this.find("input:checked").prop("value"));
+                        trap_value = $(this).find("input:checked").attr("value");
+                        console.log(`#trap_${x}   `, $(this).find("input:checked"), $(this).find("input:checked").attr("value"), $(this).find("input:checked").prop("value"));
                       }
                     });
                   
