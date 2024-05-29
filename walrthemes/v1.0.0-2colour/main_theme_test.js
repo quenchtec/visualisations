@@ -279,11 +279,15 @@ function strlcheck() {
     if($(".rsSingleGrid").length){
         let inputsl = $(".rsSingleGrid .rsRow:first").find("td").length;
         $(".rsSingleGrid").each(function(){
-            let _this = $(this);
+            let _this = $(this).find(".rsRow");
             if (_this.find('[id^="correct_"]').length) {
                 _this.find('[id^="correct_"]').each(function(e){
-                    let correct_value = $(this).find("input:checked").val();
-                    let trap_value = $(`#trap_${e+1}`).find("input:checked").val();
+                    //let correct_value = $(this).find("input:checked").val();
+                    //let trap_value = _this.find(`#trap_${e+1}`).find("input:checked").val();
+                    let correct_value, trap_value;
+                  
+                    if(_this.find(`#trap_${e+1}`)) correct_value = _this.find(`#correct_${e+1}`).find("input:checked").val();
+                    if(_this.find(`#trap_${e+1}`)) trap_value = _this.find(`#trap_${e+1}`).find("input:checked").val();
                     flag += compareValues(correct_value, trap_value, inputsl);
                     console.log("e:", e, "   flag:",flag, correct_value, trap_value, "   inputs:",inputsl);
                 });
