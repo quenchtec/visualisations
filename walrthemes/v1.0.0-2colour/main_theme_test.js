@@ -287,19 +287,17 @@ function strlcheck() {
                     _this.each(function(){
                       if($(this).find(`#correct_${x}`).length > 0){
                         correct_value = $(this).find("input:checked").attr("value");
-                        console.log(`#correct_${x}   `, $(this).find("input:checked"), $(this).find("input:checked").attr("value"), $(this).find("input:checked").prop("value"));
+                        console.log(`#correct_${x}   `, $(this), $(this).find("input:checked"), $(this).find("input:checked").attr("value"), $(this).find("input:checked").prop("value"));
                       }
                       if($(this).find(`#trap_${x}`).length > 0){
-                        //trap_value = _this.find("input:checked").val();
                         trap_value = $(this).find("input:checked").attr("value");
-                        console.log(`#trap_${x}   `, $(this).find("input:checked"), $(this).find("input:checked").attr("value"), $(this).find("input:checked").prop("value"));
+                        console.log(`#trap_${x}   `, $(this), $(this).find("input:checked"), $(this).find("input:checked").attr("value"), $(this).find("input:checked").prop("value"));
                       }
                     });
 
                     flag += compareValues(correct_value, trap_value, inputsl);
-                    console.log("x:", x, "   flag:",flag, correct_value, trap_value, "   inputs:",inputsl);
+                    //console.log("x:", x, "   flag:",flag, correct_value, trap_value, "   inputs:",inputsl);
                 }
-                //});
             }
         });
     }
