@@ -532,7 +532,7 @@ textarea{
     padding-right: 16px;
 }
 .rsScrollGridWrappper{
-    min-height: 120px;
+    min-height: 80px;
 }
 .buttonNext, .buttonPrevious {
       background-color: var(--button_background_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
