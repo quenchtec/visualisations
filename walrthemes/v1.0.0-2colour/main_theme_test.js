@@ -280,17 +280,28 @@ function strlcheck() {
         let inputsl = $(".rsSingleGrid .rsRow:first").find("td").length;
         $(".rsSingleGrid").each(function(){
             let _this = $(this).find(".rsRow");
-            if (_this.find('[id^="correct_"]').length) {
-                _this.find('[id^="correct_"]').each(function(e){
+            let checkers = _this.find('[id^="correct_"]').length;
+            if (checkers) {
+                //_this.find('[id^="correct_"]').each(function(e){
+                for(let x=1; x < checkers+1; x++) {
                     //let correct_value = $(this).find("input:checked").val();
                     //let trap_value = _this.find(`#trap_${e+1}`).find("input:checked").val();
                     let correct_value, trap_value;
+                    _this.each(function(){
+                      if($(this).find(`#correct_${x}`)){
+                        correct_value = _this.find("input:checked").val();
+                      }
+                      if($(this).find(`#trap_${x}`)){
+                        trap_value = _this.find("input:checked").val();
+                      }
+                    });
                   
-                    if(_this.find(`#trap_${e+1}`)) correct_value = _this.find(`#correct_${e+1}`).find("input:checked").val();
-                    if(_this.find(`#trap_${e+1}`)) trap_value = _this.find(`#trap_${e+1}`).find("input:checked").val();
+                    //if(_this.find(`#correct_${x}`)) correct_value = _this.find(`#correct_${x}`).find("input:checked").val();
+                    //if(_this.find(`#trap_${x}`)) trap_value = _this.find(`#trap_${x}`).find("input:checked").val();
                     flag += compareValues(correct_value, trap_value, inputsl);
-                    console.log("e:", e, "   flag:",flag, correct_value, trap_value, "   inputs:",inputsl);
-                });
+                    console.log("x:", x, "   flag:",flag, correct_value, trap_value, "   inputs:",inputsl);
+                }
+                //});
             }
         });
     }
