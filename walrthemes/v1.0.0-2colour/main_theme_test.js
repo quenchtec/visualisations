@@ -320,11 +320,12 @@ function strlcheck() {
                 for (let i = 0; i < frequencyValues.length; i++) {
                     validCount += frequencyValues[i];
                     if ((rowsLength - validCount) > theMinDifference) {
-                        console.log("Flag is true", validCount, (rowsLength - validCount), theMinDifference);
+                        //console.log("Flag is true", validCount, (rowsLength - validCount), theMinDifference);
                         return;
                     }
                 }
-                console.log("Flag is false", validCount, (rowsLength - validCount), theMinDifference);
+                flag = 1;
+                //console.log("Flag is false", validCount, (rowsLength - validCount), theMinDifference);
               }
             }
         });
