@@ -290,12 +290,13 @@ function strlcheck() {
                     _this.each(function(){
                       if($(this).find(`#correct_${x}`)){
                         correct_value = _this.find("input:checked").attr("value");
+                        console.log(`#correct_${x}   `, _this.find("input:checked"), _this.find("input:checked").attr("value"), _this.find("input:checked").prop("value"));
                       }
                       if($(this).find(`#trap_${x}`)){
                         //trap_value = _this.find("input:checked").val();
                         trap_value = _this.find("input:checked").attr("value");
+                        console.log(`#trap_${x}   `, _this.find("input:checked"), _this.find("input:checked").attr("value"), _this.find("input:checked").prop("value"));
                       }
-                      console.log(_this.find("input:checked"), _this.find("input:checked").attr("value"), _this.find("input:checked").prop("value"));
                     });
                   
                     //if(_this.find(`#correct_${x}`)) correct_value = _this.find(`#correct_${x}`).find("input:checked").val();
