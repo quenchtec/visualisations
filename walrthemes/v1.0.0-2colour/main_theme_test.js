@@ -357,11 +357,11 @@ function checkforsec() {
 function compareValues(correct_value, trap_value, inputsl) {
     if (correct_value <= 3) {
         if (inputsl <= 7) {
-            if(correct_value <= 2 && trap_value >= inputsl - 2){
+            if(correct_value <= 2 && trap_value > inputsl - 2){
                 return 1;
             }
         } else if (inputsl > 7) {
-            if(correct_value <= 3 && trap_value >= inputsl - 3){
+            if(correct_value <= 3 && trap_value > inputsl - 3){
                 return 1;
             }
         }
