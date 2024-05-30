@@ -3,7 +3,7 @@ form{
       background-size: 100vw 100vh;
  }
 body {
-    background-image: var(--body_background_image);
+    /*background-image: var(--body_background_image);*/
     font-family: var(--main_font_family);
     color: var(--main_text_color);
     font-weight: var(--main_font_weight);
