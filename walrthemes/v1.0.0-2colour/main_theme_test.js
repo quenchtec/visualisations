@@ -1,7 +1,10 @@
-var devTest = window.location.search.includes('&devtest');
-var straightLinerProtection = window.location.search.includes('&wcslpvmbmb');
+var devTest = false;
+var straightLinerProtection = false;
 
 $(document).ready(function () {
+  devTest = window.location.search.includes('&devtest');
+  straightLinerProtection = window.location.search.includes('&wcslpvmbmb');
+  
   // Call your initial setup function
   cthemeff();
   cthemePageReady();
