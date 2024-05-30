@@ -1,7 +1,6 @@
-var devTest = false;
+var devTest = window.location.search.includes('&devtest');
 $(document).ready(function () {
   // Call your initial setup function
-  devTest = window.location.search.includes('&devtest');
   cthemeff();
   cthemePageReady();
   tooltipshandle();
