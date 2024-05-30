@@ -337,8 +337,10 @@ function strlcheck() {
     if(flag){
         const newVariable = $(".cTABLEContainQues").prop("id");
         const existingData = JSON.parse(localStorage.getItem('strlner')) || [];
-        existingData.push(newVariable);
-        localStorage.setItem('strlner', JSON.stringify(existingData));
+        if (!existingData.includes(newVariable)) {
+            existingData.push(newVariable);
+            localStorage.setItem('strlner', JSON.stringify(existingData));
+        }
     }
 
 }
