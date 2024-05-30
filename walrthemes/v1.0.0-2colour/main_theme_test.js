@@ -300,7 +300,7 @@ function strlcheck() {
                     });
 
                     flag += compareValues(correct_value, trap_value, inputsl);
-                    //console.log("x:", x, "   flag:",flag, correct_value, trap_value, "   inputs:",inputsl);
+                    console.log(`x: ${x},  flag:${flag},   ${correct_value},   ${trap_value},   inputs : ${inputsl}`);
                 }
             } else {
               let arrDiff = [[5,10,0],[11,15,1],[16,18,2],[19,21,3],[22,23,4],[24,26,5],[27,28,6],[29,30,7]];
@@ -324,12 +324,12 @@ function strlcheck() {
                 for (let i = 0; i < frequencyValues.length; i++) {
                     validCount += frequencyValues[i];
                     if ((rowsLength - validCount) > theMinDifference) {
-                        //console.log("Flag is true", validCount, (rowsLength - validCount), theMinDifference);
+                        console.log("Flag is true", validCount, (rowsLength - validCount), theMinDifference);
                         return;
                     }
                 }
                 flag = 1;
-                //console.log("Flag is false", validCount, (rowsLength - validCount), theMinDifference);
+                console.log(`Flag is ${flag}  `, validCount, (rowsLength - validCount), theMinDifference);
               }
             }
         });
