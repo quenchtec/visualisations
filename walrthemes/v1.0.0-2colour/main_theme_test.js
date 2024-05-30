@@ -126,7 +126,6 @@ function cthemePageReady() {
   custNavigationText(customNext,customPrev,customError);
 
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
-    
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
           gridUpdate($(this));
           if (devTest) console.log("gridUpdate cthemePageReady");
@@ -280,10 +279,10 @@ function debounce(func, timeout = 500) {
 
 function strlcheck() {
     let flag = 0;
-    if($(`.rsSingleGrid .rsMultiGrid`).length){
+    if($(`[class$="Grid"]`).length){
         //let inputsl = $(`.rsSingleGrid .rsMultiGrid .rsRow:first`).find("td").length;
-        let inputsl = $(`.rsSingleGrid .rsRow:first, .rsMultiGrid .rsRow:first`).find("td").length;
-        $(`.rsSingleGrid .rsMultiGrid`).each(function(){
+        let inputsl = $(`[class$="Grid"] .rsRow:first`).find("td").length;
+        $(`[class$="Grid"]`).each(function(){
             let _this = $(this).find(".rsRow");
             let checkers = _this.find('[id^="correct_"]').length;
             if (checkers) {
@@ -346,8 +345,8 @@ function strlcheck() {
 
 function checkforsec() {
     //if(straightLinerProtection && $(".rsSingleGrid").length){
-    if(straightLinerProtection && $(`.rsSingleGrid .rsMultiGrid`).length){
-        $(`.rsSingleGrid .rsRow, .rsMultiGrid .rsRow`).each(function(){
+    if(straightLinerProtection && $(`[class$="Grid"]`).length){
+        $(`[class$="Grid"] .rsRow`).each(function(){
             let _this = $(this);
             if ($(this).find('[id^="trap_"]').length > 0) {
                 $(this).hide();
