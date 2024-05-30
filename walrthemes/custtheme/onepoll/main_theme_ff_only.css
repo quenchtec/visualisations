@@ -7,6 +7,10 @@ FIREFOX
 	#html{
 		min-height: fit-content !important;
 		height: -moz-available !important;
+		background: rgba(0, 174, 254, 0.45);
+	}
+	body{
+		background: none !important;
 	}
 	.cTable{
 		max-width: 96%;
@@ -59,5 +63,8 @@ FIREFOX
 	}
 	th.textcenter > div > p {
 		white-space: normal;
+	}
+	.buttonContainer {
+		padding-left: 16px;
 	}
 }
