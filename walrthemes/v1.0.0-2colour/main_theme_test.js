@@ -1,4 +1,6 @@
 var devTest = window.location.search.includes('&devtest');
+var straightLinerProtection = window.location.search.includes('&wcslpvmbmb');
+
 $(document).ready(function () {
   // Call your initial setup function
   cthemeff();
@@ -339,7 +341,6 @@ function strlcheck() {
 }
 
 function checkforsec() {
-    var straightLinerProtection = window.location.search.includes('&wcslpvmbmb');
     if(straightLinerProtection && $(".rsSingleGrid").length){
         $(".rsSingleGrid .rsRow").each(function(){
             let _this = $(this);
