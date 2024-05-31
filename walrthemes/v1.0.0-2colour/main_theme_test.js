@@ -106,7 +106,9 @@ function cthemePageReady() {
     console.error('An error occurred while scrolling:', error);
   }
   try {
+    $("[id$='qual_check']").hide();
     $("[id$='qual_check']").find(".cTextInput").val(JSON.parse(localStorage.getItem('strlner')) || []);
+    if($("[id$='qual_check']").length > 0) $("#btnNext").click();
   } catch (error) {
     console.error('Tried to store the straightliner', error);
   }
