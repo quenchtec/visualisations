@@ -361,7 +361,7 @@ textarea{
       justify-content: var(--main_logo_alignment);
  }
   .logo1 {
-      height: 28px;
+      height: var(--main_logo_height);
  }
  /* Link (powered by) */
   .logo2link {
