@@ -1,7 +1,7 @@
+ var popupcheck = true;
 
 $(document).ready(function () {
   // Call your initial setup function
-  var popupcheck = true;
   cthemeff();
   cthemePageReady();
   // Event delegation for click on .rsRow elements
