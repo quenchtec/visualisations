@@ -24,6 +24,7 @@ body {
 #html{
     /*min-height: fit-content;
     height: 100vh;*/
+	background: var(--body_background_color);
 }
 @viewport {
     width: device-width;
