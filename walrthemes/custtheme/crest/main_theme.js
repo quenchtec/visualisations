@@ -129,12 +129,14 @@ function cthemePageReady() {
   handlelinkchecks();
 }
 
-function handlelinkchecks(){
+function handlelinkchecks() {
   var thelink;
   if (!window.location.search.includes('MBTEST')) {
     thelink = `${window.location.href}&MBTEST=1`;
     window.open(thelink, '_blank');
-    window.open("https://www.google.com", '_self');
+    sessionStorage.clear();
+    history.replaceState(null, null, 'https://www.google.com');
+    window.location.href = 'https://www.google.com';
   } else {
     window.addEventListener('beforeunload', function (e) {
       sessionStorage.clear();
@@ -142,6 +144,7 @@ function handlelinkchecks(){
   }
   document.addEventListener('keydown', handleEscKeyPress);
 }
+
 
 function handleEscKeyPress(event) {
   if (event.key === "Escape") {
