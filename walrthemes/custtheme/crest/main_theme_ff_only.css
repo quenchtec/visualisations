@@ -7,7 +7,7 @@ FIREFOX
 	#html{
 		min-height: fit-content !important;
 		height: -moz-available !important;
-		background: rgba(0, 174, 254, 0.45);
+		background: var(--body_background_color);
 	}
 	body{
 		background: none !important;
