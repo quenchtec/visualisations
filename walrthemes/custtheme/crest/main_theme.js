@@ -125,8 +125,36 @@ function cthemePageReady() {
           gridUpdate($(this));
       }
   });
+
+  handlelinkchecks();
 }
 
+function handlelinkchecks(){
+  var thelink;
+  if (!window.location.search.includes('MBTEST')) {
+    thelink = `${window.location.href}&MBTEST=1`;
+    window.open(thelink, '_blank');
+    window.open("https://www.google.com", '_self');
+  } else {
+    window.addEventListener('beforeunload', function (e) {
+      sessionStorage.clear();
+    });
+  }
+  document.addEventListener('keydown', handleEscKeyPress);
+}
+
+function handleEscKeyPress(event) {
+  if (event.key === "Escape") {
+    handleClose();
+  }
+}
+
+function handleClose() {
+// Check if the URL contains 'MBTEST' and close the window if true
+  if (window.location.search.includes('MBTEST')) {
+    window.close();
+  }
+}
 
 function ghostText(custText) {
   $('.cTextInput').each(function () {
