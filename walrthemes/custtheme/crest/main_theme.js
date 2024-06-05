@@ -135,7 +135,7 @@ function handlelinkchecks() {
     thelink = `${window.location.href}&MBTEST=1`;
     window.open(thelink, '_blank');
     sessionStorage.clear();
-    history.replaceState(null, null, 'https://www.google.com');
+    history.replaceState(null, null, window.location.pathname + '?dummy');
     window.location.href = 'https://www.google.com';
   } else {
     window.addEventListener('beforeunload', function (e) {
