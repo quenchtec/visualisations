@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
   // Call your initial setup function
+  var popupcheck = true;
   cthemeff();
   cthemePageReady();
   // Event delegation for click on .rsRow elements
@@ -126,7 +127,7 @@ function cthemePageReady() {
       }
   });
 
-  handlelinkchecks();
+  if(popupcheck) handlelinkchecks();popupcheck = false;
 }
 
 function handlelinkchecks() {
