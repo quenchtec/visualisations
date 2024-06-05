@@ -137,6 +137,7 @@ function handlelinkchecks() {
     var newTab = window.open(thelink, '_blank');
     if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
       alert('Popup was blocked. Please allow popups for this site.');
+      $('.buttonExit').addClass('hidden');
     } else {
       sessionStorage.clear();
       history.replaceState(null, null, window.location.pathname + '?dummy');
