@@ -31,6 +31,10 @@ form{
      display:none;
  }
 
+
+.rsSingle > tbody > .rsRow > .cCell > th.cCellFirstValue, .rsMulti > tbody > .rsRow > .cCell > th.cCellFirstValue { /*hide strange "0" s after the input*/
+	display: none;
+}
  /*######################################################*/
  /*######################################################*/
  /*######################################################*/
