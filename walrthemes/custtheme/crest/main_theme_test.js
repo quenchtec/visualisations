@@ -136,12 +136,10 @@ function handlelinkchecks() {
     thelink = `${window.location.href}&MBTEST=1`;
     var newTab = window.open(thelink, '_blank');
     if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
-      alert('Popup was blocked. Please allow popups for this site.');
-      $('.buttonExit').addClass('hidden');
+      //alert('Popup was blocked. Please allow popups for this site.');
+      //$('.buttonExit').addClass('hidden');
     } else {
-      sessionStorage.clear();
-      history.replaceState(null, null, window.location.pathname + '?dummy');
-      window.location.href = 'https://www.google.com';
+      handleMaskCleaning();
     }
   } else {
     window.addEventListener('beforeunload', function (e) {
@@ -152,6 +150,13 @@ function handlelinkchecks() {
 }
 
 
+function handleMaskCleaning() {
+  sessionStorage.clear();
+  history.replaceState(null, null, window.location.pathname + '?dummy');
+  window.location.href = 'https://www.google.com';
+}
+
+
 function handleEscKeyPress(event) {
   if (event.key === "Escape") {
     handleClose();
@@ -159,9 +164,12 @@ function handleEscKeyPress(event) {
 }
 
 function handleClose() {
-// Check if the URL contains 'MBTEST' and close the window if true
+  // Check if the URL contains 'MBTEST' and close the window if true
   if (window.location.search.includes('MBTEST')) {
     window.close();
+  } else {
+    // Check if the URL failed to open a new tab with 'MBTEST' mask history
+    handleMaskCleaning();
   }
 }
 
