@@ -1127,6 +1127,19 @@ textarea{
     .desktopGrid:not(.rsCQ) > tbody > tr:has(.cCellHeader) > .cCellHeader > .rs-ht, .desktopGrid:not(.rsCQ)> tbody > tr:has(.cCellHeader) > .cCellHeader > .rs-ht{
         text-wrap: balance;
     }
+
+       .mainContainer {
+          /*height: 1000px;
+          width: fit-content;
+          min-height: -webkit-fill-available*/
+          max-width: 93vw;
+        }
+      .contentContainer {
+          max-width: 93vw;
+        }
+      .cCellSubQuestion {
+          max-width: 100%;
+        }
  }
  
  
@@ -1140,6 +1153,12 @@ textarea{
           width: fit-content;
           min-height: -webkit-fill-available*/
           max-width: 93vw;
+        }
+      .contentContainer {
+          max-width: 93vw;
+        }
+      .cCellSubQuestion {
+          max-width: 100%;
         }
  }
  
