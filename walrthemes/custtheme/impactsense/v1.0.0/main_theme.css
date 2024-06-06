@@ -1131,6 +1131,21 @@ textarea{
  
  
 /* ######### END GRID CSS FOR MOBILE ########## */
+
+ /* Safari iOS settings in order to fix scrolling, all the way to the bottom, in mainContainer */
+  @supports (-webkit-touch-callout: none) {
+     /* CSS specific to iOS devices */
+      .mainContainer {
+          /*height: 1000px;
+          width: fit-content;
+          min-height: -webkit-fill-available*/
+          max-width: 93vw;
+        }
+ }
+ 
+
+
+
 /* ######### GRID CSS FOR DESKTOP ########## */
 @media only screen and (min-width: 981px) {
 	.desktopGrid > tbody > .cRow {
