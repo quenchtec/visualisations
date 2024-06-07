@@ -1,10 +1,12 @@
+var devTest = false;
 
 $(document).ready(function () {
+  devTest = window.location.search.includes('devtest');
   // Call your initial setup function
   cthemeff();
   cthemePageReady();
   tooltipshandle();
-  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("call from DR");
+  if (devTest) console.log("call from DR");
   // Event delegation for click on .rsRow elements
   // Create a MutationObserver when the document is fully loaded
   var targetNode = document.getElementById("rsPanelMain");
@@ -13,7 +15,7 @@ $(document).ready(function () {
       for (var mutation of mutationsList) {
           if (mutation.type === "childList") {
               cthemePageReady(); // Call your function here
-              if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("log from Brfore Break and after cThemePageReady was called");
+              if (devTest) console.log("log from Brfore Break and after cThemePageReady was called");
               break; // We've handled the mutation, no need to continue
           }
       }
@@ -34,7 +36,7 @@ function cthemeff() {
 }
 
 function putSomeClasses() {
-  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("putSomeClasses start");
+  if (devTest) console.log("putSomeClasses start");
   var $cTables = $(".cTable");
   $cTables.each(function () {
       if (($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) && !$(this).hasClass("mobileGrid") && !$(this).hasClass("desktopGrid")) {
@@ -115,7 +117,7 @@ function cthemePageReady() {
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
           gridUpdate($(this));
-          if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("gridUpdate cthemePageReady");
+          if (devTest) console.log("gridUpdate cthemePageReady");
       }
   });
 
@@ -137,7 +139,7 @@ function cthemePageReady() {
   const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
   $("#btnNext").click(function(){debouncedScrollFunc();});
   putSomeClasses();
-  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("putSomeClasses from theme ready");
+  if (devTest) console.log("putSomeClasses from theme ready");
 }
 
 function removeFocusFromAllElements() {
@@ -153,7 +155,7 @@ function custNavigationText(theNext, thePrevious, theError) {
   if (typeof thePrevious != "undefined") {_thePrevious = thePrevious;} else {_thePrevious = '';}
   if (typeof theError != "undefined") {_theError = theError;} else {_theError = '';}
   
-  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log(_theNext,_thePrevious,_theError);
+  if (devTest) console.log(_theNext,_thePrevious,_theError);
   
   if((_theNext !="") && (_theNext !=" ") && (_theNext.length > 1)) {$('#btnNext').val(_theNext);}
   if((_thePrevious !="") && (_thePrevious !=" ") && (_thePrevious.length > 1)) {$('#btnPrevious').val(_thePrevious);}
@@ -167,7 +169,7 @@ function ghostText(custText) {
 }
 
 function gridUpdate(grid_this) {
-  if (/^(testlink|preview|review)\./.test(window.location.hostname)) console.log("grid update start");
+  if (devTest) console.log("grid update start");
   var _grid_this;
   if (grid_this) {
       _grid_this = grid_this;
