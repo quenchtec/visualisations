@@ -302,7 +302,7 @@ function strlcheck() {
                     });
 
                     flag += compareValues(correct_value, trap_value, inputsl);
-                    console.log(`x: ${x},  flag:${flag},   ${correct_value},   ${trap_value},   inputs : ${inputsl}`);
+                  if (devTest) console.log(`x: ${x},  flag:${flag},   ${correct_value},   ${trap_value},   inputs : ${inputsl}`);
                 }
             } else {
               let arrDiff = [[5,10,0],[11,15,1],[16,18,2],[19,21,3],[22,23,4],[24,26,5],[27,28,6],[29,30,7]];
@@ -363,17 +363,19 @@ function checkforsec() {
 }
 
 function compareValues(correct_value, trap_value, inputsl) {
-    if (correct_value <= 3) {
+    //if (correct_value <= 3) {
         if (inputsl <= 7) {
-            if(correct_value <= 2 && trap_value > inputsl - 2){
+            //if(correct_value <= 2 && trap_value > inputsl - 2){ //Opposite values
+            if((correct_value <= 2 && trap_value <= 2) || (correct_value > (inputsl - 2) && trap_value > (inputsl - 2))){ //Same values
                 return 1;
             }
         } else if (inputsl > 7) {
-            if(correct_value <= 3 && trap_value > inputsl - 3){
+            //if(correct_value <= 3 && trap_value > inputsl - 3){ //Opposite values
+            if((correct_value <= 3 && trap_value <= 3) || (correct_value > (inputsl - 3) && trap_value > (inputsl - 3))){ //Same values
                 return 1;
             }
         }
-    }
+    //}
     return 0;
 }
 
