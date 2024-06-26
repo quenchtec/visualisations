@@ -1,4 +1,6 @@
+var globalLink = ${window.location.href};
 
+  
 $(document).ready(function () {
   // Call your initial setup function
   cthemeff();
@@ -145,7 +147,7 @@ function handlelinkchecks() {
   document.addEventListener('keydown', handleEscKeyPress);
 }*/
 function handlelinkchecks() {
-
+  console.log(globalLink);
 }
 
 function handleEscKeyPress(event) {
