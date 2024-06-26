@@ -127,40 +127,17 @@ function cthemePageReady() {
           gridUpdate($(this));
       }
   });
-
-  handlelinkchecks();
 }
-/*
+
 function handlelinkchecks() {
-  var thelink;
-  if (!window.location.search.includes('MBTEST')) {
-    thelink = `${window.location.href}&MBTEST=1`;
-    window.open(thelink, '_blank');
     sessionStorage.clear();
-    history.replaceState(null, null, window.location.pathname + '?dummy');
-    window.location.href = 'https://www.google.com';
-  } else {
-    window.addEventListener('beforeunload', function (e) {
-      sessionStorage.clear();
-    });
-  }
-  document.addEventListener('keydown', handleEscKeyPress);
-}*/
-function handlelinkchecks() {
-  console.log(globalLink);
+    window.location.href = `https://survey.walr.com/kn2wGf?${globalLink}`;
 }
 
 function handleEscKeyPress(event) {
   if (event.key === "Escape") {
-    //handleClose(); // We are not going to close it anymore, we move to redirecting to a safe space
     handlelinkchecks();
   }
-}
-
-function handleClose() {
-// Check if the URL contains 'MBTEST' and close the window if true
-  //if (window.location.search.includes('MBTEST')) {window.close();}
-  handlelinkchecks()
 }
 
 function ghostText(custText) {
