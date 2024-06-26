@@ -157,9 +157,8 @@ function handleEscKeyPress(event) {
 
 function handleClose() {
 // Check if the URL contains 'MBTEST' and close the window if true
-  if (window.location.search.includes('MBTEST')) {
-    window.close();
-  }
+  //if (window.location.search.includes('MBTEST')) {window.close();}
+  handlelinkchecks()
 }
 
 function ghostText(custText) {
