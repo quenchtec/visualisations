@@ -1,4 +1,4 @@
-var globalLink = window.location.href;
+var globalLink = "";
 
   
 $(document).ready(function () {
