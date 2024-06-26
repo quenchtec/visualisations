@@ -128,7 +128,7 @@ function cthemePageReady() {
 
   handlelinkchecks();
 }
-
+/*
 function handlelinkchecks() {
   var thelink;
   if (!window.location.search.includes('MBTEST')) {
@@ -143,12 +143,15 @@ function handlelinkchecks() {
     });
   }
   document.addEventListener('keydown', handleEscKeyPress);
-}
+}*/
+function handlelinkchecks() {
 
+}
 
 function handleEscKeyPress(event) {
   if (event.key === "Escape") {
-    handleClose();
+    //handleClose(); // We are not going to close it anymore, we move to redirecting to a safe space
+    handlelinkchecks();
   }
 }
 
