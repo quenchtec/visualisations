@@ -1,5 +1,6 @@
 var devTest = false;
 var straightLinerProtection = false;
+const respID = document.getElementById("rs_r").value;
 
 $(document).ready(function () {
   devTest = window.location.search.includes('devtest');
@@ -279,14 +280,23 @@ function debounce(func, timeout = 500) {
     });
   }
 
+
+
+
+
+
 function strlcheck() {
     let flag = 0;
     let totalSame = [];
+    let traps = [];
+    let gridID;
+    let newVariable;
 
     if($(`[class$="Grid"]`).length){
         let inputsl = $(`[class$="Grid"] .rsRow:first`).find("td").length;
         $(`[class$="Grid"]`).each(function(){
             let coefficient;
+            newVariable = $(this).parent().parent().parent().parent().prop("id");
             let _this = $(this).find(".rsRow");
             let checkers = _this.find('[id^="correct_"]').length;
             if (checkers) {
@@ -302,34 +312,90 @@ function strlcheck() {
                       //console.log(`#trap_${x}   `, $(this), $(this).find("input:checked"), $(this).find("input:checked").attr("value"), $(this).find("input:checked").prop("value"));
                     }
                   });
+                  trapsStat.push("pass");
 
-                  flag += compareValues(correct_value, trap_value, inputsl);
+                flag += compareValues(correct_value, trap_value, inputsl);
+                if(compareValues(correct_value, trap_value, inputsl)) {
+                  traps.push(`trap${x}`);
+                  trapsStat.push("fail");
+                }
+                
                 if (devTest) console.log(`x: ${x},  flag:${flag},   ${correct_value},   ${trap_value},   inputs : ${inputsl}`);
               }
-            } 
+            }
 
           //Get all answers from the grid and calcularing the entropy index
             $("#btnNext").click(function() {
                 totalSame = [];
-                $(this).find("input:checked").each(function() {
-                    totalSame.push(parseInt($(this).val()));
-                });
+                $(this).find("input:checked").each(function() {totalSame.push(parseInt($(this).val()));});
                 coefficient = calculateCoefficient(totalSame);
+                updateLocalStorage(true, respID, coefficient, checkers, blnTrapStatus, newVariable, traps, trapsStat);
+
             });
           });
     }
 
   
-  if(flag){
-        const newVariable = $(".cTABLEContainQues").prop("id");
+  /*if(flag){
+
+
         const existingData = JSON.parse(localStorage.getItem('strlner')) || [];
         if (!existingData.includes(newVariable)) {
             existingData.push(newVariable);
             localStorage.setItem('strlner', JSON.stringify(existingData));
         }
-    }
+  }*/
 
 }
+
+
+/////////////////////////building the JSON for the coefficient and traps
+function updateLocalStorage(flag, respID, coefficient, checkers, blnTrapStatus, newVariable, traps, trapsStat) {
+        const new_Variable = newVariable;
+        const existing_Data = JSON.parse(localStorage.getItem('strlner')) || [];
+        let personData = existing_Data.find(person => person.person_id === respID);
+
+        if (!personData) {
+            personData = {
+                person_id: respID,
+                labels: []
+            };
+            existing_Data.push(personData);
+        }
+
+        if (!personData.labels.find(label => label.label === new_Variable)) {
+            const isStraightliner = coefficient < 10.0;
+            const trapsData = [];
+
+            for (let i = 0; i < checkers.length; i++) {
+                trapsData.push({
+                    trap_id: traps[i],
+                    status: trapsStat[i]
+                });
+            }
+
+            const newLabel = {
+                label: new_Variable,
+                is_straightliner: isStraightliner,
+                straightliner_coefficient: coefficient,
+                traps_triggered: trapsData.filter(trap => trap.status === "fail").length,
+                traps: trapsData
+            };
+
+            personData.labels.push(newLabel);
+        }
+
+        localStorage.setItem('strlner', JSON.stringify(existing_Data));
+}
+
+
+
+
+
+
+
+
+
 
 function entropyIndex(values) {
     let valueCounts = {};
