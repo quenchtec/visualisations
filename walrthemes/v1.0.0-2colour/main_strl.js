@@ -289,6 +289,7 @@ function strlcheck() {
     let flag = 0;
     let totalSame = [];
     let traps = [];
+    let trapsStat = [];
     let gridID;
     let newVariable;
     console.log("strlcheck");
