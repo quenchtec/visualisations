@@ -23,6 +23,8 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
     rsParams.maxheight = (typeof rsParams.maxheight === "undefined") ? "" : rsParams.maxheight;
     rsParams.scrollMinwidth = (typeof rsParams.scrollMinwidth === "undefined") ? "" : rsParams.scrollMinwidth;
     rsParams.scrollMaxwidth = (typeof rsParams.scrollMaxwidth === "undefined") ? "" : rsParams.scrollMaxwidth;
+    rsParams.scrollMinheight = (typeof rsParams.scrollMinheight === "undefined") ? "" : rsParams.scrollMinheight;
+    rsParams.scrollMaxheight = (typeof rsParams.scrollMaxheight === "undefined") ? "" : rsParams.scrollMaxheight;
     rsParams.scrollAreaTop = (typeof rsParams.scrollAreaTop === "undefined") ? false : rsParams.scrollAreaTop;
     rsParams.useimagesasbackground = (typeof rsParams.useimagesasbackground === "undefined") ? true : rsParams.useimagesasbackground;
     rsParams.randomizecolumns = (typeof rsParams.randomizecolumns === "undefined") ? "no" : rsParams.randomizecolumns;
@@ -31,7 +33,12 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
     rsParams.excludecolumnstart = (typeof rsParams.excludecolumnstart === "undefined") ? 0 : rsParams.excludecolumnstart;
     rsParams.prescript = (typeof rsParams.prescript === "undefined") ? "" : rsParams.prescript;
     rsParams.postscript = (typeof rsParams.postscript === "undefined") ? "" : rsParams.postscript;
-  
+
+
+
+
+
+	
     //Check for prescript
     if (rsParams.prescript.length > 0) sParam.prescript;
   
@@ -96,6 +103,8 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
     //Check width of scroll area
     if (rsParams.scrollMinwidth != null) $(scrollDivID).find('.rsScrollGridContent').css('min-width', rsParams.scrollMinwidth);
     if (rsParams.scrollMaxwidth != null) $(scrollDivID).find('.rsScrollGridContent').css('max-width', rsParams.scrollMaxwidth);
+    if (rsParams.scrollMinheight != null) $(scrollDivID).find('.rsScrollGridContent').css('min-height', rsParams.scrollMinheight);
+    if (rsParams.scrollMaxheight != null) $(scrollDivID).find('.rsScrollGridContent').css('max-height', rsParams.scrollMaxheight);
   
   
     let baseBtnClass = "rsBtn";
