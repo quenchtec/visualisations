@@ -131,7 +131,7 @@ function cthemePageReady() {
 
 function handlelinkchecks() {
     sessionStorage.clear();
-    window.location.href = `https://survey.walr.com/kn2wGf?${globalLink}`;
+    window.location.href = `https://${window.location.hostname}/kn2wGf?${globalLink}`;
     console.log(globalLink);
 }
 
