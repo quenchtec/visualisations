@@ -317,7 +317,7 @@ function strlcheck() {
                 flag += compareValues(correct_value, trap_value, inputsl);
                 if(compareValues(correct_value, trap_value, inputsl)) {
                   traps.push(`trap${x}`);
-                  trapsStat.push("fail");
+                  trapsStat[x] = "fail";
                 }
                 
                 if (devTest) console.log(`x: ${x},  flag:${flag},   ${correct_value},   ${trap_value},   inputs : ${inputsl}`);
@@ -325,7 +325,7 @@ function strlcheck() {
             }
 
           //Get all answers from the grid and calcularing the entropy index
-            $("#btnNext").click(function() {
+            $(".logo1").click(function() {
                 totalSame = [];
                 $(this).find("input:checked").each(function() {totalSame.push(parseInt($(this).val()));});
                 coefficient = calculateCoefficient(totalSame);
