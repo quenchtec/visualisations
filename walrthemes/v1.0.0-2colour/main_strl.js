@@ -330,7 +330,7 @@ function strlcheck() {
                 totalSame = [];
                 $(this).find("input:checked").each(function() {totalSame.push(parseInt($(this).val()));});
                 coefficient = calculateCoefficient(totalSame);
-                updateLocalStorage(true, respID, coefficient, checkers, blnTrapStatus, newVariable, traps, trapsStat);
+                updateLocalStorage(true, respID, coefficient, checkers, newVariable, traps, trapsStat);
 
             //});
           });
@@ -351,7 +351,7 @@ function strlcheck() {
 
 
 /////////////////////////building the JSON for the coefficient and traps
-function updateLocalStorage(flag, respID, coefficient, checkers, blnTrapStatus, newVariable, traps, trapsStat) {
+function updateLocalStorage(flag, respID, coefficient, checkers, newVariable, traps, trapsStat) {
         const new_Variable = newVariable;
         const existing_Data = JSON.parse(localStorage.getItem('strlner')) || [];
         let personData = existing_Data.find(person => person.person_id === respID);
