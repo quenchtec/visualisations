@@ -291,7 +291,8 @@ function strlcheck() {
     let traps = [];
     let gridID;
     let newVariable;
-
+    console.log("strlcheck");
+  
     if($(`[class$="Grid"]`).length){
         let inputsl = $(`[class$="Grid"] .rsRow:first`).find("td").length;
         $(`[class$="Grid"]`).each(function(){
@@ -325,13 +326,13 @@ function strlcheck() {
             }
 
           //Get all answers from the grid and calcularing the entropy index
-            $(".logo1").click(function() {
+            //$(".logo1").click(function() {
                 totalSame = [];
                 $(this).find("input:checked").each(function() {totalSame.push(parseInt($(this).val()));});
                 coefficient = calculateCoefficient(totalSame);
                 updateLocalStorage(true, respID, coefficient, checkers, blnTrapStatus, newVariable, traps, trapsStat);
 
-            });
+            //});
           });
     }
 
