@@ -151,7 +151,7 @@ function cthemePageReady() {
   };
 
   const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
-  $("#btnNext").click(function(){strlcheck();debouncedScrollFunc();});
+  $(".logo1").click(function(){strlcheck();debouncedScrollFunc();});
   putSomeClasses();
   if (devTest) console.log("putSomeClasses from theme ready");
 }
