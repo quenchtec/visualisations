@@ -315,11 +315,11 @@ function strlcheck() {
                     }
                   });
                   trapsStat.push("pass");
+                  traps.push(`trap${x}`);
 
                 flag += compareValues(correct_value, trap_value, inputsl);
                 if(compareValues(correct_value, trap_value, inputsl)) {
-                  traps.push(`trap${x}`);
-                  trapsStat[x] = "fail";
+                  trapsStat[x-1] = "fail";
                 }
                 
                 if (devTest) console.log(`x: ${x},  flag:${flag},   ${correct_value},   ${trap_value},   inputs : ${inputsl}`);
