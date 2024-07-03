@@ -292,7 +292,6 @@ function strlcheck() {
     let trapsStat = [];
     let gridID;
     let newVariable;
-    console.log("strlcheck");
   
     if($(`[class$="Grid"]`).length){
         let inputsl = $(`[class$="Grid"] .rsRow:first`).find("td").length;
@@ -327,27 +326,13 @@ function strlcheck() {
             }
 
           //Get all answers from the grid and calcularing the entropy index
-            //$(".logo1").click(function() {
                 totalSame = [];
                 $(this).find("input:checked").each(function() {totalSame.push(parseInt($(this).val()));});
                 coefficient = calculateCoefficient(totalSame);
                 updateLocalStorage(true, respID, coefficient, checkers, newVariable, traps, trapsStat);
 
-            //});
           });
     }
-
-  
-  /*if(flag){
-
-
-        const existingData = JSON.parse(localStorage.getItem('strlner')) || [];
-        if (!existingData.includes(newVariable)) {
-            existingData.push(newVariable);
-            localStorage.setItem('strlner', JSON.stringify(existingData));
-        }
-  }*/
-
 }
 
 
@@ -369,13 +354,13 @@ function updateLocalStorage(flag, respID, coefficient, checkers, newVariable, tr
             const isStraightliner = coefficient < 10.0;
             const trapsData = [];
 
-            for (let i = 0; i < checkers.length; i++) {
+            for (let i = 0; i < checkers; i++) {
                 trapsData.push({
                     trap_id: traps[i],
                     status: trapsStat[i]
                 });
             }
-
+            console.log(trapsData);
             const newLabel = {
                 label: new_Variable,
                 is_straightliner: isStraightliner,
