@@ -107,8 +107,14 @@ function cthemePageReady() {
   }
   try {
     $("[id$='qual_check']").hide();
-    $("[id$='qual_check']").find(".cTextInput").val(JSON.parse(localStorage.getItem('strlner')) || []);
-    if($("[id$='qual_check']").length > 0) $("#btnNext").click();
+    
+    if($("[id$='qual_check']").length > 0){
+      const strlnerData = JSON.parse(localStorage.getItem('strlner')) || [];
+      const formattedData = JSON.stringify(strlnerData, null, 2);
+      $("[id$='qual_check']").find(".cTextInput").val(formattedData);
+      $("#btnNext").click();
+      localStorage.removeItem('strlner');
+    }
   } catch (error) {
     console.error('Tried to store the straightliner', error);
   }
@@ -150,7 +156,7 @@ function cthemePageReady() {
   };
 
   const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
-  $(".logo1").click(function(){strlcheck();debouncedScrollFunc();});
+  $("#btnNext").click(function(){strlcheck();debouncedScrollFunc();});
   putSomeClasses();
   if (devTest) console.log("putSomeClasses from theme ready");
 }
