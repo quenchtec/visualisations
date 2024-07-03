@@ -1,8 +1,5 @@
 var devTest = false;
 var straightLinerProtection = false;
-const respID = document.getElementById("rs_r").value===0 ? document.getElementById("rs_tr").value: document.getElementById("rs_r").value;
-
-
 
 $(document).ready(function () {
   devTest = window.location.search.includes('devtest');
@@ -294,7 +291,8 @@ function strlcheck() {
     let trapsStat = [];
     let gridID;
     let newVariable;
-  
+    let respID = document.getElementById("rs_r").value==0 ? document.getElementById("rs_tr").value : document.getElementById("rs_r").value;
+
     if($(`[class$="Grid"]`).length){
         let inputsl = $(`[class$="Grid"] .rsRow:first`).find("td").length;
         $(`[class$="Grid"]`).each(function(){
