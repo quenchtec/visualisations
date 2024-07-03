@@ -2,6 +2,7 @@ var devTest = false;
 var straightLinerProtection = false;
 
 $(document).ready(function () {
+  localStorage.removeItem('strlner');
   devTest = window.location.search.includes('devtest');
   straightLinerProtection = window.location.search.includes('wcslpvmbmb');
   
