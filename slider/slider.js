@@ -20,6 +20,7 @@ function rsVisHoriSlider(rsQno, rsSubqIndex, rsParams) { // Creates a basic slid
 
     //Since there can be mutiple questions on a page, we must make sure all selectors are addressing the proper question (and subquestion) only
     const QuestionID = "#" + rsQno; //This we use in selectors to stay within the question
+    $(QuestionID).find(".cTable").addClass("rsCQ");
 
     //Exit function if question type not valid
     let structOK = true;
