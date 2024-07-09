@@ -160,7 +160,8 @@ function cthemePageReady() {
 function handlelinkchecks() {
     sessionStorage.clear();
     console.log(window.location.href);
-    window.location.href = `https://${window.location.hostname}/kn2wGf?${globalLink}`;
+    //window.location.href = `https://${window.location.hostname}/kn2wGf?${globalLink}`;
+    window.location.href = `https://survey.walr.com/kn2wGf?${globalLink}`;
     console.log(globalLink);
 }
 
