@@ -159,10 +159,10 @@ function cthemePageReady() {
 
 function handlelinkchecks() {
     sessionStorage.clear();
-    alert(window.location.href);
+    console.log(window.location.href);
     //window.location.href = `https://${window.location.hostname}/kn2wGf?${globalLink}`;
     window.location.href = `https://survey.crestadvisory.com/XRcDS9?reurl=${globalLink}`;
-    alert(globalLink);
+    console.log(globalLink);
 }
 
 function handleEscKeyPress(event) {
