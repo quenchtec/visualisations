@@ -165,9 +165,9 @@ function handlelinkchecks(clink) {
     sessionStorage.clear();
     console.log("clink  ",clink);
   } catch (error) {
-    console.error('An error occurred while scrolling:', error);
+    console.log('Nothing happened', error);
   }
-  
+  alert("current link is : ", window.location.href);
   globalLink = `https://survey.crestadvisory.com/XRcDS9?reurl=${window.location.href}`
   window.location.href = globalLink;
 }
