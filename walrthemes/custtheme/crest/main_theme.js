@@ -163,7 +163,7 @@ function handlelinkchecks(clink) {
     //window.location.href = `https://${window.location.hostname}/kn2wGf?${globalLink}`;
     //window.location.href = `https://survey.crestadvisory.com/XRcDS9?reurl=${globalLink}`;
 
-  newLink = `https://survey.crestadvisory.com/XRcDS9?reurl="${globalLink}"`;
+  newLink = `https://survey.crestadvisory.com/XRcDS9?reurl=${globalLink}`;
   console.log("newLink link is : ", newLink);
   window.location.href = newLink;
 }
