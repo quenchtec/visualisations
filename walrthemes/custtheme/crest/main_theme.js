@@ -157,12 +157,19 @@ function cthemePageReady() {
   if (devTest) console.log("putSomeClasses from theme ready");
 }
 
-function handlelinkchecks() {
+function handlelinkchecks(clink) {
     //sessionStorage.clear();
     //window.location.href = `https://${window.location.hostname}/kn2wGf?${globalLink}`;
     //window.location.href = `https://survey.crestadvisory.com/XRcDS9?reurl=${globalLink}`;
-    globalLink = `https://survey.crestadvisory.com/XRcDS9?reurl=${window.location.href}`
-    window.location.href = globalLink;
+  try {
+    sessionStorage.clear();
+    console.log("clink  ",clink);
+  } catch (error) {
+    console.error('An error occurred while scrolling:', error);
+  }
+  
+  globalLink = `https://survey.crestadvisory.com/XRcDS9?reurl=${window.location.href}`
+  window.location.href = globalLink;
 }
 
 function handleEscKeyPress(event) {
