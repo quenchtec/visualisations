@@ -166,7 +166,7 @@ function handlelinkchecks(clink) {
     const encodedReurl = encodeURIComponent(globalLink);
   console.log("encoded url:  ", encodedReurl);
     //const newLink = `https://survey.crestadvisory.com/XRcDS9?reurl=${encodedReurl}`;
-    const newLink = `https://survey.walr.com/XRcDS9?reurl=${encodedReurl}`;
+    const newLink = `https://survey.walr.com/mj2CcZ?reurl=${encodedReurl}`;
   console.log("newLink:  ", newLink);
     window.location.href = newLink;
 }
