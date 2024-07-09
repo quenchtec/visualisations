@@ -158,7 +158,7 @@ function cthemePageReady() {
 }
 
 function handlelinkchecks() {
-    sessionStorage.clear();
+    //sessionStorage.clear();
     //window.location.href = `https://${window.location.hostname}/kn2wGf?${globalLink}`;
     //window.location.href = `https://survey.crestadvisory.com/XRcDS9?reurl=${globalLink}`;
     globalLink = `https://survey.crestadvisory.com/XRcDS9?reurl=${window.location.href}`
