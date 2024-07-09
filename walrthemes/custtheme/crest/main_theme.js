@@ -164,7 +164,9 @@ function handlelinkchecks(clink) {
     //window.location.href = `https://survey.crestadvisory.com/XRcDS9?reurl=${globalLink}`;
     
     const encodedReurl = encodeURIComponent(globalLink);
+  console.log("encoded url:  ", encodedReurl);
     const newLink = `https://survey.crestadvisory.com/XRcDS9?reurl=${encodedReurl}`;
+  console.log("newLink:  ", newLink);
     window.location.href = newLink;
 }
 
