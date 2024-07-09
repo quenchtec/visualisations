@@ -1,7 +1,9 @@
 var globalLink = "";
+var devTest = false;
 
   
 $(document).ready(function () {
+  devTest = window.location.search.includes('devtest');
   // Call your initial setup function
   cthemeff();
   cthemePageReady();
@@ -167,7 +169,12 @@ function handleEscKeyPress(event) {
     handlelinkchecks();
   }
 }
-
+function removeFocusFromAllElements() {
+    var btnNext = document.getElementById("btnNext");
+    if (btnNext === document.activeElement) {
+        btnNext.blur();
+    }
+}
 function custNavigationText(theNext, thePrevious, theError) {
   var _theNext, _thePrevious, _theError;
   if (typeof theNext != "undefined") {_theNext = theNext;} else {_theNext = '';}
