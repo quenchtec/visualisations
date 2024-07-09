@@ -107,26 +107,52 @@ function isMobileDevice() {
 
 function cthemePageReady() {
   var strID = $('#rs_lang').val();
-  
-  if (typeof CustomGhostMessage === "undefined") {
-      CustomGhostMessage = "Please, type in...";
+  var customNext = "";
+  var customPrev = "";
+  var customError = "";
+  try {
+    removeFocusFromAllElements();
+  } catch (error) {
+    console.error('An error occurred while scrolling:', error);
   }
-  if (typeof myCustomGhost != "undefined") {
-      CustomGhostMessage = myCustomGhost[strID];
-  }
+  if (typeof CustomGhostMessage === "undefined") {CustomGhostMessage = "Please, type in...";}
+  if (typeof myCustomGhost != "undefined") {CustomGhostMessage = myCustomGhost[strID];}
 
-  if (strID == "sv") {
-      CustomGhostMessage = "Snälla, skriv in...";
-  }
+  if (strID == "sv") {CustomGhostMessage = "Snälla, skriv in...";}
   
-  //console.log("calling text change :  ",strID,myCustomGhost,myCustomGhost[strID],CustomGhostMessage);
-  
+  if (typeof myCustomNext != "undefined") {customNext = myCustomNext[strID];}
+  if (typeof myCustomPrevious != "undefined") {customPrev = myCustomPrevious[strID];}
+  if (typeof myCustomError != "undefined") {customError = myCustomError[strID];}
+
   ghostText(CustomGhostMessage);
+  custNavigationText(customNext,customPrev,customError);
+
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
           gridUpdate($(this));
+          if (devTest) console.log("gridUpdate cthemePageReady");
       }
   });
+
+  if(navigator.userAgent.indexOf('iPhone') > -1 ){
+    document.querySelector("[name=viewport]").setAttribute("content","");
+    document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
+  }
+
+  const scrollFunc = () => {
+    var targetElement = document.querySelector('.progressContainer');
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      debouncedScrollFunc();
+    }
+  };
+
+  const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
+  $("#btnNext").click(function(){debouncedScrollFunc();});
+  putSomeClasses();
+  if (devTest) console.log("putSomeClasses from theme ready");
 }
 
 function handlelinkchecks() {
@@ -140,6 +166,19 @@ function handleEscKeyPress(event) {
   if (event.key === "Escape") {
     handlelinkchecks();
   }
+}
+
+function custNavigationText(theNext, thePrevious, theError) {
+  var _theNext, _thePrevious, _theError;
+  if (typeof theNext != "undefined") {_theNext = theNext;} else {_theNext = '';}
+  if (typeof thePrevious != "undefined") {_thePrevious = thePrevious;} else {_thePrevious = '';}
+  if (typeof theError != "undefined") {_theError = theError;} else {_theError = '';}
+  
+  if (devTest) console.log(_theNext,_thePrevious,_theError);
+  
+  if((_theNext !="") && (_theNext !=" ") && (_theNext.length > 1)) {$('#btnNext').val(_theNext);}
+  if((_thePrevious !="") && (_thePrevious !=" ") && (_thePrevious.length > 1)) {$('#btnPrevious').val(_thePrevious);}
+  if((_theError !="") && (_theError !=" ") && (_theError.length > 1)) {$('.cError').val(_theError);}
 }
 
 function ghostText(custText) {
