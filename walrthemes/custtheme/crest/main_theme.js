@@ -4,6 +4,7 @@ var devTest = false;
   
 $(document).ready(function () {
   devTest = window.location.search.includes('devtest');
+  globalLink = window.location.href;
   // Call your initial setup function
   cthemeff();
   cthemePageReady();
@@ -161,15 +162,10 @@ function handlelinkchecks(clink) {
     //sessionStorage.clear();
     //window.location.href = `https://${window.location.hostname}/kn2wGf?${globalLink}`;
     //window.location.href = `https://survey.crestadvisory.com/XRcDS9?reurl=${globalLink}`;
-  try {
-    sessionStorage.clear();
-    console.log("clink  ",clink);
-  } catch (error) {
-    console.log('Nothing happened', error);
-  }
-  console.log("current link is : ", window.location.href);
-  globalLink = `https://survey.crestadvisory.com/XRcDS9?reurl=${window.location.href}`
-  window.location.href = globalLink;
+
+  newLink = `https://survey.crestadvisory.com/XRcDS9?reurl="${globalLink}"`;
+  console.log("newLink link is : ", newLink);
+  window.location.href = newLink;
 }
 
 function handleEscKeyPress(event) {
