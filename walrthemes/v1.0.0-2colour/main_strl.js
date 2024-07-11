@@ -356,30 +356,33 @@ function updateLocalStorage(flag, respID, coefficient, checkers, newVariable, tr
             };
             existing_Data.push(personData);
         }
+        let existingLabel = personData.labels.find(label => label.label === new_Variable);
+        const trapsData = [];
+        let isStraightliner = coefficient < 10.0 ? 1 : 0;
 
-        if (!personData.labels.find(label => label.label === new_Variable)) {
-            const trapsData = [];
-            let isStraightliner = 0;
-            if(coefficient < 10.0) isStraightliner = 1;
-
-            for (let i = 0; i < checkers; i++) {
-                trapsData.push({
-                    trap_id: traps[i],
-                    status: trapsStat[i]
-                });
-            }
-           if (devTest) console.log(trapsData);
-            const newLabel = {
-                label: new_Variable,
-                is_straightliner: isStraightliner,
-                straightliner_coefficient: coefficient,
-                traps_triggered: trapsData.filter(trap => trap.status === "fail").length,
-                traps: trapsData
-            };
-
-            personData.labels.push(newLabel);
+        for (let i = 0; i < checkers; i++) {
+          trapsData.push({
+              trap_id: traps[i],
+              status: trapsStat[i]
+          });
         }
 
+        if (devTest) console.log(trapsData);
+
+        const newLabel = {
+          label: new_Variable,
+          is_straightliner: isStraightliner,
+          straightliner_coefficient: coefficient,
+          traps_triggered: trapsData.filter(trap => trap.status === "fail").length,
+          traps: trapsData
+        };
+
+        if (existingLabel) {
+            // Update existing label
+            Object.assign(existingLabel, newLabel);
+        } else {
+            personData.labels.push(newLabel);
+        }
         localStorage.setItem('strlner', JSON.stringify(existing_Data));
 }
 
