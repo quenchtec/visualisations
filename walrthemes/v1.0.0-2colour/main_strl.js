@@ -358,7 +358,7 @@ function updateLocalStorage(flag, respID, coefficient, checkers, newVariable, tr
         }
 
         if (!personData.labels.find(label => label.label === new_Variable)) {
-            const isStraightliner = coefficient < 10.0;
+            const isStraightliner = 1 ? coefficient < 10.0 : 0;
             const trapsData = [];
 
             for (let i = 0; i < checkers; i++) {
@@ -367,7 +367,7 @@ function updateLocalStorage(flag, respID, coefficient, checkers, newVariable, tr
                     status: trapsStat[i]
                 });
             }
-            console.log(trapsData);
+           if (devTest) console.log(trapsData);
             const newLabel = {
                 label: new_Variable,
                 is_straightliner: isStraightliner,
