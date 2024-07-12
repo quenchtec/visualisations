@@ -128,7 +128,11 @@ function cthemePageReady() {
   if (typeof myCustomError != "undefined") {customError = myCustomError[strID];}
 
   ghostText(CustomGhostMessage);
-  custNavigationText(customNext,customPrev,customError);
+  
+
+  if((customNext != $("#btnNext").val()) || (myCustomPrevious != $("#btnNext").val()) || (myCustomError != $(".cTDContainQues > .cError").text())) {
+    custNavigationText(customNext,customPrev,customError);
+  }
 
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
@@ -164,10 +168,10 @@ function handlelinkchecks(clink) {
     //window.location.href = `https://survey.crestadvisory.com/XRcDS9?reurl=${globalLink}`;
     
     const encodedReurl = encodeURIComponent(globalLink);
-  console.log("encoded url:  ", encodedReurl);
+  //console.log("encoded url:  ", encodedReurl);
     const newLink = `https://survey.crestadvisory.com/XRcDS9?reurl=${encodedReurl}`;
     //const newLink = `https://survey.walr.com/kn2wGf?reurl=${encodedReurl}`;
-  console.log("newLink:  ", newLink);
+  //console.log("newLink:  ", newLink);
     window.location.href = newLink;
 }
 
@@ -188,11 +192,15 @@ function custNavigationText(theNext, thePrevious, theError) {
   if (typeof thePrevious != "undefined") {_thePrevious = thePrevious;} else {_thePrevious = '';}
   if (typeof theError != "undefined") {_theError = theError;} else {_theError = '';}
   
-  if (devTest) console.log(_theNext,_thePrevious,_theError);
   
   if((_theNext !="") && (_theNext !=" ") && (_theNext.length > 1)) {$('#btnNext').val(_theNext);}
   if((_thePrevious !="") && (_thePrevious !=" ") && (_thePrevious.length > 1)) {$('#btnPrevious').val(_thePrevious);}
-  if((_theError !="") && (_theError !=" ") && (_theError.length > 1)) {$('.cError').val(_theError);}
+  
+  if((_theError !="") && (_theError !=" ") && (_theError.length > 1)) {
+    if(_theError != $(".cTDContainQues > .cError").text()){
+      $(".cTDContainQues > .cError").text(_theError);
+    }
+  }
 }
 
 function ghostText(custText) {
