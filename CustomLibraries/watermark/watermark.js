@@ -1,17 +1,17 @@
-function rsWatermark(rsQno, rsSubqIndex, rsParams) {
-    const QuestionID = "#" + rsQno;
-    $(QuestionID).find(".cTable").addClass("rsWatermark");
-    var {
-        strWaterMarkText = "WATERMARKED",
-            blnQuestionText = true,
-            blnAnswers = true
-    } = rsParams || {};
+function customWatermark(wtx, qt, at) {
+
+    $(document).find(".cTable").addClass("rsWatermark");
+
+        let strWaterMarkText = wtx;
+        let blnQuestionText = qt;
+        let blnAnswers = at;
+
 
     $(document).ready(function() {
         var imgs = [];
 
-        if (blnQuestionText) imgs = imgs.concat($(QuestionID).find(".cQuestionText img").toArray());
-        if (blnAnswers) imgs = imgs.concat($(QuestionID).find(".rsRow img").toArray());
+        if (blnQuestionText) imgs = imgs.concat($(document).find(".cQuestionText img").toArray());
+        if (blnAnswers) imgs = imgs.concat($(document).find(".rsRow img").toArray());
 
         if (!imgs.length) {
             console.error("No images found");
