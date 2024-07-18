@@ -41,7 +41,7 @@ function iQuestHelper(strMessage) {
 
 }
 
-function btnMultiSetSingle(intRow) { //Function used to set previous answers on Singles
+function btnMultiSetSingle(intRow, quickMode) { //Function used to set previous answers on Singles
     //Check if row answered
     //Set background of buttons to unaswered
     if (quickMode != true) {
@@ -58,7 +58,7 @@ function btnMultiSetSingle(intRow) { //Function used to set previous answers on 
     }
 }
 
-function fncSetGridBtnBackground(strID, strStyle, intMin, intMax) {
+function fncSetGridBtnBackground(strID, strStyle, intMin, intMax, quickModeHideText) {
     //Add validation for number of buttons
     switch (strStyle) {
         case 'Smiley1':
