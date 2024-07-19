@@ -1,4 +1,4 @@
-function customWatermark(wtx, qt, at) {
+function customWatermark(wtx, qt, at, fs) {
 
     $(document).find(".cTable").addClass("rsWatermark");
 
@@ -49,7 +49,7 @@ function customWatermark(wtx, qt, at) {
             canvas.height = img.height;
             ctx.drawImage(img, 0, 0);
 
-            var fontSize = 40;
+            var fontSize = fs;
             ctx.font = fontSize + 'px Arial';
             ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
             ctx.textAlign = 'center';
