@@ -211,3 +211,25 @@ function fncSetBtnBackground(strBkURL, strID) {
         $(this).css('border', '0px transparent solid');
     });
 }
+
+
+function btnMultiSetMulti(intRow, quickMode, btnColor, btnColorClick) { //Function used to set previous answers on multiples
+    //Check if row answered
+    //Set background of buttons to unaswered
+    if (quickMode != true) {
+        $('.cBtnMultiGrid').css('background-color', btnColor).removeClass('btnChecked');
+    }
+    else {
+        $('.cBtnMultiGrid').css('background-color', 'transparent');
+    }
+    var intChecked = $('.cRow,.cRowAlt,.cRowSelected,.cRowAltSelected').eq(intRow).find('.cRadio:checked, .cCheck:checked').length;
+    if (intChecked != 0) {
+        var intBtnNum = 0;
+        $('.cRow,.cRowAlt,.cRowSelected,.cRowAltSelected').eq(intRow).find('.cRadio, .cCheck').each(function () {
+            if ($(this).prop('checked')) {
+                $('.cBtnMultiGrid').eq(intBtnNum).css('background-color', btnColorClick).addClass('btnChecked');
+            }
+            intBtnNum++;
+        });
+    }
+}
