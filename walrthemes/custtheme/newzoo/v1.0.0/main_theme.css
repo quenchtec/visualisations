@@ -1176,6 +1176,9 @@ textarea{
       .rsBtn {
           padding: 2px;
       }
+      .contentContainer {
+        padding-left: 3px;
+        }
  }
  
  
