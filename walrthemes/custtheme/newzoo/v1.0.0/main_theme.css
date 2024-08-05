@@ -849,7 +849,7 @@ textarea{
       color: var(--interactive_text_color);
       background-color: var(--interactive_background_color);
       border: 1px solid var(--input_field_border_color) !important;
-      border-radius: var(--interactive_border_radius) !important;
+      border-radius: var(--cust_carousel_button);
  }
  @media only screen and (max-width: 980px) {
       .rsBtn:hover {
