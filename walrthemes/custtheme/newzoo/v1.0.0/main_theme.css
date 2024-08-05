@@ -1173,6 +1173,9 @@ textarea{
         justify-content: center;
         max-width: 80%;
     }
+      .rsBtn {
+          padding: 2px;
+      }
  }
  
  
