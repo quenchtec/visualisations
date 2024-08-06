@@ -348,7 +348,7 @@ function updateLocalStorage(flag, respID, coefficient, checkers, newVariable, tr
         const new_Variable = newVariable;
         const existing_Data = JSON.parse(localStorage.getItem('strlner')) || [];
         let personData = existing_Data.find(person => person.person_id === respID);
-
+        
         if (!personData) {
             personData = {
                 person_id: respID,
@@ -361,6 +361,7 @@ function updateLocalStorage(flag, respID, coefficient, checkers, newVariable, tr
         let isStraightliner = coefficient < 10.0 ? 1 : 0;
 
         for (let i = 0; i < checkers; i++) {
+          console.log(traps[i])
           trapsData.push({
               trap_id: traps[i],
               status: trapsStat[i]
