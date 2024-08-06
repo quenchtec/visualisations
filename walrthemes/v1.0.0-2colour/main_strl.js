@@ -369,12 +369,13 @@ function updateLocalStorage(flag, respID, coefficient, checkers, newVariable, tr
         }
 
         if (devTest) console.log(trapsData);
-
+        let traps_triggered_value = trapsData !="" ? trapsData.filter(trap => trap.status === "fail").length : "";
+  
         const newLabel = {
           label: new_Variable,
           is_straightliner: isStraightliner,
           straightliner_coefficient: coefficient,
-          traps_triggered: trapsData.filter(trap => trap.status === "fail").length,
+          traps_triggered: traps_triggered_value,
           traps: trapsData
         };
 
