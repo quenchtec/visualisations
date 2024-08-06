@@ -133,8 +133,9 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
           strHTML += '<div class="' + btnDivClass + '" style="display:flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: stretch;">';
           blnInBtnDiv = true;
         }
-        strHTML += '<div class="' + btnClass + '" alt="' + intBtnCnt + '" index="' + $(this).index() + '">' + $(this).find('.cRowText').html().replace(/&nbsp;/g, '') + '</div>';
-  
+        strHTML += '<div class="' + btnClass + '" alt="' + intBtnCnt + '">' + $(this).find('.cRowText').html().replace(/&nbsp;/g, '') + '</div>';
+          $(this).find('.cCheck').attr('data-alt-index', i);
+          
         intBtnCnt++;
         intNumBtnInDiv++;
       } else {
