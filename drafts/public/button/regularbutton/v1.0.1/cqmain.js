@@ -134,7 +134,7 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
           blnInBtnDiv = true;
         }
         strHTML += '<div class="' + btnClass + '" alt="' + intBtnCnt + '">' + $(this).find('.cRowText').html().replace(/&nbsp;/g, '') + '</div>';
-          $(this).find('.cCheck').attr('data-alt-index', i);
+          $(this).find('.cCheck').attr('data-visual-index', i);
           
         intBtnCnt++;
         intNumBtnInDiv++;
