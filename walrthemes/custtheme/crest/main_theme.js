@@ -255,6 +255,8 @@ function gridUpdate(grid_this) {
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").each(function(){if(cWidth < $(this)[0].clientWidth) {cWidth = $(this)[0].clientWidth;$(this).addClass("revisedColumn");}});
               //$('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("min-width", (cWidth * 0.8) + 'px');
               $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("width", cWidth + 'px');
+              $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").css("padding-left", "3px");
+
             
               $(".cCellFirstHeader").css("max-width", (100-(colLength*10))+"%");
               $(".cCellFirstHeader").css("width", "auto");
