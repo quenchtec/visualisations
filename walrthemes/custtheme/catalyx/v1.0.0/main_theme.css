@@ -483,7 +483,7 @@ textarea{
 	padding: 16px;
 	margin-top: -120px;
 	width: 95%;
-	border-top: 1px solid gray;
+	border-top: 1px solid lightgray;
   }
 .buttonNext, .buttonPrevious {
 	background-color: var(--button_background_color); /*Swapping the text and the background color as the navigations are the only inverted buttons*/
