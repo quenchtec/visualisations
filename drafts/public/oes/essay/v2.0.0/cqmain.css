@@ -1,0 +1,73 @@
+.rsCQEssay>tbody {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+.rsCuQeEssay>.cCell {
+  display: none !important;
+}
+
+.rsCuQeEssay>.cCellOpenText>.cTextArea {
+  min-width: 96%;
+  max-width: 96%;
+  border-radius: var(--interactive_border_radius);
+  padding: 7px;
+  font-family: var(--main_font_family);
+  font-size: var(--main_font_size);
+  font-weight: var(--main_font_weight);
+  color: var(--main_text_color);
+}
+
+.rsCuQeEssay {
+  display: contents !important;
+}
+
+.essay-progress-bar {
+  height: 30px;
+  border: 1px solid var(--main_text_color);
+  border-radius: var(--interactive_border_radius);
+  text-align: left;
+  display: none;
+}
+
+.essay-progress-fill {
+  border-radius: var(--interactive_border_radius);
+  height: 30px;
+  width: 0%;
+  background-color: var(--page_background_color);
+  -webkit-transition: width .2s ease-in-out;
+  -moz-transition: width .2s ease-in-out;
+  -o-transition: width .2s ease-in-out;
+  transition: width .2s ease-in-out;
+  text-align: center;
+  color: var(--progressbar_foreground_color);
+}
+
+.progress-bar-messages-holder {
+  width: 100%;
+  position: relative;
+}
+
+.progress-bar-messages {
+  width: 100%;
+  position: absolute;
+  padding: 3px 0px 0px 7px;
+}
+
+@media only screen and (max-width: 980px) {
+  .essay-progress-bar {
+      max-width: 88vw;
+  }
+}
+
+.rsCuQeEssay>.cCellOpenText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+  height: 222px;
+  justify-content: flex-start;
+  row-gap: 20px;
+}

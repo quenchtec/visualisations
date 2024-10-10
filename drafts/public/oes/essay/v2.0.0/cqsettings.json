@@ -1,0 +1,42 @@
+[
+  {
+      "id": "blnShowProgress",
+      "name": "Show progress bar",
+      "descr": "Set to true if you want the respondent to see a progress bar",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": true
+  },
+  {
+      "id": "blnProgressBarText",
+      "name": "Progress Bar Text",
+      "descr": "Display text within the progress bar to encourage users to explore further details",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": true
+  },
+  {
+      "id": "blnNextButton",
+      "name": "Hide next button",
+      "descr": "Hide the next button if minimum not reached.",
+      "type": "boolean",
+      "group": "Advanced",
+      "value": true
+  },
+  {
+      "id": "intIdealLength",
+      "name": "Minimum Ideal Length",
+      "descr": "The minimum amount of characters to fill hte progress bar (default is 200).",
+      "type": "int",
+      "group": "Advanced",
+      "value": 50
+  },
+  {
+      "id": "strProgressText",
+      "name": "Progress bar text",
+      "descr": "The text which appears inside the progress bar. If multiple texts are needed, separate them by '|' (Progress Bar Text needs to be set to true). ",
+      "type": "string",
+      "group": "Advanced",
+      "value": "Please write down as much as you'd like!|Thank you!"
+  }
+]
