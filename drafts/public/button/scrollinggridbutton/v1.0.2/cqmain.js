@@ -289,11 +289,11 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
       pctWidth = parseInt(100 / intNumButtonsPrRow);
     }
 
-    let typeOfinp = (intNumChecks) ? "checkbox" : "radio"; 
+    //let typeOfinp = (intNumChecks) ? "checkbox" : "radio"; 
 
     //Build HTML for buttons etc
-    //strHTML = '<div id="' + btnDivIDattr + '" class="rsFlexBtnContainer rsBtnGrid" width="100%">';
-    strHTML = `<div id="${btnDivIDattr}" class="rsFlexBtnContainer rsBtnGrid${typeOfinp}" width="100%">`;
+    strHTML = '<div id="' + btnDivIDattr + '" class="rsFlexBtnContainer rsBtnGrid" width="100%">';
+    //strHTML = `<div id="${btnDivIDattr}" class="rsFlexBtnContainer rsBtnGrid${typeOfinp}" width="100%">`;
 	  
     let blnInBtnDiv = false;
     let intNumBtnInDiv = 0;
