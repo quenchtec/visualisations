@@ -1,27 +1,79 @@
 var devTest = false;
+$(window).on('load', function () {
+    devTest = window.location.search.includes('devtest');
+    cthemeff();
+    cthemePageReady("ready");
 
-$(document).ready(function () {
-  devTest = window.location.search.includes('devtest');
-  // Call your initial setup function
-  cthemeff();
-  cthemePageReady();
-  tooltipshandle();
-  if (devTest) console.log("call from DR");
-  // Event delegation for click on .rsRow elements
-  // Create a MutationObserver when the document is fully loaded
-  var targetNode = document.getElementById("rsPanelMain");
-  var config = { attributes: true, childList: true, subtree: true };
-  var observer = new MutationObserver(function (mutationsList, observer) {
-      for (var mutation of mutationsList) {
-          if (mutation.type === "childList") {
-              cthemePageReady(); // Call your function here
-              if (devTest) console.log("log from Brfore Break and after cThemePageReady was called");
-              break; // We've handled the mutation, no need to continue
-          }
-      }
-  });
-  observer.observe(targetNode, config);
+    // Create a MutationObserver when the document is fully loaded
+    var targetNode = document.getElementById("rsPanelMain");
+    var config = { childList: true, subtree: true }; // Observe only child list changes
+
+    var observer = new MutationObserver(function (mutationsList, observer) {
+        let shouldScroll = false;
+
+        for (var mutation of mutationsList) {
+            if (mutation.type === "childList") {
+                // check if relevant nodes are added or removed
+                let relevantMutation = false;
+
+                // check added nodes
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        let nodeName = node.nodeName.toLowerCase();
+                        if (nodeName === 'div' || nodeName === 'span' || nodeName === 'table') {
+                            relevantMutation = true;
+                        }
+                    }
+                });
+
+                // check removed nodes
+                mutation.removedNodes.forEach(function(node) {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        let nodeName = node.nodeName.toLowerCase();
+                        if (nodeName === 'div' || nodeName === 'span' || nodeName === 'table') {
+                            relevantMutation = true;
+                        }
+                    }
+                });
+
+                if (relevantMutation) {
+                    cthemePageReady("mutation");
+                    putSomeClasses();
+
+                    // Adjust viewport settings for iPhone
+                    if (navigator.userAgent.indexOf('iPhone') > -1) {
+                        let viewport = document.querySelector("[name=viewport]");
+                        viewport.setAttribute("content", "width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes");
+                    }
+
+                    // Attach event handlers
+                    $("#btnNext").off('click').on('click', function() {
+                        // any clicks on next button are here
+                    });
+
+                    $(".rsBtnGridSingle").off('click').on('click', function() {
+                        //document.querySelector('.mainContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            						document.body.scrollTop = 0;
+            						document.documentElement.scrollTop = 0;
+                    });
+
+                    shouldScroll = true;
+                    break; // Exit after handling the first relevant mutation
+                }
+            }
+        }
+
+        if (shouldScroll) {
+          //document.querySelector('.mainContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    			document.body.scrollTop = 0;
+    			document.documentElement.scrollTop = 0;
+          shouldScroll = false;
+        }
+    });
+    observer.observe(targetNode, config);
 });
+
+
 
 function cthemeff() {
   // Detect Firefox using JavaScript
@@ -98,7 +150,7 @@ function cthemePageReady() {
   var customPrev = "";
   var customError = "";
   try {
-    removeFocusFromAllElements();
+    //removeFocusFromAllElements();
   } catch (error) {
     console.error('An error occurred while scrolling:', error);
   }
@@ -139,7 +191,8 @@ function cthemePageReady() {
   const debouncedScrollFunc = debounce(scrollFunc, 200); // Adjust the delay as needed
   $("#btnNext").click(function(){debouncedScrollFunc();});
   putSomeClasses();
-  if (devTest) console.log("putSomeClasses from theme ready");
+  tooltipshandle()
+  if (devTest) console.log("putSomeClasses from theme ready"); 
 }
 
 function removeFocusFromAllElements() {
