@@ -140,12 +140,13 @@ function putSomeClasses() {
 }
 
 function isMobileDevice() {
-  if(navigator.userAgent.indexOf('iPhone') > -1 ){
-    document.querySelector("[name=viewport]").setAttribute("content","");
-    document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
-  }
-    console.log(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || navigator.vendor || window.opera))
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || navigator.vendor || window.opera);
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    if(userAgent.indexOf('iPhone') > -1 ){
+        document.querySelector("[name=viewport]").setAttribute("content","");
+        document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
+    }
+    return /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) && !/iPad|Tablet/i.test(userAgent); // Exclude iPads and tablets
+    //return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || navigator.vendor || window.opera);
 }
 
 function cthemePageReady() {
