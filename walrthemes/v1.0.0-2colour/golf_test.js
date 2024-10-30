@@ -92,7 +92,7 @@ function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function () {
       if (($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) && !$(this).hasClass("mobileGrid") && !$(this).hasClass("desktopGrid")) {
-        console.log("if", $(this).prop("class"));
+        //console.log("if", $(this).prop("class"));
           $(this).find(".rsRow").each(function(){
               $(this).children(".cRowBlockText:not(:has(select))").addClass("GroupingHeader");
               if ($(this).find("input").prop("checked")) {
@@ -113,7 +113,15 @@ function putSomeClasses() {
           });
         
       } else if ($(this).hasClass("mobileGrid")) {
-        console.log("else if A ", $(this).prop("class"));
+        //console.log("else if A ", $(this).prop("class"));
+$(this).find(".rsRow").find(".cCell").each(function() {
+    if ($(this).find(".cRadio").prop("checked")) {
+        $(this).addClass("rsSelected");
+    }
+});
+
+          
+          
           $(this).find(".rsRow").find(".cCell").on("click", function () {
               $(this).parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
@@ -125,7 +133,7 @@ function putSomeClasses() {
              $(this).parent().find(".rsRow").removeClass("rsSelected");
           });
       } else if ($(this).hasClass("desktopGrid")) {
-        console.log("else if B ", $(this).prop("class"));
+        //console.log("else if B ", $(this).prop("class"));
            $(this).find(".rsRow").find("input").on("change", function () {
               $(this).parent().parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
