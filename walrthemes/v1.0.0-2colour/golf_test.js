@@ -333,7 +333,8 @@ window.addEventListener('resize', debounce(function (event) {
       var $element = $('.tooltip');
       adjustTooltipPosition($tooltips, $element);
   }
-
+          cthemePageReady();
+          gridUpdate();/*
   if (window.innerWidth > 980) {
       if ($(".rsProcessedGrid").hasClass("mobileGrid")) {
           $(".rsProcessedGrid").removeClass("mobileGrid");
@@ -350,5 +351,5 @@ window.addEventListener('resize', debounce(function (event) {
               gridUpdate();
           }
       }
-  }
+  }*/
 }, 500));
