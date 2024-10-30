@@ -146,7 +146,9 @@ function isMobileDevice() {
         document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
     }
     //return /Android|webOS|iPhone|IEMobile|Opera Mini|/i.test(userAgent) && !/iPad|Tablet/i.test(userAgent); // Exclude iPads and tablets
-    return /Android|webOS|iPhone|IEMobile|Opera Mini|iPad|Tablet/i.test(userAgent); // Exclude iPads and tablets
+    //return /Android|webOS|iPhone|IEMobile|Opera Mini|iPad|Tablet/i.test(userAgent);
+    return /Android|webOS|iPhone|IEMobile|Opera Mini/i.test(userAgent) || (/Macintosh/i.test(userAgent) && 'ontouchend' in document);
+
 }
 
 function cthemePageReady() {
