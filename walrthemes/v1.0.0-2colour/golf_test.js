@@ -262,7 +262,7 @@ function gridUpdate(grid_this) {
                   $(this).append($("#h_" + gridIND + "_" + e).clone());
                 });
               });
-              $("td.cCellHeader").parent().remove();
+              $(_grid_this).find("td.cCellHeader").parent().remove();
           }, 200);
       } else {
           $(".rsProcessedGrid").addClass("desktopGrid");
