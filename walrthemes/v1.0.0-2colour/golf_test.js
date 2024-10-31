@@ -241,10 +241,12 @@ function gridUpdate(grid_this) {
   var _grid_this;
   if (grid_this) {
       _grid_this = grid_this;
+      $(_grid_this).addClass(`gridInd${e}`);
   } else {
-      $(".rsSingleGrid, .rsMultiGrid").each(function () {
+      $(".rsSingleGrid, .rsMultiGrid").each(function (e) {
           if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
               _grid_this = $(this);
+              $(this).addClass(`gridInd${e}`);
           }
       });
   }
@@ -257,7 +259,7 @@ function gridUpdate(grid_this) {
       if (isMobileDevice()) {
           $(".rsProcessedGrid").addClass("mobileGrid");
           setTimeout(function () {
-              $(".rsRow").each(function () {
+              $$(_grid_this).find(".rsRow").each(function () {
                 $(this).children(".cCell").each(function (e) {
                   $(this).append($("#h_" + gridIND + "_" + e).clone());
                 });
