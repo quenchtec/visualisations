@@ -241,7 +241,6 @@ function gridUpdate(grid_this) {
   var _grid_this;
   if (grid_this) {
       _grid_this = grid_this;
-      $(_grid_this).addClass(`gridInd${e}`);
   } else {
       $(".rsSingleGrid, .rsMultiGrid").each(function () {
           if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
