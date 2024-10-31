@@ -257,7 +257,7 @@ function gridUpdate(grid_this) {
       if (isMobileDevice()) {
           $(".rsProcessedGrid").addClass("mobileGrid");
           setTimeout(function () {
-              $$(_grid_this).find(".rsRow").each(function () {
+              $(_grid_this).find(".rsRow").each(function () {
                 $(this).children(".cCell").each(function (e) {
                   $(this).append($("#h_" + gridIND + "_" + e).clone());
                 });
