@@ -1104,7 +1104,9 @@ textarea{
        initial-scale: 1.0;
        maximum-scale: 1.0;
      }
-      
+ }
+ 
+       
      .mobileGrid:not(.rsCQ) > tbody > .rsRow, .mobileGrid:not(.rsCQ) > tbody > .rsRow {
          display: flex;
          flex-direction: column;
@@ -1173,9 +1175,6 @@ textarea{
         justify-content: center;
         max-width: 80%;
     }
- }
- 
- 
  
  @media only screen and (min-width: 500px) {
     .cTable.desktopGrid:not(.rsCQ) .rsRow.cRow, .cTable.desktopGrid .rsRow.cRow {
@@ -1199,17 +1198,28 @@ textarea{
  /* Safari iOS settings in order to fix scrolling, all the way to the bottom, in mainContainer */
   @supports (-webkit-touch-callout: none) {
      /* CSS specific to iOS devices */
-      .mainContainer {
-          /*height: 1000px;
-          width: fit-content;
-          min-height: -webkit-fill-available*/
-          max-width: 93vw;
-        }
+    .rsHeaderRow{
+        width: 85vw !important;
+    }
+    /* CSS specific to iOS devices */
+    .mainContainer {
+        /*height: 1000px;
+        width: fit-content;
+        min-height: -webkit-fill-available*/
+        max-width: 98vw;
+        overflow: -webkit-paged-x;
+        width: auto;
+    }
+    .cQuestionText {
+        width: 93vw;
+    }
+    .mobileGrid:not(.rsCQ) > tbody > .rsRow, .mobileGrid:not(.rsCQ) > tbody > .rsRow {
+        flex-wrap: nowrap !important;
+    }
  }
  
- 
- .rsSelected  {
-     background-color: var(--question_selected_background_color);
+ .rsSelected {
+     background-color: var(--question_selected_background_color) !important;;
      transform: translate3d(0, 1px, 0);
      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
  }
@@ -1308,7 +1318,33 @@ textarea {
 
  /* END TOOLTIP CSS*/
  
- 
+@supports not (--css: variables) {
+    table {
+        border-collapse: collapse !important;
+        border-radius: 6px;
+        overflow: auto;
+        border-spacing: 3px;
+        border: 3px solid transparent; 
+    }
+
+    tbody > tr.rsRow {
+        border-collapse: collapse !important;
+        padding: 3px 3px 3px 3px;
+        border: 1px solid lightgray !important;
+        min-height: fit-content;
+        height: 40px;
+        border-spacing: 3px;
+        border-radius: 6px;
+    }
+
+    tbody > tr.rsRow > .cCellRowText.cellw100 {
+        padding: 10px;
+    }
+
+    .cCellHeader  {
+      padding: 0px 5px 0px 5px;
+    }
+}
  /*######################################################*/
  /*######################################################*/
 
