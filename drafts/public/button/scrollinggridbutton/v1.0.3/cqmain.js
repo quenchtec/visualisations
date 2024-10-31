@@ -124,7 +124,9 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
             return;
         } else {
             //Do not allow any more clicks before this is handled
-            $(QuestionID).data('blnClickOn', false);
+            if (rsParams.autonext) {
+                $(QuestionID).data('blnClickOn', false);
+            }
         }
         let intBtnNum = 0;
         let wrapNo = $(scrollDivID).find('.rsScrollGridContent').html(strHtml).data('wrapNo');
@@ -467,8 +469,10 @@ window.rsScrollingGridNextClick = function(QuestionID, btnDivID, scrollDivID, in
         if (scrollAreaTop) {
             let wrapPos = $(scrollDivID).find('.rsScrollAnimate').offset().top;
             $('html, body').scrollTop(wrapPos);
+            document.documentElement.scrollTop = 0;
         } else {
             $(window).scrollTop(0);
+            document.documentElement.scrollTop = 0;
         }
         return;
     }
