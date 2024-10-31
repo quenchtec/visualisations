@@ -243,10 +243,9 @@ function gridUpdate(grid_this) {
       _grid_this = grid_this;
       $(_grid_this).addClass(`gridInd${e}`);
   } else {
-      $(".rsSingleGrid, .rsMultiGrid").each(function (e) {
+      $(".rsSingleGrid, .rsMultiGrid").each(function () {
           if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
               _grid_this = $(this);
-              $(this).addClass(`gridInd${e}`);
           }
       });
   }
