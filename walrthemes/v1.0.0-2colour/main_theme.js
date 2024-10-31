@@ -92,7 +92,7 @@ function putSomeClasses() {
   var $cTables = $(".cTable");
   $cTables.each(function () {
       if (($(this).hasClass("rsSingle") || $(this).hasClass("rsMulti")) && !$(this).hasClass("mobileGrid") && !$(this).hasClass("desktopGrid")) {
-        console.log("if", $(this).prop("class"));
+        //console.log("if", $(this).prop("class"));
           $(this).find(".rsRow").each(function(){
               $(this).children(".cRowBlockText:not(:has(select))").addClass("GroupingHeader");
               if ($(this).find("input").prop("checked")) {
@@ -113,7 +113,15 @@ function putSomeClasses() {
           });
         
       } else if ($(this).hasClass("mobileGrid")) {
-        console.log("else if A ", $(this).prop("class"));
+        //console.log("else if A ", $(this).prop("class"));
+$(this).find(".rsRow").find(".cCell").each(function() {
+    if ($(this).find(".cRadio").prop("checked")) {
+        $(this).addClass("rsSelected");
+    }
+});
+
+          
+          
           $(this).find(".rsRow").find(".cCell").on("click", function () {
               $(this).parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
@@ -125,7 +133,7 @@ function putSomeClasses() {
              $(this).parent().find(".rsRow").removeClass("rsSelected");
           });
       } else if ($(this).hasClass("desktopGrid")) {
-        console.log("else if B ", $(this).prop("class"));
+        //console.log("else if B ", $(this).prop("class"));
            $(this).find(".rsRow").find("input").on("change", function () {
               $(this).parent().parent().find(".cCell").each(function () {
                   if ($(this).find("input").prop("checked")) {
@@ -145,8 +153,10 @@ function isMobileDevice() {
         document.querySelector("[name=viewport]").setAttribute("content","");
         document.querySelector("[name=viewport]").setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");
     }
-    return /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) && !/iPad|Tablet/i.test(userAgent); // Exclude iPads and tablets
-    //return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent || navigator.vendor || window.opera);
+    //return /Android|webOS|iPhone|IEMobile|Opera Mini|/i.test(userAgent) && !/iPad|Tablet/i.test(userAgent); // Exclude iPads and tablets
+    //return /Android|webOS|iPhone|IEMobile|Opera Mini|iPad|Tablet/i.test(userAgent);
+    return /Android|webOS|iPhone|IEMobile|Opera Mini/i.test(userAgent) || (/Macintosh/i.test(userAgent) && 'ontouchend' in document);
+
 }
 
 function cthemePageReady() {
@@ -247,12 +257,12 @@ function gridUpdate(grid_this) {
       if (isMobileDevice()) {
           $(".rsProcessedGrid").addClass("mobileGrid");
           setTimeout(function () {
-              $(".rsRow").each(function () {
+              $(_grid_this).find(".rsRow").each(function () {
                 $(this).children(".cCell").each(function (e) {
                   $(this).append($("#h_" + gridIND + "_" + e).clone());
                 });
               });
-              $("td.cCellHeader").parent().remove();
+              $(_grid_this).find("td.cCellHeader").parent().remove();
           }, 200);
       } else {
           $(".rsProcessedGrid").addClass("desktopGrid");
@@ -331,7 +341,9 @@ window.addEventListener('resize', debounce(function (event) {
       var $element = $('.tooltip');
       adjustTooltipPosition($tooltips, $element);
   }
-  if (window.innerWidth > 800) {
+          cthemePageReady();
+          gridUpdate();/*
+  if (window.innerWidth > 980) {
       if ($(".rsProcessedGrid").hasClass("mobileGrid")) {
           $(".rsProcessedGrid").removeClass("mobileGrid");
           $(".rsProcessedGrid").addClass("desktopGrid");
@@ -347,5 +359,5 @@ window.addEventListener('resize', debounce(function (event) {
               gridUpdate();
           }
       }
-  }
+  }*/
 }, 500));
