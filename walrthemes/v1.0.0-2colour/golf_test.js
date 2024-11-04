@@ -183,7 +183,7 @@ function cthemePageReady() {
 
   $(".rsSingleGrid, .rsMultiGrid").each(function () {
       if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
-          gridUpdate($(this));
+          //gridUpdate($(this));
           if (devTest) console.log("gridUpdate cthemePageReady");
       }
   });
@@ -341,8 +341,8 @@ window.addEventListener('resize', debounce(function (event) {
       var $element = $('.tooltip');
       adjustTooltipPosition($tooltips, $element);
   }
-          cthemePageReady();
-          gridUpdate();/*
+          cthemePageReady();/*
+          gridUpdate();
   if (window.innerWidth > 980) {
       if ($(".rsProcessedGrid").hasClass("mobileGrid")) {
           $(".rsProcessedGrid").removeClass("mobileGrid");
