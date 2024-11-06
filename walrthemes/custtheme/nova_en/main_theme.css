@@ -854,15 +854,24 @@ textarea{
       vertical-align: var(--interactive_vertical_align);
       color: var(--interactive_text_color);
       background-color: var(--interactive_background_color);
-      border: 1px solid var(--input_field_border_color);
+      border: var(--interactive_border_hover);
       border-radius: var(--interactive_border_radius);
  }
   .rsBtn:hover {
       border: var(--interactive_border_hover);
+      color: var(--interactive_text_color_hover);
       background-color: var(--interactive_background_color_hover);
  }
- .rsBtnChecked:hover {
-     background-color: var(--interactive_checked_background_color);
+
+  .rsBtnChecked {
+      background-color: var(--interactive_checked_background_color);
+      color: var(--interactive_checked_text_color);
+      font-weight: bold;
+ }
+
+.rsBtnChecked:hover {
+     background-color: var(--interactive_checked_background_color_hover);
+     color: var(--interactive_checked_text_color_hover);
      outline: 2px solid grey;
  }
  /* Interactive buttons special variables */
@@ -871,11 +880,7 @@ textarea{
       color: var(--special_text_color);
       background-color: var(--special_background_color);
  }
-  .rsBtnChecked {
-      background-color: var(--interactive_checked_background_color);
-      color: var(--interactive_checked_text_color);
-      font-weight: bold;
- }
+
  
  /* BUTTONS QUESTIONS END*/
  
