@@ -14,7 +14,7 @@ function customWatermark(wtx, qt, at, fs, retryCount = 20) {
     // Retry logic if no images are found, with a retry limit
     if (!imgs.length) {
         if (retryCount > 0) {
-            setTimeout(() => customWatermark(wtx, qt, at, fs, retryCount - 1), 100);
+            setTimeout(() => customWatermark(wtx, qt, at, fs, retryCount - 1), 50);
         } else {
             console.error("No images found after multiple attempts.");
         }
