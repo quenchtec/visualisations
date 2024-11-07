@@ -7,7 +7,7 @@ function customWatermark(wtx, qt, at, fs, retryCount = 20) {
 
     var imgs = [];
 
-    // Collect images for watermarking based on the flags
+    // Collect all images for watermarking based on the flags
     if (blnQuestionText) imgs = imgs.concat($(document).find(".cQuestionText img").toArray());
     if (blnAnswers) imgs = imgs.concat($(document).find(".rsRow img").toArray());
 
@@ -24,34 +24,30 @@ function customWatermark(wtx, qt, at, fs, retryCount = 20) {
     imgs.forEach(function(img) {
         img.crossOrigin = "Anonymous";
 
-        // Apply watermark when the image is fully loaded
-        if (!img.dataset.watermarked) {
-            img.onload = function() {
+        // Ensure the image is loaded before applying the watermark
+        function loadAndApplyWatermark() {
+            if (img.complete && img.naturalWidth > 0 && img.naturalHeight > 0) {
                 applyWatermark(img);
-                img.dataset.watermarked = 'true';
-                img.onload = null;
-            };
-
-            // Apply watermark immediately if the image is already loaded
-            if (img.complete && img.width > 0 && img.height > 0) {
-                applyWatermark(img);
-                img.dataset.watermarked = 'true';
-                img.onload = null;
+            } else {
+                img.onload = function() {
+                    applyWatermark(img);
+                    img.onload = null;
+                };
             }
         }
 
-        // Set up ResizeObserver to handle image resizing
+        loadAndApplyWatermark();
+
+        // Set up dynamic resizing to handle image resizing (for responsive layouts)
         const observer = new ResizeObserver(() => {
-            if (img.dataset.watermarked) {
-                applyWatermark(img);
-            }
+            applyWatermark(img);
         });
         observer.observe(img);
     });
 
     function applyWatermark(img) {
         try {
-            if (img.width === 0 || img.height === 0) {
+            if (img.naturalWidth === 0 || img.naturalHeight === 0) {
                 console.warn("Image dimensions are zero. Skipping watermark for:", img);
                 return;
             }
@@ -59,9 +55,10 @@ function customWatermark(wtx, qt, at, fs, retryCount = 20) {
             var canvas = document.createElement('canvas');
             canvas.classList.add("waterCanvas");
             var ctx = canvas.getContext('2d');
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0, img.width, img.height);
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+
+            ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
 
             var fontSize = fs;
             ctx.font = fontSize + 'px Arial';
@@ -74,8 +71,12 @@ function customWatermark(wtx, qt, at, fs, retryCount = 20) {
             ctx.fillText(strWaterMarkText, x, y);
 
             img.src = canvas.toDataURL('image/png');
+            img.dataset.watermarked = 'true';
         } catch (e) {
-            console.error("Error applying watermark: ", e);
+            console.error("Error applying watermark:", e);
+            if (e.name === "SecurityError") {
+                console.warn("Cross-origin error: Make sure the image is hosted on the same domain or allows cross-origin access.");
+            }
         }
     }
 }
