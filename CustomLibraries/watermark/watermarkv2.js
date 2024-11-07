@@ -1,4 +1,4 @@
-function customWatermark(wtx, qt, at, fs) {
+function customWatermark(wtx, qt, at, fs, retryCount = 20) {
     $(document).find(".cTable").addClass("rsWatermark");
 
     let strWaterMarkText = wtx;
@@ -7,36 +7,40 @@ function customWatermark(wtx, qt, at, fs) {
 
     var imgs = [];
 
-    // Collect all images for watermarking based on the flags
+    // Collect images for watermarking based on the flags
     if (blnQuestionText) imgs = imgs.concat($(document).find(".cQuestionText img").toArray());
     if (blnAnswers) imgs = imgs.concat($(document).find(".rsRow img").toArray());
 
+    // Retry logic if no images are found, with a retry limit
     if (!imgs.length) {
-        console.error("No images found");
+        if (retryCount > 0) {
+            setTimeout(() => customWatermark(wtx, qt, at, fs, retryCount - 1), 100);
+        } else {
+            console.error("No images found after multiple attempts.");
+        }
         return;
     }
 
     imgs.forEach(function(img) {
         img.crossOrigin = "Anonymous";
 
-        // Apply the watermark only when the image is fully loaded
+        // Apply watermark when the image is fully loaded
         if (!img.dataset.watermarked) {
-            // Use onload to ensure the image is loaded
             img.onload = function() {
                 applyWatermark(img);
                 img.dataset.watermarked = 'true';
-                img.onload = null; // Clear the handler to prevent re-execution
+                img.onload = null;
             };
 
-            // If image is already loaded (in case of cached images), apply watermark immediately
+            // Apply watermark immediately if the image is already loaded
             if (img.complete && img.width > 0 && img.height > 0) {
                 applyWatermark(img);
                 img.dataset.watermarked = 'true';
-                img.onload = null; // Clear the handler to prevent re-execution
+                img.onload = null;
             }
         }
 
-        // Watch for image resizing
+        // Set up ResizeObserver to handle image resizing
         const observer = new ResizeObserver(() => {
             if (img.dataset.watermarked) {
                 applyWatermark(img);
