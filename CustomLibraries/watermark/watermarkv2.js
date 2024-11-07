@@ -18,9 +18,22 @@ function customWatermark(wtx, qt, at, fs) {
 
         imgs.forEach(function(img) {
             img.crossOrigin = "Anonymous";
-            applyWatermark(img);
 
-            // Use ResizeObserver to reapply watermark on resize
+            // Apply watermark when the image is loaded
+            if (!img.dataset.watermarked) {
+                img.onload = function() {
+                    applyWatermark(img);
+                    img.onload = null;
+                };
+
+                // If the image is already loaded and has valid dimensions, apply the watermark immediately
+                if (img.complete && img.width > 0 && img.height > 0) {
+                    applyWatermark(img);
+                    img.onload = null;
+                }
+            }
+
+            // Set up dynamic resize handling
             const observer = new ResizeObserver(() => {
                 applyWatermark(img);
             });
@@ -30,6 +43,12 @@ function customWatermark(wtx, qt, at, fs) {
 
     function applyWatermark(img) {
         try {
+            // Ensure image dimensions are non-zero before drawing
+            if (img.width === 0 || img.height === 0) {
+                console.warn("Image dimensions are zero. Skipping watermark for:", img);
+                return;
+            }
+
             var canvas = document.createElement('canvas');
             canvas.classList.add("waterCanvas");
             var ctx = canvas.getContext('2d');
@@ -43,10 +62,12 @@ function customWatermark(wtx, qt, at, fs) {
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
 
+            // Watermark position at the center
             var x = canvas.width / 2;
             var y = canvas.height / 2;
             ctx.fillText(strWaterMarkText, x, y);
 
+            // Replace the original image source with the watermarked version
             img.src = canvas.toDataURL('image/png');
             img.dataset.watermarked = 'true';
         } catch (e) {
