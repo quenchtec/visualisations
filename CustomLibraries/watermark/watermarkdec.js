@@ -1,4 +1,4 @@
-function customWatermark(wtx, qt, at, fs, retryCount = 20) {
+function customWatermark(wtx, qt, at, fs) {
     $(document).find('div[id^="question_"]').addClass("rsWatermark");
 
     let strWaterMarkText = wtx;
@@ -7,62 +7,47 @@ function customWatermark(wtx, qt, at, fs, retryCount = 20) {
 
     var imgs = [];
 
-    // Collect all images for watermarking based on the flags
     if (blnQuestionText) imgs = imgs.concat($(document).find(".imghotspotContainer img, .question-text img").toArray());
     if (blnAnswers) imgs = imgs.concat($(document).find(".row-elements img").toArray());
 
-    // Find any canvases with background images
     const canvases = $(document).find("canvas[style*='background-image']");
     if (canvases.length) {
         canvases.each(function() {
             const bgImageUrl = $(this).css("background-image").replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+            const canvasElement = $(this).get(0);
 
-            // Load the background image as an offscreen image
-            const img = new Image();
-            img.crossOrigin = "Anonymous"; // Ensure cross-origin compatibility if needed
-            img.src = bgImageUrl;
-
-            img.onload = function() {
-                applyWatermarkToCanvasBackground(img, $(this).get(0), fs, strWaterMarkText);
-            };
-
-            img.onerror = function() {
-                console.error("Failed to load background image for watermarking:", bgImageUrl);
-            };
+            loadAndApplyCanvasBackgroundWatermark(bgImageUrl, canvasElement, fs, strWaterMarkText);
         });
     }
 
-    // Retry logic if no standard <img> elements are found, with a retry limit
     if (!imgs.length && !canvases.length) {
-        if (retryCount > 0) {
-            setTimeout(() => customWatermark(wtx, qt, at, fs, retryCount - 1), 100);
-        } else {
-            console.error("No images or canvases with background images found after multiple attempts.");
-        }
+        console.error("No images or canvases with background images found.");
         return;
     }
 
-    imgs.forEach(function(img) {
-        img.crossOrigin = "Anonymous";
-
-        function loadAndApplyWatermark() {
-            if (img.complete && img.naturalWidth > 0 && img.naturalHeight > 0) {
+    // Wait for all images to load before applying the watermark
+    Promise.all(imgs.map(img => loadImage(img)))
+        .then(() => {
+            imgs.forEach(img => {
                 applyWatermark(img);
-            } else {
-                img.onload = function() {
+                const observer = new ResizeObserver(() => {
                     applyWatermark(img);
-                    img.onload = null;
-                };
+                });
+                observer.observe(img);
+            });
+        })
+        .catch(err => console.error("Error loading images:", err));
+
+    function loadImage(img) {
+        return new Promise((resolve, reject) => {
+            if (img.complete && img.naturalWidth > 0 && img.naturalHeight > 0) {
+                resolve();
+            } else {
+                img.onload = resolve;
+                img.onerror = reject;
             }
-        }
-
-        loadAndApplyWatermark();
-
-        const observer = new ResizeObserver(() => {
-            applyWatermark(img);
         });
-        observer.observe(img);
-    });
+    }
 
     function applyWatermark(img) {
         try {
@@ -99,6 +84,20 @@ function customWatermark(wtx, qt, at, fs, retryCount = 20) {
         }
     }
 
+    function loadAndApplyCanvasBackgroundWatermark(bgImageUrl, canvasElement, fontSize, watermarkText) {
+        const img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.src = bgImageUrl;
+
+        img.onload = function() {
+            applyWatermarkToCanvasBackground(img, canvasElement, fontSize, watermarkText);
+        };
+
+        img.onerror = function() {
+            console.error("Failed to load background image for watermarking:", bgImageUrl);
+        };
+    }
+
     function applyWatermarkToCanvasBackground(img, targetCanvas, fontSize, watermarkText) {
         const canvas = document.createElement('canvas');
         canvas.width = img.width;
@@ -116,7 +115,6 @@ function customWatermark(wtx, qt, at, fs, retryCount = 20) {
         const y = canvas.height / 2;
         ctx.fillText(watermarkText, x, y);
 
-        // Set the target canvas's background image to the watermarked version
         $(targetCanvas).css("background-image", `url(${canvas.toDataURL("image/png")})`);
     }
 }
