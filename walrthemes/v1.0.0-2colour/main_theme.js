@@ -269,7 +269,8 @@ function gridUpdate(grid_this) {
           setTimeout(function () {
               //let colLength = $('#' + gridID).find(".cCellHeader").not(".cCellFirstHeader").length;
               let colLength = $('#' + gridID).find(".cCellHeader").length;
-              let gridWidth = $('#' + gridID).find(".rsHeaderRow")[0].clientWidth;
+              //let gridWidth = $('#' + gridID).find(".rsHeaderRow")[0].clientWidth;
+              let gridWidth = $('#' + gridID).find(".rsHeaderRow")[0]?.clientWidth ?? $('#' + gridID).find("> tbody")[0].clientWidth;
               var cHeight = 40;
               var cWidth = 0;
               //console.log(gridWidth);
