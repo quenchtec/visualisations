@@ -8,7 +8,7 @@ function customWatermark(wtx, qt, at, fs, retryCount = 20) {
     var imgs = [];
 
     // Collect all images for watermarking based on the flags
-    if (blnQuestionText) imgs = imgs.concat($(document).find(".imghotspotContainer img").toArray());
+    if (blnQuestionText) imgs = imgs.concat($(document).find(".imghotspotContainer img, .rsWatermark img").toArray());
     if (blnAnswers) imgs = imgs.concat($(document).find(".row-elements img").toArray());
 
     // Retry logic if no images are found, with a retry limit
