@@ -107,7 +107,7 @@ function customWatermark(wtx, qt, at, fs) {
         ctx.drawImage(img, 0, 0, img.width, img.height);
 
         ctx.font = fontSize + 'px Arial';
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         
