@@ -1,6 +1,6 @@
 /* SYSTEM RELATED CLASSES CSS*/
 
-.cCellRowText {
+  .rsRowSlider > .cCellRowText {
     width: 100% !important;
     display: flex;
     flex-direction: column;
