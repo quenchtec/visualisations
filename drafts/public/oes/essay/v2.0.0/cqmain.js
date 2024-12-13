@@ -10,6 +10,7 @@ function rsEssay(rsQno, rsSubqIndex, rsParams = {}) {
     rsParams.intIdealLength = setDefault(rsParams.intIdealLength, 200);
     rsParams.blnProgressBarText = setDefault(rsParams.blnProgressBarText, true);
     rsParams.strProgressText = setDefault(rsParams.strProgressText, "");
+   
     if (rsParams.blnNextButton) $("#btnNext").hide();
     if (rsParams.blnShowProgress) {
         const arrMessages = rsParams.strProgressText.split("#|#").map(msg => msg.split("|"));
@@ -31,13 +32,15 @@ function rsEssay(rsQno, rsSubqIndex, rsParams = {}) {
     }
     if (rsParams.blnNextButton) {
         $textAreas.on("input", function() {
-            const textLength = $textAreas.eq(rsSubqIndex).val().length;
+            const textLength = $textAreas.eq(rsSubqIndex).val().replace(/\s+/g, ' ').length;
+            //const textLength = $textAreas.eq(rsSubqIndex).val().length;
             $("#btnNext").toggle(textLength >= rsParams.intIdealLength);
         });
     }
     function updateProgressBar(intIdealLength, messages, index) {
         const intStep = 100 / messages.length;
-        const inputLength = $textAreas.eq(rsSubqIndex).val().length;
+        const inputLength = $textAreas.eq(rsSubqIndex).val().replace(/\s+/g, ' ').length;
+        //const inputLength = $textAreas.eq(rsSubqIndex).val().length;
         const percentage = (inputLength / intIdealLength) * 100;
         $(".essay-progress-fill").eq(index).width(`${Math.min(percentage, 100)}%`);
         $(".essay-progress-bar").eq(index).width($textAreas[0].clientWidth);
