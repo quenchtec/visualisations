@@ -38,7 +38,7 @@ function rsEssay(rsQno, rsSubqIndex, rsParams) {
         let arrMessages = arrMessage;
         let x = 0;
         let intIL = intIdealLength;
-        let stringInputed = $(QuestionID).find(".cTextArea").eq(intIndex).val().length;
+        let stringInputed = $(QuestionID).find(".cTextArea").eq(intIndex).val().replace(/\s+/g, ' ').length;
         var intStep = 100 / arrMessages.length;
         if ((intIL > 0) && (stringInputed > 0)) {
             x = stringInputed / (intIL / 100);
