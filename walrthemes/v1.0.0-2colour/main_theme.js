@@ -13,9 +13,14 @@ $(window).on('load', function () {
 
         for (var mutation of mutationsList) {
             if (mutation.type === "childList") {
+				
+				if (mutation.target.closest('.rsScrollGridContent')) {
+					continue;
+				}
+				
                 // check if relevant nodes are added or removed
                 let relevantMutation = false;
-
+				
                 // check added nodes
                 mutation.addedNodes.forEach(function(node) {
                     if (node.nodeType === Node.ELEMENT_NODE) {
@@ -49,12 +54,13 @@ $(window).on('load', function () {
                     // Attach event handlers
                     $("#btnNext").off('click').on('click', function() {
                         // any clicks on next button are here
+                        shouldScroll = true;
                     });
 
                     $(".rsBtnGridSingle").off('click').on('click', function() {
                         //document.querySelector('.mainContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            						document.body.scrollTop = 0;
-            						document.documentElement.scrollTop = 0;
+            			document.body.scrollTop = 0;
+            			document.documentElement.scrollTop = 0;
                     });
 
                     shouldScroll = true;
