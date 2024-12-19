@@ -1,6 +1,6 @@
 .rsScrollGridContent {
 	text-align: center;
-	padding: 11px;
+	/*padding: 11px;*/
 	margin: 11px;
 	border: 2px solid black;
 	border-top-left-radius: 20px;
@@ -46,6 +46,7 @@
 	width: 100%;
 }
 .rsScrollAnimate {
+	margin: 11px; 
 	text-align: center;
 }
 /* Interactive buttons variables */
