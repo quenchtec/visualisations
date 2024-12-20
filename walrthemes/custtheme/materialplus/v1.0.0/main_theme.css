@@ -1139,20 +1139,18 @@ textarea{
     .cTable.desktopGrid:not(.rsCQ) {
         border-collapse: collapse; /* Ensures adjacent borders overlap as 1px */
     }
-    .cTable.desktopGrid:not(.rsCQ) .rsRow.cRow:hover, .cTable.desktopGrid:not(.rsCQ) .rsRow.cRow:hover {
-        /*
+    /*.cTable.desktopGrid:not(.rsCQ) .rsRow.cRow:hover, .cTable.desktopGrid:not(.rsCQ) .rsRow.cRow:hover {*/
+    .cTable.desktopGrid:not(.rsCQ) .rsRow:hover {
         background-color: #F0F4F6;
-        lets remove the alterate background*/
     }
-    .cTable.desktopGrid:not(.rsCQ) .rsRow.cRowSelected, .cTable.desktopGrid:not(.rsCQ) .rsRow.cRowSelected{
+    .cTable.desktopGrid:not(.rsCQ) .rsRow.cRowSelected{
         /*
         background-color: #d3d3d31c;
         lets remove the alterate background*/
     }
-    .cTable.desktopGrid:not(.rsCQ) .rsRow.cRowSelected:hover, .cTable.desktopGrid:not(.rsCQ) .rsRow.cRowSelected:hover {
-        /*
+    /*.cTable.desktopGrid:not(.rsCQ) .rsRow.cRowSelected:hover {*/
+    .cTable.desktopGrid:not(.rsCQ) .rsRow.cRowSelected:hover {
         background-color: #F0F4F6;
-        lets remove the alterate background*/
     }
     .desktopGrid:not(.rsCQ) > tbody > tr:has(.cCellHeader) > .cCellHeader > .rs-ht, .desktopGrid:not(.rsCQ)> tbody > tr:has(.cCellHeader) > .cCellHeader > .rs-ht{
         text-wrap: balance;
