@@ -1125,10 +1125,19 @@ textarea{
  }
  
  
- 
+
  @media only screen and (min-width: 500px) {
-    .cTable.desktopGrid:not(.rsCQ) .rsRow.cRow, .cTable.desktopGrid .rsRow.cRow {
+    /*.cTable.desktopGrid:not(.rsCQ) .rsRow.cRow, .cTable.desktopGrid .rsRow.cRow */
+    .cTable.desktopGrid:not(.rsCQ) .rsRow th, .cTable.desktopGrid:not(.rsCQ) .rsRow tr, .cTable.desktopGrid:not(.rsCQ) .rsRow td {
+        /*
         background-color: #d3d3d31c;
+        lets remove the alterate background*/
+        border-top: 1px solid #efefef;
+        border-bottom: 1px solid #efefef;
+        padding: 4px;
+    }
+    .cTable.desktopGrid:not(.rsCQ) {
+        border-collapse: collapse; /* Ensures adjacent borders overlap as 1px */
     }
     .cTable.desktopGrid:not(.rsCQ) .rsRow.cRow:hover, .cTable.desktopGrid:not(.rsCQ) .rsRow.cRow:hover {
         background-color: #F0F4F6;
