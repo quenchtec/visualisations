@@ -1178,6 +1178,7 @@ textarea{
           /*height: 1000px;
           width: fit-content;
           min-height: -webkit-fill-available*/
+	  padding-top: 15px;
      }
  
  }
