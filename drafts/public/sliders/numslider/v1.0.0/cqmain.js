@@ -41,6 +41,7 @@ function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
   rsParams.strOptOutText = (typeof rsParams.strOptOutText === "undefined") ? "Prefer not to answer" : rsParams.strOptOutText;
   rsParams.blnOptOutBigButton = (typeof rsParams.blnOptOutBigButton === "undefined") ? true : rsParams.blnOptOutBigButton;
 
+  rsParams.intSliderSteps = rsParams.intSliderSteps.includes(".") ? parseFloat(rsParams.intSliderSteps) : parseInt(rsParams.intSliderSteps, 10);
 
   if (rsParams.strSliderColumnLabels.indexOf("#") != -1) rsParams.strSliderColumnLabels = $(".rsSliderQuestion").find(`${rsParams.strSliderColumnLabels}`).html();
   if (rsParams.strOptOutText.indexOf("#") != -1) rsParams.strOptOutText = $(".rsSliderQuestion").find(`${rsParams.strOptOutText}`).html();
