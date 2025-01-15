@@ -14,7 +14,7 @@ function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
   rsParams.intSliderMaxValue = (typeof rsParams.intSliderMaxValue === "undefined") ? 7 : rsParams.intSliderMaxValue; //The max value of the slider
   rsParams.intSliderMinRestriction = (typeof rsParams.intSliderMinRestriction === "undefined") ? rsParams.intSliderMinValue : rsParams.intSliderMinRestriction; //Points to the first available value for selection
   rsParams.intSliderMaxRestriction = (typeof rsParams.intSliderMaxRestriction === "undefined") ? rsParams.intSliderMaxValue : rsParams.intSliderMaxRestriction; // Maximum selectable value
-  rsParams.intSliderSteps = (typeof rsParams.intSliderSteps === "undefined") ? 1 : rsParams.intSliderSteps; //How many points should the handle take on move
+  rsParams.intSliderSteps = (typeof rsParams.intSliderSteps === "undefined") ? "1" : rsParams.intSliderSteps; //How many points should the handle take on move
   rsParams.blnOffScaleHandle = (typeof rsParams.blnOffScaleHandle === "undefined") ? true : rsParams.blnOffScaleHandle; // When true, the handle will be just outside the slider
   rsParams.intSliderDecimals = (typeof rsParams.intSliderDecimals === "undefined") ? 0 : rsParams.intSliderDecimals; // Specifies Adding decimal point and digit
   rsParams.strSliderPips = (typeof rsParams.strSliderPips === "undefined") ? "" : rsParams.strSliderPips;
