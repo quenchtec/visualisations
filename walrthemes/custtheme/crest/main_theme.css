@@ -451,33 +451,65 @@ textarea{
  
  /* PROGRESS BAR */
  
-  .progressContainer {
+/*  .progressContainer {
       display: inline-block;
       width: 100%;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 1;
- }
+ }*/
  /* Progressbar - background */
-  .progressBarContainer {
+ /* .progressBarContainer {
       width: 100%;
       background-color: var(--progressbar_background_color);
       height: 6px;
       margin: 0;
- }
+ }*/
  /* Progressbar - foreground */
-  .progressBar {
+ /* .progressBar {
       background-color: var(--progressbar_foreground_color);
       height: 6px;
- }
+ }*/
  /* Progressbar - text */ 
-  .progressBarText {
+ /* .progressBarText {
       display: none;
- }
+ }*/
  
  
+  /* PROGRESS BAR */
  
+.progressContainer {
+	display: block;
+	width: 40%;
+	z-index: 1;
+	order: 3;
+}
+/* Progressbar - background */
+.progressBarContainer {
+	width: 100%;
+	background-color: var(--progressbar_background_color);
+	height: 25px;
+	margin: 0;
+	border-radius: 15px;
+}
+/* Progressbar - foreground */
+.progressBar {
+	background-color: var(--progressbar_foreground_color);
+	height: 25px;
+	text-align: center;
+	border-radius: 15px;
+}
+/* Progressbar - text */ 
+.progressBarText {
+	font-size: 13px;
+	text-align: center;
+	width: 103%;
+	margin-top: -20px;
+	display: block;
+	font-weight: bold;
+	color: white;
+} 
  
  /*
  .progressContainer {
@@ -1168,7 +1200,31 @@ textarea{
  
  
  /* ######### END GRID CSS FOR MOBILE ########## */
- 
+  /* Safari iOS settings in order to fix scrolling, all the way to the bottom, in mainContainer */
+  @supports (-webkit-touch-callout: none) {
+     /* CSS specific to iOS devices */
+      .mainContainer {
+          /*height: 1000px;
+          width: fit-content;
+          min-height: -webkit-fill-available*/
+          max-width: 93vw;
+        }
+      .contentContainer {
+          max-width: 93vw;
+        }
+      .cCellSubQuestion {
+          max-width: 93vw;
+        }
+ }
+
+/* ######### GRID CSS FOR DESKTOP ########## */
+@media only screen and (min-width: 981px) {
+	.desktopGrid > tbody > .cRow {
+		/*background-color: rgba(255, 255, 255, 0.2);*/
+	}
+
+}
+/* ######### END GRID CSS FOR DESKTOP ########## */
  
  
  /* Safari iOS settings in order to fix scrolling, all the way to the bottom, in mainContainer */
@@ -1197,9 +1253,25 @@ textarea{
       -moz-appearance: none;
       margin: 0;
  }
- 
- @media only screen and (max-width: 980px) {
-        .logo1Container {
-        display: none;
- }
- }
+.rsScrollGridWrappper{
+    min-height: 100px;
+}
+@media only screen and (max-width: 980px) {
+	.logo1Container {
+		display: none;
+	}
+	.progressContainer {
+		order: 0 !important;
+	}
+}
+/* Media query to target devices with coarse pointer (e.g., touch devices) */
+@media (hover: none) and (pointer: coarse) {
+  .rsBtn:hover, .rsImgBtn:hover {
+    background-color: var(--interactive_background_color) !important;
+    color: var(--main_text_color) !important;
+  }
+  .rsBtnChecked:hover, .rsImgBtnChecked:hover {
+    background-color: var(--interactive_background_color_hover) !important;
+    color: var(--interactive_text_color_hover) !important;
+  }
+}
