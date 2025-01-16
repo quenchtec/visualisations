@@ -48,7 +48,7 @@ function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
 
   //Prevent ceating too big slider
 
-  if (((Math.abs(rsParams.intSliderMaxValue - rsParams.intSliderMinValue) / rsParams.intSliderSteps) > 10000) && rsParams.choicePips == "steps") {
+  if (((Math.abs(rsParams.intSliderMaxValue - rsParams.intSliderMinValue) / Number(rsParams.intSliderSteps)) > 10000) && rsParams.choicePips == "steps") {
     alert("Slider with minimum point " + rsParams.intSliderMinValue + " and maximum point " + rsParams.intSliderMaxValue + " with steps of " + rsParams.intSliderSteps + " will create performance issues due to slider size of " + Math.abs(rsParams.intSliderMaxValue - rsParams.intSliderMinValue) / rsParams.intSliderSteps + "! \n\nConsider moving the slider type to 'values' or reduce your slider! \n\nSlider type changed to 'value' for this test.");
     rsParams.choicePips = "values";
   }
@@ -73,7 +73,7 @@ function rsNoUiSlider(rsQno, rsSubqIndex, rsParams) {
             min: (rsParams.intSliderMinValue),
             max: rsParams.intSliderMaxValue
         },
-        step: rsParams.intSliderSteps,
+        step: Number(rsParams.intSliderSteps),
         pips: {
             mode: rsParams.choicePips,
             values: arrPips,
