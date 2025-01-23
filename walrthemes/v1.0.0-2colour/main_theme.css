@@ -798,10 +798,15 @@ textarea{
    padding: 8px;
    margin: 0;
    min-width: fit-content;
-   max-width: 90% !important;
    transform: translate3d(0, 0, 0);
  }
- .rsRow:has(.cRowBlockText):hover{
+@media only screen and (min-width: 800px) {
+.rsRow select{
+       max-width: 90% !important;
+}
+
+
+.rsRow:has(.cRowBlockText):hover{
    background-color: var(--page_content_background_color) !important;
    transform: translate3d(0, 0, 0) !important;
    border: none !important;
