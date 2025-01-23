@@ -797,13 +797,10 @@ textarea{
    border-radius: var(--interactive_border_radius);
    padding: 8px;
    margin: 0;
+   max-width: 90% !important;
    min-width: fit-content;
    transform: translate3d(0, 0, 0);
  }
-@media only screen and (min-width: 800px) {
-.rsRow select{
-       max-width: 90% !important;
-}
 
 
 .rsRow:has(.cRowBlockText):hover{
