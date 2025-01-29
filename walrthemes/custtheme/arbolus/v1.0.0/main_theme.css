@@ -667,7 +667,7 @@ textarea{
         /*.rsSingle > tbody > .rsRow:not([class=cRowBlockText]):hover, .rsMulti > tbody > .rsRow:not([class=cRowBlockText]):hover{*/
         background-color: var(--answers_background_colour_hover);
         color: var(--answers_text_colour_hover);
-        border: var(--answers_border_hover);
+        border: var(--answers_border_hover) !important;
         transform: translate3d(0, -2px, 0);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
      }
