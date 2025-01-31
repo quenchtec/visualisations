@@ -268,7 +268,8 @@ function rsVisHoriSlider(rsQno, rsSubqIndex, rsParams) { // Creates a basic slid
             const radioButtons = $(this).find('.cRadio');
             const selectedIndex = radioButtons.index(radioButtons.filter(':checked'));
             if ($(this).find('.cRadio').eq(selectedIndex).hasClass('cRadioExcl') == false) {
-                $(this).find('.cSlider').slider('option', 'value', (selectedIndex - 1));
+                //$(this).find('.cSlider').slider('option', 'value', (selectedIndex - 1)); //Change request by Bjorn G 31/01/2025
+                $(this).find('.cSlider').slider('option', 'value', (selectedIndex - rsParams.intExclColumnLeft));//Change request by Bjorn G 31/01/2025 to fix position/value when moving back to a question
                 $(this).find('.ui-slider-handle').css('background', sldHandleCheckedBackground);
             }
         }
