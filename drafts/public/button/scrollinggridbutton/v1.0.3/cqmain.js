@@ -36,7 +36,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
 
 
     //Check for prescript
-    if (rsParams.prescript.length > 0) sParam.prescript;
+    if (rsParams.prescript.length > 0) rsParam.prescript;
 
     //Various info from question
     const intNumRows = $(QuestionID).find('.rsRow').length;
@@ -195,7 +195,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
     animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, startRow, direction, rsParams.useimagesasbackground, rsParams.autonext);
 
     //Check for prescript
-    if (rsParams.postscript.length > 0) sParam.postscript;
+    if (rsParams.postscript.length > 0) rsParams.postscript;
 }
 
 //Helper functions
