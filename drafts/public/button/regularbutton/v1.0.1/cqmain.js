@@ -27,7 +27,7 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
   
     //Check for prescript
     //if (rsParams.prescript.length > 0) sParam.prescript;
-    if (rsParams.prescript.length > 0) rsParam.prescript;
+    if (rsParams.prescript.length > 0) rsParams.prescript;
     //Remove extra checkboxes possibly inserted on open-ends, in order to simplyfy the iQuest logic
     $('.rsExtraOpen').remove();
   
@@ -296,7 +296,7 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
     }
     //Check for postscript
     //if (rsParams.postscript.length > 0) sParam.postscript;
-    if (rsParams.postscript.length > 0) rsParam.postscript;
+    if (rsParams.postscript.length > 0) rsParams.postscript;
     
   }
   function wait(ms){
