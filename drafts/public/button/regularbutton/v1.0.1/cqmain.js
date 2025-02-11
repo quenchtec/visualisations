@@ -26,7 +26,8 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
     rsParams.postscript = (typeof rsParams.postscript === "undefined") ? "" : rsParams.postscript;
   
     //Check for prescript
-    if (rsParams.prescript.length > 0) sParam.prescript;
+    //if (rsParams.prescript.length > 0) sParam.prescript;
+    if (rsParams.prescript.length > 0) rsParam.prescript;
     //Remove extra checkboxes possibly inserted on open-ends, in order to simplyfy the iQuest logic
     $('.rsExtraOpen').remove();
   
@@ -294,7 +295,9 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
       $(btnDivID).find(baseBtnClassSelect).not('.rsBtnSpecial').css('width', 'calc(' + pctWidth + '% - ' + valuel + ' - ' + valuer + ' - ' + valuepl + ' - ' + valuepr + ' - 10px)');
     }
     //Check for postscript
-    if (rsParams.postscript.length > 0) sParam.postscript;
+    //if (rsParams.postscript.length > 0) sParam.postscript;
+    if (rsParams.postscript.length > 0) rsParam.postscript;
+    
   }
   function wait(ms){
      var start = new Date().getTime();
