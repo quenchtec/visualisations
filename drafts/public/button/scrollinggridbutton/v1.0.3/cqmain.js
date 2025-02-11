@@ -36,7 +36,7 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
 
 
     //Check for prescript
-    if (rsParams.prescript.length > 0) rsParam.prescript;
+    if (rsParams.prescript.length > 0) rsParams.prescript;
 
     //Various info from question
     const intNumRows = $(QuestionID).find('.rsRow').length;
