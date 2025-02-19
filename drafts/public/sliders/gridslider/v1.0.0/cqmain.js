@@ -17,9 +17,9 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
       strAllHeadersPositions = strAllHeadersPositions + (e).toString() + " ";
     }
     if (e && (e < intMax)) {
-      strAllHeaders = strAllHeaders + $(this).find(".rs-ht").text() + "|";
+      strAllHeaders = strAllHeaders + $(this).find(".rs-ht").html() + "|";
     } else {
-      strAllHeaders = strAllHeaders + $(this).find(".rs-ht").text();
+      strAllHeaders = strAllHeaders + $(this).find(".rs-ht").html();
     }
   });
 
@@ -291,10 +291,10 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
         intCountPips = 0;
       }
       if (_strColLabels.length < 1) {
-        let currentText = $(this).text();
-        $(this).text(currentText + _suffix);
+        let currentText = $(this).html();
+        $(this).html(currentText + _suffix);
       } else {
-        $(this).text(_strColLabels[intCountPips]);
+        $(this).html(_strColLabels[intCountPips]);
         $(this).addClass("multi-text-scale");
         if (!rsParams.blnSliderColumnLabels) {
           $(".aero-opt-out-button").css("margin-top", "1rem");
