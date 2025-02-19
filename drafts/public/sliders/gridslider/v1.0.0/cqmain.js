@@ -17,9 +17,9 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
       strAllHeadersPositions = strAllHeadersPositions + (e).toString() + " ";
     }
     if (e && (e < intMax)) {
-      strAllHeaders = strAllHeaders + $(this).find(".rs-ht").html() + "|";
+      strAllHeaders = strAllHeaders + $(this).find(".rs-ht").text() + "|";
     } else {
-      strAllHeaders = strAllHeaders + $(this).find(".rs-ht").html();
+      strAllHeaders = strAllHeaders + $(this).find(".rs-ht").text();
     }
   });
 
