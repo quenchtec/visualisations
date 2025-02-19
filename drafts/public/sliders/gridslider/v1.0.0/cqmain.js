@@ -16,11 +16,17 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
     if (e && (e <= intMax)) {
       strAllHeadersPositions = strAllHeadersPositions + (e).toString() + " ";
     }
-    if (e && (e < intMax)) {
-      strAllHeaders = strAllHeaders + $(this).find(".rs-ht").text() + "|";
-    } else {
-      strAllHeaders = strAllHeaders + $(this).find(".rs-ht").text();
+    let headerText = $(this).find(".rs-ht > p").html();
+    if (headerText !== undefined && headerText !== null) {
+        strAllHeaders += (e && e < intMax) ? headerText + "|" : headerText;
     }
+    /*
+    if (e && (e < intMax)) {
+      strAllHeaders = strAllHeaders + $(this).find(".rs-ht > p").html() + "|";
+    } else {
+      strAllHeaders = strAllHeaders + $(this).find(".rs-ht > p").html();
+    }
+    */
   });
 
   if (intlengthFix) {
