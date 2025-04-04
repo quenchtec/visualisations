@@ -1225,7 +1225,64 @@ textarea{
 
 }
 /* ######### END GRID CSS FOR DESKTOP ########## */
+  /*######################################################*/
+ /*######################################################*/
  
+ /* TOOLTIP CSS*/
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    border-bottom: 1px dotted;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .tooltip:hover .tooltiptext {
+    width: max-content;
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+  }
+
+@media only screen and (max-width: 980px) {
+  .tooltip:hover .tooltiptext {
+    width: auto;
+  }
+  .tooltip .tooltiptext {
+    bottom: 100%;
+    left: 60%;
+  }
+
+}
+
+ /* END TOOLTIP CSS*/
  
  /* Safari iOS settings in order to fix scrolling, all the way to the bottom, in mainContainer */
   @supports (-webkit-touch-callout: none) {
