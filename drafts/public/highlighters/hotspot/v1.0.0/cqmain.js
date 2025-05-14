@@ -24,6 +24,12 @@ function rsImgHotSpot(rsQno, rsSubqIndex, rsParam) {
   rsParam.showTest = (typeof rsParam.showTest === "undefined") ? false : rsParam.showTest;
 
 
+
+    if (rsParam.resetText.indexOf("#") != -1) rsParam.resetText = $(".rsCuQeHotSpot").find(`${rsParam.resetText}`).html();
+    if (rsParam.exclusiveText.indexOf("#") != -1) rsParam.exclusiveText = $(".rsCuQeHotSpot").find(`${rsParam.exclusiveText}`).html();
+
+
+
   /*DO NOT TOUCH THIS! - leave the below untouched unless you know what you are doing*/
   $('.cQuestionText').after('<img src="' + rsParam.imagePath + '" id="imageHolder">');
   $('#imageHolder').after('<center><canvas id="hotspotCanvas"></canvas><div id="HSOptions"><div id="Exclusive" onclick="exclusiveAns()">' + rsParam.exclusiveText + '</div><div id="hotspotReset" onclick="resetTheClicks()">' + rsParam.resetText + '</div></div></center>');
