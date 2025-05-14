@@ -8,7 +8,10 @@ function rsImgHotSpot(rsQno, rsSubqIndex, rsParam) {
   if ($('#btnToggleWcag').val() == 1) {
     return false;
   }
-
+  
+    let QuestionID = "#" + rsQno; //This we use in selectors to stay within the question
+    $(QuestionID).find(".cTable").addClass("rsCuQeHotSpot").addClass("rsCQ");
+  
   rsParam.minClicks = (typeof rsParam.minClicks === "undefined") ? false : rsParam.minClicks;
   rsParam.maxClicks = (typeof rsParam.maxClicks === "undefined") ? false : rsParam.maxClicks;
   rsParam.pointSize = (typeof rsParam.pointSize === "undefined") ? false : rsParam.pointSize;
