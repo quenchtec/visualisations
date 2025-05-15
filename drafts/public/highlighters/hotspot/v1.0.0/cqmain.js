@@ -133,8 +133,11 @@ function rsImgHotSpot(rsQno, rsSubqIndex, rsParam) {
   window.exclusiveAns = function() {
     $('#btnNext').show();
     $(dataSelector).val(noneData);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //ctx.clearRect(0, 0, canvas.width, canvas.height); // moved at the bottom due to crashing if None is click first thing on the page
     clickNumber = 1;
     $("#Exclusive").css("background-color", rsParam.spotColor);
+    if (ctx && canvas) { // putting in if to avoid error call
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
   }
 }
