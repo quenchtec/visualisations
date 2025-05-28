@@ -88,7 +88,10 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
 
     //Create dummy next/previous buttons
     if ($('#btnPrevious').length > 0) {
-        $('#btnPrevious').before('<input id="btnPrevious2" onclick="rsScrollingGridPreviousClick(\'' + QuestionID + '\',\'' + btnDivID + '\',\'' + scrollDivID + '\',' + intNumRows + ',' + rsParams.useimagesasbackground + ',' + rsParams.autonext + ')" class="buttonPrevious" name="btnPrevious2" value="Previous" type="button"></input>');
+        //Request by Bjorn G a change on below line - 28/05/2025
+        //$('#btnPrevious').before('<input id="btnPrevious2" onclick="rsScrollingGridPreviousClick(\'' + QuestionID + '\',\'' + btnDivID + '\',\'' + scrollDivID + '\',' + intNumRows + ',' + rsParams.useimagesasbackground + ',' + rsParams.autonext + ')" class="buttonPrevious" name="btnPrevious2" value="Previous" type="button"></input>');
+        $('#btnPrevious').before('<input id="btnPrevious2" onclick="rsScrollingGridPreviousClick(\'' + QuestionID + '\',\'' + btnDivID + '\',\'' + scrollDivID + '\',' + intNumRows + ',' + rsParams.useimagesasbackground + ',' + rsParams.autonext + ',' + rsParams.scrollAreaTop + ')" class="buttonPrevious" name="btnPrevious2" value="Previous" type="button"></input>');
+
         $('#btnPrevious2').val($('#btnPrevious').val());
         $('#btnPrevious').hide();
     }
@@ -483,7 +486,7 @@ window.rsScrollingGridNextClick = function(QuestionID, btnDivID, scrollDivID, in
         if (scrollAreaTop) {
             let wrapPos = $(scrollDivID).find('.rsScrollAnimate').offset().top;
             $('html, body').scrollTop(wrapPos);
-            document.documentElement.scrollTop = 0;
+            //document.documentElement.scrollTop = 0; //Request by Bjorn G as moved in below fucntion- 28/05/2025
         } else {
             $(window).scrollTop(0);
             document.documentElement.scrollTop = 0;
@@ -498,11 +501,21 @@ window.rsScrollingGridNextClick = function(QuestionID, btnDivID, scrollDivID, in
     $('#btnNext').click();
 }
 
-window.rsScrollingGridPreviousClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext) {
+//window.rsScrollingGridPreviousClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext) { //Request by Bjorn G - 28/05/2025
+window.rsScrollingGridPreviousClick = function(QuestionID, btnDivID, scrollDivID, intNumRows, useimagesasbackground, doAutonext, scrollAreaTop) {
     let wrapNo = parseInt($(scrollDivID).find('.rsScrollGridContent').data('wrapNo'));
     if (wrapNo > 0) {
         wrapNo--;
         animateScrollingGridRow(QuestionID, btnDivID, scrollDivID, wrapNo, -1, useimagesasbackground, doAutonext);
+        //Request by Bjorn G - 28/05/2025 starts here
+        if (scrollAreaTop) {
+            let wrapPos = $(scrollDivID).find('.rsScrollAnimate').offset().top;
+            $('html, body').scrollTop(wrapPos);
+        } else {
+            $(window).scrollTop(0);
+            document.documentElement.scrollTop = 0;
+        }
+        //Request by Bjorn G - 28/05/2025 ends here
         return;
     }
     //Display buttons again
