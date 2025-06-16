@@ -1011,7 +1011,8 @@ textarea{
  
  /* TEXT AREA CSS*/
  
- .rsCuQeTextArea :has(.cError){
+ /*.rsCuQeTextArea :has(.cError){*/
+ .rsCuQeTextArea:not(.rsQualityOE):has(.cError) {
      background-color: #fff !important;
      border: none !important;
  }
