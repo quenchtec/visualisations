@@ -277,7 +277,7 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
       $(btnDivID).find(baseBtnClassSelectExclusive).removeClass(checkedBtnClass);
       //Clear any exclusive text
       $(btnDivID).find('.rsAnimationText.exclusive, .rsAnimationTextArea.exclusive').not(this).val('');
-      const curElm = $(QuestionID).find('.cTextInput, .cTextArea').eq($(this).index('.rsAnimationText, .rsAnimationTextArea'));
+      const curElm = $(QuestionID).find('.cTextInput, .cTextArea').eq($(btnDivID).find('.rsAnimationText, .rsAnimationTextArea').index(this)); // 07.07.2025 by BjornG
       $(QuestionID).find('.cTextInput.exclusive, .cTextArea.exclusive').not(curElm).val('');
       //If exclusive clear check and all other text		
   
@@ -291,7 +291,7 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
       }
     });
     $(btnDivID).find('.rsAnimationText, .rsAnimationTextArea').on('keyup', function() {
-      $(QuestionID).find('.cTextInput, .cTextArea').eq($(this).index('.rsAnimationText, .rsAnimationTextArea')).val($(this).val());
+      $(QuestionID).find('.cTextInput, .cTextArea').eq($(btnDivID).find('.rsAnimationText, .rsAnimationTextArea').index(this)).val($(this).val()); // 07.07.2025 by BjornG
     });
   
     //Check for setting width
