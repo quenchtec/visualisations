@@ -184,12 +184,21 @@ function cthemePageReady() {
 	      });
 	  }
 
-	  if (typeof myCustomNext != "undefined") {customNext = myCustomNext[strID];}
-	  if (typeof myCustomPrevious != "undefined") {customPrev = myCustomPrevious[strID];}
-	  if (typeof myCustomError != "undefined") {customError = myCustomError[strID];}
-
+	  if (typeof myCustomNext != "undefined") {
+	      customNext = myCustomNext[strID];
+	  }
+	  if (typeof myCustomPrevious != "undefined") {
+	      customPrev = myCustomPrevious[strID];
+	  }
+	  if (typeof myCustomError != "undefined") {
+	      customError = myCustomError[strID];
+	  }
+	  if (typeof myCustomDropdown != "undefined") {
+	      customDropDown = myCustomDropdown[strID];
+	  }
+	
 	  ghostText(CustomGhostMessage);
-	  custNavigationText(customNext,customPrev,customError);
+	  custNavigationText(customNext,customPrev,customError,customDropDown);
 
 	  $(".rsSingleGrid, .rsMultiGrid").each(function () {
 	  	  if ((!$(this).hasClass("rsProcessedGrid")) && (!$(this).hasClass("rsCQ"))) {
@@ -234,16 +243,22 @@ function removeFocusFromAllElements() {
 	}*/
 }
 
-function custNavigationText(theNext, thePrevious, theError) {
-	var _theNext, _thePrevious, _theError;
-	if (typeof theNext != "undefined") {_theNext = theNext;} else {_theNext = '';}
-	if (typeof thePrevious != "undefined") {_thePrevious = thePrevious;} else {_thePrevious = '';}
-	if (typeof theError != "undefined") {_theError = theError;} else {_theError = '';}
-	if (devTest) console.log(_theNext,_thePrevious,_theError);
-	if((_theNext !="") && (_theNext !=" ") && (_theNext.length > 1)) {$('#btnNext').val(_theNext);}
-	if((_thePrevious !="") && (_thePrevious !=" ") && (_thePrevious.length > 1)) {$('#btnPrevious').val(_thePrevious);}
-	if((_theError !="") && (_theError !=" ") && (_theError.length > 1)) {$('.cError').val(_theError);}
+function custNavigationText(theNext, thePrevious, theError, theDropdown) {
+  if (theNext && theNext.trim() !== "" && typeof theNext !== undefined) {$('#btnNext').val(theNext);}
+  if (theError && theError.trim() !== "" && typeof theError !== undefined) {$('.cError').val(theError);}
+  if (thePrevious && thePrevious.trim() !== "" && typeof thePrevious !== undefined) {$('#btnPrevious').val(thePrevious);}
+
+	if (theDropdown && theDropdown.trim() !== "" && theDropdown !== "undefined") {
+		document.querySelectorAll("select").forEach(sel => {
+			let firstOption = sel.querySelector("option");
+			if (firstOption) {
+				firstOption.text = theDropdown;
+			}
+		});
+	}
+
 }
+
 
 function ghostText(custText) {
 	$('.cTextInput').each(function () {
