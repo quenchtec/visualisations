@@ -164,6 +164,8 @@ function cthemePageReady() {
 	  var customNext = "";
 	  var customPrev = "";
 	  var customError = "";
+	  var customDropDown = "";
+	
 	  try {
 	  	  //removeFocusFromAllElements();
 	  } catch (error) {
