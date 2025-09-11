@@ -173,7 +173,17 @@ function cthemePageReady() {
 	  if (typeof myCustomGhost != "undefined") {CustomGhostMessage = myCustomGhost[strID];}
 
 	  if (strID == "sv") {CustomGhostMessage = "Snälla, skriv in...";}
-  
+
+	  if (strID == "ar" || strID == "he" || strID == "iw" || strID == "ur" || strID == "fa" || strID == "ar-sa" || strID == "ar-ue") {
+	      $(".panelMainContainer").css('direction', 'rtl');
+	      $(".cRowSubQuestion").css('text-align', 'right');
+	      $(".cCellSubQuestion").css('text-align', 'right');
+	      $(".rs-ht").css({
+			"direction": "rtl",
+	        "text-align": "right",
+	      });
+	  }
+
 	  if (typeof myCustomNext != "undefined") {customNext = myCustomNext[strID];}
 	  if (typeof myCustomPrevious != "undefined") {customPrev = myCustomPrevious[strID];}
 	  if (typeof myCustomError != "undefined") {customError = myCustomError[strID];}
