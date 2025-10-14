@@ -1,4 +1,4 @@
-function customWatermark(wtx, qt, at, fs, retryCount = 20) {
+function customWatermark(wtx, qt, at, fs, fc, retryCount = 20) {
     $(document).find(".cTable").addClass("rsWatermark");
 
     let strWaterMarkText = wtx;
@@ -14,7 +14,7 @@ function customWatermark(wtx, qt, at, fs, retryCount = 20) {
     // Retry logic if no images are found, with a retry limit
     if (!imgs.length) {
         if (retryCount > 0) {
-            setTimeout(() => customWatermark(wtx, qt, at, fs, retryCount - 1), 100);
+            setTimeout(() => customWatermark(wtx, qt, at, fs, fc, retryCount - 1), 100);
         } else {
             console.error("No images found after multiple attempts.");
         }
@@ -62,7 +62,7 @@ function customWatermark(wtx, qt, at, fs, retryCount = 20) {
 
             var fontSize = fs;
             ctx.font = fontSize + 'px Arial';
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.fillStyle = (typeof fc !== 'undefined' && fc) ? fc : 'rgba(255, 255, 255, 0.5)';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
 
