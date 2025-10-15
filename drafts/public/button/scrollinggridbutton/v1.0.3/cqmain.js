@@ -139,7 +139,9 @@ function rsVisScrollingGrid(rsQno, rsSubqIndex, rsParams) {
             }
         }
         let intBtnNum = 0;
-        let wrapNo = $(scrollDivID).find('.rsScrollGridContent').html(strHtml).data('wrapNo');
+        //We don't need to rewrite the html. We are getting .data('wrapNo')
+        //let wrapNo = $(scrollDivID).find('.rsScrollGridContent').html(strHtml).data('wrapNo');
+        let wrapNo = $(scrollDivID).find('.rsScrollGridContent').data('wrapNo') ?? 0;
         const intInpID = $(this).attr('alt');
         const isExclusive = $(this).hasClass('exclusive');
         const wrapNoRow = $(QuestionID).find('.rsRow').eq(wrapNo);
