@@ -172,7 +172,8 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
         if (textInput.is('.cTextArea')) {
           strHTML += '<textarea  class="rsAnimationTextArea' + strExcl + '" rows="' + textInput.attr('rows') + '" cols="' + textInput.attr('cols') + '"></textarea>';
         } else {
-          strHTML += '<input class="rsAnimationText' + strExcl + '" type="text" size="' + textInput.attr('size') + '" value="' + textInput.attr('value') + '"/>';
+          let oeValue = textInput.attr('value') ? textInput.attr('value') : '';
+          strHTML += '<input class="rsAnimationText' + strExcl + '" type="text" size="' + textInput.attr('size') + '" value="' + oeValue + '"/>';
         }
         strHTML += '</div></div>';
       }
@@ -321,3 +322,4 @@ function rsVisButton(rsQno, rsSubqIndex, rsParams) {
     }
   }
   
+
