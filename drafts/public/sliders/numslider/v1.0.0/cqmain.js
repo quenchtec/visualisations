@@ -190,8 +190,10 @@ $(document).ready(function() {
     OffsideHandleHandler();
     if (!rsParams.blnOffScaleHandle) {
         $(".noUi-handle").on("click touched keyup blur focus", function() {
-            $(this).parent().parent().parent().find(".noUi-value").eq(0).addClass("active-pip");
-            SliderIsTouched(QuestionID, $(this).attr('data'), rsParams.intSliderMinValue);
+                if ($(QuestionID).find(".cFInput").eq($(this).attr('data')).val() === "") {
+                    if (rsParams.blnHighlightPips) $(this).parent().parent().parent().find(".noUi-value").eq(0).addClass("active-pip");
+                    SliderIsTouched(QuestionID, $(this).attr('data'), rsParams.intSliderMinValue);
+                }
         });
     }
     $(".noUi-base").click(function() {
