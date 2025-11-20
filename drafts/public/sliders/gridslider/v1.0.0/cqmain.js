@@ -103,6 +103,7 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
         })
       },
     });
+    $(slider).removeClass("noUi-txt-dir-rtl");
     $(slider).find(".noUi-tooltip").addClass("initialTooltip");
     if (rsParams.blnOffScaleHandle) {
       $(slider).find(".noUi-handle").addClass("initialPositioner");
@@ -314,3 +315,4 @@ function rsNoUiGridSlider(rsQno, rsSubqIndex, rsParams) {
   let date = new Date(Date.now());
   console.log('global page ready - Formatted Time:', date.toLocaleTimeString());
 }
+
