@@ -119,6 +119,19 @@ function customWatermark (
   });
 
   // --- helpers ---
+  function getRenderedThumbnailSize(img, naturalWidth, naturalHeight) {
+    const rect = img.getBoundingClientRect();
+    const renderedWidth = Math.max(1, Math.round(rect.width || img.clientWidth || naturalWidth || 1));
+  
+    const aspectRatio = naturalWidth / naturalHeight;
+    const renderedHeight = Math.max(1, Math.round(renderedWidth / aspectRatio));
+  
+    return {
+      width: renderedWidth,
+      height: renderedHeight
+    };
+  }
+  
   function ensurePopupModal() {
     let modal = document.getElementById('rsWatermarkPopupModal');
     if (modal) return modal;
@@ -538,7 +551,9 @@ function customWatermark (
       img.dataset.watermarkedFullSrc = fullWatermarkedSrc;
 
       if (thumbnailConfig.enabled) {
-        const renderedSize = getRenderedImageSize(img, naturalWidth, naturalHeight);
+        //const renderedSize = getRenderedImageSize(img, naturalWidth, naturalHeight);
+        // As iOS Safari rerenders the image - quick fix
+        const renderedSize = getRenderedThumbnailSize(img, naturalWidth, naturalHeight);
         const thumbnailWatermarkedSrc = await createThumbnailWatermarkedSrc(
           baseSrc,
           renderedSize.width,
