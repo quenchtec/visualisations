@@ -69,7 +69,7 @@ function customWatermark (
 
   // --- collect targets
   let imgs = [];
-  if (blnQuestionText) imgs = imgs.concat($(document).find(".cQuestionText img").toArray());
+  if (blnQuestionText) imgs = imgs.concat($(document).find(".cQuestionText img, .cTDContainQues > .rs-ht img").toArray());
   if (blnAnswers) imgs = imgs.concat($(document).find(".rsRow img, .rsScrollGridContent img, .rsBtn img, .theCard img").toArray());
 
   // retry if nothing yet
