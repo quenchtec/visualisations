@@ -1130,13 +1130,15 @@ function fnGallery(scope, controls) {
 function fnGlobalGallery(scope, controls) {
     controls = controls === true;
     if (window.__rsGalleryContainerObserverBound) return;
-    window.__rsGalleryContainerObserverBound = true;
 
     const container = document.querySelector("#pageContainerContent, #rsPanelMain");
-    console.log("container ", container)
     if (!container) return;
 
+    window.__rsGalleryContainerObserverBound = true;
+    
     let galleryTimer = null;
+
+    fnGallery(scope, controls);
 
     const observer = new MutationObserver(function () {
         if (galleryTimer) clearTimeout(galleryTimer);
