@@ -1127,7 +1127,8 @@ function fnGallery(scope, controls) {
     }
 }
 
-function fnGlobalGallery() {
+function fnGlobalGallery(scope, controls) {
+    controls = controls === true;
     if (window.__rsGalleryContainerObserverBound) return;
     window.__rsGalleryContainerObserverBound = true;
 
@@ -1141,7 +1142,7 @@ function fnGlobalGallery() {
         if (galleryTimer) clearTimeout(galleryTimer);
 
         galleryTimer = setTimeout(function () {
-            fnGallery();
+            fnGallery(scope, controls);
         }, 150);
     });
 
