@@ -1126,3 +1126,27 @@ function fnGallery(scope, controls) {
         });
     }
 }
+
+function fnGlobalGallery() {
+    if (window.__rsGalleryContainerObserverBound) return;
+    window.__rsGalleryContainerObserverBound = true;
+
+    const container = document.querySelector("#pageContainerContent, #rsPanelMain");
+    console.log("container ", container)
+    if (!container) return;
+
+    let galleryTimer = null;
+
+    const observer = new MutationObserver(function () {
+        if (galleryTimer) clearTimeout(galleryTimer);
+
+        galleryTimer = setTimeout(function () {
+            fnGallery();
+        }, 150);
+    });
+
+    observer.observe(container, {
+        childList: true,
+        subtree: true
+    });
+}
