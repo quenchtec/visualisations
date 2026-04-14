@@ -72,7 +72,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
   // --- collect targets
   let imgs = [];
   if (blnQuestionText) imgs = imgs.concat(Array.from(document.querySelectorAll(".cQuestionText img, .cTDContainQues > .rs-ht img, .question-texts img, .information-text img")));
-  if (blnAnswers) imgs = imgs.concat(Array.from(document.querySelectorAll(".rsRow img, .rsScrollGridContent img, .rsBtn img, .theCard img, .answer-texts img, .answer-button img")));
+  if (blnAnswers) imgs = imgs.concat(Array.from(document.querySelectorAll(".rsRow img, .rsScrollGridContent img, .rsBtn img, .theCard img, .answer-texts img, .answer-button img, .carousel-answer-text-wrapper > * > img")));
 
   // retry if nothing yet
   if (!imgs.length) {
