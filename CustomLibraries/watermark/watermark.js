@@ -587,7 +587,7 @@ function fnGallery(scope, controls) {
     createModalIfNeeded();
 
     const questionSelector = ".cQuestionText img, .cTDContainQues > .rs-ht img, .question-texts img, .information-text img";
-    const answerSelector = ".rsRow img, .rsScrollGridContent img, .rsBtn img, .theCard img, .answer-texts img, .numeric-answer-texts-wrapper img, .carousel-answer-text-wrapper img, .answer-text-cell img";
+    const answerSelector = ".rsRow img, .rsScrollGridContent img, .rsBtn img, .theCard img, .answer-texts img, .answers-texts img, .numeric-answer-texts-wrapper img, .carousel-answer-text-wrapper img, .answer-text-cell img";
 
     let targetImages = [];
 
