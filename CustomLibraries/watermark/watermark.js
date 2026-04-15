@@ -1002,7 +1002,7 @@ function fnGalleryProcess(scope, controls) {
     }
 
     function openGallery(startIndex, items) {
-        console.log("openGallery called", startIndex, items);
+        //console.log("openGallery called", startIndex, items);
         const modal = document.getElementById(MODAL_ID);
         if (!modal) {
             return;
