@@ -583,8 +583,6 @@ document.querySelectorAll(".cTable").forEach(function(el) {
 
 
 
-
-
 const RS_GALLERY_QUESTION_SELECTOR = ".cQuestionText img, .cTDContainQues > .rs-ht img, .question-texts img, .information-text img";
 const RS_GALLERY_ANSWER_SELECTOR = ".rsRow img, .rsScrollGridContent img, .rsBtn img, .theCard img, .answer-texts img, .answers-texts img, .numeric-answer-texts-wrapper img, .carousel-answer-text-wrapper img, .answer-text-cell img, .ansText-Regular img, .ansText-Instruction img, .ansText-Supplementary img, .slider-question-text img, .slider-holder img, .rsSliderQuestionHolder img";
 
@@ -1004,7 +1002,7 @@ function fnGalleryProcess(scope, controls) {
     }
 
     function openGallery(startIndex, items) {
-        console.log("openGallery called", startIndex, items);
+        //console.log("openGallery called", startIndex, items);
         const modal = document.getElementById(MODAL_ID);
         if (!modal) {
             return;

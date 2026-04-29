@@ -1,4 +1,4 @@
-    /*
+/*
 // EXAMPLE USE
 customWatermark(
   document.getElementById("rs_c")?.value,            // watermark text - best practice is to use the respondent id or session
@@ -31,7 +31,20 @@ customWatermark(
 );
 */
 
-function customWatermark (
+(function (global) {
+  if (!global.__RS_SURVEY_IMG_SELECTORS) {
+    global.__RS_SURVEY_IMG_SELECTORS = {
+      question: ".cQuestionText img, .cTDContainQues > .rs-ht img, .question-texts img, .information-text img",
+      answer: ".rsRow img, .rsScrollGridContent img, .rsBtn img, .theCard img, .answer-texts img, .answers-texts img, .numeric-answer-texts-wrapper img, .carousel-answer-text-wrapper img, .carousel-answer-text-wrapper > * > img, .answer-text-cell img, .ansText-Regular img, .ansText-Instruction img, .ansText-Supplementary img, .slider-question-text img, .slider-holder img, .rsSliderQuestionHolder img, .answer-button img, .rsHeaderRow img, .answerText-Regular img"
+    };
+  }
+})(window);
+
+(function (global) {
+  var IMG = global.__RS_SURVEY_IMG_SELECTORS;
+
+  // Main watermark entry point for selected survey images.
+  function customWatermark (
   wtx,                 // watermark text string
   qt,                  // true = apply watermark to images inside .cQuestionText
   at,                  // true = apply watermark to images inside answers / rows / cards / buttons
@@ -47,9 +60,9 @@ function customWatermark (
   popupSize = '',      // popup image size; '' = natural fit, '50%' = width only, or '1920px,1080px' = width,height
   thumbnailOptions = null // optional object with separate settings for thumbnail watermark appearance
 ) {
-document.querySelectorAll(".cTable").forEach(function(el) {
-  el.classList.add("rsWatermark");
-});
+  document.querySelectorAll(".cTable").forEach(function(el) {
+    el.classList.add("rsWatermark");
+  });
 
   const strWaterMarkText = wtx;
   const blnQuestionText = qt;
@@ -69,10 +82,15 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     ...(thumbnailOptions || {})
   };
 
-  // --- collect targets
-  let imgs = [];
-  if (blnQuestionText) imgs = imgs.concat(Array.from(document.querySelectorAll(".cQuestionText img, .cTDContainQues > .rs-ht img, .question-texts img, .information-text img")));
-  if (blnAnswers) imgs = imgs.concat(Array.from(document.querySelectorAll(".rsRow img, .rsScrollGridContent img, .rsBtn img, .theCard img, .answer-texts img, .answer-button img, .carousel-answer-text-wrapper > * > img")));
+  // --- collect targets (one query when both question and answer regions are enabled)
+  var imgs = [];
+  if (blnQuestionText && blnAnswers) {
+    imgs = Array.from(document.querySelectorAll(IMG.question + ", " + IMG.answer));
+  } else if (blnQuestionText) {
+    imgs = Array.from(document.querySelectorAll(IMG.question));
+  } else if (blnAnswers) {
+    imgs = Array.from(document.querySelectorAll(IMG.answer));
+  }
 
   // retry if nothing yet
   if (!imgs.length) {
@@ -111,16 +129,26 @@ document.querySelectorAll(".cTable").forEach(function(el) {
       img.dataset.popupBound = 'true';
     }
 
-    ensureLoaded(img).then(() => applyWatermark(img)).catch(() => { /* ignore */ });
+    ensureLoaded(img).then(function () { applyWatermark(img); }).catch(function () { /* ignore */ });
 
     if (!img.dataset.resizeObserved) {
-      const resizeObserver = new ResizeObserver(() => applyWatermark(img));
+      var debouncers = new WeakMap();
+      var resizeObserver = new ResizeObserver(function () {
+        var pending = debouncers.get(img);
+        if (pending) clearTimeout(pending);
+        pending = setTimeout(function () {
+          debouncers.delete(img);
+          applyWatermark(img);
+        }, 100);
+        debouncers.set(img, pending);
+      });
       resizeObserver.observe(img);
       img.dataset.resizeObserved = 'true';
     }
   });
 
   // --- helpers ---
+  // Gets thumbnail render size while preserving aspect ratio.
   function getRenderedThumbnailSize(img, naturalWidth, naturalHeight) {
     const rect = img.getBoundingClientRect();
     const renderedWidth = Math.max(1, Math.round(rect.width || img.clientWidth || naturalWidth || 1));
@@ -134,6 +162,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     };
   }
   
+  // Creates the popup modal once and returns it.
   function ensurePopupModal() {
     let modal = document.getElementById('rsWatermarkPopupModal');
     if (modal) return modal;
@@ -225,6 +254,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     return modal;
   }
 
+  // Parses popup size config into width and height values.
   function parsePopupSize(sizeValue) {
     if (!sizeValue || !String(sizeValue).trim()) {
       return { width: '', height: '' };
@@ -240,6 +270,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     };
   }
 
+  // Opens the popup with the selected image source.
   function openWatermarkPopup(src) {
     const modal = ensurePopupModal();
     const popupImage = document.getElementById('rsWatermarkPopupImage');
@@ -256,6 +287,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     modal.classList.add('active');
   }
 
+  // Closes the popup and clears image state.
   function closeWatermarkPopup() {
     const modal = document.getElementById('rsWatermarkPopupModal');
     const popupImage = document.getElementById('rsWatermarkPopupImage');
@@ -267,6 +299,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     modal.classList.remove('active');
   }
 
+  // Binds thumbnail clicks to open the popup.
   function bindWatermarkPopup(img) {
     img.addEventListener('click', function(event) {
       event.preventDefault();
@@ -275,15 +308,18 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     });
   }
 
+  // Normalizes a value to an array.
   function asArray(value) {
     return Array.isArray(value) ? value : [value];
   }
 
+  // Returns a safe item at index from an array.
   function pick(arr, index) {
     if (!arr.length) return undefined;
     return arr[Math.min(index, arr.length - 1)];
   }
 
+  // Waits for an image to finish loading or fail.
   function ensureLoaded(img) {
     return new Promise((resolve) => {
       if (img.complete && img.naturalWidth > 0 && img.naturalHeight > 0) {
@@ -295,6 +331,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     });
   }
 
+  // Loads the base image with cross-origin handling when needed.
   function loadBase(src) {
     return new Promise((resolve, reject) => {
       if (!src) return reject(new Error('Empty base src'));
@@ -311,6 +348,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     });
   }
 
+  // Resolves watermark font size from config or auto mode.
   function computeFontPx(width, height, fontSizeValue) {
     const numericFontSize = Number(fontSizeValue);
     if (!fontSizeValue || fontSizeValue === 'auto' || Number.isNaN(numericFontSize)) {
@@ -319,6 +357,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     return Math.max(1, Math.round(numericFontSize));
   }
 
+  // Normalizes angle input to 0-359 or auto.
   function normalizeAngleDeg(value) {
     if (value === 'auto' || value == null || value === '') return 'auto';
     const numericAngle = Number(value);
@@ -328,6 +367,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     return normalizedAngle;
   }
 
+  // Resolves relative or absolute coordinates to canvas points.
   function resolveXY(width, height, xValue, yValue) {
     const numericX = Number(xValue);
     const numericY = Number(yValue);
@@ -341,6 +381,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     };
   }
 
+  // Draws one or more center-based diagonal watermark stamps.
   function drawDiagonalCenter(ctx, width, height, text, fontPx, color, xPos, yPos, degVal, shadowOn) {
     const xValues = asArray(xPos);
     const yValues = asArray(yPos);
@@ -386,6 +427,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     }
   }
 
+  // Reads rendered image size with fallback values.
   function getRenderedImageSize(img, fallbackWidth, fallbackHeight) {
     const rect = img.getBoundingClientRect();
     const renderedWidth = Math.max(1, Math.round(rect.width || img.clientWidth || fallbackWidth || 1));
@@ -396,6 +438,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     };
   }
 
+  // Resolves thumbnail anchor coordinates from anchor mode.
   function getThumbnailAnchorPoint(width, height, anchor, marginRatio) {
     const margin = Math.round(Math.min(width, height) * marginRatio);
     const normalizedAnchor = String(anchor || 'middle').toLowerCase();
@@ -414,6 +457,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     }
   }
 
+  // Resolves thumbnail text angle from orientation mode.
   function getThumbnailAngleRad(width, height, orientation) {
     const normalizedOrientation = String(orientation || 'diagonal').toLowerCase();
 
@@ -430,6 +474,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     }
   }
 
+  // Computes fit span for thumbnail text sizing.
   function getFitSpan(width, height, fitMode) {
     const normalizedFitMode = String(fitMode || 'diagonal').toLowerCase();
 
@@ -444,6 +489,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     }
   }
 
+  // Computes thumbnail font size within fit limits.
   function computeThumbnailFontPx(ctx, width, height, text, options) {
     const marginRatio = Number.isFinite(Number(options.marginRatio)) ? Number(options.marginRatio) : 0.06;
     const safeMarginRatio = Math.max(0, Math.min(0.25, marginRatio));
@@ -476,6 +522,7 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     return Math.max(Number(options.minFontPx) || 16, fontPx);
   }
 
+  // Draws the thumbnail watermark with configured style and placement.
   function drawThumbnailWatermark(ctx, width, height, text, options) {
     const watermarkColor = options.color || fc || 'rgba(255,255,255,0.72)';
     const shadowEnabled = (options.shadow == null) ? true : !!options.shadow;
@@ -577,15 +624,13 @@ document.querySelectorAll(".cTable").forEach(function(el) {
     }
   }
 }
-
-
-
-
-
+  global.customWatermark = customWatermark;
+})(window);
 
 const RS_GALLERY_QUESTION_SELECTOR = ".cQuestionText img, .cTDContainQues > .rs-ht img, .question-texts img, .information-text img";
-const RS_GALLERY_ANSWER_SELECTOR = ".rsRow img, .rsScrollGridContent img, .rsBtn img, .theCard img, .answer-texts img, .answers-texts img, .numeric-answer-texts-wrapper img, .carousel-answer-text-wrapper img, .answer-text-cell img, .ansText-Regular img, .ansText-Instruction img, .ansText-Supplementary img, .slider-question-text img, .slider-holder img, .rsSliderQuestionHolder img";
+const RS_GALLERY_ANSWER_SELECTOR = ".rsRow img, .rsScrollGridContent img, .rsBtn img, .theCard img, .answer-texts img, .answers-texts img, .numeric-answer-texts-wrapper img, .carousel-answer-text-wrapper img, .carousel-answer-text-wrapper > * > img, .answer-text-cell img, .ansText-Regular img, .ansText-Instruction img, .ansText-Supplementary img, .slider-question-text img, .slider-holder img, .rsSliderQuestionHolder img, .answer-button img, .rsHeaderRow img, .answerText-Regular img";
 
+// Builds gallery items and binds modal behavior.
 function fnGalleryProcess(scope, controls) {
     controls = controls === true;
     window.__rsGalleryScope = scope;
@@ -650,6 +695,7 @@ function fnGalleryProcess(scope, controls) {
         img.style.cursor = "zoom-in";
     });
 
+    // Collects usable images for a selector.
     function collectImages(selector) {
         const found = Array.from(document.querySelectorAll(selector));
 
@@ -659,6 +705,7 @@ function fnGalleryProcess(scope, controls) {
         });
     }
 
+    // Normalizes image names for matching.
     function normaliseName(value) {
         return String(value || "")
             .trim()
@@ -666,6 +713,7 @@ function fnGalleryProcess(scope, controls) {
             .replace(/\.[a-z0-9]+$/i, "");
     }
 
+    // Parses image file information for matching and conversion.
     function getImageInfo(src) {
         let cleanSrc = String(src || "").split("?")[0].split("#")[0];
         let fileName = cleanSrc.substring(cleanSrc.lastIndexOf("/") + 1);
@@ -690,6 +738,7 @@ function fnGalleryProcess(scope, controls) {
         };
     }
 
+    // Converts thumbnail filenames to full-size filenames.
     function getFullImageSrc(src) {
         const rawSrc = String(src || "");
         const info = getImageInfo(rawSrc);
@@ -703,6 +752,7 @@ function fnGalleryProcess(scope, controls) {
     }
     window.__rsGalleryGetFullImageSrc = getFullImageSrc;
 
+    // Injects gallery styles once.
     function injectGalleryStyles() {
         if (document.getElementById(STYLE_ID)) {
             return;
@@ -930,6 +980,7 @@ function fnGalleryProcess(scope, controls) {
         document.head.appendChild(style);
     }
 
+    // Creates gallery modal markup and event handlers once.
     function createModalIfNeeded() {
         if (document.getElementById(MODAL_ID)) {
             return;
@@ -1001,6 +1052,7 @@ function fnGalleryProcess(scope, controls) {
         });
     }
 
+    // Opens the gallery at a specific index.
     function openGallery(startIndex, items) {
         //console.log("openGallery called", startIndex, items);
         const modal = document.getElementById(MODAL_ID);
@@ -1021,6 +1073,7 @@ function fnGalleryProcess(scope, controls) {
 
     window.__rsOpenGallery = openGallery;
 
+    // Closes the gallery and restores page scrolling.
     function closeGallery() {
         const modal = document.getElementById(MODAL_ID);
         if (!modal) {
@@ -1032,6 +1085,7 @@ function fnGalleryProcess(scope, controls) {
         document.body.style.overflow = "";
     }
 
+    // Moves to the next or previous gallery item.
     function stepGallery(direction) {
         const modal = document.getElementById(MODAL_ID);
         if (!modal || !modal._galleryItems || !modal._galleryItems.length) {
@@ -1043,6 +1097,7 @@ function fnGalleryProcess(scope, controls) {
         renderGalleryImage();
     }
 
+    // Renders the current gallery image and UI state.
     function renderGalleryImage() {
         const modal = document.getElementById(MODAL_ID);
         if (!modal || !modal._galleryItems || !modal._galleryItems.length) {
@@ -1108,6 +1163,7 @@ function fnGalleryProcess(scope, controls) {
         preload.src = item.fullSrc;
     }
 
+    // Preloads neighboring gallery images for smoother navigation.
     function preloadAdjacentImages(items, currentIndex) {
         const modal = document.getElementById(MODAL_ID);
 
@@ -1132,6 +1188,7 @@ function fnGalleryProcess(scope, controls) {
     }
 }
 
+// Observes container updates and re-runs gallery binding.
 function fnGlobalGallery(scope, controls) {
     controls = controls === true;
     if (window.__rsGalleryContainerObserverBound) return;
@@ -1159,12 +1216,14 @@ function fnGlobalGallery(scope, controls) {
     });
 }
 
+// Retries gallery setup until images are available.
 function fnGallery(scope, controls, maxAttempts, delay) {
     maxAttempts = Number(maxAttempts) || 15;
     delay = Number(delay) || 100;
 
     let attempt = 0;
 
+    // Runs one retry cycle and schedules the next one.
     function run() {
         attempt++;
         fnGalleryProcess(scope, controls);
@@ -1184,6 +1243,7 @@ function fnGallery(scope, controls, maxAttempts, delay) {
     const questionSelector = RS_GALLERY_QUESTION_SELECTOR;
     const answerSelector = RS_GALLERY_ANSWER_SELECTOR;
 
+    // Normalizes image names for matching.
     function normaliseName(value) {
         return String(value || "")
             .trim()
@@ -1191,7 +1251,9 @@ function fnGallery(scope, controls, maxAttempts, delay) {
             .replace(/\.[a-z0-9]+$/i, "");
     }
 
+    // Collects visible live images for the current scope.
     function collectLiveImages(scope) {
+        // Collects visible images for a single selector.
         function collect(selector) {
             return Array.from(document.querySelectorAll(selector)).filter(function (img) {
                 const src = img.getAttribute("src") || "";
@@ -1270,3 +1332,487 @@ function fnGallery(scope, controls, maxAttempts, delay) {
         }
     }, true);
 })();
+
+
+
+(function (global) {
+
+// Retries magnifier setup until images are available.
+function fnMagnifier(scope, options, maxAttempts, delay) {
+    maxAttempts = Number(maxAttempts) || 15;
+    delay = Number(delay) || 100;
+
+    global.__rsMagnifierScope = scope;
+    global.__rsMagnifierOptions = options || {};
+
+    let attempt = 0;
+
+    // Runs one retry cycle and schedules the next one.
+    function run() {
+        attempt++;
+        magnifierProcess(scope, options || {});
+
+        if (attempt < maxAttempts) {
+            setTimeout(run, delay);
+        }
+    }
+
+    run();
+}
+
+// Observes container updates and re-runs magnifier binding.
+function fnGlobalMagnifier(scope, options) {
+    global.__rsMagnifierScope = scope;
+    global.__rsMagnifierOptions = options || {};
+
+    if (global.__rsMagnifierContainerObserverBound) {
+        magnifierProcess(scope, options || {});
+        return;
+    }
+
+    const container = document.querySelector("#pageContainerContent, #rsPanelMain");
+
+    if (!container) {
+        fnMagnifier(scope, options);
+        return;
+    }
+
+    global.__rsMagnifierContainerObserverBound = true;
+
+    let magnifierTimer = null;
+
+    magnifierProcess(scope, options || {});
+
+    const observer = new MutationObserver(function () {
+        if (magnifierTimer) {
+            clearTimeout(magnifierTimer);
+        }
+
+        magnifierTimer = setTimeout(function () {
+            magnifierProcess(global.__rsMagnifierScope, global.__rsMagnifierOptions || {});
+        }, 150);
+    });
+
+    observer.observe(container, {
+        childList: true,
+        subtree: true
+    });
+}
+    // Debounces and schedules magnifier reprocessing.
+    function queueGlobalMagnifierProcess(delayMs) {
+        if (global.__rsMagnifierObserverTimer) {
+            clearTimeout(global.__rsMagnifierObserverTimer);
+        }
+
+        global.__rsMagnifierObserverTimer = setTimeout(function () {
+            global.__rsMagnifierObserverTimer = null;
+            magnifierProcess(global.__rsMagnifierScope, global.__rsMagnifierOptions || {});
+        }, Math.max(0, Number(delayMs) || 0));
+    }
+
+    // Binds magnifier behavior to target images.
+    function magnifierProcess(scope, options) {
+        const IMG = global.__RS_SURVEY_IMG_SELECTORS;
+
+        if (!IMG || !IMG.question || !IMG.answer) {
+            console.error("fnMagnifier: shared image selectors are missing.");
+            return;
+        }
+
+        const questionSelector = IMG.question;
+        const answerSelector = IMG.answer;
+
+        const config = {
+            zoom: 2,
+            lensSize: 180,
+            shape: "circle", // circle | square
+            border: "2px solid rgba(255,255,255,0.95)",
+            background: "#ffffff",
+            shadow: true,
+            offsetX: 0,
+            offsetY: 0,
+            touch: true,
+            touchOffsetX: 0,
+            touchOffsetY: null,
+            disableRightClick: true,
+            useLargeImage: true,
+            zIndex: 999999,
+            ...(options || {})
+        };
+
+        injectMagnifierStyles();
+        createMagnifierLens();
+
+        const targetImages = getTargetImages(scope, questionSelector, answerSelector);
+
+        if (!targetImages.length) return 0;
+
+        targetImages.forEach(function (img) {
+            if (!img.dataset.rsMagnifierOriginalSrc) {
+                img.dataset.rsMagnifierOriginalSrc = img.currentSrc || img.getAttribute("src") || img.src || "";
+            }
+
+            img.dataset.rsMagnifierFullSrc = config.useLargeImage
+                ? getFullImageSrc(img.dataset.rsMagnifierOriginalSrc || img.getAttribute("src") || "")
+                : (img.dataset.rsMagnifierOriginalSrc || img.getAttribute("src") || "");
+
+            img._rsMagnifierOptions = config;
+            img.setAttribute("data-rs-magnifier-bound", "true");
+            //img.style.cursor = "zoom-in";
+            img.style.cursor = "none";
+            
+            /*
+            if (img.dataset.rsMagnifierListenersBound === "true") {
+                return;
+            }
+            */
+            if (img._rsMagnifierListenersBound === true) {
+                return;
+            }
+
+            img._rsMagnifierListenersBound = true;
+            img.dataset.rsMagnifierListenersBound = "true";
+
+
+
+
+            if (config.disableRightClick) {
+                img.addEventListener("contextmenu", function (event) {
+                    event.preventDefault();
+                });
+            }
+
+            img.addEventListener("mouseenter", function (event) {
+                showMagnifier(img, event, false);
+            });
+
+            img.addEventListener("mousemove", function (event) {
+                moveMagnifier(img, event, false);
+            });
+
+            img.addEventListener("mouseleave", function () {
+                hideMagnifier();
+            });
+
+            if (config.touch) {
+                img.addEventListener("touchstart", function (event) {
+                    if (!event.touches || !event.touches.length) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    showMagnifier(img, event.touches[0], true);
+                }, { passive: false });
+
+                img.addEventListener("touchmove", function (event) {
+                    if (!event.touches || !event.touches.length) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    moveMagnifier(img, event.touches[0], true);
+                }, { passive: false });
+
+                img.addEventListener("touchend", hideMagnifier);
+                img.addEventListener("touchcancel", hideMagnifier);
+            }
+        });
+
+        return targetImages.length;
+    }
+
+    // Selects target images by scope or filename filter.
+    function getTargetImages(scope, questionSelector, answerSelector) {
+        if (typeof scope === "undefined" || scope === null || String(scope).trim() === "") {
+            return collectImages(questionSelector + ", " + answerSelector);
+        }
+
+        const mode = String(scope).trim();
+
+        if (mode.toUpperCase() === "Q") {
+            return collectImages(questionSelector);
+        }
+
+        if (mode.toUpperCase() === "A") {
+            return collectImages(answerSelector);
+        }
+
+        const requestedNames = mode
+            .split(",")
+            .map(function (item) {
+                return normaliseName(item);
+            })
+            .filter(Boolean);
+
+        return collectImages(questionSelector + ", " + answerSelector).filter(function (img) {
+            const src = img.dataset.rsMagnifierOriginalSrc || img.getAttribute("src") || "";
+            const info = getImageInfo(src);
+
+            return requestedNames.indexOf(info.baseNameNormalised) !== -1;
+        });
+    }
+
+    // Collects usable images for a selector.
+    function collectImages(selector) {
+        return Array.from(document.querySelectorAll(selector)).filter(function (img) {
+            const src = img.getAttribute("src") || img.currentSrc || img.src || "";
+
+            if (!src) {
+                return false;
+            }
+
+            if (img.closest(".rankhide")) {
+                return false;
+            }
+
+            const style = window.getComputedStyle(img);
+
+            if (style.display === "none" || style.visibility === "hidden") {
+                return false;
+            }
+
+            return true;
+        });
+    }
+
+    // Normalizes image names for matching.
+    function normaliseName(value) {
+        return String(value || "")
+            .trim()
+            .toLowerCase()
+            .replace(/\.[a-z0-9]+$/i, "");
+    }
+
+    // Parses image file information for matching and conversion.
+    function getImageInfo(src) {
+        const cleanSrc = String(src || "").split("?")[0].split("#")[0];
+        const fileName = cleanSrc.substring(cleanSrc.lastIndexOf("/") + 1);
+
+        let extension = "";
+        let fileWithoutExt = fileName;
+
+        const extMatch = fileName.match(/(\.[a-z0-9]+)$/i);
+
+        if (extMatch) {
+            extension = extMatch[1];
+            fileWithoutExt = fileName.slice(0, -extension.length);
+        }
+
+        const baseWithoutThumbSuffix = fileWithoutExt.replace(/(_s|_thumbnail|_small)$/i, "");
+
+        return {
+            cleanSrc: cleanSrc,
+            fileName: fileName,
+            extension: extension,
+            fileWithoutExt: fileWithoutExt,
+            baseWithoutThumbSuffix: baseWithoutThumbSuffix,
+            baseNameNormalised: baseWithoutThumbSuffix.toLowerCase()
+        };
+    }
+
+    // Converts thumbnail filenames to full-size filenames.
+    function getFullImageSrc(src) {
+        const rawSrc = String(src || "");
+        const info = getImageInfo(rawSrc);
+
+        if (!/(_s|_thumbnail|_small)$/i.test(info.fileWithoutExt)) {
+            return rawSrc;
+        }
+
+        const rebuiltFileName = info.baseWithoutThumbSuffix + info.extension;
+
+        return rawSrc.replace(info.fileName, rebuiltFileName);
+    }
+
+    // Injects magnifier lens styles once.
+    function injectMagnifierStyles() {
+        const STYLE_ID = "rs-inline-magnifier-style";
+
+        if (document.getElementById(STYLE_ID)) {
+            return;
+        }
+
+        const style = document.createElement("style");
+        style.id = STYLE_ID;
+        style.type = "text/css";
+        style.innerHTML = `
+            .rs-magnifier-lens {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 180px;
+                height: 180px;
+                z-index: 999999;
+                overflow: hidden;
+                pointer-events: none;
+                opacity: 0;
+                visibility: hidden;
+                background: #ffffff;
+                border: 2px solid rgba(255,255,255,0.95);
+                border-radius: 50%;
+                box-sizing: border-box;
+                /*transform: translate3d(-9999px, -9999px, 0) scale(0.98);
+                transition: opacity 0.12s ease, visibility 0.12s ease, transform 0.12s ease;*/
+                transform: translate3d(-9999px, -9999px, 0) scale(1);
+                transition: opacity 0.12s ease, visibility 0.12s ease;
+            }
+
+            .rs-magnifier-lens.rs-magnifier-show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .rs-magnifier-lens img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: block;
+                max-width: none !important;
+                max-height: none !important;
+                width: auto;
+                height: auto;
+                user-select: none;
+                -webkit-user-select: none;
+                -webkit-user-drag: none;
+                pointer-events: none;
+            }
+
+            img[data-rs-magnifier-bound="true"] {
+                cursor: zoom-in;
+            }
+        `;
+
+        document.head.appendChild(style);
+    }
+
+    // Creates the shared magnifier lens element once.
+    function createMagnifierLens() {
+        if (document.getElementById("rsMagnifierLens")) {
+            return;
+        }
+
+        const lens = document.createElement("div");
+        lens.id = "rsMagnifierLens";
+        lens.className = "rs-magnifier-lens";
+        lens.innerHTML = '<img id="rsMagnifierLensImage" src="" alt="">';
+
+        document.body.appendChild(lens);
+    }
+
+    // Shows the lens and syncs it to the active image.
+    function showMagnifier(img, eventPoint, isTouch) {
+        const lens = document.getElementById("rsMagnifierLens");
+        const lensImg = document.getElementById("rsMagnifierLensImage");
+
+        if (!lens || !lensImg || !img) {
+            return;
+        }
+
+        const config = img._rsMagnifierOptions || {};
+        const fullSrc = img.dataset.rsMagnifierFullSrc || img.dataset.rsMagnifierOriginalSrc || img.getAttribute("src") || "";
+
+		const srcChanged = lensImg.getAttribute("src") !== fullSrc;
+
+		if (srcChanged) {
+			lensImg.onload = function () {
+				moveMagnifier(img, eventPoint, isTouch);
+			};
+
+			lensImg.setAttribute("src", fullSrc);
+		}
+
+		applyMagnifierConfig(lens, config);
+		moveMagnifier(img, eventPoint, isTouch);
+		lens.classList.add("rs-magnifier-show");
+    }
+
+    // Moves and updates zoomed lens content on pointer movement.
+    function moveMagnifier(img, eventPoint, isTouch) {
+        const lens = document.getElementById("rsMagnifierLens");
+        const lensImg = document.getElementById("rsMagnifierLensImage");
+
+        if (!lens || !lensImg || !img || !eventPoint) {
+            return;
+        }
+
+        const config = img._rsMagnifierOptions || {};
+        const rect = img.getBoundingClientRect();
+
+        if (!rect.width || !rect.height) {
+            return;
+        }
+
+        const zoom = Math.max(1, Number(config.zoom) || 2);
+        const lensSize = Math.max(80, Number(config.lensSize) || 180);
+        const lensRadius = lensSize / 2;
+
+        let x = eventPoint.clientX - rect.left;
+        let y = eventPoint.clientY - rect.top;
+
+        x = Math.max(0, Math.min(rect.width, x));
+        y = Math.max(0, Math.min(rect.height, y));
+
+        const desktopOffsetX = Number(config.offsetX) || 0;
+        const desktopOffsetY = Number(config.offsetY) || 0;
+
+        const touchOffsetX = Number(config.touchOffsetX) || 0;
+        const touchOffsetY = config.touchOffsetY === null || typeof config.touchOffsetY === "undefined"
+            ? -(lensSize * 1.25)
+            : Number(config.touchOffsetY) || 0;
+
+        const offsetX = isTouch ? touchOffsetX : desktopOffsetX;
+        const offsetY = isTouch ? touchOffsetY : desktopOffsetY;
+
+        const lensLeft = eventPoint.clientX - lensRadius + offsetX;
+        const lensTop = eventPoint.clientY - lensRadius + offsetY;
+
+        lens.style.width = lensSize + "px";
+        lens.style.height = lensSize + "px";
+        lens.style.transform = "translate3d(" + lensLeft + "px, " + lensTop + "px, 0) scale(1)";
+
+		const naturalWidth = lensImg.naturalWidth || img.naturalWidth || rect.width;
+		const naturalHeight = lensImg.naturalHeight || img.naturalHeight || rect.height;
+
+		const scaleX = naturalWidth / rect.width;
+		const scaleY = naturalHeight / rect.height;
+
+		lensImg.style.width = (naturalWidth * zoom) + "px";
+		lensImg.style.height = (naturalHeight * zoom) + "px";
+		lensImg.style.left = (lensRadius - (x * scaleX * zoom)) + "px";
+		lensImg.style.top = (lensRadius - (y * scaleY * zoom)) + "px";
+    }
+
+    // Hides the magnifier lens.
+    function hideMagnifier() {
+        const lens = document.getElementById("rsMagnifierLens");
+
+        if (!lens) {
+            return;
+        }
+
+        lens.classList.remove("rs-magnifier-show");
+        lens.style.transform = "translate3d(-9999px, -9999px, 0) scale(0.98)";
+    }
+
+    // Applies lens visual settings from config.
+    function applyMagnifierConfig(lens, config) {
+        const lensSize = Math.max(80, Number(config.lensSize) || 180);
+        const shape = String(config.shape || "circle").toLowerCase();
+
+        lens.style.width = lensSize + "px";
+        lens.style.height = lensSize + "px";
+        lens.style.zIndex = Number(config.zIndex) || 999999;
+        lens.style.border = config.border || "2px solid rgba(255,255,255,0.95)";
+        lens.style.background = config.background || "#ffffff";
+        lens.style.borderRadius = shape === "square" ? "12px" : "50%";
+
+        if (config.shadow === false) {
+            lens.style.boxShadow = "none";
+        } else {
+            lens.style.boxShadow = "0 10px 34px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(0,0,0,0.08)";
+        }
+    }
+
+    global.fnMagnifier = fnMagnifier;
+    global.fnGlobalMagnifier = fnGlobalMagnifier;
+})(window);
